@@ -10,35 +10,35 @@
 
 ## Support
 
-|   Language    |     Status        | Number of tests   |
-|:-----------:  |:-------------:    |:---------------:  |
-|     ASP       | :x:               |        0          |
-| AppleScript   | :x:               |        0          |
-|      C#       | :x:               |        0          |
-|     C++       | :white_check_mark:|        2          |
-|      C        | :white_check_mark:|        1          |
-|     CSS       | :x:               |        0          |
-|   Clojure     | :x:               |        0          |
-|      D        | :x:               |        0          |
-|    Erlang     | :x:               |        0          |
-|      Go       | :x:               |        0          |
-|     HTML      | :x:               |        0          |
-|   Haskell     | :white_check_mark:|        3          |
-|     Java      | :x:               |        0          |
-|  JavaScript   | :x:               |        0          |
-|    LaTeX      | :x:               |        0          |
-|     Lisp      | :x:               |        0          |
-|     Lua       | :x:               |        0          |
-|   Markdown    | :x:               |        0          |
-|    Matlab     | :x:               |        0          |
-|    OCaml      | :x:               |        0          |
-| Objective-C   | :x:               |        0          |
-|     PHP       | :x:               |        0          |
-|     Perl      | :x:               |        0          |
-|    Python     | :white_check_mark:|        5          |
-|      R        | :white_check_mark:|        3          |
-|     Ruby      | :white_check_mark:|        4          |
-|     Rust      | :x:               |        0          |
-|     SQL       | :x:               |        0          |
-|    Scala      | :x:               |        0          |
-|     XML       | :x:               |        0          |
+|   Language    |       Status          | Number of Tests   | Base Project (% identified)   |
+|:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
+|     ASP       |         :x:           |        0          |                               |
+| AppleScript   |         :x:           |        0          |                               |
+|      C#       |         :x:           |        0          |                               |
+|     C++       | :white_check_mark:    |        2          |            Swift              |
+|      C        | :white_check_mark:    |        2          |             git               |
+|     CSS       |         :x:           |        0          |                               |
+|   Clojure     |         :x:           |        0          |                               |
+|      D        |         :x:           |        0          |                               |
+|    Erlang     |         :x:           |        0          |                               |
+|      Go       |         :x:           |        0          |                               |
+|     HTML      |         :x:           |        0          |                               |
+|   Haskell     | :white_check_mark:    |        3          |            cabal              |
+|     Java      |         :x:           |        0          |                               |
+|  JavaScript   |         :x:           |        0          |                               |
+|    LaTeX      |         :x:           |        0          |                               |
+|     Lisp      |         :x:           |        0          |                               |
+|     Lua       |         :x:           |        0          |                               |
+|   Markdown    |         :x:           |        0          |                               |
+|    Matlab     |         :x:           |        0          |                               |
+|    OCaml      |         :x:           |        0          |                               |
+| Objective-C   |         :x:           |        0          |                               |
+|     PHP       |         :x:           |        0          |                               |
+|     Perl      |         :x:           |        0          |                               |
+|    Python     | :white_check_mark:    |        4          |            django             |
+|      R        | :white_check_mark:    |        3          |            shiny              |
+|     Ruby      | :white_check_mark:    |        3          |           homebrew            |
+|     Rust      |         :x:           |        0          |                               |
+|     SQL       |         :x:           |        0          |                               |
+|    Scala      |         :x:           |        0          |                               |
+|     XML       |         :x:           |        0          |                               |
