@@ -15,7 +15,7 @@
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       |         :x:           |        0          |                               |
-|     C++       | :white_check_mark:    |        2          |            Swift              |
+|     C++       | :white_check_mark:    |        2          |        Swift (0.969)          |
 |      C        | :white_check_mark:    |        2          |        git (0.941)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
