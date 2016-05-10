@@ -10,6 +10,9 @@
 
 ## Support
 
+Base Project is the project that the language's signature is based on. % identified is the 
+percentage of files in a given Base Project that cypher was able to correctly identify.
+
 |   Language    |       Status          | Number of Tests   | Base Project (% identified)   |
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
