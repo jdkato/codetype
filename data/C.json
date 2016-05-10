@@ -1,0 +1,10 @@
+{
+    "built-in": [],
+    "keywords": [],
+    "lib": [
+        "calloc(", "free(", "malloc(", "realloc(", "printf(", "putchar(",
+        "getchar(", "va_start(", "va_end(", "free(", "typedef", "stdio",
+        "ctype", "stdlib", "stdarg", "stddef", "setjmp", "scanf(", "stddef"
+    ],
+    "other": ["{", "}", ";", "&"]
+}

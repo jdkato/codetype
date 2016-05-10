@@ -1,0 +1,13 @@
+{
+    "built-in": [
+        "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
+        "Method", "Module", "NilClass", "TrueClass"
+    ],
+    "keywords": [
+        "alias", "begin", "defined", "elsif", "end", "ensure", "false", "nil",
+        "redo", "not", "rescue", "rety", "then", "true", "undef", "unless",
+        "when", "puts", "each"
+    ],
+    "lib": [],
+    "other": ["?", "!", "$"]
+}
