@@ -10,7 +10,7 @@ except ImportError:
 
 from collections import Counter
 
-EXTRACT_RE = r"[\w]+\(?|:{2}|<{2}|:\n|<-|[.,@!?;&{}\[\]#\\*?/|%$]"
+EXTRACT_RE = r"[\w]+\(?|::|<<|:\n|<-|->|!!|[.,@!?;:&{}\[\]#\\*?/|%$`]"
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["//", "-", "#", "*"]
 
