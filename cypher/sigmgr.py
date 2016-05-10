@@ -43,6 +43,9 @@ elif args["lang"] == "R":
 elif args["lang"] == "Haskell":
     repo = "https://github.com/haskell/cabal.git"
     ext = [".hs"]
+elif args["lang"] == "JavaScript":
+    repo = "https://github.com/facebook/react.git"
+    ext = [".js"]
 else:
     print("{} not found.".format(args["lang"]))
     sys.exit(0)
