@@ -15,6 +15,37 @@ STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["//", "-", "#", "*"]
 
 
+def identify(src, is_file=False, verbose=False):
+    """Attempt to identify the language which `src` is written in.
+
+    Args:
+        src (str): Either a string or a file path.
+        is_file (bool): `True` if `src` is a file.
+        verbose (bool): `True` if verbose output is to be used.
+
+    Returns:
+        (str|dict): A string specifying the computed language if `verbose` is
+            `False`. Otherwise a dictionary with all tested languages as keys
+            and their computed scores as values.
+    """
+    results = {}
+    sig = compute_signature(src, is_file=is_file)
+    if sig == -1:
+        return sig
+
+    for f in os.listdir("signatures"):
+        lang = f.split(".")[0]
+        if not lang:
+            continue
+        ksig = read_signature(lang)
+        results[lang] = compare_signatures(sig, ksig)
+
+    if verbose:
+        return results
+    else:
+        return max(results, key=results.get)
+
+
 def get_parts(src, is_file=False, filtered=[]):
     """Attempt to extract all non-string and non-comment content from `src`.
 
@@ -103,6 +134,9 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
                 )
                 parts.extend(sparts)
                 lines += slines
+
+    if not parts:
+        return -1
     signature = Counter(parts)
     for key in signature:
         signature[key] /= lines
