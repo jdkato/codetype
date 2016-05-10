@@ -1,0 +1,9 @@
+{
+    "built-in": [],
+    "keywords": [
+        "var", "function", "NaN", "isNaN", "console", "window", "this",
+        "event", "null", "exports", "length", "const", "strict"
+    ],
+    "lib": [],
+    "other": ["{", "}", ";", "===", "!==", ":", "=>"]
+}
