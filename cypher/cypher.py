@@ -1,6 +1,12 @@
 import argparse
 import os
 
+from util import (
+    compare_signatures,
+    compute_signature,
+    read_signature
+)
+
 parser = argparse.ArgumentParser(
     prog="cypher",
     description="A source code identification tool."
@@ -38,7 +44,20 @@ def identify(src, is_file=False, verbose=False):
             `False`. Otherwise a dictionary with all tested languages as keys
             and their computed scores as values.
     """
-    return None
+    results = {}
+    sig = compute_signature(src, is_file=is_file)
+
+    for f in os.listdir("signatures"):
+        lang = f.split(".")[0]
+        if not lang:
+            continue
+        ksig = read_signature(lang)
+        results[lang] = compare_signatures(sig, ksig)
+
+    if verbose:
+        return results
+    else:
+        return max(results, key=results.get)
 
 
 def main():
