@@ -12,7 +12,7 @@ from collections import Counter
 
 EXTRACT_RE = r"[\w]+\(?|::|<<|:\n|<-|->|!!|\(\)|[.,@!?;:&{}\[\]#\\*?\/|%$`]"
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
-COMMENTS = ["//", "-", "#", "*"]
+COMMENTS = ["/", "//", "-", "#", "*"]
 
 
 def identify(src, is_file=False, verbose=False):
