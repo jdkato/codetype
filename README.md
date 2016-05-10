@@ -15,8 +15,8 @@
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       |         :x:           |        0          |                               |
-|     C++       | :white_check_mark:    |        2          |        Swift (0.969)          |
-|      C        | :white_check_mark:    |        2          |        git (0.941)            |
+|     C++       | :white_check_mark:    |        2          |        Swift (0.967)          |
+|      C        | :white_check_mark:    |        2          |        git (0.951)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
@@ -25,7 +25,7 @@
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        3          |        cabal (0.978)          |
 |     Java      |         :x:           |        0          |                               |
-|  JavaScript   |         :x:           |        0          |                               |
+|  JavaScript   | :white_check_mark:    |        0          |        d3.js (0.909)          |
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
 |     Lua       |         :x:           |        0          |                               |
@@ -35,9 +35,9 @@
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
-|    Python     | :white_check_mark:    |        4          |     django (0.973)            |
-|      R        | :white_check_mark:    |        3          |     shiny (0.911)             |
-|     Ruby      | :white_check_mark:    |        3          |     homebrew (0.939)          |
+|    Python     | :white_check_mark:    |        4          |     django (0.972)            |
+|      R        | :white_check_mark:    |        3          |     shiny (0.902)             |
+|     Ruby      | :white_check_mark:    |        3          |     homebrew (0.93)          |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
