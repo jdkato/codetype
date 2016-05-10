@@ -6,7 +6,7 @@
     "keywords": [
         "alias", "begin", "defined", "elsif", "end", "ensure", "false", "nil",
         "redo", "not", "rescue", "rety", "then", "true", "undef", "unless",
-        "when", "puts", "each"
+        "when", "puts", "each", "require"
     ],
     "lib": [],
     "other": ["?", "!", "$"]
