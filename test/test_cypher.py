@@ -2,7 +2,7 @@ import os
 import sys
 import unittest
 
-from cypher.cypher import identify
+from cypher.util import identify
 
 sys.path.insert(0, os.path.abspath("."))
 LANG_DIR = os.path.join("test", "lang")
