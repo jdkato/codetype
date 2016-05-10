@@ -57,6 +57,7 @@ pro = subprocess.Popen(
 (out, error) = pro.communicate()
 
 src_dir = os.path.join(TEMP_DIR, repo.split("/")[-1].split(".")[0])
+print(src_dir)
 if args["test"]:
     file_count = 0.0
     identified = 0.0
@@ -76,7 +77,7 @@ if args["test"]:
                 print("Insufficient information {}!".format(p))
             else:
                 print("Incorrectly identified ({}) {}!".format(computed, p))
-    c = identified / file_count
+    c = identified / file_count if file_count else 1
     print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
 else:
     write_signature(src_dir, lang=args["lang"], ext=ext, is_file=1)
