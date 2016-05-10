@@ -4,9 +4,9 @@ import os
 import math
 
 try:
-    from cStringIO import StringIO
-except ImportError:
     from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 from collections import Counter
 
