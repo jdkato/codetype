@@ -78,7 +78,6 @@ if args["test"]:
                 print("Incorrectly identified ({}) {}!".format(computed, p))
     c = identified / file_count
     print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
-
 else:
     write_signature(src_dir, lang=args["lang"], ext=ext, is_file=1)
 shutil.rmtree(TEMP_DIR)
