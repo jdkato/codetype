@@ -33,10 +33,10 @@ elif args["lang"] == "Ruby":
     ext = [".rb"]
 elif args["lang"] == "C":
     repo = "https://github.com/git/git.git"
-    ext = [".c", ".h"]
+    ext = [".c"]
 elif args["lang"] == "C++":
     repo = "https://github.com/apple/swift.git"
-    ext = [".cpp", ".cc", ".h"]
+    ext = [".cpp", ".cc"]
 elif args["lang"] == "R":
     repo = "https://github.com/rstudio/shiny.git"
     ext = [".R", ".r"]
