@@ -1,7 +1,7 @@
 {
     "built-in": [
         "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
-        "Method", "Module", "NilClass", "TrueClass"
+        "Method", "NilClass", "TrueClass"
     ],
     "keywords": [
         "alias", "begin", "defined", "elsif", "end", "ensure", "false", "nil",
