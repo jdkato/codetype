@@ -6,6 +6,8 @@
 
 ## Usage
 
+## Strategy 
+
 ## Support
 
 |   Language    |     Status        | Number of tests   |
@@ -40,6 +42,3 @@
 |     SQL       | :x:               |        0          |
 |    Scala      | :x:               |        0          |
 |     XML       | :x:               |        0          |
-
-## Strategy
-
