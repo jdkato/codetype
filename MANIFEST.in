@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+recursive-include signatures *.json
+recursive-include data *.json
+global-exclude __pycache__
+global-exclude *.py[co]
