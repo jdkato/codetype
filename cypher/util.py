@@ -113,7 +113,7 @@ def read_signature(lang):
     """Load an existing signature.
 
     Args:
-        `lang`: The name of the existing signature.
+        `lang` (str): The name of the existing signature.
     """
     with open(os.path.join("signatures", lang + ".json")) as sig:
         return json.load(sig)
@@ -123,7 +123,7 @@ def get_lang_data(lang):
     """Load existing data on `lang`.
 
     Args:
-        `lang`: The name of the language.
+        `lang` (str): The name of the language.
 
     Returns:
         list: A list of all keywords associated with `lang`.
@@ -141,8 +141,8 @@ def write_signature(src, lang, ext, is_file=True):
 
     Args:
         `src` (str): Either a string or a file path.
-        `lang`: The name of the language.
-        `ext`: A list of file extensions associated with `lang`.
+        `lang` (str): The name of the language.
+        `ext` (list): A list of file extensions associated with `lang`.
         `is_file` (bool): `True` if `src` is a file.
     """
     data = compute_signature(src, lang=lang, ext=ext, is_file=is_file)
