@@ -86,7 +86,7 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
     """
     lines = 0
     parts = []
-    words = get_lang_data(lang)
+    words = set(get_lang_data(lang))
     if not os.path.isdir(src):
         sparts, slines = get_parts(src, is_file=is_file, filtered=words)
         parts.extend(sparts)
