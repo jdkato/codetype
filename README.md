@@ -25,7 +25,7 @@
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.978)          |
 |     Java      |         :x:           |        0          |                               |
-|  JavaScript   | :white_check_mark:    |        0          | [D3.js](https://github.com/mbostock/d3) (0.909)          |
+|  JavaScript   | :white_check_mark:    |        2          | [D3.js](https://github.com/mbostock/d3) (0.909)          |
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
 |     Lua       |         :x:           |        0          |                               |
