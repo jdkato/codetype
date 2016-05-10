@@ -36,7 +36,7 @@
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
 |    Python     | :white_check_mark:    |        4          |     django (0.973)            |
-|      R        | :white_check_mark:    |        3          |            shiny              |
+|      R        | :white_check_mark:    |        3          |     shiny (0.911)              |
 |     Ruby      | :white_check_mark:    |        3          |           homebrew            |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
