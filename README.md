@@ -23,7 +23,7 @@
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       |         :x:           |        0          |                               |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          |            cabal              |
+|   Haskell     | :white_check_mark:    |        3          |        cabal (0.978)          |
 |     Java      |         :x:           |        0          |                               |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
@@ -36,7 +36,7 @@
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
 |    Python     | :white_check_mark:    |        4          |     django (0.973)            |
-|      R        | :white_check_mark:    |        3          |     shiny (0.911)              |
+|      R        | :white_check_mark:    |        3          |     shiny (0.911)             |
 |     Ruby      | :white_check_mark:    |        3          |           homebrew            |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
