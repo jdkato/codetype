@@ -13,7 +13,8 @@
 |     ASP       | :x:               |        0          |
 | AppleScript   | :x:               |        0          |
 |      C#       | :x:               |        0          |
-|     C++       | :white_check_mark:      |        2          |
+|     C++       | :white_check_mark:|        2          |
+|      C        | :white_check_mark:|        1          |
 |     CSS       | :x:               |        0          |
 |   Clojure     | :x:               |        0          |
 |      D        | :x:               |        0          |
