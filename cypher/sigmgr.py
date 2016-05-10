@@ -29,7 +29,7 @@ if args["lang"] == "Python":
     repo = "https://github.com/django/django.git"
     ext = [".py"]
 elif args["lang"] == "Ruby":
-    repo = "https://github.com/Homebrew/legacy-homebrew.git"
+    repo = "https://github.com/rails/rails.git"
     ext = [".rb"]
 elif args["lang"] == "C":
     repo = "https://github.com/git/git.git"
