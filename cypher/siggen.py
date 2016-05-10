@@ -33,6 +33,9 @@ elif lang == "C++":
 elif lang == "R":
     repo = "https://github.com/rstudio/shiny.git"
     ext = [".R", ".r"]
+elif lang == "Haskell":
+    repo = "https://github.com/haskell/cabal.git"
+    ext = [".hs"]
 else:
     print("{} not found.".format(lang))
     sys.exit(0)
