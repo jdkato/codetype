@@ -37,7 +37,7 @@
 |     Perl      |         :x:           |        0          |                               |
 |    Python     | :white_check_mark:    |        4          |     django (0.973)            |
 |      R        | :white_check_mark:    |        3          |     shiny (0.911)             |
-|     Ruby      | :white_check_mark:    |        3          |           homebrew            |
+|     Ruby      | :white_check_mark:    |        3          |     homebrew (0.939)          |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
