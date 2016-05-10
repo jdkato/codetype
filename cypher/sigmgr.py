@@ -5,7 +5,7 @@ import os
 import shutil
 import sys
 
-from util import write_signature
+from util import write_signature, identify
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -58,7 +58,27 @@ pro = subprocess.Popen(
 
 src_dir = os.path.join(TEMP_DIR, repo.split("/")[-1].split(".")[0])
 if args["test"]:
-    pass
+    file_count = 0.0
+    identified = 0.0
+    for subdir, dirs, files in os.walk(src_dir):
+        for f in files:
+            p = os.path.join(subdir, f)
+            if ext and not any(f.endswith(e) for e in ext):
+                continue
+            if os.stat(p).st_size == 0:
+                continue
+            file_count += 1
+            computed = identify(src=p, is_file=1)
+            if computed == args["lang"]:
+                identified += 1
+            elif computed == -1:
+                file_count -= 1
+                print("Insufficient information {}!".format(p))
+            else:
+                print("Incorrectly identified ({}) {}!".format(computed, p))
+    c = identified / file_count
+    print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
+
 else:
     write_signature(src_dir, lang=args["lang"], ext=ext, is_file=1)
 shutil.rmtree(TEMP_DIR)
