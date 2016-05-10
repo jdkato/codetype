@@ -10,7 +10,5 @@ setup(
     version="0.0.1",
     description="A Python source code identification tool.",
     long_description=README,
-    author="Joseph Kato",
-    author_email="jdkato@gmail.com",
-    url=""
+    author="Joseph Kato"
 )
