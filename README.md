@@ -33,9 +33,9 @@
 | Objective-C   | :x:               |        0          |
 |     PHP       | :x:               |        0          |
 |     Perl      | :x:               |        0          |
-|    Python     | :white_check_mark:|        4          |
+|    Python     | :white_check_mark:|        5          |
 |      R        | :white_check_mark:|        3          |
-|     Ruby      | :white_check_mark:|        3          |
+|     Ruby      | :white_check_mark:|        4          |
 |     Rust      | :x:               |        0          |
 |     SQL       | :x:               |        0          |
 |    Scala      | :x:               |        0          |
