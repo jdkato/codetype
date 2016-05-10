@@ -9,16 +9,15 @@ from util import write_signature
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "-l",
-    "--language",
-    help="Source code language.",
-    required=True
+    "lang",
+    nargs="?",
+    help="Language name"
 )
 
 TEMP_DIR = os.path.join(os.getcwd(), "cypher", "temp")
 if os.path.exists(TEMP_DIR):
     shutil.rmtree(TEMP_DIR)
-lang = vars(parser.parse_args())["language"]
+lang = vars(parser.parse_args())["lang"]
 if lang == "Python":
     repo = "https://github.com/django/django.git"
     ext = [".py"]
@@ -48,5 +47,5 @@ pro = subprocess.Popen(
 (out, error) = pro.communicate()
 
 src_dir = os.path.join(TEMP_DIR, repo.split("/")[-1].split(".")[0])
-write_signature(src_dir, lang, ext)
+write_signature(src_dir, lang=lang, ext=ext, is_file=1)
 shutil.rmtree(TEMP_DIR)
