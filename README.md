@@ -41,3 +41,5 @@
 |    Scala      | :x:               |        0          |
 |     XML       | :x:               |        0          |
 
+## Strategy
+
