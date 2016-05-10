@@ -35,7 +35,7 @@
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
-|    Python     | :white_check_mark:    |        4          |            django             |
+|    Python     | :white_check_mark:    |        4          |     django (0.973)            |
 |      R        | :white_check_mark:    |        3          |            shiny              |
 |     Ruby      | :white_check_mark:    |        3          |           homebrew            |
 |     Rust      |         :x:           |        0          |                               |
