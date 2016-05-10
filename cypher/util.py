@@ -71,7 +71,7 @@ def compare_signatures(unknown, known):
     return found / total
 
 
-def compute_signature(src, is_file=False, lang=None, ext=[]):
+def compute_signature(src, lang=None, ext=[], is_file=False):
     """Compute a signature for `src`.
 
     Args:
@@ -145,6 +145,6 @@ def write_signature(src, lang, ext, is_file=True):
         `ext`: A list of file extensions associated with `lang`.
         `is_file` (bool): `True` if `src` is a file.
     """
-    data = compute_signature(src, lang, ext, is_file=is_file)
+    data = compute_signature(src, lang=lang, ext=ext, is_file=is_file)
     with open(os.path.join("signatures", lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)
