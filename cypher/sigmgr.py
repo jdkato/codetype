@@ -60,7 +60,6 @@ pro = subprocess.Popen(
 (out, error) = pro.communicate()
 
 src_dir = os.path.join(TEMP_DIR, repo.split("/")[-1].split(".")[0])
-print(src_dir)
 if args["test"]:
     file_count = 0.0
     identified = 0.0
