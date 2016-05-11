@@ -23,7 +23,7 @@
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       |         :x:           |        0          |                               |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.978)          |
+|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.995)          |
 |     Java      |         :x:           |        0          |                               |
 |  JavaScript   | :white_check_mark:    |        0          | [D3.js](https://github.com/mbostock/d3) (0.909)          |
 |    LaTeX      |         :x:           |        0          |                               |
