@@ -99,6 +99,7 @@ def compare_signatures(unknown, known):
         elif v > 0.10:
             total += 1
             found -= 1
+            # JS = 0.911
     return found / total
 
 
