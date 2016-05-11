@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/jdkato/cypher.svg?branch=master)](https://travis-ci.org/jdkato/cypher)
 
-[cypher](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a command-line tool which aims to be able to quickly identify the source code language of either a string of text or a file passed to it.
+[`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a command-line tool which aims to be able to quickly identify the source code language of either a string of text or a file passed to it.
 
 ## Usage
 
-## Strategy 
+## Strategy
 
 ## Support
 
@@ -25,7 +25,7 @@
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.995)          |
 |     Java      |         :x:           |        0          |                               |
-|  JavaScript   | :white_check_mark:    |        0          | [D3.js](https://github.com/mbostock/d3) (0.909)          |
+|  JavaScript   | :white_check_mark:    |        2          | [D3.js](https://github.com/mbostock/d3) (0.909)          |
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
 |     Lua       |         :x:           |        0          |                               |
