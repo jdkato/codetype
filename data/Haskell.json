@@ -3,7 +3,7 @@
     "keywords": [
         "let", "module", "where", "Monoid", "qualified", "Char", "Bool",
         "then", "map", "elem", "head", "tail", "take", "foldr", "mapM", "of",
-        "maybe"
+        "maybe", "LANGUAGE"
     ],
     "lib": ["Aeson", "Control", "Monad"],
     "other": ["<-", "->", "::", "$", "`", ":", "!!", "()"]
