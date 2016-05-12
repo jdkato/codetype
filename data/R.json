@@ -7,6 +7,6 @@
         "ifelse", "TRUE", "FALSE", "function(", "frame", "Inf", "NaN",
         "NA_integer_", "NA_real_", "NA_complex_", "NA_character_"
     ],
-    "lib": ["ggplot2", "knitr", "knit", "geom_point("],
+    "lib": [],
     "other": ["<-", "{", "}", "$", "<<-", "..."]
 }
