@@ -47,7 +47,7 @@ elif args["lang"] == "JavaScript":
     repo = "https://github.com/mbostock/d3.git"
     ext = [".js"]
 elif args["lang"] == "C#":
-    repo = "https://github.com/JamesNK/Newtonsoft.Json.git"
+    repo = "https://github.com/NancyFx/Nancy.git"
     ext = [".cs"]
 else:
     print("{} not found.".format(args["lang"]))
