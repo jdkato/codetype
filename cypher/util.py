@@ -10,7 +10,20 @@ except ImportError:
 
 from collections import Counter
 
-EXTRACT_RE = r"[\w]+\(?|::|=>|<<|:\n|<-|->|!!|\(\)|[.,@!?;:&{}\[\]#\\*?\/|%$`]"
+EXTRACT_RE = r"""
+    [\w]+\(?|
+    ::|
+    =>|
+    <<(?!-)|
+    :\n|
+    <-|
+    ->|
+    !!|
+    <<-|
+    \.\.\.|
+    \(\)|
+    [.@!?;:&{}\[\]#\\*?\/|%$`]
+"""
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["/", "//", "-", "#", "*"]
 
@@ -71,7 +84,7 @@ def get_parts(src, is_file=False, filtered=[]):
         if not line or any(line.startswith(c) for c in COMMENTS):
             continue
         line = re.sub(STRING_RE, '', line)
-        extr = re.findall(EXTRACT_RE, line)
+        extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
         parts.extend([s for s in extr if s in filtered or not filtered])
         lines += 1
 
