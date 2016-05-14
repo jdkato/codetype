@@ -26,6 +26,9 @@ EXTRACT_RE = r"""
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["/", "//", "-", "#", "*"]
+FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+SIG_PATH = os.path.join(FILE_PATH, "signatures")
+DATA_PATH = os.path.join(FILE_PATH, "data")
 
 
 def identify(src, is_file=False, verbose=False):
@@ -46,7 +49,7 @@ def identify(src, is_file=False, verbose=False):
     if sig == -1:
         return sig
 
-    for f in os.listdir("signatures"):
+    for f in os.listdir(SIG_PATH):
         lang = f.split(".")[0]
         if not lang:
             continue
@@ -162,7 +165,7 @@ def read_signature(lang):
     Args:
         `lang` (str): The name of the existing signature.
     """
-    with open(os.path.join("signatures", lang + ".json")) as sig:
+    with open(os.path.join(SIG_PATH, lang + ".json")) as sig:
         return json.load(sig)
 
 
@@ -178,7 +181,7 @@ def get_lang_data(lang):
     d = []
     if lang is None:
         return d
-    with open(os.path.join("data", lang + ".json")) as jdata:
+    with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
         d = json.load(jdata)
     return sum([d[s] for s in d.keys()], [])
 
@@ -193,5 +196,5 @@ def write_signature(src, lang, ext, is_file=True):
         `is_file` (bool): `True` if `src` is a file.
     """
     data = compute_signature(src, lang=lang, ext=ext, is_file=is_file)
-    with open(os.path.join("signatures", lang + ".json"), "w+") as sig:
+    with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)
