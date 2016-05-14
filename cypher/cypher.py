@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument(
     "src",
-    nargs="?",
+    nargs=1,
     help="Path to unknown source code."
 )
 parser.add_argument(
