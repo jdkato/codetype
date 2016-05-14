@@ -26,4 +26,5 @@ args = vars(parser.parse_args())
 
 
 def main():
-    print(identify(args["src"], is_file=args["file"], verbose=args["verbose"]))
+    src = args["src"][0]
+    print(identify(src, is_file=args["file"], verbose=args["verbose"]))
