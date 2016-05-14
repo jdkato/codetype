@@ -1,6 +1,6 @@
 include README.md
 include LICENSE
-recursive-include signatures *.json
-recursive-include data *.json
+recursive-include cypher/signatures *.json
+recursive-include cypher/data *.json
 global-exclude __pycache__
 global-exclude *.py[co]

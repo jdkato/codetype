@@ -9,6 +9,7 @@ setup(
     entry_points={"console_scripts": ["cypher=cypher.cypher:main"]},
     version="0.0.1",
     description="A source code identification tool.",
+    include_package_data=True,
     long_description=README,
     author="Joseph Kato"
 )
