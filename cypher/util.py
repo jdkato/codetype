@@ -4,7 +4,7 @@ import os
 import math
 
 try:
-    from StringIO import StringIO
+    from cStringIO import StringIO
 except ImportError:
     from io import StringIO
 
