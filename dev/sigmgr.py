@@ -1,70 +1,23 @@
-#!/usr/bin/env python
-import argparse
 import subprocess
 import os
 import shutil
-import sys
 
-# TODO: import from run.py?
-from cypher.util import write_signature, identify
-
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "lang",
-    nargs="?",
-    help="Language name"
-)
-parser.add_argument(
-    "-t",
-    "--test",
-    action="store_true",
-    help="Run base test"
-)
-
+LANG_INFO = {
+    "Python": {"repo": "https://github.com/django/django.git", "ext": [".py"]},
+    "Ruby": {"repo": "https://github.com/rails/rails.git", "ext": [".rb"]},
+    "C": {"repo": "https://github.com/git/git.git", "ext": [".c"]},
+    "C++": {"repo": "https://github.com/apple/swift.git", "ext": [".cc", ".cpp"]},
+    "R": {"repo": "https://github.com/rstudio/shiny.git", "ext": [".r", ".R"]},
+    "Haskell": {"repo": "https://github.com/haskell/cabal.git", "ext": [".hs"]},
+    "JavaScript": {"repo": "https://github.com/mbostock/d3.git", "ext": [".js"]},
+    "C#": {"repo": "https://github.com/NancyFx/Nancy.git", "ext": [".cs"]}
+}
 TEMP_DIR = os.path.join(os.getcwd(), "cypher", "temp")
-if os.path.exists(TEMP_DIR):
-    shutil.rmtree(TEMP_DIR)
 
-args = vars(parser.parse_args())
-if args["lang"] == "Python":
-    repo = "https://github.com/django/django.git"
-    ext = [".py"]
-elif args["lang"] == "Ruby":
-    repo = "https://github.com/rails/rails.git"
-    ext = [".rb"]
-elif args["lang"] == "C":
-    repo = "https://github.com/git/git.git"
-    ext = [".c"]
-elif args["lang"] == "C++":
-    repo = "https://github.com/apple/swift.git"
-    ext = [".cpp", ".cc"]
-elif args["lang"] == "R":
-    repo = "https://github.com/rstudio/shiny.git"
-    ext = [".R", ".r"]
-elif args["lang"] == "Haskell":
-    repo = "https://github.com/haskell/cabal.git"
-    ext = [".hs"]
-elif args["lang"] == "JavaScript":
-    repo = "https://github.com/mbostock/d3.git"
-    ext = [".js"]
-elif args["lang"] == "C#":
-    repo = "https://github.com/NancyFx/Nancy.git"
-    ext = [".cs"]
-else:
-    print("{} not found.".format(args["lang"]))
-    sys.exit(0)
 
-os.makedirs(TEMP_DIR)
-pro = subprocess.Popen(
-    ["git", "clone", repo],
-    cwd=TEMP_DIR,
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE
-)
-(out, error) = pro.communicate()
-
-src_dir = os.path.join(TEMP_DIR, repo.split("/")[-1].split(".")[0])
-if args["test"]:
+def test_sig(src_dir, lang, indentifier):
+    """
+    """
     file_count = 0.0
     identified = 0.0
     for subdir, dirs, files in os.walk(src_dir):
@@ -75,7 +28,7 @@ if args["test"]:
             if os.stat(p).st_size == 0:
                 continue
             file_count += 1
-            computed = identify(src=p, is_file=1)
+            computed = indentifier(src=p, is_file=1)
             if computed == args["lang"]:
                 identified += 1
             elif computed == -1:
@@ -85,6 +38,33 @@ if args["test"]:
                 print("Incorrectly identified ({}) {}!".format(computed, p))
     c = identified / file_count if file_count else 1
     print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
-else:
-    write_signature(src_dir, lang=args["lang"], ext=ext, is_file=1)
-shutil.rmtree(TEMP_DIR)
+
+def run(lang, is_test, indentifier=None, writer=None):
+    """
+    """
+    info = LANG_INFO.get(lang)
+    if info is None:
+        print("Language {0} not found.".format(lang))
+        return
+    if os.path.exists(TEMP_DIR):
+        shutil.rmtree(TEMP_DIR)
+        
+    os.makedirs(TEMP_DIR)
+    (out, error) = subprocess.Popen(
+        ["git", "clone", info["repo"]],
+        cwd=TEMP_DIR,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
+    ).communicate()
+
+    src_dir = os.path.join(TEMP_DIR, info["repo"].split("/")[-1].split(".")[0])
+    if is_test and identifier:
+        test_sig(src_dir, lang, indentifier)
+    elif is_test:
+        print("Please specify an identifier.")
+    elif writer:
+        writer(src_dir, lang=lang, ext=info["ext"], is_file=1)
+    else:
+        print("Please specify a writer.")
+        
+    shutil.rmtree(TEMP_DIR)
