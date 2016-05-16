@@ -15,7 +15,7 @@ LANG_INFO = {
 TEMP_DIR = os.path.join(os.getcwd(), "cypher", "temp")
 
 
-def test_sig(src_dir, lang, indentifier):
+def test_sig(src_dir, lang, ext, indentifier):
     """
     """
     file_count = 0.0
@@ -29,7 +29,7 @@ def test_sig(src_dir, lang, indentifier):
                 continue
             file_count += 1
             computed = indentifier(src=p, is_file=1)
-            if computed == args["lang"]:
+            if computed == lang:
                 identified += 1
             elif computed == -1:
                 file_count -= 1
@@ -38,6 +38,7 @@ def test_sig(src_dir, lang, indentifier):
                 print("Incorrectly identified ({}) {}!".format(computed, p))
     c = identified / file_count if file_count else 1
     print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
+
 
 def run(lang, is_test, indentifier=None, writer=None):
     """
@@ -59,7 +60,7 @@ def run(lang, is_test, indentifier=None, writer=None):
 
     src_dir = os.path.join(TEMP_DIR, info["repo"].split("/")[-1].split(".")[0])
     if is_test and identifier:
-        test_sig(src_dir, lang, indentifier)
+        test_sig(src_dir, lang, info["ext"], indentifier)
     elif is_test:
         print("Please specify an identifier.")
     elif writer:
