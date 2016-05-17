@@ -5,6 +5,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "script",
     nargs="?",
+    const="cypher",
+    type=str,
     help="cypher|mkdocs|sigmgr"
 )
 
