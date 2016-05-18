@@ -7,7 +7,7 @@ parser.add_argument(
     nargs="?",
     const="cypher",
     type=str,
-    help="cypher|mkdocs|sigmgr"
+    help="cypher|mddocs|sigmgr"
 )
 
 if __name__ == "__main__":
