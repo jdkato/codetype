@@ -19,10 +19,7 @@ parser.add_argument(
 
 args = vars(parser.parse_args())
 script = args["script"][0]
-if not script:
-    from cypher.cypher import main
-    sys.exit(main())
-elif script == "sigmgr":
+if script == "sigmgr":
     from dev.sigmgr import run
     if args["test"] and args["lang"]:
         from cypher.util import identify
@@ -34,4 +31,6 @@ elif script == "test":
     import unittest
     suite = unittest.TestLoader().discover(".")
     run = unittest.TextTestRunner().run(suite)
+else:
+    print("{0} not recognized!".format(script))
 sys.exit(0)
