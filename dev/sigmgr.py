@@ -1,18 +1,43 @@
 import subprocess
 import os
-import shutil
 
 LANG_INFO = {
-    "Python": {"repo": "https://github.com/django/django.git", "ext": [".py"]},
-    "Ruby": {"repo": "https://github.com/rails/rails.git", "ext": [".rb"]},
-    "C": {"repo": "https://github.com/git/git.git", "ext": [".c"]},
-    "C++": {"repo": "https://github.com/apple/swift.git", "ext": [".cc", ".cpp"]},
-    "R": {"repo": "https://github.com/rstudio/shiny.git", "ext": [".r", ".R"]},
-    "Haskell": {"repo": "https://github.com/haskell/cabal.git", "ext": [".hs"]},
-    "JavaScript": {"repo": "https://github.com/mbostock/d3.git", "ext": [".js"]},
-    "C#": {"repo": "https://github.com/NancyFx/Nancy.git", "ext": [".cs"]}
+    "Python": {
+        "repo": "https://github.com/django/django.git",
+        "ext": [".py"]
+    },
+    "Ruby": {
+        "repo": "https://github.com/rails/rails.git",
+        "ext": [".rb"]
+    },
+    "C": {
+        "repo": "https://github.com/git/git.git",
+        "ext": [".c"]
+    },
+    "C++": {
+        "repo": "https://github.com/apple/swift.git",
+        "ext": [".cc", ".cpp"]
+    },
+    "R": {
+        "repo": "https://github.com/rstudio/shiny.git",
+        "ext": [".r", ".R"]
+    },
+    "Haskell": {
+        "repo": "https://github.com/haskell/cabal.git",
+        "ext": [".hs"]
+    },
+    "JavaScript": {
+        "repo": "https://github.com/mbostock/d3.git",
+        "ext": [".js"]
+    },
+    "C#": {
+        "repo": "https://github.com/NancyFx/Nancy.git",
+        "ext": [".cs"]
+    }
 }
-TEMP_DIR = os.path.join(os.getcwd(), "cypher", "temp")
+TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
+if not os.path.exists(TEMP_DIR):
+    os.makedirs(TEMP_DIR)
 
 
 def test_sig(src_dir, lang, ext, indentifier):
@@ -40,32 +65,35 @@ def test_sig(src_dir, lang, ext, indentifier):
     print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
 
 
-def run(lang, is_test, indentifier=None, writer=None):
-    """
-    """
-    info = LANG_INFO.get(lang)
-    if info is None:
-        print("Language {0} not found.".format(lang))
-        return
-    if os.path.exists(TEMP_DIR):
-        shutil.rmtree(TEMP_DIR)
-        
-    os.makedirs(TEMP_DIR)
+def clone(repo):
     (out, error) = subprocess.Popen(
-        ["git", "clone", info["repo"]],
+        ["git", "clone", repo],
         cwd=TEMP_DIR,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     ).communicate()
 
+
+def run(lang, is_test, identifier=None, writer=None):
+    """
+    """
+    info = LANG_INFO.get(lang)
+    if info is None:
+        print("Language {0} not found.".format(lang))
+        return -1
+
     src_dir = os.path.join(TEMP_DIR, info["repo"].split("/")[-1].split(".")[0])
+    if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
+        clone(info["repo"])
+
     if is_test and identifier:
-        test_sig(src_dir, lang, info["ext"], indentifier)
+        test_sig(src_dir, lang, info["ext"], identifier)
     elif is_test:
         print("Please specify an identifier.")
+        return -1
     elif writer:
         writer(src_dir, lang=lang, ext=info["ext"], is_file=1)
     else:
         print("Please specify a writer.")
-        
-    shutil.rmtree(TEMP_DIR)
+        return -1
+    return 0
