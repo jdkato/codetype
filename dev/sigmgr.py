@@ -26,10 +26,6 @@ LANG_INFO = {
         "repo": "https://github.com/haskell/cabal.git",
         "ext": [".hs"]
     },
-    "JavaScript": {
-        "repo": "https://github.com/mbostock/d3.git",
-        "ext": [".js"]
-    },
     "C#": {
         "repo": "https://github.com/NancyFx/Nancy.git",
         "ext": [".cs"]
