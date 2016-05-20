@@ -1,7 +1,11 @@
 {
-    "built-in": [],
-    "keywords": [],
+    "built-in": [
+    ],
+    "keywords": [
+        "System", "override", "this", "decimal", "namespace", "using", "as",
+        "get", "set", "delegate", "var"
+    ],
     "lib": [],
-    "other": []
+    "other": ["{", "}", ";", "=>"]
 }
 
