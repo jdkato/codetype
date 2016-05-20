@@ -1,6 +1,4 @@
-# cypher
-
-[![Build Status](https://travis-ci.org/jdkato/cypher.svg?branch=master)](https://travis-ci.org/jdkato/cypher)
+# cypher [![Build Status](https://travis-ci.org/jdkato/cypher.svg?branch=master)](https://travis-ci.org/jdkato/cypher)
 
 [`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a command-line tool which aims to be able to quickly identify the source code language of either a string of text or a file passed to it.
 
