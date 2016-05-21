@@ -21,8 +21,8 @@
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       |         :x:           |        0          |                               |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.984)          |
-|     Java      |         :x:           |        0          |                               |
+|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.981)          |
+|     Java      | :white_check_mark:    |        0          | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
@@ -35,7 +35,7 @@
 |     Perl      |         :x:           |        0          |                               |
 |    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.902)             |
-|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.959)          |
+|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.958)          |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
