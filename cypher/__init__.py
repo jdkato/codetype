@@ -1,10 +1,8 @@
 # encoding=utf8
-import sys
-
 try:
+    import sys
     reload(sys)
+    sys.setdefaultencoding("utf8")
 except NameError:
-    import imp
-    imp.reload(sys)
+    pass
 
-sys.setdefaultencoding("utf8")
