@@ -12,7 +12,7 @@
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
-|      C#       | :white_check_mark:    |        0          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
+|      C#       | :white_check_mark:    |        2          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
 |     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.973)          |
 |      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.978)            |
 |     CSS       |         :x:           |        0          |                               |
