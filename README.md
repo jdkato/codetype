@@ -8,7 +8,7 @@
 
 ## Support
 
-|   Language    |       Status          |      Unit Tests   | Base Project (% identified)   |
+|   Language    |       Status          |      Unit tests   | Base Project (% identified)   |
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
