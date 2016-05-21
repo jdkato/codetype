@@ -26,6 +26,7 @@ EXTRACT_RE = r"""
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["/", "//", "-", "#", "*"]
+INLINE_COMMENTS = ["//", "#", "--"]
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
 DATA_PATH = os.path.join(FILE_PATH, "data")
@@ -86,6 +87,9 @@ def get_parts(src, is_file=False, filtered=[]):
         line = line.lstrip()
         if not line or any(line.startswith(c) for c in COMMENTS):
             continue
+        for c in INLINE_COMMENTS:
+            if c in line:
+                line = line[:line.find(c)]
         line = re.sub(STRING_RE, '', line)
         extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
         parts.extend([s for s in extr if s in filtered or not filtered])
