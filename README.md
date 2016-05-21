@@ -12,9 +12,9 @@
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
-|      C#       |         :x:           |        0          |                               |
+|      C#       | :white_check_mark:    |        0          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
 |     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.973)          |
-|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.981)            |
+|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.978)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
@@ -34,8 +34,8 @@
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
 |    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
-|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.929)             |
-|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.961)          |
+|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.902)             |
+|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.959)          |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
