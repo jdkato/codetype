@@ -11,6 +11,6 @@
         "self"
     ],
     "lib": [],
-    "other": [":\n", "#", "@"],
-    "first": []
+    "other": [":\n", "#", "@", "(", ")"],
+    "first": ["import", "from"]
 }

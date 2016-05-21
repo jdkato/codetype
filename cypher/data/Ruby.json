@@ -11,5 +11,5 @@
     ],
     "lib": [],
     "other": ["?", "!", "$"],
-    "first": []
+    "first": ["require"]
 }

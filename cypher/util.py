@@ -20,9 +20,10 @@ EXTRACT_RE = r"""
     ->|
     !!|
     <<-|
+    {-|
     \.\.\.|
     \(\)|
-    [.@!?;:&\{\}\[\]\\#\/\|%\$`\*]
+    [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["/", "//", "-", "#", "*"]
@@ -46,6 +47,8 @@ def identify(src, is_file=False, verbose=False):
             and their computed scores as values.
     """
     results = {}
+    ksigs = {}
+    limited_results = {}
     sig = compute_signature(src, is_file=is_file)
     if sig == -1:
         return sig
@@ -56,11 +59,35 @@ def identify(src, is_file=False, verbose=False):
             continue
         ksig = read_signature(lang)
         results[lang] = compare_signatures(sig, ksig)
+        ksigs[lang] = ksig
 
+    fl = sig.get("first_line")
+    print(fl)
+    for lang, ksig in ksigs.items():
+        kfl = ksig.get("first_line")
+        if any(l in fl for l in kfl):
+            limited_results[lang] = results[lang]
+
+    print(limited_results if limited_results else None)
+    results = limited_results if limited_results else results
     if verbose:
         return results
     else:
         return max(results, key=results.get)
+
+
+def extract_content(line):
+    """Attempt to ignore comments and strings.
+    """
+    line = line.lstrip()
+    if not line or any(line.startswith(c) for c in COMMENTS):
+        if "#include" not in line:  # FIXME: Use patterns instead?
+            return None
+    line = re.sub(STRING_RE, '', line).strip()
+    for c in INLINE_COMMENTS:
+        if c in line and "#include" not in line:
+            line = line[:line.find(c)]
+    return line
 
 
 def get_parts(src, is_file=False, filtered=[]):
@@ -77,6 +104,7 @@ def get_parts(src, is_file=False, filtered=[]):
     """
     lines = 0.0
     parts = []
+    first_line = None
 
     if is_file:
         text = open(src)
@@ -84,19 +112,17 @@ def get_parts(src, is_file=False, filtered=[]):
         text = StringIO(src)
 
     for line in text:
-        line = line.lstrip()
-        if not line or any(line.startswith(c) for c in COMMENTS):
+        line = extract_content(line)
+        if not line:
             continue
-        for c in INLINE_COMMENTS:
-            if c in line:
-                line = line[:line.find(c)]
-        line = re.sub(STRING_RE, '', line)
+        lines += 1
+        if lines == 1.0:
+            first_line = line
         extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
         parts.extend([s for s in extr if s in filtered or not filtered])
-        lines += 1
 
     text.close()
-    return parts, lines
+    return parts, lines, first_line
 
 
 def compare_signatures(unknown, known):
@@ -112,6 +138,8 @@ def compare_signatures(unknown, known):
     total = 1.0
     found = 0.0
     for k, v in known.items():
+        if k == "first_line":
+            continue
         test_value = unknown.get(k)
         if test_value:
             total += math.fabs(v - test_value)
@@ -137,9 +165,11 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
     """
     lines = 0
     parts = []
-    words = set(get_lang_data(lang))
+    words, first_line = get_lang_data(lang)
     if not os.path.isdir(src):
-        sparts, slines = get_parts(src, is_file=is_file, filtered=words)
+        sparts, slines, sfirst = get_parts(
+            src, is_file=is_file, filtered=set(words)
+        )
         parts.extend(sparts)
         lines += slines
     else:
@@ -147,19 +177,25 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
             for f in files:
                 if ext and not any(f.endswith(e) for e in ext):
                     continue
-                sparts, slines = get_parts(
+                sparts, slines, sfirst = get_parts(
                     os.path.join(subdir, f),
                     is_file=is_file,
-                    filtered=words
+                    filtered=set(words)
                 )
                 parts.extend(sparts)
                 lines += slines
 
     if not parts:
         return -1
+
     signature = Counter(parts)
     for key in signature:
         signature[key] /= lines
+
+    if lang:
+        signature["first_line"] = first_line
+    else:
+        signature["first_line"] = sfirst
     return signature
 
 
@@ -184,10 +220,12 @@ def get_lang_data(lang):
     """
     d = []
     if lang is None:
-        return d
+        return d, None
     with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
         d = json.load(jdata)
-    return sum([d[s] for s in d.keys()], [])
+
+    words = sum([d.get(s, []) if s != "first" else [] for s in d.keys()], [])
+    return words, d.get("first")
 
 
 def write_signature(src, lang, ext, is_file=True):
