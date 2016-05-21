@@ -1,5 +1,10 @@
 # encoding=utf8
 import sys
 
-reload(sys)
+try:
+    reload(sys)
+except NameError:
+    import imp
+    imp.reload(sys)
+
 sys.setdefaultencoding("utf8")
