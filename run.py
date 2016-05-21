@@ -16,6 +16,18 @@ parser.add_argument(
     "lang",
     nargs="?"
 )
+parser.add_argument(
+    "-v",
+    "--verbose",
+    action="store_true",
+    help="Return all scores."
+)
+parser.add_argument(
+    "-f",
+    "--file",
+    action="store_true",
+    help="Indicates the the source is being passed as a file."
+)
 
 args = vars(parser.parse_args())
 script = args["script"][0]
@@ -31,6 +43,10 @@ elif script == "test":
     import unittest
     suite = unittest.TestLoader().discover(".")
     run = unittest.TextTestRunner().run(suite)
+elif script == "cypher":
+    from cypher.util import identify
+    r = identify(args["lang"], is_file=args["file"], verbose=args["verbose"])
+    print(r)
 else:
     print("{0} not recognized!".format(script))
 sys.exit(0)
