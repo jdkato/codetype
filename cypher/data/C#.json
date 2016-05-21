@@ -3,7 +3,8 @@
     ],
     "keywords": [
         "System", "override", "this", "decimal", "namespace", "using", "as",
-        "get", "set", "delegate", "var", "async", "interface"
+        "get", "set", "delegate", "var", "async", "interface", "const",
+        "struct", "Console"
     ],
     "lib": [],
     "other": ["{", "}", ";", "=>", "<", ">"],
