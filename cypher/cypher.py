@@ -26,14 +26,11 @@ args = vars(parser.parse_args())
 
 
 def main():
-    if not args["src"][0]:
-        print("foo")
     result = identify(
         args["src"][0],
         is_file=args["file"],
         verbose=args["verbose"]
     )
-    print(args["src"][0])
     if result < 0:
         return -1
     else:
