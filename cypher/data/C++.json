@@ -9,5 +9,6 @@
         "cout", "cin", "endl", "std", "push_back", "pop_back",
         "forward_list", "unordered_map", "unordered_set", "vector", "iostream"
     ],
-    "other": ["{", "}", ";", "&", "<<", "::"]
+    "other": ["{", "}", ";", "&", "<<", "::"],
+    "first": ["#include"]
 }

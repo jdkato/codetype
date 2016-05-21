@@ -6,5 +6,6 @@
         "getchar(", "va_start(", "va_end(", "free(", "typedef", "stdio",
         "ctype", "stdlib", "stdarg", "stddef", "setjmp", "scanf(", "stddef"
     ],
-    "other": ["{", "}", ";", "&"]
+    "other": ["{", "}", ";", "&"],
+    "first": ["#include"]
 }
