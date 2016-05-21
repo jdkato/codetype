@@ -1,0 +1,12 @@
+{
+    "built-in": [
+    ],
+    "keywords": [
+        "System", "override", "this", "decimal", "namespace", "using", "as",
+        "get", "set", "delegate", "var", "async", "interface"
+    ],
+    "lib": [],
+    "other": ["{", "}", ";", "=>", "<", ">"],
+    "first": ["namespace", "using"]
+}
+
