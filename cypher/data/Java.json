@@ -1,0 +1,12 @@
+{
+    "built-in": [
+    ],
+    "keywords": [
+        "java", "super", "public", "private", "extends", "interface", "final",
+        "Comparable", "console", "System", "boolean", "Object", "String",
+        "import"
+    ],
+    "lib": ["lang", "util"],
+    "other": ["{", "}", ";", "@", "<", ">"],
+    "first": ["package", "import", "java"]
+}

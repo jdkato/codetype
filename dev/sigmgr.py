@@ -29,6 +29,10 @@ LANG_INFO = {
     "C#": {
         "repo": "https://github.com/NancyFx/Nancy.git",
         "ext": [".cs"]
+    },
+    "Java": {
+        "repo": "https://github.com/spring-projects/spring-framework.git",
+        "ext": [".java"]
     }
 }
 TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
