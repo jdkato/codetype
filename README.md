@@ -13,15 +13,15 @@
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       |         :x:           |        0          |                               |
-|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.965)          |
-|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.976)            |
+|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.973)          |
+|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.981)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       |         :x:           |        0          |                               |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.995)          |
+|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.984)          |
 |     Java      |         :x:           |        0          |                               |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
@@ -33,9 +33,9 @@
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
-|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.972)            |
-|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.902)             |
-|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.96)          |
+|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
+|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.929)             |
+|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.961)          |
 |     Rust      |         :x:           |        0          |                               |
 |     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
