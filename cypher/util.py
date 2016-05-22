@@ -49,16 +49,16 @@ def identify(src, is_file=False, verbose=False):
     results = {}
     ksigs = {}
     limited_results = {}
-    sig = compute_signature(src, is_file=is_file)
-    if sig == -1:
-        return sig
+    sig, lines = compute_signature(src, is_file=is_file)
+    if not sig:
+        return -1
 
     for f in os.listdir(SIG_PATH):
         lang = f.split(".")[0]
         if not lang:
             continue
         ksig = read_signature(lang)
-        results[lang] = compare_signatures(sig, ksig)
+        results[lang] = compare_signatures(sig, ksig, lines)
         ksigs[lang] = ksig
 
     fl = sig.get("first_line")
@@ -125,7 +125,7 @@ def get_parts(src, is_file=False, filtered=[]):
     return parts, lines, first_line
 
 
-def compare_signatures(unknown, known):
+def compare_signatures(unknown, known, lines):
     """Compare two signatures using only the keys in `known`.
 
     Args:
@@ -181,7 +181,7 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
                 parts.extend(sparts)
                 lines += slines
     if not parts:
-        return -1
+        return {}, 0
 
     signature = Counter(parts)
     for key in signature:
@@ -191,7 +191,7 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
         signature["first_line"] = first_line
     else:
         signature["first_line"] = sfirst
-    return signature
+    return signature, lines
 
 
 def read_signature(lang):
@@ -232,6 +232,6 @@ def write_signature(src, lang, ext, is_file=True):
         `ext` (list): A list of file extensions associated with `lang`.
         `is_file` (bool): `True` if `src` is a file.
     """
-    data = compute_signature(src, lang=lang, ext=ext, is_file=is_file)
+    data, _ = compute_signature(src, lang=lang, ext=ext, is_file=is_file)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)
