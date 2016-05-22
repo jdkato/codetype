@@ -40,9 +40,9 @@ args = vars(parser.parse_args())
 script = args["script"][0]
 if script == "sigmgr":
     if args["test"] and args["lang"]:
-        sys.exit(run(lang=args["lang"], is_test=1, identifier=identify))
+        run(lang=args["lang"], is_test=1, identifier=identify)
     elif args["lang"]:
-        sys.exit(run(lang=args["lang"], is_test=0, writer=sig_writer))
+        run(lang=args["lang"], is_test=0, writer=sig_writer)
 elif script == "test":
     unittest.TextTestRunner().run(unittest.TestLoader().discover("."))
 elif script == "cypher":
