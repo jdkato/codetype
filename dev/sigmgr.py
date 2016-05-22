@@ -38,6 +38,10 @@ LANG_INFO = {
     "Go": {
         "repo": "https://github.com/getlantern/lantern.git",
         "ext": [".go"]
+    },
+    "Rust": {
+        "repo": "https://github.com/rust-lang/cargo.git",
+        "ext": [".rs"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "test", "results.json")
