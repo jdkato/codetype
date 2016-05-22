@@ -19,10 +19,10 @@
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
-|      Go       | :white_check_mark:    |        0          | [Lantern](https://github.com/getlantern/lantern.git) (0.995)                              |
+|      Go       | :white_check_mark:    |        0          | [Lantern](https://github.com/getlantern/lantern.git) (0.994)                              |
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.981)          |
-|     Java      | :white_check_mark:    |        0          | [Spring](https://github.com/spring-projects/spring-framework.git) (0.992)                              |
+|     Java      | :white_check_mark:    |        0          | [Spring](https://github.com/spring-projects/spring-framework.git) (0.995)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
