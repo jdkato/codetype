@@ -33,6 +33,10 @@ LANG_INFO = {
     "Java": {
         "repo": "https://github.com/spring-projects/spring-framework.git",
         "ext": [".java"]
+    },
+    "Go": {
+        "repo": "https://github.com/getlantern/lantern.git",
+        "ext": [".go"]
     }
 }
 TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")

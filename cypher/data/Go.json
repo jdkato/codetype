@@ -1,0 +1,11 @@
+{
+    "built-in": [],
+    "keywords": [
+        "func", "type", "var", "defer", "nil", "uint64", "const", "struct",
+        "true", "false"
+    ],
+    "lib": [
+    ],
+    "other": ["{", "}", ":="],
+    "first": ["package", "import"]
+}
