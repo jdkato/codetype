@@ -163,16 +163,12 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
      dict: A dictionary with words as keys and their frequency per line as
         values in `src`.
     """
-    lines = 0
-    parts = []
     words, first_line = get_lang_data(lang)
     if not os.path.isdir(src):
-        sparts, slines, sfirst = get_parts(
-            src, is_file=is_file, filtered=set(words)
-        )
-        parts.extend(sparts)
-        lines += slines
+        parts, lines, sfirst = get_parts(src, is_file=is_file, filtered=words)
     else:
+        parts = []
+        lines = 0.0
         for subdir, dirs, files in os.walk(src):
             for f in files:
                 if ext and not any(f.endswith(e) for e in ext):
@@ -184,7 +180,6 @@ def compute_signature(src, lang=None, ext=[], is_file=False):
                 )
                 parts.extend(sparts)
                 lines += slines
-
     if not parts:
         return -1
 
@@ -225,7 +220,7 @@ def get_lang_data(lang):
         d = json.load(jdata)
 
     words = sum([d.get(s, []) if s != "first" else [] for s in d.keys()], [])
-    return words, d.get("first")
+    return set(words), d.get("first")
 
 
 def write_signature(src, lang, ext, is_file=True):
