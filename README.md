@@ -13,16 +13,16 @@
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       | :white_check_mark:    |        2          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
-|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.973)          |
+|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.972)          |
 |      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.978)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
-|      Go       |         :x:           |        0          |                               |
+|      Go       | :white_check_mark:    |        0          | [Lantern](https://github.com/getlantern/lantern.git) (0.995)                              |
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.981)          |
-|     Java      | :white_check_mark:    |        0          | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
+|     Java      | :white_check_mark:    |        0          | [Spring](https://github.com/spring-projects/spring-framework.git) (0.992)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
@@ -33,7 +33,7 @@
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
-|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
+|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.961)            |
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.902)             |
 |     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.958)          |
 |     Rust      |         :x:           |        0          |                               |
