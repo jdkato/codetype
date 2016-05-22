@@ -7,7 +7,7 @@
         "struct", "Console"
     ],
     "lib": [],
-    "other": ["{", "}", ";", "=>", "<", ">"],
+    "other": ["{", "}", ";", "=>", "<", ">", ":"],
     "first": ["namespace", "using"]
 }
 
