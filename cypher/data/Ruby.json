@@ -10,6 +10,6 @@
         "to_f"
     ],
     "lib": [],
-    "other": ["?", "!", "$"],
-    "first": ["require"]
+    "other": ["?", "!", "$", "|"],
+    "first": ["require", "<%"]
 }
