@@ -144,7 +144,7 @@ def compare_signatures(unknown, known, lines):
         if test_value:
             total += math.fabs(v - test_value)
             found += 1
-        elif v > 0.10 and lines > 1:
+        elif v > 0.10:
             total += 1
             found -= 1
     return found / total
