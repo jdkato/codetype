@@ -219,7 +219,7 @@ def get_lang_data(lang):
     with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
         d = json.load(jdata)
 
-    words = sum([d.get(s, []) if s != "first" else [] for s in d.keys()], [])
+    words = sum([d.get(s, []) for s in d.keys()], [])
     return set(words), d.get("first")
 
 
