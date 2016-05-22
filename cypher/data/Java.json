@@ -4,9 +4,9 @@
     "keywords": [
         "java", "super", "public", "private", "extends", "interface", "final",
         "Comparable", "console", "System", "boolean", "Object", "String",
-        "import"
+        "import", "class", "out"
     ],
     "lib": ["lang", "util"],
-    "other": ["{", "}", ";", "@", "<", ">"],
+    "other": ["{", "}", ";", "@", "<", ">", "[]"],
     "first": ["package", "import", "java"]
 }
