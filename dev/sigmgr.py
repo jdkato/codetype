@@ -1,4 +1,5 @@
 import subprocess
+import json
 import os
 
 LANG_INFO = {
@@ -39,9 +40,22 @@ LANG_INFO = {
         "ext": [".go"]
     }
 }
+RESULTS = os.path.join(os.getcwd(), "test", "results.json")
 TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
+
+
+def store_result(lang, new):
+    """
+    """
+    with open(RESULTS) as jdata:
+        d = json.load(jdata)
+    old = d.get(lang)
+    print("{0}: diff = {1}".format(lang, round(new - old, 3)))
+    d[lang] = new
+    with open(RESULTS, "w+") as results:
+        json.dump(d, results, indent=4, sort_keys=True)
 
 
 def test_sig(src_dir, lang, ext, indentifier):
@@ -65,8 +79,9 @@ def test_sig(src_dir, lang, ext, indentifier):
                 print("Insufficient information {}!".format(p))
             else:
                 print("Incorrectly identified ({}) {}!".format(computed, p))
-    c = identified / file_count if file_count else 1
-    print("Correct = {} ({} / {})".format(round(c, 3), identified, file_count))
+    c = round(identified / file_count if file_count else 1, 3)
+    print("Correct = {} ({} / {})".format(c, identified, file_count))
+    store_result(lang, c)
 
 
 def clone(repo):
