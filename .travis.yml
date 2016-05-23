@@ -6,7 +6,11 @@ python:
 
 install:
   - python setup.py install
+  - pip install coveralls
 
 script:
- - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then python -m unittest discover; fi
- - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then python -m unittest discover; fi
+ - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then coverage run -m unittest discover; fi
+ - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then coverage run -m unittest discover; fi
+
+after_success:
+  coveralls
