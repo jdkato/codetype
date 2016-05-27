@@ -64,10 +64,10 @@ def identify(src, is_file=False, verbose=False):
         results[lang] = compare_signatures(sig, ksig, lines)
         ksigs[lang] = ksig
 
-    fl = sig.get("first_line")
+    fl = sig.get("first_line", [])
     print(fl)
     for lang, ksig in ksigs.items():
-        kfl = ksig.get("first_line")
+        kfl = ksig.get("first_line", [])
         if any(l in fl for l in kfl):
             limited_results[lang] = results[lang]
 
@@ -152,6 +152,8 @@ def compare_signatures(unknown, known, lines):
 def compute_signature(tokens, lines, first_line):
     """
     """
+    if not tokens:
+        return {}, 0
     signature = Counter(tokens)
     for key in signature:
         signature[key] /= lines
