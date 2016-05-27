@@ -88,13 +88,19 @@ def test_sig(src_dir, lang, ext, indentifier):
     store_result(lang, c)
 
 
-def clone(repo):
+def clone_and_clean(repo, src_dir, ext):
     (out, error) = subprocess.Popen(
         ["git", "clone", repo],
         cwd=TEMP_DIR,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     ).communicate()
+
+    for subdir, dirs, files in os.walk(src_dir):
+        for f in files:
+            if any(f.endswith(e) for e in ext):
+                continue
+            os.remove(os.path.join(subdir, f))
 
 
 def run(lang, is_test, identifier=None, writer=None):
@@ -107,7 +113,7 @@ def run(lang, is_test, identifier=None, writer=None):
 
     src_dir = os.path.join(TEMP_DIR, info["repo"].split("/")[-1].split(".")[0])
     if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
-        clone(info["repo"])
+        clone_and_clean(info["repo"], src_dir, info["ext"])
 
     if is_test and identifier:
         test_sig(src_dir, lang, info["ext"], identifier)
