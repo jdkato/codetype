@@ -5,7 +5,7 @@
     ],
     "keywords": [
         "ifelse", "TRUE", "FALSE", "function(", "frame", "Inf", "NaN",
-        "NA_integer_", "NA_real_", "NA_complex_", "NA_character_", "NULL"
+        "NA_integer_", "NA_real_", "NA_complex_", "NA_character_", "NULL", "NA"
     ],
     "lib": [],
     "other": ["<-", "{", "}", "$", "<<-", "..."],
