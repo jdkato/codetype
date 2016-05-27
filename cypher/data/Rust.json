@@ -1,0 +1,11 @@
+{
+    "built-in": [],
+    "keywords": [
+        "pub", "struct", "extern", "let", "match", "mut", "self", "fn"
+    ],
+    "lib": [
+        "with_stdout(", "with_status(", "unwrap("
+    ],
+    "other": ["{", "}", "|", "&", "->", ".", "=>", "::", ":"],
+    "first": ["use", "extern", "crate"]
+}
