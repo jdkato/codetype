@@ -33,10 +33,10 @@
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       |         :x:           |        0          |                               |
 |     Perl      |         :x:           |        0          |                               |
-|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.961)            |
+|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.960)            |
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.902)             |
-|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.958)          |
-|     Rust      | :white_check_mark:    |        0          | [Cargo](https://github.com/rust-lang/cargo.git)              |
+|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.953)          |
+|     Rust      | :white_check_mark:    |        0          | [Cargo](https://github.com/rust-lang/cargo.git) (1.0)    |
 |     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
 |     XML       |         :x:           |        0          |                               |
