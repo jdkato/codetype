@@ -55,7 +55,7 @@ def store_result(lang, new):
     """
     with open(RESULTS) as jdata:
         d = json.load(jdata)
-    old = d.get(lang)
+    old = d.get(lang, 0)
     print("{0}: diff = {1}".format(lang, round(new - old, 3)))
     d[lang] = new
     with open(RESULTS, "w+") as results:
