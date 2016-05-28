@@ -75,7 +75,7 @@ def test_sig(src_dir, lang, ext, indentifier):
             if os.stat(p).st_size == 0:
                 continue
             file_count += 1
-            computed = indentifier(src=p, is_file=1)
+            computed = indentifier(src=p)
             if computed == lang:
                 identified += 1
             elif computed == -1:
