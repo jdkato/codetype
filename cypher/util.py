@@ -1,6 +1,7 @@
 import json
 import re
 import os
+import io
 import math
 
 try:
@@ -64,14 +65,14 @@ def identify(src, verbose=False):
         results[lang] = compare_signatures(sig, ksig, lines)
         ksigs[lang] = ksig
 
-    fl = sig.get("first_line", [])
-    print(fl)
+    first_line = sig.get("first_line", [])
+    print(first_line)
     for lang, ksig in ksigs.items():
-        kfl = ksig.get("first_line", [])
-        if any(l in fl for l in kfl):
-            limited_results[lang] = results[lang]
+        for s in ksig.get("first_line", []):
+            if first_line.startswith(s) or first_line.find(s) in [0, 1]:
+                limited_results[lang] = results[lang]
 
-    print(limited_results if limited_results else None)
+    print("limited: {}".format(limited_results))
     results = limited_results if limited_results else results
     if verbose:
         return results
@@ -108,7 +109,7 @@ def get_tokens(src, is_file=False, filtered=[]):
     lines = 0.0
     tokens = []
     first_line = None
-    text = open(src) if is_file else StringIO(src)
+    text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
         line = extract_content(line)
