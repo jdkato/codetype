@@ -7,5 +7,5 @@
         "with_stdout(", "with_status(", "unwrap("
     ],
     "other": ["{", "}", "|", "&", "->", ".", "=>", ":"],
-    "first": ["use", "extern", "crate"]
+    "first": ["use", "extern", "pub"]
 }
