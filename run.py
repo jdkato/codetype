@@ -29,12 +29,6 @@ parser.add_argument(
     action="store_true",
     help="Return all scores."
 )
-parser.add_argument(
-    "-f",
-    "--file",
-    action="store_true",
-    help="Indicates the the source is being passed as a file."
-)
 
 args = vars(parser.parse_args())
 script = args["script"][0]
@@ -46,7 +40,7 @@ if script == "sigmgr":
 elif script == "test":
     unittest.TextTestRunner().run(unittest.TestLoader().discover("."))
 elif script == "cypher":
-    r = identify(args["lang"], is_file=args["file"], verbose=args["verbose"])
+    r = identify(args["lang"], verbose=args["verbose"])
     print(r)
 else:
     print("{0} not recognized!".format(script))

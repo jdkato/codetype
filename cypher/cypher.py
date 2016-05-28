@@ -16,21 +16,11 @@ parser.add_argument(
     action="store_true",
     help="Return all scores."
 )
-parser.add_argument(
-    "-f",
-    "--file",
-    action="store_true",
-    help="Indicates the the source is being passed as a file."
-)
 args = vars(parser.parse_args())
 
 
 def main():
-    result = identify(
-        args["src"][0],
-        is_file=args["file"],
-        verbose=args["verbose"]
-    )
+    result = identify(args["src"][0], verbose=args["verbose"])
     if result < 0:
         return -1
     else:

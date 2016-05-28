@@ -20,7 +20,7 @@ class identifyTestCase(unittest.TestCase):
                 print("Testing {} ...".format(known))
             for f in files:
                 if f.endswith(".txt"):
-                    computed = identify(os.path.join(subdir, f), is_file=1)
+                    computed = identify(os.path.join(subdir, f))
                     self.assertEqual(known, computed)
 
 

@@ -36,12 +36,11 @@ SIG_PATH = os.path.join(FILE_PATH, "signatures")
 DATA_PATH = os.path.join(FILE_PATH, "data")
 
 
-def identify(src, is_file=False, verbose=False):
+def identify(src, verbose=False):
     """Attempt to identify the language which src is written in.
 
     Args:
         src (str): Either a string or a file path.
-        is_file (bool): True if src is a file.
         verbose (bool): True if verbose output is to be used.
 
     Returns:
@@ -52,6 +51,7 @@ def identify(src, is_file=False, verbose=False):
     results = {}
     ksigs = {}
     limited_results = {}
+    is_file = os.path.isfile(src)
     sig, lines = compute_signature(*get_tokens(src, is_file=is_file))
     if not sig:
         return -1
