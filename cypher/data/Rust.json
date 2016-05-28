@@ -6,6 +6,6 @@
     "lib": [
         "with_stdout(", "with_status(", "unwrap("
     ],
-    "other": ["{", "}", "|", "&", "->", ".", "=>", "::", ":"],
+    "other": ["{", "}", "|", "&", "->", ".", "=>", ":"],
     "first": ["use", "extern", "crate"]
 }
