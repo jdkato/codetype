@@ -8,5 +8,5 @@
     ],
     "lib": ["lang", "util"],
     "other": ["{", "}", ";", "@", "<", ">", "[]"],
-    "first": ["package", "import", "java"]
+    "first": ["package ", "import ", "java"]
 }

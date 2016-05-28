@@ -7,5 +7,5 @@
     "lib": [
     ],
     "other": ["{", "}", ":="],
-    "first": ["package", "import"]
+    "first": ["package ", "import "]
 }
