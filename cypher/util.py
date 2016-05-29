@@ -91,7 +91,7 @@ def extract_content(line):
     for c in INLINE_COMMENTS:
         if c in line and "#include" not in line:
             line = line[:line.find(c)]
-    return line
+    return line.strip()
 
 
 def get_tokens(src, is_file=False, filtered=[]):
