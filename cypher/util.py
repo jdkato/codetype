@@ -30,7 +30,7 @@ EXTRACT_RE = r"""
     [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
-COMMENTS = ["/", "//", "-", "#", "*"]
+COMMENTS = ["/", "//", "-", "#", "*", "|"]
 INLINE_COMMENTS = ["//", "#", "--"]
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
