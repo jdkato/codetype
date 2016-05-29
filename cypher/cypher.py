@@ -22,7 +22,7 @@ args = vars(parser.parse_args())
 def main():
     result = identify(args["src"][0], verbose=args["verbose"])
     if result < 0:
-        return -1
+        print("Language not recognized.")
     else:
         print(result)
-        return 0
+    return result if result < 0 else 0
