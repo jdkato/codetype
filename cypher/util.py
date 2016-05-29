@@ -53,7 +53,8 @@ def identify(src, verbose=False):
     ksigs = {}
     limited_results = {}
     is_file = os.path.isfile(src)
-    sig, lines = compute_signature(*get_tokens(src, is_file=is_file))
+    tokens, lines, first_line = get_tokens(src, is_file=is_file)
+    sig = compute_signature(tokens, lines, first_line)
     if not sig:
         return -1
 
@@ -159,7 +160,7 @@ def compute_signature(tokens, lines, first_line):
     for key in signature:
         signature[key] /= lines
     signature["first_line"] = first_line
-    return signature, lines
+    return signature
 
 
 def read_signature(lang):
@@ -216,6 +217,6 @@ def write_signature(src, lang, ext, is_file=True):
             tokens.extend(file_tokens)
             lines += file_lines
 
-    data, _ = compute_signature(tokens, lines, first_line)
+    data = compute_signature(tokens, lines, first_line)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)
