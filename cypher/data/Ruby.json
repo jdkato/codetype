@@ -11,5 +11,7 @@
     ],
     "lib": [],
     "other": ["?", "!", "$", "|"],
-    "first": ["require", "<%"]
+    "first": [
+        "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$"
+    ]
 }

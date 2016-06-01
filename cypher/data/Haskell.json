@@ -7,5 +7,5 @@
     ],
     "lib": ["Aeson", "Control", "Monad"],
     "other": ["<-", "->", "::", "$", "`", ":", "!!", "()"],
-    "first": ["import ", "where", "{-"]
+    "first": ["^import .*$", "^module .* where$", "^{-# LANGUAGE .* #-}$"]
 }

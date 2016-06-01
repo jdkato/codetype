@@ -9,5 +9,5 @@
     ],
     "lib": [],
     "other": ["<-", "{", "}", "$", "<<-", "..."],
-    "first": ["library(", "context("]
+    "first": ["^(library|context|source)\\(.*\\)$"]
 }

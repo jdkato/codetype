@@ -10,5 +10,5 @@
         "forward_list", "unordered_map", "unordered_set", "vector", "iostream"
     ],
     "other": ["{", "}", ";", "&", "<<", "::"],
-    "first": ["#include"]
+    "first": ["^#include (\".*\"|<\\w*>)$"]
 }

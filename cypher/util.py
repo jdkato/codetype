@@ -1,3 +1,4 @@
+import codecs
 import json
 import re
 import os
@@ -30,7 +31,7 @@ EXTRACT_RE = r"""
     [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
-COMMENTS = ["/", "//", "-", "#", "*", "|"]
+COMMENTS = ["/", "//", "-", "#", "*", "|", '"""', "'''"]
 INLINE_COMMENTS = ["//", "#", "--"]
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
@@ -67,13 +68,16 @@ def identify(src, verbose=False):
         ksigs[lang] = ksig
 
     first_line = sig.get("first_line", [])
-    print(first_line)
     for lang, ksig in ksigs.items():
-        for s in ksig.get("first_line", []):
-            if first_line.startswith(s) or first_line.find(s) in [0, 1]:
+        for regex in ksig.get("first_line", []):
+            decoded = codecs.getdecoder("unicode_escape")(regex)[0]
+            # XXX: re.search succeeds on some C# files where re.match fails,
+            # (likely do to encoding?).
+            if re.match(decoded, first_line) or re.search(decoded, first_line):
                 limited_results[lang] = results[lang]
 
-    print("limited: {}".format(limited_results))
+    if not limited_results:
+        print(first_line)
     results = limited_results if limited_results else results
     if verbose:
         return results
@@ -81,14 +85,15 @@ def identify(src, verbose=False):
         return max(results, key=results.get)
 
 
-def extract_content(line):
+def extract_content(line, idx):
     """Return all non-comment and non-string content in line.
     """
     line = line.lstrip()
     if not line or any(line.startswith(c) for c in COMMENTS):
         if "#include" not in line:  # FIXME: Use patterns instead?
             return None
-    line = re.sub(STRING_RE, '', line).strip()
+    if idx != 0:
+        line = re.sub(STRING_RE, '', line).strip()
     for c in INLINE_COMMENTS:
         if c in line and "#include" not in line:
             line = line[:line.find(c)]
@@ -113,7 +118,7 @@ def get_tokens(src, is_file=False, filtered=[]):
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
-        line = extract_content(line)
+        line = extract_content(line, lines)
         if not line:
             continue
         lines += 1
@@ -155,7 +160,7 @@ def compute_signature(tokens, lines, first_line):
     """
     """
     if not tokens:
-        return {}, 0
+        return {}
     signature = Counter(tokens)
     for key in signature:
         signature[key] /= lines
