@@ -30,6 +30,11 @@ EXTRACT_RE = r"""
     \(\)|
     [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
+COMMENT_RE = r"""
+    #[^include].*| # Python, R
+    //.*| # C, C++, Java, Rust, Go
+    --.*| # Haskell
+"""
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 COMMENTS = ["/", "//", "-", "#", "*", "|", '"""', "'''"]
 INLINE_COMMENTS = ["//", "#", "--"]
