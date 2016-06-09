@@ -31,7 +31,7 @@ EXTRACT_RE = r"""
     [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 COMMENT_RE = r"""
-    #[^include].*| # Python, R
+    \#[^include].*| # Python, R
     //.*| # C, C++, Java, Rust, Go
     --.*| # Haskell
 """
