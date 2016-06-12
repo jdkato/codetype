@@ -14,30 +14,37 @@ from collections import Counter
 
 EXTRACT_RE = r"""
     [\w]+\(?|
-    ::|
-    =>|
-    <<(?!-)|
-    :\n|
-    <-|
-    ->|
-    !!|
-    <<-|
-    {-|
-    :=|
-    <%|
+    ::| # C++, Haskell, Ruby, R
+    =>| # C#, Rust
+    <<(?!-)| # C++
+    :\n| # Python
+    <-| # Haskell, R
+    ->| # Haskell, Rust
+    !!| # Haskell
+    <<-| # R
+    {-| # Haskell
+    :=| # Go
+    <%| # Ruby
     \[\]|
     \.\.\.|
+    \.\.|
     \(\)|
     [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
-COMMENT_RE = r"""
-    \#[^include].*| # Python, R
-    //.*| # C, C++, Java, Rust, Go
-    --.*| # Haskell
-"""
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
-COMMENTS = ["/", "//", "-", "#", "*", "|", '"""', "'''"]
-INLINE_COMMENTS = ["//", "#", "--"]
+BLOCK_COMMENTS = {
+    "/*": "*/",
+    "'''": "'''",
+    '"""': '"""',
+    "{-": "-}"
+}
+INLINE_COMMENTS = {
+    "#": r"(?<!{-)#[^include|-].*(?!-})",
+    "//": r"//.*",
+    "--": r"--.*",
+    "/*": r"/\*.*\*/",
+    "{-": r"{-.*-}"
+}
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
 DATA_PATH = os.path.join(FILE_PATH, "data")
@@ -76,13 +83,10 @@ def identify(src, verbose=False):
     for lang, ksig in ksigs.items():
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
-            # XXX: re.search succeeds on some C# files where re.match fails,
-            # (likely do to encoding?).
             if re.match(decoded, first_line) or re.search(decoded, first_line):
                 limited_results[lang] = results[lang]
 
-    if not limited_results:
-        print(first_line)
+    # print(first_line, limited_results)
     results = limited_results if limited_results else results
     if verbose:
         return results
@@ -90,19 +94,43 @@ def identify(src, verbose=False):
         return max(results, key=results.get)
 
 
-def extract_content(line, idx):
-    """Return all non-comment and non-string content in line.
+def extract_content(src, is_file):
+    """Return all non-comment and non-string content in src.
     """
-    line = line.lstrip()
-    if not line or any(line.startswith(c) for c in COMMENTS):
-        if "#include" not in line:  # FIXME: Use patterns instead?
-            return None
-    if idx != 0:
-        line = re.sub(STRING_RE, '', line).strip()
-    for c in INLINE_COMMENTS:
-        if c in line and "#include" not in line:
-            line = line[:line.find(c)]
-    return line.strip()
+    content = ""
+    skip = delimiter = None
+    count = 0
+    text = io.open(src, errors="ignore") if is_file else StringIO(src)
+
+    for line in text:
+        for c, r in INLINE_COMMENTS.items():
+            if re.search(r, line):
+                line = line[:line.find(c)] + "\n"
+                break
+        skip = True
+        for start, end in BLOCK_COMMENTS.items():
+            if not delimiter and start in line and end not in line:
+                # We've found the start of a multi-line comment.
+                delimiter = end
+                break
+            elif delimiter and delimiter in line:
+                # We've found the end of a multi-line comment.
+                delimiter = None
+                break
+        else:
+            skip = delimiter
+
+        if skip or not line.strip():
+            # We're either in a multi-line comment or the line is blank.
+            continue
+        if count > 0:
+            line = re.sub(STRING_RE, "", line)
+        if line.strip():
+            count += 1
+            content += line
+
+    text.close()
+    return content
 
 
 def get_tokens(src, is_file=False, filtered=[]):
@@ -120,15 +148,14 @@ def get_tokens(src, is_file=False, filtered=[]):
     lines = 0.0
     tokens = []
     first_line = None
-    text = io.open(src, errors="ignore") if is_file else StringIO(src)
+    text = StringIO(extract_content(src, is_file))
 
     for line in text:
-        line = extract_content(line, lines)
-        if not line:
+        if not line.strip():
             continue
         lines += 1
         if lines == 1:
-            first_line = line
+            first_line = line.strip()
         extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
         tokens.extend([s for s in extr if s in filtered or not filtered])
 
