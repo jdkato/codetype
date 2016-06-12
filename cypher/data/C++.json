@@ -4,7 +4,7 @@
         "static_cast", "bool", "friend", "inline", "dynamic_cast",
         "const_cast", "reinterpret_cast", "namespace", "template", "typename",
         "virtual", "boost", "auto", "extern", "delete", "new", "true", "false",
-        "bool"
+        "bool", "ifdef", "endif"
     ],
     "lib": [
         "cout", "cin", "endl", "std", "push_back", "pop_back",
