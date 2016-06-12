@@ -3,12 +3,13 @@
     "keywords": [
         "static_cast", "bool", "friend", "inline", "dynamic_cast",
         "const_cast", "reinterpret_cast", "namespace", "template", "typename",
-        "virtual", "boost", "auto"
+        "virtual", "boost", "auto", "extern", "delete", "new", "true", "false",
+        "bool"
     ],
     "lib": [
         "cout", "cin", "endl", "std", "push_back", "pop_back",
         "forward_list", "unordered_map", "unordered_set", "vector", "iostream"
     ],
     "other": ["{", "}", ";", "&", "<<", "::"],
-    "first": ["^#include (\".*\"|<\\w*>)$"]
+    "first": ["^#include (\".*\"|<.*>)$"]
 }
