@@ -13,8 +13,8 @@
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       | :white_check_mark:    |        2          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
-|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.970)          |
-|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.973)            |
+|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.960)          |
+|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.992)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
@@ -31,7 +31,7 @@
 |    Matlab     |         :x:           |        0          |                               |
 |    OCaml      |         :x:           |        0          |                               |
 | Objective-C   |         :x:           |        0          |                               |
-|     PHP       |         :x:           |        0          |                               |
+|     PHP       | :white_check_mark:    |        0          | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
 |     Perl      |         :x:           |        0          |                               |
 |    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.929)             |
