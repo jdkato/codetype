@@ -46,6 +46,7 @@ LANG_INFO = {
 }
 RESULTS = os.path.join(os.getcwd(), "test", "results.json")
 TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
+LOG_DIR = os.path.join(os.getcwd(), "dev", "logs")
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 
@@ -63,13 +64,13 @@ def store_result(lang, new):
 
 
 def test_sig(src_dir, lang, ext, indentifier):
-    """
-    """
+    log = open(os.path.join(LOG_DIR, lang + ".txt"), "w+")
     file_count = 0.0
     identified = 0.0
     for subdir, dirs, files in os.walk(src_dir):
         for f in files:
             p = os.path.join(subdir, f)
+            sp = p.split("repos")[1]
             if ext and not any(f.endswith(e) for e in ext):
                 continue
             if os.stat(p).st_size == 0:
@@ -80,11 +81,13 @@ def test_sig(src_dir, lang, ext, indentifier):
                 identified += 1
             elif computed == -1:
                 file_count -= 1
-                print("Insufficient information {}!".format(p))
+                log.write("Insufficient information {}!\n".format(sp))
             else:
-                print("Incorrectly identified ({}) {}!".format(computed, p))
+                pass
+                log.write("Incorrect: ({}) {}!\n".format(computed, sp))
+    log.close()
     c = round(identified / file_count if file_count else 1, 3)
-    print("Correct = {} ({} / {})".format(c, identified, file_count))
+    print("{}: Correct = {} ({} / {})".format(lang, c, identified, file_count))
     store_result(lang, c)
 
 
