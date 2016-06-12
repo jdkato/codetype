@@ -46,6 +46,10 @@ LANG_INFO = {
     "PHP": {
         "repo": "https://github.com/WordPress/WordPress.git",
         "ext": [".php"]
+    },
+    "Perl": {
+        "repo": "https://github.com/kraih/mojo.git",
+        "ext": [".pm"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "dev", "results.json")
@@ -71,7 +75,7 @@ def test_sig(src_dir, lang, ext, indentifier):
     log = open(os.path.join(LOG_DIR, lang + ".txt"), "w+")
     file_count = 0.0
     identified = 0.0
-    for subdir, dirs, files in os.walk(src_dir):
+    for subdir, _, files in os.walk(src_dir):
         for f in files:
             p = os.path.join(subdir, f)
             sp = p.split("repos")[1]
@@ -95,14 +99,14 @@ def test_sig(src_dir, lang, ext, indentifier):
 
 
 def clone_and_clean(repo, src_dir, ext):
-    (out, error) = subprocess.Popen(
+    (_, error) = subprocess.Popen(
         ["git", "clone", repo],
         cwd=TEMP_DIR,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     ).communicate()
 
-    for subdir, dirs, files in os.walk(src_dir):
+    for subdir, _, files in os.walk(src_dir):
         for f in files:
             if any(f.endswith(e) for e in ext):
                 continue

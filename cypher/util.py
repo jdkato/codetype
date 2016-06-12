@@ -246,7 +246,7 @@ def write_signature(src, lang, ext, is_file=True):
     tokens = []
     lines = 0.0
 
-    for subdir, dirs, files in os.walk(src):
+    for subdir, _, files in os.walk(src):
         for f in files:
             if ext and not any(f.endswith(e) for e in ext):
                 continue
