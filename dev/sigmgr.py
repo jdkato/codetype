@@ -87,7 +87,6 @@ def test_sig(src_dir, lang, ext, indentifier):
                 file_count -= 1
                 log.write("Insufficient information {}!\n".format(sp))
             else:
-                pass
                 log.write("Incorrect: ({}) {}!\n".format(computed, sp))
     log.close()
     c = round(identified / file_count if file_count else 1, 3)
