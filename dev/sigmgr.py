@@ -106,17 +106,26 @@ def clone_and_clean(repo, src_dir, ext):
 def run(lang, is_test, identifier=None, writer=None):
     """
     """
-    info = LANG_INFO.get(lang)
-    if info is None:
-        print("Language {0} not found.".format(lang))
-        return -1
-
-    src_dir = os.path.join(TEMP_DIR, info["repo"].split("/")[-1].split(".")[0])
-    if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
-        clone_and_clean(info["repo"], src_dir, info["ext"])
+    test_all = False
+    if not lang:
+        test_all = True
+    else:
+        info = LANG_INFO.get(lang)
+        src_dir = os.path.join(
+            TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
+        )
+        if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
+            clone_and_clean(info["repo"], src_dir, info["ext"])
 
     if is_test and identifier:
-        test_sig(src_dir, lang, info["ext"], identifier)
+        if test_all:
+            for lang, info in LANG_INFO.items():
+                src_dir = os.path.join(
+                    TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
+                )
+                test_sig(src_dir, lang, info["ext"], identifier)
+        else:
+            test_sig(src_dir, lang, info["ext"], identifier)
     elif is_test:
         print("Please specify an identifier.")
         return -1

@@ -33,7 +33,7 @@ parser.add_argument(
 args = vars(parser.parse_args())
 script = args["script"][0]
 if script == "sigmgr":
-    if args["test"] and args["lang"]:
+    if args["test"]:
         run(lang=args["lang"], is_test=1, identifier=identify)
     elif args["lang"]:
         run(lang=args["lang"], is_test=0, writer=sig_writer)
