@@ -99,7 +99,7 @@ def test_sig(src_dir, lang, ext, indentifier):
 
 
 def clone_and_clean(repo, src_dir, ext):
-    (_, error) = subprocess.Popen(
+    subprocess.Popen(
         ["git", "clone", repo],
         cwd=TEMP_DIR,
         stdout=subprocess.PIPE,
