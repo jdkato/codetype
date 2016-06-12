@@ -44,7 +44,7 @@ LANG_INFO = {
         "ext": [".rs"]
     }
 }
-RESULTS = os.path.join(os.getcwd(), "test", "results.json")
+RESULTS = os.path.join(os.getcwd(), "dev", "results.json")
 TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
 LOG_DIR = os.path.join(os.getcwd(), "dev", "logs")
 if not os.path.exists(TEMP_DIR):
