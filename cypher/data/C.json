@@ -7,5 +7,5 @@
         "ctype", "stdlib", "stdarg", "stddef", "setjmp", "scanf(", "stddef"
     ],
     "other": ["{", "}", ";", "&"],
-    "first": ["^#include (\".*\"|<\\w*>)$"]
+    "first": ["^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"]
 }
