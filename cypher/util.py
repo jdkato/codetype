@@ -29,6 +29,7 @@ EXTRACT_RE = r"""
     !==| # PHP
     \s\.\s| # PHP
     &&| # PHP
+    =~| # Perl
     \[\]|
     \.\.\.|
     \.\.|
@@ -37,10 +38,10 @@ EXTRACT_RE = r"""
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
-    "/*": "*/",
-    "'''": "'''",
-    '"""': '"""',
-    "{-": "-}"
+    r"^\/\*.*$": r"^.*\*\/$",
+    r"^[\'\"]{3}.*$": r"^.*[\'\"]{3}$",
+    r"^{-.*$": r"^.*-}$",
+    r"^=.*$": r"^=.*$"
 }
 INLINE_COMMENTS = {
     "#": r"(?<!{-)#[^include|-].*(?!-})",
@@ -102,31 +103,35 @@ def extract_content(src, is_file):
     """Return all non-comment and non-string content in src.
     """
     content = ""
-    skip = delimiter = None
+    skip = regex = None
     count = 0
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
+        # Remove any inline comments.
         for c, r in INLINE_COMMENTS.items():
             if re.search(r, line):
                 line = line[:line.find(c)] + "\n"
                 break
+
         skip = True
         for start, end in BLOCK_COMMENTS.items():
-            if not delimiter and start in line and end not in line:
-                # We've found the start of a multi-line comment.
-                delimiter = end
-                break
-            elif delimiter and delimiter in line:
+            if not regex and re.match(start, line):
+                if start == end or not re.match(end, line):
+                    # We've found the start of a multi-line comment.
+                    regex = end
+                    break
+            elif regex and re.match(regex, line):
                 # We've found the end of a multi-line comment.
-                delimiter = None
+                regex = None
                 break
         else:
-            skip = delimiter
+            skip = regex
 
         if skip or not line.strip():
             # We're either in a multi-line comment or the line is blank.
             continue
+
         if count > 0:
             line = re.sub(STRING_RE, "", line)
         if line.strip():

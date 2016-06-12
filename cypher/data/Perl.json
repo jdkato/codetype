@@ -1,0 +1,13 @@
+{
+    "built-in": [
+    ],
+    "keywords": [
+        "use", "my", "sub", "eq", "defined", "unless", "until", "last", "redo",
+        "ref", "shift"
+    ],
+    "lib": [],
+    "other": [
+        "{", "}", ";", "$", "@", "->", "::", "=>", "%", "=~", "1;"
+    ],
+    "first": ["^package [^\"\\']*;$", "^use .*;$"]
+}

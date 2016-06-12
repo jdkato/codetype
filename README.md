@@ -33,7 +33,7 @@
 |    OCaml      |         :x:           |        0          |                               |
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       | :white_check_mark:    |        0          | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
-|     Perl      |         :x:           |        0          |                               |
+|     Perl      |         :x:           |        0          | [Mojolicious](https://github.com/kraih/mojo) (0.963)                          |
 |    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.929)             |
 |     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.981)          |
