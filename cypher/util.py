@@ -14,17 +14,21 @@ from collections import Counter
 
 EXTRACT_RE = r"""
     [\w]+\(?|
-    ::| # C++, Haskell, Ruby, R
-    =>| # C#, Rust
+    ::| # C++, Haskell, Ruby, R, PHP
+    =>| # C#, Rust, PHP
     <<(?!-)| # C++
     :\n| # Python
     <-| # Haskell, R
-    ->| # Haskell, Rust
+    ->| # Haskell, Rust, PHP
     !!| # Haskell
     <<-| # R
     {-| # Haskell
     :=| # Go
     <%| # Ruby
+    ===| # PHP
+    !==| # PHP
+    \s\.\s| # PHP
+    &&| # PHP
     \[\]|
     \.\.\.|
     \.\.|

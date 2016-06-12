@@ -42,6 +42,10 @@ LANG_INFO = {
     "Rust": {
         "repo": "https://github.com/rust-lang/cargo.git",
         "ext": [".rs"]
+    },
+    "PHP": {
+        "repo": "https://github.com/WordPress/WordPress.git",
+        "ext": [".php"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "dev", "results.json")
