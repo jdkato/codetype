@@ -5,4 +5,3 @@ try:
     sys.setdefaultencoding("utf8")
 except NameError:
     pass
-
