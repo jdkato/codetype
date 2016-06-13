@@ -235,7 +235,7 @@ def get_lang_data(lang):
     with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
         d = json.load(jdata)
     tokens = sum([d.get(s, []) for s in d.keys()], [])
-    return set(tokens), d.get("first")
+    return set(tokens), d.get("first_line")
 
 
 def write_signature(src, lang, ext, is_file=True):

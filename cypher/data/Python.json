@@ -1,16 +1,13 @@
 {
-    "built-in": [
-        "abs(", "all(", "any(", "bool(", "dict(", "dir(", "enumerate(",
+    "keywords": [
+        "and", "as", "def", "del", "elif", "from", "in", "is", "not", "or",
+        "pass", "with", "True", "False", "None", "classmethod", "staticmethod",
+        "self", "abs(", "all(", "any(", "bool(", "dict(", "dir(", "enumerate(",
         "eval(", "exec(", "filter(", "format(", "getattr(", "hasattr(",
         "input(", "isinstance(", "len(", "list(", "open(", "range(", "round(",
         "str(", "print(", "super(", "zip("
     ],
-    "keywords": [
-        "and", "as", "def", "del", "elif", "from", "in", "is", "not", "or",
-        "pass", "with", "True", "False", "None", "classmethod", "staticmethod",
-        "self"
-    ],
-    "lib": [],
-    "other": [":\n", "#", "@", "(", ")"],
-    "first": ["^(from .*)?import [^\"]*$", "['|\"]{3}"]
+    "symbols": [":\n", "#", "@", "(", ")"],
+    "first_line": ["^(from .*)?import [^\"]*$", "['|\"]{3}"],
+    "unique": []
 }

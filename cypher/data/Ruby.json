@@ -1,17 +1,14 @@
 {
-    "built-in": [
-        "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
-        "Method", "NilClass", "TrueClass"
-    ],
     "keywords": [
         "alias", "begin", "defined", "elsif", "end", "ensure", "false", "nil",
         "redo", "not", "rescue", "rety", "then", "true", "undef", "unless",
         "when", "puts", "each", "require", "module", "gets", "chomp", "to_i",
-        "to_f", "require_dependency"
+        "to_f", "require_dependency", "Array", "Bignum", "Binding", "Class",
+        "File", "Fixnum", "Hash", "Method", "NilClass", "TrueClass"
     ],
-    "lib": [],
-    "other": ["?", "!", "$", "|", "::", "@"],
-    "first": [
+    "symbols": ["?", "!", "$", "|", "::", "@"],
+    "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$"
-    ]
+    ],
+    "unique": []
 }

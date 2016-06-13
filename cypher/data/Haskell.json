@@ -1,11 +1,11 @@
 {
-    "built-in": [],
     "keywords": [
         "let", "module", "where", "Monoid", "qualified", "Char", "Bool",
         "then", "map", "elem", "head", "tail", "take", "foldr", "mapM", "of",
-        "maybe", "LANGUAGE", "import", "Haskell", "GHC", "Data"
+        "maybe", "LANGUAGE", "import", "Haskell", "GHC", "Data", "Aeson",
+        "Control", "Monad"
     ],
-    "lib": ["Aeson", "Control", "Monad"],
-    "other": ["<-", "->", "::", "$", "`", ":", "!!", "()", ".."],
-    "first": ["^(import|module) .*$", "^{-.*$"]
+    "symbols": ["<-", "->", "::", "$", "`", ":", "!!", "()", ".."],
+    "first_line": ["^(import|module) .*$", "^{-.*$"],
+    "unique": []
 }

@@ -1,15 +1,12 @@
 {
-    "built-in": [
-        "require(", "define(", "require_once(", "unset(", "empty(", "strpos(",
-        "header("
-    ],
     "keywords": [
         "global", "use", "namespace", "class", "extends", "public",
-        "function", "exit"
+        "function", "exit", "require(", "define(", "require_once(", "unset(",
+        "empty(", "strpos(", "header("
     ],
-    "lib": [],
-    "other": [
+    "symbols": [
         "{", "}", ";", "$", "@", "===", "->", "::", "=>", "!==", " . "
     ],
-    "first": ["<?php"]
+    "first_line": ["<?php"],
+    "unique": []
 }

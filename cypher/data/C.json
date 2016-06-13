@@ -1,12 +1,10 @@
 {
-    "built-in": [],
-    "keywords": ["static", "ifdef", "endif"],
-    "lib": [
-        "calloc(", "free(", "malloc(", "realloc(", "printf(", "putchar(",
-        "getchar(", "va_start(", "va_end(", "free(", "typedef", "stdio",
-        "ctype", "stdlib", "stdarg", "stddef", "setjmp", "scanf(", "stddef",
-        "memcpy"
+    "keywords": ["static", "ifdef", "endif", "calloc(", "free(", "malloc(",
+        "realloc(", "printf(", "putchar(", "getchar(", "va_start(", "va_end(",
+        "free(", "typedef", "stdio", "ctype", "stdlib", "stdarg", "stddef",
+        "setjmp", "scanf(", "stddef", "memcpy"
     ],
-    "other": ["{", "}", ";", "&"],
-    "first": ["^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"]
+    "symbols": ["{", "}", ";", "&"],
+    "first_line": ["^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"],
+    "unique": []
 }

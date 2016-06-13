@@ -1,13 +1,11 @@
 {
-    "built-in": [
-    ],
     "keywords": [
         "System", "override", "this", "decimal", "using", "as", "get", "set",
         "delegate", "var", "async", "interface", "const", "struct", "Console",
         "public", "class"
     ],
-    "lib": [],
-    "other": ["{", "}", ";", "=>", "<", ">", ":"],
-    "first": ["namespace", "using"]
+    "symbols": ["{", "}", ";", "=>", "<", ">", ":"],
+    "first_line": ["namespace", "using"],
+    "unique": []
 }
 

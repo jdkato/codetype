@@ -1,11 +1,9 @@
 {
-    "built-in": [],
     "keywords": [
-        "pub", "struct", "extern", "let", "match", "mut", "self", "fn"
+        "pub", "struct", "extern", "let", "match", "mut", "self", "fn",
+         "with_stdout(", "with_status(", "unwrap("
     ],
-    "lib": [
-        "with_stdout(", "with_status(", "unwrap("
-    ],
-    "other": ["{", "}", "|", "&", "->", ".", "=>", ":"],
-    "first": ["^(extern|use|pub) .*;$"]
+    "symbols": ["{", "}", "|", "&", "->", ".", "=>", ":"],
+    "first_line": ["^(extern|use|pub) .*;$"],
+    "unique": []
 }

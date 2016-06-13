@@ -1,13 +1,11 @@
 {
-    "built-in": [
-    ],
     "keywords": [
         "use", "my", "sub", "eq", "defined", "unless", "until", "last", "redo",
         "ref", "shift"
     ],
-    "lib": [],
-    "other": [
+    "symbols": [
         "{", "}", ";", "$", "@", "->", "::", "=>", "%", "=~", "1;"
     ],
-    "first": ["^package [^\"\\']*;$", "^use .*;$"]
+    "first_line": ["^package [^\"\\']*;$", "^use .*;$"],
+    "unique": []
 }
