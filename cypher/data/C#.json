@@ -2,10 +2,10 @@
     "keywords": [
         "System", "override", "this", "using", "as", "get", "set", "delegate",
         "var", "async", "interface", "const", "struct", "Console", "public",
-        "class", "using", "#if"
+        "class", "using", "#if", "private"
     ],
-    "symbols": ["{", "}", ";", "=>", "<", ">"],
+    "symbols": ["{", "}", ";", "=>", "<", ">", "()"],
     "first_line": ["namespace", "using", "^#define .*$"],
-    "unique": ["decimal"]
+    "unique": ["decimal", "readonly"]
 }
 
