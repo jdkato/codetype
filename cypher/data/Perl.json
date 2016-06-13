@@ -1,11 +1,11 @@
 {
     "keywords": [
-        "use", "my", "sub", "eq", "defined", "unless", "until", "last", "redo",
-        "ref", "shift"
+        "use", "sub", "defined", "unless", "until", "last", "redo", "get",
+        "die", "print", "chomp("
     ],
     "symbols": [
-        "{", "}", ";", "$", "@", "->", "::", "=>", "%", "=~", "1;"
+        "{", "}", ";", "$", "@", "->", "::", "=>", "%", " . "
     ],
     "first_line": ["^package [^\"\\']*;$", "^use .*;$"],
-    "unique": []
+    "unique": ["my", "eq", "ref", "shift", "FILEOUT", "=~", "1;", "FILE"]
 }

@@ -1,11 +1,11 @@
 {
     "keywords": [
-        "System", "override", "this", "decimal", "using", "as", "get", "set",
-        "delegate", "var", "async", "interface", "const", "struct", "Console",
-        "public", "class"
+        "System", "override", "this", "using", "as", "get", "set", "delegate",
+        "var", "async", "interface", "const", "struct", "Console", "public",
+        "class", "using", "#if"
     ],
-    "symbols": ["{", "}", ";", "=>", "<", ">", ":"],
-    "first_line": ["namespace", "using"],
-    "unique": []
+    "symbols": ["{", "}", ";", "=>", "<", ">"],
+    "first_line": ["namespace", "using", "^#define .*$"],
+    "unique": ["decimal"]
 }
 

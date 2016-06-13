@@ -30,6 +30,7 @@ EXTRACT_RE = r"""
     \s\.\s| # PHP
     &&| # PHP
     =~| # Perl
+    \#if| # C#
     \[\]|
     \.\.\.|
     \.\.|
@@ -187,17 +188,20 @@ def compare_signatures(unknown, known, lines):
     for k, v in known.items():
         if k == "first_line":
             continue
-        test_value = unknown.get(k)
-        if test_value:
-            total += math.fabs(v - test_value)
-            found += 1
-        elif v > 0.10:
-            total += 1
-            found -= 1
+        elif k == "unique":
+            found += sum([2 if keyword in unknown else 0 for keyword in v])
+        else:
+            test_value = unknown.get(k)
+            if test_value:
+                total += math.fabs(v - test_value)
+                found += 1
+            elif v > 0.10:
+                total += 1
+                found -= 1
     return found / total
 
 
-def compute_signature(tokens, lines, first_line):
+def compute_signature(tokens, lines, first_line, unique=None):
     """
     """
     if not tokens:
@@ -206,6 +210,7 @@ def compute_signature(tokens, lines, first_line):
     for key in signature:
         signature[key] /= lines
     signature["first_line"] = first_line
+    signature["unique"] = unique
     return signature
 
 
@@ -235,7 +240,7 @@ def get_lang_data(lang):
     with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
         d = json.load(jdata)
     tokens = sum([d.get(s, []) for s in d.keys()], [])
-    return set(tokens), d.get("first_line")
+    return set(tokens), d.get("first_line"), d.get("unique", [])
 
 
 def write_signature(src, lang, ext, is_file=True):
@@ -247,7 +252,7 @@ def write_signature(src, lang, ext, is_file=True):
         ext (list): A list of file extensions associated with lang.
         is_file (bool): True if src is a file.
     """
-    known, first_line = get_lang_data(lang)
+    known, first_line, unique = get_lang_data(lang)
     tokens = []
     lines = 0.0
 
@@ -263,6 +268,6 @@ def write_signature(src, lang, ext, is_file=True):
             tokens.extend(file_tokens)
             lines += file_lines
 
-    data = compute_signature(tokens, lines, first_line)
+    data = compute_signature(tokens, lines, first_line, unique)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)

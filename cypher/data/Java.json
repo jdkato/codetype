@@ -1,10 +1,10 @@
 {
     "keywords": [
         "java", "super", "public", "private", "extends", "interface", "final",
-        "Comparable", "console", "System", "boolean", "Object", "String",
-        "import", "class", "out", "lang", "util"
+        "System", "boolean", "Object", "String", "import", "class", "out",
+        "lang", "util", "void"
     ],
     "symbols": ["{", "}", ";", "@", "<", ">", "[]"],
-    "first_line": ["^(import|package) .*;$"],
-    "unique": []
+    "first_line": ["^(import|package) [^::]*;$"],
+    "unique": ["java", "println("]
 }

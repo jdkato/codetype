@@ -1,13 +1,9 @@
 {
     "keywords": [
         "and", "as", "def", "del", "elif", "from", "in", "is", "not", "or",
-        "pass", "with", "True", "False", "None", "classmethod", "staticmethod",
-        "self", "abs(", "all(", "any(", "bool(", "dict(", "dir(", "enumerate(",
-        "eval(", "exec(", "filter(", "format(", "getattr(", "hasattr(",
-        "input(", "isinstance(", "len(", "list(", "open(", "range(", "round(",
-        "str(", "print(", "super(", "zip("
+        "pass", "with", "True", "False", "None", "self"
     ],
-    "symbols": [":\n", "#", "@", "(", ")"],
+    "symbols": ["#", "@"],
     "first_line": ["^(from .*)?import [^\"]*$", "['|\"]{3}"],
-    "unique": []
+    "unique": ["classmethod", "staticmethod", ":\n"]
 }

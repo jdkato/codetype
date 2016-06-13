@@ -1,9 +1,9 @@
 {
     "keywords": [
-        "func", "type", "var", "defer", "nil", "uint64", "const", "struct",
-        "true", "false"
+        "type", "var", "defer", "nil", "uint64", "const", "struct", "true",
+        "false"
     ],
-    "symbols": ["{", "}", ":="],
+    "symbols": ["{", "}"],
     "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
-    "unique": []
+    "unique": ["func", ":="]
 }

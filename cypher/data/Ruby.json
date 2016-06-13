@@ -1,14 +1,14 @@
 {
     "keywords": [
-        "alias", "begin", "defined", "elsif", "end", "ensure", "false", "nil",
-        "redo", "not", "rescue", "rety", "then", "true", "undef", "unless",
-        "when", "puts", "each", "require", "module", "gets", "chomp", "to_i",
-        "to_f", "require_dependency", "Array", "Bignum", "Binding", "Class",
-        "File", "Fixnum", "Hash", "Method", "NilClass", "TrueClass"
+        "alias", "begin", "defined", "ensure", "false", "nil",
+        "redo", "not", "retry", "then", "true", "undef", "unless", "when",
+        "puts", "each", "require", "module", "gets", "require_dependency",
+        "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
+        "Method", "NilClass", "TrueClass"
     ],
     "symbols": ["?", "!", "$", "|", "::", "@"],
     "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$"
     ],
-    "unique": []
+    "unique": ["elsif", "chomp", "to_i", "to_f", "rescue", "end"]
 }
