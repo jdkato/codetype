@@ -1,0 +1,14 @@
+string input = Console.ReadLine();
+int temperature = int.Parse(input);
+if(temperature < 21)
+{
+    Console.WriteLine("Too cold!");
+}
+else if(temperature <= 22)
+{
+    Console.WriteLine("Just right.");
+}
+else(temperature > 22)
+{
+    Console.WriteLine("Too hot!");
+}

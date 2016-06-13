@@ -1,0 +1,12 @@
+using System;
+
+class Test
+{
+    static void Foo(Func<Func<long>> func) {}
+    static void Foo(Func<Func<int>> func) {}
+
+    static void Main()
+    {
+        Foo(() => () => 7);
+    }
+}

@@ -1,0 +1,14 @@
+namespace Treehouse.CodeChallenges
+{
+    class FrogStats
+    {
+        public static double GetAverageTongueLength(Frog[] frogs)  //declare a method to take an array of objects with type Frog
+        {
+            double totalLength = 0.0;  // set the total length to 0
+            foreach (Frog frog in frogs) {  //for every frog in our frog array
+                totalLength += frog.TongueLength;  //add the length of that frog's tongue to our total length
+            }
+            return totalLength / frogs.Length;  //return the average frog tongue length by dividing the total length by the number of frogs
+        }
+    }
+}
