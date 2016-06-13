@@ -16,12 +16,15 @@ class CypherTestCase(unittest.TestCase):
         """
         for subdir, dirs, files in os.walk(LANG_DIR):
             known = os.path.basename(subdir)
-            if known != "lang":
-                print("Testing {} ...".format(known))
+            if known == "lang":
+                continue
+            count = 0
             for f in files:
                 if f.endswith(".txt"):
+                    count += 1
                     computed = identify(os.path.join(subdir, f))
                     self.assertEqual(known, computed)
+            print("Tested {} {} files.".format(count, known))
 
 
 if __name__ == "__main__":
