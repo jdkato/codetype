@@ -1,0 +1,6 @@
+def loopy(items):
+    for item in items:
+        print(item)
+
+    if item == "STOP":
+        break

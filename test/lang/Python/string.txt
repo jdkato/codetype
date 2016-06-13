@@ -1,0 +1,7 @@
+def just_right(myStr):
+    if myStr.length < 5:
+        return "Your string is too short"
+    elif myStr.length > 5:
+        return "Your string is too long"
+    elif myStr.length == 5:
+        return True    
