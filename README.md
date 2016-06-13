@@ -13,16 +13,16 @@
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
-|      C#       | :white_check_mark:    |        2          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
-|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.960)          |
-|      C        | :white_check_mark:    |        2          | [Git](https://github.com/git/git) (0.981)            |
+|      C#       | :white_check_mark:    |        1          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
+|     C++       | :white_check_mark:    |        2          | [Swift](https://github.com/apple/swift) (0.973)          |
+|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.965)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       | :white_check_mark:    |        3          | [Lantern](https://github.com/getlantern/lantern.git) (1.00)                              |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.984)          |
+|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.987)          |
 |     Java      | :white_check_mark:    |        2          | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
@@ -32,11 +32,11 @@
 |    Matlab     |         :x:           |        0          |                               |
 |    OCaml      |         :x:           |        0          |                               |
 | Objective-C   |         :x:           |        0          |                               |
-|     PHP       | :white_check_mark:    |        1          | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
-|     Perl      | :white_check_mark:    |        1          | [Mojolicious](https://github.com/kraih/mojo) (0.963)                          |
-|    Python     | :white_check_mark:    |        4          | [Django](https://github.com/django/django) (0.985)            |
-|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.929)             |
-|     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.981)          |
+|     PHP       | :white_check_mark:    |        2          | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
+|     Perl      | :white_check_mark:    |        2          | [Mojolicious](https://github.com/kraih/mojo) (0.993)                          |
+|    Python     | :white_check_mark:    |        5          | [Django](https://github.com/django/django) (0.982)            |
+|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.920)             |
+|     Ruby      | :white_check_mark:    |        5          | [Ruby on Rails](https://github.com/rails/rails) (0.986)          |
 |     Rust      | :white_check_mark:    |        2          | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
 |    Scala      |         :x:           |        0          |                               |
 |    Swift      |         :x:           |        0          |                               |
