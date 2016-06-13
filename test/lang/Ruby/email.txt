@@ -1,0 +1,7 @@
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+my_email = "my_email@gmail.com"
+if( my_email =~ VALID_EMAIL_REGEX)
+  puts 'Matches!'
+else
+  puts 'No match!'
+end
