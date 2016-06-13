@@ -38,6 +38,6 @@
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.929)             |
 |     Ruby      | :white_check_mark:    |        3          | [Ruby on Rails](https://github.com/rails/rails) (0.981)          |
 |     Rust      | :white_check_mark:    |        2          | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
-|     SQL       |         :x:           |        0          |                               |
 |    Scala      |         :x:           |        0          |                               |
+|    Swift      |         :x:           |        0          |                               |
 |     XML       |         :x:           |        0          |                               |
