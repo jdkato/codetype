@@ -1,8 +1,0 @@
-public class ForumController : Controller
-{
-    [Route("[action]/{sectionId:int}")]
-    public async Task<IActionResult> ShowSection(int sectionId)
-    {
-        //some code
-    }
-}

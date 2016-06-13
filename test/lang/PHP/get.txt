@@ -1,0 +1,14 @@
+$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+if (strpos($url,'this-is-an-example-post') !== false) {
+if($_GET['utm_campaign']==testing123 && $_GET['utm_source']==testing456) {
+function preserve_qs() {
+if (empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], "?") === false) {
+    return "";
+}
+return "?" . $_SERVER['QUERY_STRING'];
+}
+header("Location: http://example123.com/this-is-an-example-post" . preserve_qs());
+exit;
+}
+}

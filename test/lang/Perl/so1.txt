@@ -1,0 +1,40 @@
+open( FILE,    $filename )       || die "Problème d'ouverture du ficher en entrée";
+open( FILEOUT, ">$filenameout" ) || die "Problème d'ouverture";
+
+open( F,  "/home/ahmed/Bureau/test/corpus.txt" ) || die " Pb pour ouvrir";
+open( F2, "/home/ahmed/Bureau/test/corp.txt" )   || die " Pb pour ouvrir";
+my $z;
+my $y = 0;
+my $l;
+my $li;
+my $pos;
+
+while ( $ligne = <F> ) {
+
+    while ( $li = <F2> ) {    # F2 POS
+        chomp($li);
+        # prem contain the first word of F2 in each line, 
+        # deux contain the POS of this word
+        ( $prem, $deux ) = ( $li =~ m/^\W*(\w+)\W+(\w+)/ );
+        print "premier: $prem\n";
+
+        chomp($ligne);
+        @val = split( / /, $ligne );   # corpus de texte
+        $l = @val;
+
+        while ( $y < $l ) {  # $l length of sentence
+            $z = $val[$y];
+            print "z : $z\n";
+
+            if ( $z eq $prem ) {
+                print "true\n";
+                $pos .= "POSw" . $y . "=" . $deux . " ";
+                ++$y;
+            } else {
+                last;
+            }
+        }
+    }
+    print FILEOUT "$pos\n";
+    $pos = "";
+}
