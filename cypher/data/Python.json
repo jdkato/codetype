@@ -1,7 +1,8 @@
 {
     "keywords": [
         "and", "as", "def", "del", "elif", "from", "in", "is", "not", "or",
-        "pass", "with", "True", "False", "None", "self", "print", "print("
+        "pass", "with", "True", "False", "None", "self", "print", "print(",
+        "return"
     ],
     "symbols": ["#", "@"],
     "first_line": ["^(from .*)?import [^\"]*$", "['|\"]{3}"],
