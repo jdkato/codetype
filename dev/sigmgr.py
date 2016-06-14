@@ -57,6 +57,8 @@ TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
 LOG_DIR = os.path.join(os.getcwd(), "dev", "logs")
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
 
 
 def store_result(lang, new):
