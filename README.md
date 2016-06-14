@@ -13,9 +13,9 @@
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
-|      C#       | :white_check_mark:    |        1          | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
-|     C++       | :white_check_mark:    |        10         | [Swift](https://github.com/apple/swift) (0.973)          |
-|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.965)            |
+|      C#       | :white_check_mark:    |        10         | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
+|     C++       | :white_check_mark:    |        10         | [Swift](https://github.com/apple/swift) (0.977)          |
+|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.962)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
@@ -36,7 +36,7 @@
 |     Perl      | :white_check_mark:    |        2          | [Mojolicious](https://github.com/kraih/mojo) (0.993)                          |
 |    Python     | :white_check_mark:    |        10         | [Django](https://github.com/django/django) (0.982)            |
 |      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.920)             |
-|     Ruby      | :white_check_mark:    |        10         | [Ruby on Rails](https://github.com/rails/rails) (0.986)          |
+|     Ruby      | :white_check_mark:    |        10         | [Ruby on Rails](https://github.com/rails/rails) (0.987)          |
 |     Rust      | :white_check_mark:    |        2          | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
 |    Scala      |         :x:           |        0          |                               |
 |    Swift      |         :x:           |        0          |                               |
