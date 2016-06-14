@@ -1,0 +1,8 @@
+// implement Euler's method
+  for(int i=0;i<n;i++)
+  {
+    x = a + i*h; // update value of x to x_i
+    cout << x << " " << w << endl; // output x_i and w_i to screen
+    w = w + h*(x*exp(3*x)-2.*w); // update w to w_{i+1}
+  }
+  cout << b << " " << w << endl; // output x_n and w_n to screen
