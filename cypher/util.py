@@ -70,7 +70,6 @@ def identify(src, verbose=False):
             and their computed scores as values.
     """
     results = {}
-    ksigs = {}
     limited_results = {}
     is_file = os.path.isfile(src)
     tokens, lines, first_line = get_tokens(src, is_file=is_file)
@@ -78,16 +77,13 @@ def identify(src, verbose=False):
     if not sig:
         return -1
 
+    first_line = sig.get("first_line", [])
     for f in os.listdir(SIG_PATH):
         lang = f.split(".")[0]
         if not lang:
             continue
         ksig = read_signature(lang)
         results[lang] = compare_signatures(sig, ksig, lines)
-        ksigs[lang] = ksig
-
-    first_line = sig.get("first_line", [])
-    for lang, ksig in ksigs.items():
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
             if re.match(decoded, first_line) or re.search(decoded, first_line):
@@ -96,7 +92,12 @@ def identify(src, verbose=False):
     # print(first_line, limited_results)
     results = limited_results if limited_results else results
     if verbose:
-        return results
+        return {
+            "results": results,
+            "inline-comments": 0,
+            "block-comments": 0,
+            "lines": 0
+        }
     else:
         return max(results, key=results.get)
 
