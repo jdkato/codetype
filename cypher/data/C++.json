@@ -2,13 +2,13 @@
     "keywords": [
         "static_cast", "bool", "inline", "dynamic_cast", "const_cast",
         "reinterpret_cast", "namespace", "template", "typename", "virtual",
-        "auto", "extern", "delete", "new", "true", "false", "bool", "ifdef",
+        "auto", "extern", "new", "true", "false", "bool", "ifdef",
         "std", "push_back", "pop_back", "forward_list", "unordered_map",
         "unordered_set", "vector", "iostream", "NULL"
     ],
-    "symbols": ["{", "}", ";", "&", "->", "*"],
+    "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>"],
     "first_line": [
         "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#ifdef .*$", "^#define .*$"
     ],
-    "unique": ["cout", "cin", "endl", "friend", "boost", "<<", "::"]
+    "unique": ["cout", "cin", "endl", "friend", "boost", "<<", "::", "delete"]
 }

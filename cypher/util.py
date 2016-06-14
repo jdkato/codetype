@@ -17,6 +17,7 @@ EXTRACT_RE = r"""
     ::| # C++, Haskell, Ruby, R, PHP
     =>| # C#, Rust, PHP
     <<(?!-)| # C++
+    >>|
     :\n| # Python
     <-| # Haskell, R
     ->| # Haskell, Rust, PHP
@@ -35,7 +36,7 @@ EXTRACT_RE = r"""
     \.\.\.|
     \.\.|
     \(\)|
-    [.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
+    [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
@@ -189,7 +190,7 @@ def compare_signatures(unknown, known, lines):
         if k == "first_line":
             continue
         elif k == "unique":
-            found += sum([2 if keyword in unknown else 0 for keyword in v])
+            found += sum([2.5 if keyword in unknown else 0 for keyword in v])
         else:
             test_value = unknown.get(k)
             if test_value:
