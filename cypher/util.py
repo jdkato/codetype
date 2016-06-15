@@ -113,6 +113,8 @@ def extract_content(src, is_file):
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
+        if count > 0:
+            line = re.sub(STRING_RE, "", line)
         # Remove any inline comments.
         for c, r in INLINE_COMMENTS.items():
             if re.search(r, line):
@@ -138,9 +140,6 @@ def extract_content(src, is_file):
         if skip or not line.strip():
             # We're either in a multi-line comment or the line is blank.
             continue
-
-        if count > 0:
-            line = re.sub(STRING_RE, "", line)
         if line.strip():
             count += 1
             content += line
