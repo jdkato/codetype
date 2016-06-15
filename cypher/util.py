@@ -72,8 +72,10 @@ def identify(src, verbose=False):
     results = {}
     limited_results = {}
     is_file = os.path.isfile(src)
-    tokens, lines, first_line = get_tokens(src, is_file=is_file)
-    sig = compute_signature(tokens, lines, first_line)
+    summary = get_tokens(src, is_file=is_file)
+    sig = compute_signature(
+        summary["tokens"], summary["lines"], summary["first_line"]
+    )
     if not sig:
         return -1
 
@@ -83,7 +85,7 @@ def identify(src, verbose=False):
         if not lang:
             continue
         ksig = read_signature(lang)
-        results[lang] = compare_signatures(sig, ksig, lines)
+        results[lang] = compare_signatures(sig, ksig, summary["lines"])
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
             if re.match(decoded, first_line) or re.search(decoded, first_line):
@@ -94,9 +96,9 @@ def identify(src, verbose=False):
     if verbose:
         return {
             "results": results,
-            "inline-comments": 0,
-            "block-comments": 0,
-            "lines": 0
+            "inline-comments": summary["inline_count"],
+            "block-comments": summary["block_count"],
+            "lines": summary["lines"]
         }
     else:
         return max(results, key=results.get)
@@ -107,7 +109,7 @@ def extract_content(src, is_file):
     """
     content = ""
     skip = regex = None
-    count = 0
+    count = inline = block = 0
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
@@ -115,6 +117,7 @@ def extract_content(src, is_file):
         for c, r in INLINE_COMMENTS.items():
             if re.search(r, line):
                 line = line[:line.find(c)] + "\n"
+                inline += 1
                 break
 
         skip = True
@@ -123,6 +126,7 @@ def extract_content(src, is_file):
                 if start == end or not re.match(end, line):
                     # We've found the start of a multi-line comment.
                     regex = end
+                    block += 1
                     break
             elif regex and re.match(regex, line):
                 # We've found the end of a multi-line comment.
@@ -142,7 +146,7 @@ def extract_content(src, is_file):
             content += line
 
     text.close()
-    return content
+    return content, inline, block
 
 
 def get_tokens(src, is_file=False, filtered=[]):
@@ -160,7 +164,8 @@ def get_tokens(src, is_file=False, filtered=[]):
     lines = 0.0
     tokens = []
     first_line = None
-    text = StringIO(extract_content(src, is_file))
+    content, inline, block = extract_content(src, is_file)
+    text = StringIO(content)
 
     for line in text:
         if not line.strip():
@@ -172,7 +177,13 @@ def get_tokens(src, is_file=False, filtered=[]):
         tokens.extend([s for s in extr if s in filtered or not filtered])
 
     text.close()
-    return tokens, lines, first_line
+    return {
+        "tokens": tokens,
+        "lines": lines,
+        "first_line": first_line,
+        "inline_count": inline,
+        "block_count": block
+    }
 
 
 def compare_signatures(unknown, known, lines):
@@ -262,13 +273,13 @@ def write_signature(src, lang, ext, is_file=True):
         for f in files:
             if ext and not any(f.endswith(e) for e in ext):
                 continue
-            file_tokens, file_lines, _ = get_tokens(
+            summary = get_tokens(
                 os.path.join(subdir, f),
                 is_file=is_file,
                 filtered=known
             )
-            tokens.extend(file_tokens)
-            lines += file_lines
+            tokens.extend(summary["tokens"])
+            lines += summary["lines"]
 
     data = compute_signature(tokens, lines, first_line, unique)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
