@@ -31,6 +31,7 @@ EXTRACT_RE = r"""
     \s\.\s| # PHP
     &&| # PHP
     =~| # Perl
+    !\(| # Rust
     \#if| # C#
     \[\]|
     \.\.\.|
@@ -197,11 +198,13 @@ def compare_signatures(unknown, known, lines):
     """
     total = 1.0
     found = 0.0
+    mult = 2 if lines < 10 else 1
     for k, v in known.items():
         if k == "first_line":
             continue
         elif k == "unique":
-            found += sum([2.5 if keyword in unknown else 0 for keyword in v])
+            inc = 2.5 * mult
+            found += sum([inc if keyword in unknown else 0 for keyword in v])
         else:
             test_value = unknown.get(k)
             if test_value:
