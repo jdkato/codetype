@@ -5,5 +5,5 @@
     ],
     "symbols": ["{", "}", "|", "&", "->", ".", "=>", ":", "!"],
     "first_line": ["^(extern|use|pub) .*;$"],
-    "unique": ["mut", "fn", "pub"]
+    "unique": ["mut", "fn", "pub", "!("]
 }
