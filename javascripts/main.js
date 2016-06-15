@@ -13,7 +13,9 @@ var identify = function() {
                 else
                     $("#lang-" + i).html("N/A");
             }
-            console.log(data.results);
+            $("#inline").html(data["inline-comments"]);
+            $("#block").html(data["block-comments"]);
+            console.log(JSON.stringify(data));
         },
         error: function(error) {
             console.log(error);
