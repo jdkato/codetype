@@ -11,7 +11,7 @@ var identify = function() {
                 if (lang)
                     $("#lang-" + i).html(lang.replace(/\"/g, ""));
                 else
-                    $("#lang-" + i).html("N\\A");
+                    $("#lang-" + i).html("N/A");
             }
             console.log(data.results);
         },
