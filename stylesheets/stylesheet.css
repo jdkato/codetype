@@ -249,7 +249,7 @@ a {
 textarea#text {
     width: 100%;
     overflow: scroll;
-    resize: vertical;
+    resize: none;
     height: 400px;
     font-family: monospace;
     white-space: pre;
