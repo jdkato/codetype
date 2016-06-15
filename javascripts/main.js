@@ -25,6 +25,6 @@ $(document).ready(function() {
     var textarea = $("#text");
     textarea.bind(
         'input propertychange',
-        _.debounce(identify, 50, { maxWait: 100 })
+        _.debounce(identify, 500, { maxWait: 500 })
     );
 });
