@@ -1,9 +1,9 @@
 {
     "keywords": [
         "struct", "extern", "let", "match", "self", "with_stdout(", "unwrap(",
-        "with_status("
+        "with_status(", "println"
     ],
-    "symbols": ["{", "}", "|", "&", "->", ".", "=>", ":"],
+    "symbols": ["{", "}", "|", "&", "->", ".", "=>", ":", "!"],
     "first_line": ["^(extern|use|pub) .*;$"],
     "unique": ["mut", "fn", "pub"]
 }
