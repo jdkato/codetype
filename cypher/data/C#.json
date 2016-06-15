@@ -4,7 +4,7 @@
         "var", "async", "interface", "const", "struct", "Console", "public",
         "class", "using", "#if", "private"
     ],
-    "symbols": ["{", "}", ";", "=>", "<", ">", "()"],
+    "symbols": ["{", "}", ";", "=>", "<", ">"],
     "first_line": ["namespace", "using", "^#define .*$"],
     "unique": ["decimal", "readonly"]
 }
