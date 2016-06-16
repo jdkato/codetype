@@ -38,16 +38,3 @@ van_der_pol_euler <- function(a, b, h, X0, mu) {
   }
   return(list("T" = T, "X" = X, "Y" = Y))
 }
-
-'''
-# Analytical solution:
-plot(function(t) sqrt(4 - 3*exp(-t**2)), 0, 1, pch=3, col='green', xlab='t',
-ylab='y(t)')
-
-# Numerical solution:
-data <- rk4(0, 1, 0.1, 1, function(t, y) { -t * y + ((4 * t) / y) })
-points(seq(from=0, to=1, by=0.1), data, pch=3, col='blue')
-
-legend('topleft', c('analytical', 'numerical'), col=c('green', 'blue'),
-lty=c(1, NA), pch=c(NA, 3))
-'''
