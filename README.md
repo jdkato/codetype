@@ -13,16 +13,16 @@
 |:-----------:  |:------------------:   |:---------------:  |:---------------------------:  |
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
-|      C#       | :white_check_mark:    |        10         | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
-|     C++       | :white_check_mark:    |        10         | [Swift](https://github.com/apple/swift) (0.977)          |
-|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.997)            |
+|      C#       | :white_check_mark:    |        10         | [Nancy](https://github.com/NancyFx/Nancy.git) (0.978)                             |
+|     C++       | :white_check_mark:    |        10         | [Swift](https://github.com/apple/swift) (0.981)          |
+|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.987)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       | :white_check_mark:    |        3          | [Lantern](https://github.com/getlantern/lantern.git) (1.00)                              |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (1.00)          |
+|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.997)          |
 |     Java      | :white_check_mark:    |        2          | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
@@ -33,10 +33,10 @@
 |    OCaml      |         :x:           |        0          |                               |
 | Objective-C   |         :x:           |        0          |                               |
 |     PHP       | :white_check_mark:    |        2          | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
-|     Perl      | :white_check_mark:    |        2          | [Mojolicious](https://github.com/kraih/mojo) (0.993)                          |
-|    Python     | :white_check_mark:    |        11         | [Django](https://github.com/django/django) (0.981)            |
-|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.955)             |
-|     Ruby      | :white_check_mark:    |        10         | [Ruby on Rails](https://github.com/rails/rails) (0.988)          |
+|     Perl      | :white_check_mark:    |        2          | [Mojolicious](https://github.com/kraih/mojo) (1.00)                          |
+|    Python     | :white_check_mark:    |        11         | [Django](https://github.com/django/django) (0.983)            |
+|      R        | :white_check_mark:    |        3          | [Shiny](https://github.com/rstudio/shiny) (0.991)             |
+|     Ruby      | :white_check_mark:    |        10         | [Ruby on Rails](https://github.com/rails/rails) (0.987)          |
 |     Rust      | :white_check_mark:    |        3          | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
 |    Scala      |         :x:           |        0          |                               |
 |    Swift      |         :x:           |        0          |                               |
