@@ -14,15 +14,15 @@
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       | :white_check_mark:    |        10         | [Nancy](https://github.com/NancyFx/Nancy.git) (1.00)                             |
-|     C++       | :white_check_mark:    |        10         | [Swift](https://github.com/apple/swift) (0.974)          |
-|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.970)            |
+|     C++       | :white_check_mark:    |        10         | [Swift](https://github.com/apple/swift) (0.977)          |
+|      C        | :white_check_mark:    |        1          | [Git](https://github.com/git/git) (0.997)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       | :white_check_mark:    |        3          | [Lantern](https://github.com/getlantern/lantern.git) (1.00)                              |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (0.987)          |
+|   Haskell     | :white_check_mark:    |        3          | [Cabal](https://github.com/haskell/cabal) (1.00)          |
 |     Java      | :white_check_mark:    |        2          | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |    LaTeX      |         :x:           |        0          |                               |
