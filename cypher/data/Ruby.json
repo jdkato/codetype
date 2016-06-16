@@ -2,7 +2,7 @@
     "keywords": [
         "alias", "begin", "defined", "ensure", "false", "nil",
         "redo", "not", "retry", "then", "true", "undef", "unless", "when",
-        "puts", "each", "require", "module", "gets", "require_dependency",
+        "each", "require", "module", "gets", "require_dependency",
         "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
         "Method", "NilClass", "TrueClass"
     ],
@@ -10,5 +10,5 @@
     "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$"
     ],
-    "unique": ["elsif", "chomp", "to_i", "to_f", "rescue", "end"]
+    "unique": ["elsif", "chomp", "to_i", "to_f", "rescue", "end", "puts"]
 }
