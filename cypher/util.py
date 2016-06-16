@@ -37,6 +37,7 @@ EXTRACT_RE = r"""
     \.\.\.| # R
     \.\.| # Haskell
     \(\)| # Haskell
+    \$_| # PHP
     [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
@@ -212,7 +213,7 @@ def compare_signatures(unknown, known, lines):
     found = 0.0
     mult = 2 if lines < 10 else 1
     for k, v in known.items():
-        if k == "first_line":
+        if k in ["first_line", "comments"]:
             continue
         elif k == "unique":
             inc = 2.5 * mult
