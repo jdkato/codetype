@@ -8,7 +8,8 @@
     "symbols": ["{", "}", ";", "&", "->", "*"],
     "first_line": [
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
-        "^#[ifdef|define|undef] .*$"
+        "^#(ifdef|define|undef) .*$"
     ],
-    "unique": ["static"]
+    "unique": ["static"],
+    "comments": ["//", "/*"]
 }

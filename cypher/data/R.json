@@ -9,5 +9,6 @@
     "first_line": [
         "^(library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$"
     ],
-    "unique": ["<<-", "ifelse", "...", "function("]
+    "unique": ["<<-", "ifelse", "...", "function("],
+    "comments": ["#"]
 }

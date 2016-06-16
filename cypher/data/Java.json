@@ -6,5 +6,6 @@
     ],
     "symbols": ["{", "}", ";", "@", "<", ">", "[]"],
     "first_line": ["^(import|package) [^::]*;$"],
-    "unique": ["java", "println("]
+    "unique": ["java", "println("],
+    "comments": ["//", "/*"]
 }

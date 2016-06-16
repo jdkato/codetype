@@ -5,7 +5,8 @@
         "class", "using", "#if", "private"
     ],
     "symbols": ["{", "}", ";", "=>", "<", ">"],
-    "first_line": ["namespace", "using", "^#define .*$"],
-    "unique": ["decimal", "readonly"]
+    "first_line": ["^namespace .*$", "^using .*;$", "^#define .*$"],
+    "unique": ["decimal", "readonly"],
+    "comments": ["//", "/*"]
 }
 

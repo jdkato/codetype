@@ -32,7 +32,7 @@ EXTRACT_RE = r"""
     &&| # PHP
     =~| # Perl
     !\(| # Rust
-    \#if| # C#
+    \#if| # C#, C++, C, Haskell
     \[\]| # Java
     \.\.\.| # R
     \.\.| # Haskell
@@ -41,15 +41,16 @@ EXTRACT_RE = r"""
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
-    r"^\/\*.*$": r"^.*\*\/$",
-    r"^[\'\"]{3}.*$": r"^.*[\'\"]{3}$",
-    r"^{-.*$": r"^.*-}$",
-    r"^=.*$": r"^=.*$"
+    "/*": [r"^\/\*.*$", r"^.*\*\/$"],
+    "'''": [r"^[\']{3}.*$", r"^.*[\']{3}$"],
+    '"""': [r"^[\"]{3}.*$", r"^.*[\"]{3}$"],
+    "{-": [r"^{-.*$", r"^.*-}$"],
+    "=": [r"^=.*$", r"^=.*$"]
 }
 INLINE_COMMENTS = {
-    "#": r"(?<!{-)#(?!-}|include|!).*",
+    "#": r"(?<!{-)#(?!-}|include|!|define|if|el|endif).*",
     "//": r"\/\/.*",
-    "--": r"--.*",
+    "--": r" -- .*",
     "/*": r"/\*.*\*/",
     "{-": r"{-.*-}"
 }
@@ -71,11 +72,11 @@ def identify(src, verbose=False):
             and their computed scores as values.
     """
     results = {}
-    limited_results = {}
-    is_file = os.path.isfile(src)
-    summary = get_tokens(src, is_file=is_file)
+    first_results = {}
+    comment_results = {}
+    summary = get_tokens(src, is_file=os.path.isfile(src))
     sig = compute_signature(
-        summary["tokens"], summary["code_lines"], summary["first_line"]
+        summary["tokens"], summary["codeLines"], summary["firstLine"]
     )
     if not sig:
         return -1
@@ -86,21 +87,22 @@ def identify(src, verbose=False):
         if not lang:
             continue
         ksig = read_signature(lang)
-        results[lang] = compare_signatures(sig, ksig, summary["code_lines"])
+        results[lang] = compare_signatures(sig, ksig, summary["codeLines"])
+        if all(r in ksig.get("comments") for r in summary["comments"]):
+            comment_results[lang] = results[lang]
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
-            if re.match(decoded, first_line) or re.search(decoded, first_line):
-                limited_results[lang] = results[lang]
+            if re.search(decoded, first_line):
+                first_results[lang] = results[lang]
 
-    # print(first_line, limited_results)
-    results = limited_results if limited_results else results
+    if first_results:
+        results = first_results
+    elif comment_results:
+        results = comment_results
+
     if verbose:
-        return {
-            "results": results,
-            "inlineCount": summary["inline_count"],
-            "blockCount": summary["block_count"],
-            "stringCount": summary["string_count"]
-        }
+        summary["results"] = results
+        return summary
     else:
         return max(results, key=results.get)
 
@@ -109,6 +111,7 @@ def extract_content(src, is_file):
     """Return all non-comment and non-string content in src.
     """
     content = ""
+    comments = set()
     skip = regex = None
     count = inline = block = string = 0
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
@@ -121,13 +124,15 @@ def extract_content(src, is_file):
             if re.search(r, line) and re.search(r, without_string):
                 line = line[:line.find(c)] + "\n"
                 inline += 1
+                comments.add(c)
                 break
 
         skip = True
-        for start, end in BLOCK_COMMENTS.items():
-            if not regex and re.match(start, line.strip()):
+        for c, r in BLOCK_COMMENTS.items():
+            if not regex and re.match(r[0], line.strip()):
                 # We've found the start of a multi-line comment.
-                regex = end
+                regex = r[1]
+                comments.add(c)
                 break
             elif regex and re.match(regex, line.strip()):
                 # We've found the end of a multi-line comment.
@@ -147,7 +152,13 @@ def extract_content(src, is_file):
             content += line
 
     text.close()
-    return content, inline, block, string
+    return {
+        "content": content,
+        "inlineCount": inline,
+        "blockCount": block,
+        "stringCount": string,
+        "comments": comments
+    }
 
 
 def get_tokens(src, is_file=False, filtered=[]):
@@ -165,8 +176,8 @@ def get_tokens(src, is_file=False, filtered=[]):
     lines = 0.0
     tokens = []
     first_line = None
-    content, inline, block, string = extract_content(src, is_file)
-    text = StringIO(content)
+    summary = extract_content(src, is_file)
+    text = StringIO(summary["content"])
 
     for line in text:
         if not line.strip():
@@ -178,14 +189,10 @@ def get_tokens(src, is_file=False, filtered=[]):
         tokens.extend([s for s in extr if s in filtered or not filtered])
 
     text.close()
-    return {
-        "tokens": tokens,
-        "code_lines": lines,
-        "first_line": first_line,
-        "inline_count": inline,
-        "block_count": block,
-        "string_count": string
-    }
+    summary["tokens"] = tokens
+    summary["codeLines"] = lines
+    summary["firstLine"] = first_line
+    return summary
 
 
 def compare_signatures(unknown, known, lines):
@@ -218,7 +225,7 @@ def compare_signatures(unknown, known, lines):
     return found / total
 
 
-def compute_signature(tokens, lines, first_line, unique=None):
+def compute_signature(tokens, lines, first_line, unique=None, comments=None):
     """
     """
     if not tokens:
@@ -228,6 +235,7 @@ def compute_signature(tokens, lines, first_line, unique=None):
         signature[key] /= lines
     signature["first_line"] = first_line
     signature["unique"] = unique
+    signature["comments"] = comments
     return signature
 
 
@@ -250,14 +258,20 @@ def get_lang_data(lang):
     Returns:
         list: A list of all keywords associated with lang.
     """
-    d = []
+    d = {}
+    tokens = []
     if lang is None:
-        return d, None
+        return d, None, None, None
 
     with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
         d = json.load(jdata)
-    tokens = sum([d.get(s, []) for s in d.keys()], [])
-    return set(tokens), d.get("first_line"), d.get("unique", [])
+
+    for k, v in d.items():
+        if k not in ["comments", "first_line"]:
+            tokens.extend(v)
+    tokens = set(tokens)
+
+    return tokens, d.get("first_line"), d.get("unique", []), d.get("comments")
 
 
 def write_signature(src, lang, ext, is_file=True):
@@ -269,7 +283,7 @@ def write_signature(src, lang, ext, is_file=True):
         ext (list): A list of file extensions associated with lang.
         is_file (bool): True if src is a file.
     """
-    known, first_line, unique = get_lang_data(lang)
+    known, first_line, unique, comments = get_lang_data(lang)
     tokens = []
     lines = 0.0
 
@@ -283,8 +297,8 @@ def write_signature(src, lang, ext, is_file=True):
                 filtered=known
             )
             tokens.extend(summary["tokens"])
-            lines += summary["code_lines"]
+            lines += summary["codeLines"]
 
-    data = compute_signature(tokens, lines, first_line, unique)
+    data = compute_signature(tokens, lines, first_line, unique, comments)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)
