@@ -7,7 +7,8 @@
     ],
     "symbols": ["<-", "{", "}", "$", ";", ":", "::"],
     "first_line": [
-        "^(library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$"
+        "^(library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$",
+        "^.{1,} <- function\\(.{1,}$"
     ],
     "unique": ["<<-", "ifelse", "...", "function("],
     "comments": ["#"]

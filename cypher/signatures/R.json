@@ -21,7 +21,8 @@
     ], 
     "first_line": [
         "^(library|context|source|isolate)\\(.*(\\))?$", 
-        "^#!.*Rscript$"
+        "^#!.*Rscript$", 
+        "^.{1,} <- function\\(.{1,}$"
     ], 
     "function(": 0.0858124798625282, 
     "library(": 0.0037589947374073677, 
