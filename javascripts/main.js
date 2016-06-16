@@ -1,11 +1,15 @@
-function clearText() {
-    $('#text').val('');
+function clearResults() {
     $('#inline').html('N/A');
     $('#block').html('N/A');
     $('#string').html('N/A');
     $('#lang-1').html('N/A');
     $('#lang-2').html('N/A');
     $('#lang-3').html('N/A');
+}
+
+function clearText() {
+    $('#text').val('');
+    clearResults();
 }
 
 var identify = function() {
@@ -16,7 +20,7 @@ var identify = function() {
         data: { text: $('#text').val() },
         success: function(data) {
             if (_.isEmpty(data)) {
-                clearText();
+                clearResults();
             } else {
                 langs = data.results;
                 for(var i = 1; i < 4; ++i) {
