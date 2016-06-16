@@ -1,23 +1,23 @@
 import codecs
-import json
-import re
-import os
 import io
+import json
 import math
+import os
+import re
+
+from collections import Counter
 
 try:
     from cStringIO import StringIO
 except ImportError:
     from io import StringIO
 
-from collections import Counter
-
 EXTRACT_RE = r"""
     [\w]+\(?|
     ::| # C++, Haskell, Ruby, R, PHP
     =>| # C#, Rust, PHP
     <<(?!-)| # C++
-    >>|
+    >>| # C++
     :\n| # Python
     <-| # Haskell, R
     ->| # Haskell, Rust, PHP
@@ -28,15 +28,15 @@ EXTRACT_RE = r"""
     <%| # Ruby
     ===| # PHP
     !==| # PHP
-    \s\.\s| # PHP
+    \s\.\s| # PHP, Perl
     &&| # PHP
     =~| # Perl
     !\(| # Rust
     \#if| # C#
-    \[\]|
-    \.\.\.|
-    \.\.|
-    \(\)|
+    \[\]| # Java
+    \.\.\.| # R
+    \.\.| # Haskell
+    \(\)| # Haskell
     [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
@@ -75,7 +75,7 @@ def identify(src, verbose=False):
     is_file = os.path.isfile(src)
     summary = get_tokens(src, is_file=is_file)
     sig = compute_signature(
-        summary["tokens"], summary["lines"], summary["first_line"]
+        summary["tokens"], summary["code_lines"], summary["first_line"]
     )
     if not sig:
         return -1
@@ -86,7 +86,7 @@ def identify(src, verbose=False):
         if not lang:
             continue
         ksig = read_signature(lang)
-        results[lang] = compare_signatures(sig, ksig, summary["lines"])
+        results[lang] = compare_signatures(sig, ksig, summary["code_lines"])
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
             if re.match(decoded, first_line) or re.search(decoded, first_line):
@@ -97,8 +97,8 @@ def identify(src, verbose=False):
     if verbose:
         return {
             "results": results,
-            "inline-comments": summary["inline_count"],
-            "block-comments": summary["block_count"],
+            "inlineCount": summary["inline_count"],
+            "blockCount": summary["block_count"],
             "lines": summary["lines"]
         }
     else:
@@ -110,10 +110,11 @@ def extract_content(src, is_file):
     """
     content = ""
     skip = regex = None
-    count = inline = block = 0
+    count = inline = block = lines = 0
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
+        lines += 1
         # Remove any inline comments.
         for c, r in INLINE_COMMENTS.items():
             without_string = re.sub(STRING_RE, "", line)
@@ -146,7 +147,7 @@ def extract_content(src, is_file):
             content += line
 
     text.close()
-    return content, inline, block
+    return content, inline, block, lines
 
 
 def get_tokens(src, is_file=False, filtered=[]):
@@ -164,7 +165,7 @@ def get_tokens(src, is_file=False, filtered=[]):
     lines = 0.0
     tokens = []
     first_line = None
-    content, inline, block = extract_content(src, is_file)
+    content, inline, block, line_count = extract_content(src, is_file)
     text = StringIO(content)
 
     for line in text:
@@ -179,7 +180,9 @@ def get_tokens(src, is_file=False, filtered=[]):
     text.close()
     return {
         "tokens": tokens,
-        "lines": lines,
+        "lines": line_count,
+        "code_lines": lines,
+        "blank_lines": line_count - lines,
         "first_line": first_line,
         "inline_count": inline,
         "block_count": block
@@ -281,7 +284,7 @@ def write_signature(src, lang, ext, is_file=True):
                 filtered=known
             )
             tokens.extend(summary["tokens"])
-            lines += summary["lines"]
+            lines += summary["code_lines"]
 
     data = compute_signature(tokens, lines, first_line, unique)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
