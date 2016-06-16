@@ -6,6 +6,8 @@
         "png(", "jpeg(", "rnorm(", "runif(", "list("
     ],
     "symbols": ["<-", "{", "}", "$", ";", ":", "::"],
-    "first_line": ["^(library|context|source|isolate)\\(.*(\\))?$"],
+    "first_line": [
+        "^(library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$"
+    ],
     "unique": ["<<-", "ifelse", "...", "function("]
 }

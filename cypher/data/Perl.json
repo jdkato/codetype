@@ -6,6 +6,6 @@
     "symbols": [
         "{", "}", ";", "$", "@", "->", "::", "=>", "%", " . "
     ],
-    "first_line": ["^package [^\"\\']*;$", "^use .*;$"],
+    "first_line": ["^package [^\"\\']*;$", "^use .*;$", "^#!.*perl$"],
     "unique": ["my", "eq", "ref", "shift", "FILEOUT", "=~", "1;", "FILE"]
 }

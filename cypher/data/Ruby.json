@@ -8,7 +8,8 @@
     ],
     "symbols": ["?", "!", "$", "|", "::", "@"],
     "first_line": [
-        "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$"
+        "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
+        "^#!.*ruby$"
     ],
     "unique": ["elsif", "chomp", "to_i", "to_f", "rescue", "end", "puts"]
 }
