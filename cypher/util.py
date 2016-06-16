@@ -99,7 +99,7 @@ def identify(src, verbose=False):
             "results": results,
             "inlineCount": summary["inline_count"],
             "blockCount": summary["block_count"],
-            "lines": summary["lines"]
+            "stringCount": summary["string_count"]
         }
     else:
         return max(results, key=results.get)
@@ -110,14 +110,14 @@ def extract_content(src, is_file):
     """
     content = ""
     skip = regex = None
-    count = inline = block = lines = 0
+    count = inline = block = string = 0
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
-        lines += 1
+        without_string = re.sub(STRING_RE, "", line)
+        string += 1 if line != without_string else 0
         # Remove any inline comments.
         for c, r in INLINE_COMMENTS.items():
-            without_string = re.sub(STRING_RE, "", line)
             if re.search(r, line) and re.search(r, without_string):
                 line = line[:line.find(c)] + "\n"
                 inline += 1
@@ -147,7 +147,7 @@ def extract_content(src, is_file):
             content += line
 
     text.close()
-    return content, inline, block, lines
+    return content, inline, block, string
 
 
 def get_tokens(src, is_file=False, filtered=[]):
@@ -165,7 +165,7 @@ def get_tokens(src, is_file=False, filtered=[]):
     lines = 0.0
     tokens = []
     first_line = None
-    content, inline, block, line_count = extract_content(src, is_file)
+    content, inline, block, string = extract_content(src, is_file)
     text = StringIO(content)
 
     for line in text:
@@ -180,12 +180,11 @@ def get_tokens(src, is_file=False, filtered=[]):
     text.close()
     return {
         "tokens": tokens,
-        "lines": line_count,
         "code_lines": lines,
-        "blank_lines": line_count - lines,
         "first_line": first_line,
         "inline_count": inline,
-        "block_count": block
+        "block_count": block,
+        "string_count": string
     }
 
 
