@@ -1,15 +1,14 @@
 {
     "keywords": [
-        "ifdef", "calloc", "free", "malloc", "realloc", "printf",
-        "putchar", "getchar", "va_start", "va_end", "typedef", "stdio", "ctype",
-        "stdlib", "stdarg", "stddef", "setjmp", "scanf", "stddef", "memcpy(",
-        "#if", "NULL"
+        "ifdef", "calloc", "free", "malloc", "realloc", "putchar", "getchar",
+        "va_start", "va_end", "typedef", "stdio", "ctype", "stdlib", "stdarg",
+        "stddef", "setjmp", "scanf", "stddef", "memcpy(", "#if", "NULL"
     ],
     "symbols": ["{", "}", ";", "&", "->", "*"],
     "first_line": [
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
         "^#(ifdef|define|undef) .*$"
     ],
-    "unique": ["static"],
+    "unique": ["static", "printf"],
     "comments": ["//", "/*"]
 }
