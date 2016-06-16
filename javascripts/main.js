@@ -13,8 +13,8 @@ var identify = function() {
                 else
                     $("#lang-" + i).html("N/A");
             }
-            $("#inline").html(data["inline-comments"]);
-            $("#block").html(data["block-comments"]);
+            $("#inline").html(data.inlineCount);
+            $("#block").html(data.blockCount);
             console.log(JSON.stringify(data));
         },
         error: function(error) {
