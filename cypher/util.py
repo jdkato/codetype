@@ -101,8 +101,11 @@ def identify(src, verbose=False):
         results = comment_results
 
     if verbose:
-        summary["results"] = results
-        return summary
+        return {
+            "results": results, "blockCount": summary["blockCount"],
+            "inlineCount": summary["inlineCount"],
+            "stringCount": summary["stringCount"]
+        }
     else:
         return max(results, key=results.get)
 
