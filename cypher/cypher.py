@@ -1,3 +1,9 @@
+"""
+cypher.
+
+Licensed under MIT.
+Copyright (c) 2016 Joseph Kato.
+"""
 import argparse
 from .util import identify
 
