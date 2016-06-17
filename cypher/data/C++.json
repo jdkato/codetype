@@ -6,10 +6,11 @@
         "std", "push_back", "pop_back", "forward_list", "unordered_map",
         "unordered_set", "vector", "iostream", "NULL", "#if"
     ],
-    "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>"],
+    "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>", "<<"],
     "first_line": [
-        "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(ifdef|define|undef) .*$"
+        "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(ifdef|define|undef) .*$",
+        "(int|void|bool) \\w*\\("
     ],
-    "unique": ["cout", "cin", "endl", "friend", "boost", "<<", "::", "delete"],
+    "unique": ["cout", "cin", "endl", "friend", "boost", "::", "delete"],
     "comments": ["//", "/*"]
 }
