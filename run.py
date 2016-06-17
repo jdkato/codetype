@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "script",
     nargs=1,
-    help="mddocs|sigmgr|test"
+    help="sigmgr|test"
 )
 parser.add_argument(
     "-t",
