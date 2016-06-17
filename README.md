@@ -20,7 +20,7 @@
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
 |    Erlang     |         :x:           |        0          |                               |
-|      Go       | :white_check_mark:    |        3          | [Lantern](https://github.com/getlantern/lantern.git) (1.00)                              |
+|      Go       | :white_check_mark:    |        10         | [Lantern](https://github.com/getlantern/lantern.git) (1.00)                              |
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        10         | [Cabal](https://github.com/haskell/cabal) (0.995)          |
 |     Java      | :white_check_mark:    |        10         | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
