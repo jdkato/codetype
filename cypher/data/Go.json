@@ -1,10 +1,10 @@
 {
     "keywords": [
         "type", "var", "defer", "nil", "uint64", "const", "struct", "true",
-        "false"
+        "false", "fmt"
     ],
     "symbols": ["{", "}"],
     "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
-    "unique": ["func", ":="],
+    "unique": ["func", ":=", "Printf"],
     "comments": ["//", "/*"]
 }
