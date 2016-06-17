@@ -143,18 +143,14 @@ def extract_content(src, is_file):
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
-        line, char, string_found = remove_inline_comment(line)
-        if char:
-            comments.add(char)
-        counts[1] += int(bool(char))
-        counts[2] += int(bool(string_found))
         skip = True
         for c, r in BLOCK_COMMENTS.items():
             if not regex and re.match(r[0], line.strip()):
-                # We've found the start of a multi-line comment.
-                regex = r[1]
-                comments.add(c)
-                break
+                if not re.match(INLINE_COMMENTS.get(c, r"^$"), line.strip()):
+                    # We've found the start of a multi-line comment.
+                    regex = r[1]
+                    comments.add(c)
+                    break
             elif regex and re.match(regex, line.strip()):
                 # We've found the end of a multi-line comment.
                 counts[3] += 1
@@ -166,6 +162,13 @@ def extract_content(src, is_file):
         if skip or not line.strip():
             # We're either in a multi-line comment or the line is blank.
             continue
+
+        line, char, string_found = remove_inline_comment(line)
+        if char:
+            comments.add(char)
+        counts[1] += int(bool(char))
+        counts[2] += int(bool(string_found))
+
         if counts[0] > 0:
             line = re.sub(STRING_RE, "", line)
         if line.strip():
