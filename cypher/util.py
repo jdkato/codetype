@@ -51,7 +51,7 @@ BLOCK_COMMENTS = {
 INLINE_COMMENTS = {
     "#": r"(?<!{-)#(?!-}|include|!|define|if|el|endif).*",
     "//": r"\/\/.*",
-    "--": r" -- .*",
+    "--": r"(?<!\w)--\s.*",
     "/*": r"/\*.*\*/",
     "{-": r"{-.*-}"
 }
@@ -62,11 +62,9 @@ DATA_PATH = os.path.join(FILE_PATH, "data")
 
 def identify(src, verbose=False):
     """Attempt to identify the language which src is written in.
-
     Args:
         src (str): Either a string or a file path.
         verbose (bool): True if verbose output is to be used.
-
     Returns:
         (str|dict): A string specifying the computed language if verbose is
             False. Otherwise a dictionary with all tested languages as keys
@@ -75,7 +73,7 @@ def identify(src, verbose=False):
     results = {}
     first_results = {}
     comment_results = {}
-    summary = get_tokens(src, is_file=os.path.isfile(src))
+    summary = get_text_summary(src, is_file=os.path.isfile(src))
     sig = compute_signature(
         summary["tokens"], summary["codeLines"], summary["firstLine"]
     )
@@ -111,26 +109,38 @@ def identify(src, verbose=False):
         return max(results, key=results.get)
 
 
+def remove_inline_comment(line):
+    """
+    """
+    comments = {}
+    without_string = re.sub(STRING_RE, "", line)
+    string_found = line != without_string
+    inline_found = False
+
+    for c, r in INLINE_COMMENTS.items():
+        if re.search(r, line) and re.search(r, without_string):
+            comments[c] = line.find(c)
+    if comments:
+        inline_found = True
+        char = min(comments, key=comments.get)
+        line = line[:line.find(char)].strip() + "\n"
+
+    return line, inline_found, string_found
+
+
 def extract_content(src, is_file):
     """Return all non-comment and non-string content in src.
     """
     content = ""
     comments = set()
     skip = regex = None
-    count = inline = block = string = 0
+    counts = [0] * 4
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
-        without_string = re.sub(STRING_RE, "", line)
-        string += 1 if line != without_string else 0
-        # Remove any inline comments.
-        for c, r in INLINE_COMMENTS.items():
-            if re.search(r, line) and re.search(r, without_string):
-                line = line[:line.find(c)] + "\n"
-                inline += 1
-                comments.add(c)
-                break
-
+        line, inline_found, string_found = remove_inline_comment(line)
+        counts[1] += int(bool(inline_found))
+        counts[2] += int(bool(string_found))
         skip = True
         for c, r in BLOCK_COMMENTS.items():
             if not regex and re.match(r[0], line.strip()):
@@ -140,7 +150,7 @@ def extract_content(src, is_file):
                 break
             elif regex and re.match(regex, line.strip()):
                 # We've found the end of a multi-line comment.
-                block += 1
+                counts[3] += 1
                 regex = None
                 break
         else:
@@ -149,40 +159,32 @@ def extract_content(src, is_file):
         if skip or not line.strip():
             # We're either in a multi-line comment or the line is blank.
             continue
-        if count > 0:
+        if counts[0] > 0:
             line = re.sub(STRING_RE, "", line)
         if line.strip():
-            count += 1
+            counts[0] += 1
             content += line
 
     text.close()
-    return {
-        "content": content,
-        "inlineCount": inline,
-        "blockCount": block,
-        "stringCount": string,
-        "comments": comments
-    }
+    return content, comments, counts
 
 
-def get_tokens(src, is_file=False, filtered=[]):
+def get_text_summary(src, is_file=False, filtered=None):
     """Extract all tokens from src.
-
     Args:
         src (str): Either a string or a file path.
         is_file (bool): True if src is a file.
         filtered (list): A list of strings indicating tokens to look for in
             src. If provided, any tokens not in filtered will be ignored.
-
     Returns:
         (tuple): (tokens, lines, first_line).
     """
     lines = 0.0
     tokens = []
     first_line = None
-    summary = extract_content(src, is_file)
-    text = StringIO(summary["content"])
+    content, comments, counts = extract_content(src, is_file)
 
+    text = StringIO(content)
     for line in text:
         if not line.strip():
             continue
@@ -190,22 +192,20 @@ def get_tokens(src, is_file=False, filtered=[]):
         if lines == 1:
             first_line = line.strip()
         extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
-        tokens.extend([s for s in extr if s in filtered or not filtered])
-
+        tokens.extend([s for s in extr if not filtered or s in filtered])
     text.close()
-    summary["tokens"] = tokens
-    summary["codeLines"] = lines
-    summary["firstLine"] = first_line
-    return summary
+
+    return {
+        "tokens": tokens, "codeLines": lines, "firstLine": first_line,
+        "counts": counts, "comments": comments
+    }
 
 
 def compare_signatures(unknown, known, lines):
     """Compare two signatures using only the keys in known.
-
     Args:
         unknown (dict): A signature for an unknown language.
         known (dict): A signature for a known language.
-
     Returns:
         float: A score indicating how closely unknown resembled known.
     """
@@ -245,7 +245,6 @@ def compute_signature(tokens, lines, first_line, unique=None, comments=None):
 
 def read_signature(lang):
     """Load an existing signature.
-
     Args:
         lang (str): The name of the existing signature.
     """
@@ -255,10 +254,8 @@ def read_signature(lang):
 
 def get_lang_data(lang):
     """Load existing data on lang.
-
     Args:
         lang (str): The name of the language.
-
     Returns:
         list: A list of all keywords associated with lang.
     """
@@ -280,7 +277,6 @@ def get_lang_data(lang):
 
 def write_signature(src, lang, ext, is_file=True):
     """Write a signature for src.
-
     Args:
         src (str): A path to a directory.
         lang (str): The name of the language.
@@ -295,7 +291,7 @@ def write_signature(src, lang, ext, is_file=True):
         for f in files:
             if ext and not any(f.endswith(e) for e in ext):
                 continue
-            summary = get_tokens(
+            summary = get_text_summary(
                 os.path.join(subdir, f),
                 is_file=is_file,
                 filtered=known
