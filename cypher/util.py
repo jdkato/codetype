@@ -121,17 +121,16 @@ def remove_inline_comment(line):
     comments = {}
     without_string = re.sub(STRING_RE, "", line)
     string_found = line != without_string
-    inline_found = False
+    char = False
 
     for c, r in INLINE_COMMENTS.items():
         if re.search(r, line) and re.search(r, without_string):
             comments[c] = line.find(c)
     if comments:
-        inline_found = True
         char = min(comments, key=comments.get)
         line = line[:line.find(char)].strip() + "\n"
 
-    return line, inline_found, string_found
+    return line, char, string_found
 
 
 def extract_content(src, is_file):
@@ -144,8 +143,10 @@ def extract_content(src, is_file):
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
-        line, inline_found, string_found = remove_inline_comment(line)
-        counts[1] += int(bool(inline_found))
+        line, char, string_found = remove_inline_comment(line)
+        if char:
+            comments.add(char)
+        counts[1] += int(bool(char))
         counts[2] += int(bool(string_found))
         skip = True
         for c, r in BLOCK_COMMENTS.items():
