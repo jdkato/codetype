@@ -107,9 +107,9 @@ def identify(src, verbose=False):
 
     if verbose:
         return {
-            "results": results, "blockCount": summary["blockCount"],
-            "inlineCount": summary["inlineCount"],
-            "stringCount": summary["stringCount"]
+            "results": results, "blockCount": summary["counts"][2],
+            "inlineCount": summary["counts"][0],
+            "stringCount": summary["counts"][1]
         }
     else:
         return max(results, key=results.get)
@@ -140,13 +140,13 @@ def extract_content(src, is_file):
     content = ""
     comments = set()
     skip = regex = None
-    counts = [0] * 4
+    counts = [0] * 3
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
 
     for line in text:
         line, inline_found, string_found = remove_inline_comment(line)
-        counts[1] += int(bool(inline_found))
-        counts[2] += int(bool(string_found))
+        counts[0] += int(bool(inline_found))
+        counts[1] += int(bool(string_found))
         skip = True
         for c, r in BLOCK_COMMENTS.items():
             if not regex and re.match(r[0], line.strip()):
@@ -156,7 +156,7 @@ def extract_content(src, is_file):
                 break
             elif regex and re.match(regex, line.strip()):
                 # We've found the end of a multi-line comment.
-                counts[3] += 1
+                counts[2] += 1
                 regex = None
                 break
         else:
