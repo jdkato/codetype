@@ -7,7 +7,7 @@
     "symbols": ["{", "}", ";", "&", "->", "*"],
     "first_line": [
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
-        "^#(ifdef|define|undef) .*$", "(int|void) \\w*\\("
+        "^#(if|ifdef|define|undef) .*$", "(int|void) \\w*\\("
     ],
     "unique": ["static", "printf(", "fprintf("],
     "comments": ["//", "/*"]

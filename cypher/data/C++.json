@@ -8,7 +8,7 @@
     ],
     "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>", "<<"],
     "first_line": [
-        "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(ifdef|define|undef) .*$",
+        "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
         "(int|void|bool) \\w*\\("
     ],
     "unique": ["cout", "cin", "endl", "friend", "boost", "::", "delete"],

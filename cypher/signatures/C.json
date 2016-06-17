@@ -12,7 +12,7 @@
     ], 
     "first_line": [
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$", 
-        "^#(ifdef|define|undef) .*$", 
+        "^#(if|ifdef|define|undef) .*$", 
         "(int|void) \\w*\\("
     ], 
     "fprintf(": 0.00409401664105146, 

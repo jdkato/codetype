@@ -23,7 +23,7 @@
     "false": 0.019290238331213606, 
     "first_line": [
         "^#include (\"((?!\\.c\").)*\"|<.*>)$", 
-        "^#(ifdef|define|undef) .*$", 
+        "^#(if|ifdef|define|undef) .*$", 
         "(int|void|bool) \\w*\\("
     ], 
     "forward_list": 1.7014543180783776e-05, 
