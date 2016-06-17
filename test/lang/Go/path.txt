@@ -1,0 +1,4 @@
+import "path"
+
+ext := path.Ext(infile)
+outfile = infile[0:len(infile)-len(ext)] + ".newExt"

@@ -1,0 +1,4 @@
+func someHandler(w http.ResponseWriter, r *http.Request) {
+    query := req.URL.Query()
+    val1 := query.Get("key1")
+    val2 := query.Get("key2")
