@@ -6,7 +6,9 @@
     "symbols": [
         "{", "}", ";", "$", "@", "->", "::", "=>", "%", " . "
     ],
-    "first_line": ["^package [^\"\\']*;$", "^use .*;$", "^#!.*perl$"],
+    "first_line": [
+        "^package [^\"\\']*;$", "^use .*;$", "^#!.*perl$", "^sub \\w* {$"
+    ],
     "unique": [
         "my", "eq", "ref", "shift", "FILEOUT", "=~", "1;", "FILE", "`",
         "foreach"
