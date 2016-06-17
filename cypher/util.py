@@ -217,7 +217,7 @@ def compare_signatures(unknown, known, lines):
     """
     total = 1.0
     found = 0.0
-    mult = 2 if lines < 10 else 1
+    mult = 2 if lines < 15 else 1
     for k, v in known.items():
         if k in ["first_line", "comments"]:
             continue
