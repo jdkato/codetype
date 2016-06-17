@@ -1,0 +1,6 @@
+seriesUp :: Int -> [Int]
+seriesUp n = seriesUp' 0 n
+ 
+seriesUp' :: Int -> Int -> [Int]
+seriesUp' i n | i > n     = []
+              | otherwise = [1..i] ++ seriesUp' (i+1) n 
