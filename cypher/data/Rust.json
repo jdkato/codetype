@@ -1,10 +1,13 @@
 {
     "keywords": [
-        "struct", "extern", "let", "match", "self", "with_stdout(", "unwrap(",
-        "with_status(", "println"
+        "struct", "extern", "self", "with_stdout(", "unwrap(",
+        "with_status(", "println", "use", "mod"
     ],
-    "symbols": ["{", "}", "|", "&", "->", ".", "=>", ":", "!"],
+    "symbols": ["{", "}", "|", "&", "->", ".", "=>", ":", "!", ";", "::"],
     "first_line": ["^(extern|use|pub) .*;$"],
-    "unique": ["mut", "fn", "pub", "!("],
+    "unique": [
+        "mut", "fn", "pub", "!(", "#[", "i32", "f64", "let", "match", "impl",
+        "loop"
+    ],
     "comments": ["//", "/*"]
 }
