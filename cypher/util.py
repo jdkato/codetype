@@ -120,15 +120,18 @@ def remove_inline_comment(line):
     """
     comments = {}
     without_string = re.sub(STRING_RE, "", line)
-    string_found = line != without_string
+    string_found = False
     char = False
 
     for c, r in INLINE_COMMENTS.items():
         if re.search(r, line) and re.search(r, without_string):
             comments[c] = line.find(c)
+
     if comments:
         char = min(comments, key=comments.get)
         line = line[:line.find(char)].strip() + "\n"
+    else:
+        string_found = line != without_string
 
     return line, char, string_found
 
