@@ -29,16 +29,22 @@ class CypherTestCase(unittest.TestCase):
 
     def test_remove_inline_comment(self):
         cases = {
-            "var += 1 # This is a comments": "var += 1",
-            "foo # This is a nested -- comment": "foo",
-            "bar // another nested # comment": "bar",
-            "baz /* block-style inline */": "baz",
-            "main() -- comment": "main()",
-            "baz {- block-style inline -}": "baz",
+            "var += 1 # This is a comments": ["var += 1", "#", False],
+            "foo # This is a nested -- comment": ["foo", "#", False],
+            "bar // another nested # comment": ["bar", "//", False],
+            "baz /* block-style inline */": ["baz", "/*", False],
+            "main() -- comment": ["main()", "--", False],
+            "baz {- block-style inline -}": ["baz", "{-", False],
+            "baz {- block-style 'inline' -}": ["baz", "{-", False],
+            'baz {- "block-style" inline -}': ["baz", "{-", False],
+            '"baz" {- "block-style" inline -}': ['"baz"', "{-", True],
+            "'baz' // {- block-style inline -}": ["'baz'", "//", True],
         }
         for case, output in cases.items():
-            removed = remove_inline_comment(case)[0].strip()
-            self.assertEqual(removed, output)
+            removed, char, string_found = remove_inline_comment(case)
+            self.assertEqual(removed.strip(), output[0])
+            self.assertEqual(char, output[1])
+            self.assertEqual(string_found, output[2])
 
 
 if __name__ == "__main__":
