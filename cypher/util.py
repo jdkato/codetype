@@ -223,12 +223,12 @@ def compare_signatures(unknown, known, lines):
     """
     total = 1.0
     found = 0.0
-    mult = 3 if lines < 15 else 1
+    mult = 2 if lines < 15 else 1
     for k, v in known.items():
         if k in ["first_line", "comments"]:
             continue
         elif k == "unique":
-            inc = 2.5 * mult
+            inc = 4 * mult
             found += sum([inc if keyword in unknown else 0 for keyword in v])
         else:
             test_value = unknown.get(k)
