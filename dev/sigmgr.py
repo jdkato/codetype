@@ -1,4 +1,5 @@
 import subprocess
+import time
 import json
 import os
 
@@ -77,6 +78,7 @@ def test_sig(src_dir, lang, ext, indentifier):
     log = open(os.path.join(LOG_DIR, lang + ".txt"), "w+")
     file_count = 0.0
     identified = 0.0
+    times = []
     for subdir, _, files in os.walk(src_dir):
         for f in files:
             p = os.path.join(subdir, f)
@@ -86,7 +88,9 @@ def test_sig(src_dir, lang, ext, indentifier):
             if os.stat(p).st_size == 0:
                 continue
             file_count += 1
+            start_time = time.time()
             computed = indentifier(src=p)
+            times.append(time.time() - start_time)
             if computed == lang:
                 identified += 1
             elif computed == -1:
@@ -97,6 +101,7 @@ def test_sig(src_dir, lang, ext, indentifier):
     log.close()
     c = round(identified / file_count if file_count else 1, 3)
     print("{}: Correct = {} ({} / {})".format(lang, c, identified, file_count))
+    print("{}: Avg time = {}".format(lang, sum(times) / len(times)))
     store_result(lang, c)
 
 
