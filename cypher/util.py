@@ -120,7 +120,6 @@ def remove_inline_comment(line):
     """
     comments = {}
     without_string = re.sub(STRING_RE, "", line)
-    string_found = False
     char = False
 
     for c, r in INLINE_COMMENTS.items():
@@ -130,10 +129,9 @@ def remove_inline_comment(line):
     if comments:
         char = min(comments, key=comments.get)
         line = line[:line.find(char)].strip() + "\n"
-    else:
-        string_found = line != without_string
+        without_string = re.sub(STRING_RE, "", line)
 
-    return line, char, string_found
+    return line, char, line != without_string
 
 
 def extract_content(src, is_file):
