@@ -1,0 +1,19 @@
+<?php
+
+// This will be ignored. Note to self:
+
+// Pick up ice cream, cake, and balloons.
+
+print ("I am the CHICKEN MAN");
+
+/*
+
+This, too, will be ignored.
+
+Hey, and don't forget
+
+the spanking machine!
+
+*/
+
+?>
