@@ -106,9 +106,9 @@ def test_sig(src_dir, lang, ext, indentifier):
                 log.write("Incorrect: ({}) {}!\n".format(computed, sp))
     log.close()
     c = round(identified / file_count if file_count else 1, 3)
-    print("{}: Correct = {} ({} / {})".format(lang, c, identified, file_count))
-    print("{}: Avg time = {}".format(lang, sum(times) / len(times)))
     store_result(lang, c)
+    print("{}: Correct = {} ({} / {})".format(lang, c, identified, file_count))
+    return sum(times) / len(times)
 
 
 def clone_and_clean(repo, src_dir, ext):
@@ -130,6 +130,7 @@ def run(lang, is_test, identifier=None, writer=None):
     """
     """
     test_all = False
+    times = []
     if not lang:
         test_all = True
     else:
@@ -146,9 +147,10 @@ def run(lang, is_test, identifier=None, writer=None):
                 src_dir = os.path.join(
                     TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
                 )
-                test_sig(src_dir, lang, info["ext"], identifier)
+                times.append(test_sig(src_dir, lang, info["ext"], identifier))
         else:
-            test_sig(src_dir, lang, info["ext"], identifier)
+            times.append(test_sig(src_dir, lang, info["ext"], identifier))
+        print("Avg. time per file: {}".format(sum(times) / len(times)))
     elif is_test:
         print("Please specify an identifier.")
         return -1
