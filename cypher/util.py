@@ -45,7 +45,7 @@ EXTRACT_RE = r"""
     \(\)| # Haskell
     \$_| # PHP
     \#\[| # Rust
-    [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(]
+    [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(-]
 """
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
@@ -56,7 +56,7 @@ BLOCK_COMMENTS = {
     "=": [r"^=.*$", r"^=.*$"]
 }
 INLINE_COMMENTS = {
-    "#": r"(?<!{-)#(?!-}|include|!|define|if|el|endif).*",
+    "#": r"(?<!{-)#(?!-}|include|!|define|if|el|endif|import).*",
     "//": r"\/\/.*",
     "--": r"(?<!\w)--\s.*",
     "/*": r"/\*.*\*/",
@@ -142,7 +142,12 @@ def extract_content(src, is_file):
     comments = set()
     skip = regex = None
     counts = [0] * 4
-    text = io.open(src, errors="ignore") if is_file else StringIO(src)
+
+    try:
+        text = io.open(src, errors="ignore") if is_file else StringIO(src)
+    except IOError:
+        print("IOError: {}".format(src))
+        return content, comments, counts
 
     for line in text:
         skip = True

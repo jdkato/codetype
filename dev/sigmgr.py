@@ -51,6 +51,10 @@ LANG_INFO = {
     "Perl": {
         "repo": "https://github.com/kraih/mojo.git",
         "ext": [".pm"]
+    },
+    "Objective-C": {
+        "repo": "https://github.com/adium/adium.git",
+        "ext": [".m"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "dev", "results.json")
@@ -83,6 +87,8 @@ def test_sig(src_dir, lang, ext, indentifier):
         for f in files:
             p = os.path.join(subdir, f)
             sp = p.split("repos")[1]
+            if not os.path.exists(p):
+                continue
             if ext and not any(f.endswith(e) for e in ext):
                 continue
             if os.stat(p).st_size == 0:
