@@ -19,7 +19,7 @@ except ImportError:
     from io import StringIO
 
 EXTRACT_RE = r"""
-    [\w]+\(?|
+    @?[\w]+\(?|
     ::| # C++, Haskell, Ruby, R, PHP
     =>| # C#, Rust, PHP
     <<(?!-)| # C++
