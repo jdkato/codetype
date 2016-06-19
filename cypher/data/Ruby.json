@@ -4,13 +4,13 @@
         "redo", "not", "retry", "then", "true", "undef", "unless", "when",
         "each", "require", "module", "gets", "require_dependency",
         "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
-        "Method", "NilClass", "TrueClass"
+        "Method", "NilClass", "TrueClass", "has_key"
     ],
     "symbols": ["?", "!", "$", "|", "::", "@"],
     "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
         "^#!.*ruby$"
     ],
-    "unique": ["elsif", "chomp", "to_i", "to_f", "rescue", "end", "puts"],
+    "unique": ["elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end"],
     "comments": ["#", "="]
 }
