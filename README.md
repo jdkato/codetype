@@ -31,7 +31,7 @@
 |   Markdown    |         :x:           |        0          |                               |
 |    Matlab     |         :x:           |        0          |                               |
 |    OCaml      |         :x:           |        0          |                               |
-| Objective-C   |         :x:           |        0          |                               |
+| Objective-C   | :white_check_mark:    |        10         | [Adium](https://github.com/adium/adium.git) (0.993)                             |
 |     Perl      | :white_check_mark:    |        10         | [Mojolicious](https://github.com/kraih/mojo) (1.00)                          |
 |     PHP       | :white_check_mark:    |        10         | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
 |    Python     | :white_check_mark:    |        11         | [Django](https://github.com/django/django) (0.982)            |
