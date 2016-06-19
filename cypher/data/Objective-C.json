@@ -1,15 +1,17 @@
 {
     "keywords": [
-        "end", "id", "implementation", "interface", "self", "nil", "void"
+        "id", "self", "nil", "void", "alloc", "init"
     ],
-    "symbols": ["{", "}", ";", "-", "@", "[", "]"],
+    "symbols": ["{", "}", ";", "-", "@", "[", "]", "+"],
     "first_line": [
         "^#import (\".*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$"
     ],
     "unique": [
         "NSObject", "NSInteger", "NSNumber", "NSArray", "NSString", "BOOL",
         "NO", "YES", "NSFileManager", "NSDictionary", "NSMutableArray",
-        "NSMutableSet", "NSLog", "NSApplicationMain"
+        "NSMutableSet", "NSLog", "NSApplicationMain", "@implementation",
+        "@end", "@protocol", "@property", "@interface", "NSURL", "NSError",
+        "removeObjectAtIndex", "@selector", "respondsToSelector", "IBAction"
     ],
     "comments": ["//", "/*"]
 }
