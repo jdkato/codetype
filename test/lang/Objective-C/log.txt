@@ -1,0 +1,18 @@
+if ((cEventStatus) && (ddayDif = 0)) {
+        NSLog(@"upDateCountersWorking");
+        [self upDateCountersWorking];
+
+}else if ((cEventStatus) && (ddayDif > 0 )){
+    NSLog(@"currentlyWorkingAddDays");
+    [self currentlyWorkingAddDays:&ddayDif];
+
+}else if ((!cEventStatus) && (ddayDif = 0)){
+     NSLog(@"upDateCountersResting");
+    [self upDateCountersResting];
+
+}else if ((!cEventStatus) && (ddayDif > 0)){
+    NSLog(@"currentlyRestingAddDays");
+    [self currentlyRestingAddDays:&ddayDif];
+}else{
+    NSLog(@"final else");
+}
