@@ -17,7 +17,7 @@ LANG_INFO = {
         "ext": [".c"]
     },
     "C++": {
-        "repo": "https://github.com/apple/swift.git",
+        "repo": "https://github.com/electron/electron.git",
         "ext": [".cc", ".cpp"]
     },
     "R": {
