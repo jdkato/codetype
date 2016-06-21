@@ -4,7 +4,8 @@
     ],
     "symbols": ["{", "}", ";", "-", "@", "[", "]", "+"],
     "first_line": [
-        "^#import (\".*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$"
+        "^#import (\".*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
+        "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"
     ],
     "unique": [
         "NSObject", "NSInteger", "NSNumber", "NSArray", "NSString", "BOOL",
