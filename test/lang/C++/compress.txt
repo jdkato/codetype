@@ -1,0 +1,24 @@
+/**
+ * LZMA2 compression
+ */
+class LZMA2Codec final : public Codec {
+ public:
+  static std::unique_ptr<Codec> create(int level, CodecType type);
+  explicit LZMA2Codec(int level, CodecType type);
+
+ private:
+  bool doNeedsUncompressedLength() const override;
+  uint64_t doMaxUncompressedLength() const override;
+
+  bool encodeSize() const { return type() == CodecType::LZMA2_VARINT_SIZE; }
+
+  std::unique_ptr<IOBuf> doCompress(const IOBuf* data) override;
+  std::unique_ptr<IOBuf> doUncompress(
+      const IOBuf* data,
+      uint64_t uncompressedLength) override;
+
+  std::unique_ptr<IOBuf> addOutputBuffer(lzma_stream* stream, size_t length);
+  bool doInflate(lzma_stream* stream, IOBuf* head, size_t bufferLength);
+
+  int level_;
+};
