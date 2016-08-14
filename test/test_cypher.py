@@ -26,7 +26,7 @@ class CypherTestCase(unittest.TestCase):
                     computed = identify(os.path.join(subdir, f))
                     self.assertEqual(
                         known, computed,
-                        msg="({0}: {1}, {2}".format(f, known, computed)
+                        msg="{0} != {1} ({2})".format(known, computed, f)
                     )
             print("Tested {} {} files.".format(count, known))
 
