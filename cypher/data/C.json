@@ -1,6 +1,6 @@
 {
     "keywords": [
-        "ifdef", "calloc", "free", "malloc", "realloc", "putchar", "getchar",
+        "ifdef", "calloc", "free", "malloc", "realloc", "getchar",
         "va_start", "va_end", "typedef", "stdio", "ctype", "stdlib", "stdarg",
         "stddef", "setjmp", "scanf", "stddef", "memcpy(", "#if", "NULL"
     ],
@@ -9,6 +9,6 @@
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
         "^#(if|ifdef|define|undef) .*$", "(int|void) \\w*\\("
     ],
-    "unique": ["static", "printf(", "fprintf("],
+    "unique": ["static", "printf(", "fprintf(", "putchar"],
     "comments": ["//", "/*"]
 }
