@@ -24,7 +24,10 @@ class CypherTestCase(unittest.TestCase):
                 if f.endswith(".txt"):
                     count += 1
                     computed = identify(os.path.join(subdir, f))
-                    self.assertEqual(known, computed)
+                    self.assertEqual(
+                        known, computed,
+                        msg="({0}: {1}, {2}".format(f, known, computed)
+                    )
             print("Tested {} {} files.".format(count, known))
 
     def test_remove_inline_comment(self):
