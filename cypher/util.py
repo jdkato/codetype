@@ -20,6 +20,7 @@ except ImportError:
 
 EXTRACT_RE = r"""
     [@|#]?[\w]+\(?|
+    ::~| # C++
     ::| # C++, Haskell, Ruby, R, PHP
     =>| # C#, Rust, PHP
     <<(?!-)| # C++

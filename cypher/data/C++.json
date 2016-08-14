@@ -4,13 +4,15 @@
         "reinterpret_cast", "namespace", "template", "typename", "virtual",
         "auto", "extern", "new", "true", "false", "bool", "ifdef",
         "std", "push_back", "pop_back", "forward_list", "unordered_map",
-        "unordered_set", "vector", "iostream", "NULL", "#if"
+        "unordered_set", "vector", "iostream", "NULL", "#if", "override"
     ],
-    "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>", "<<"],
+    "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]"],
     "first_line": [
         "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
         "(int|void|bool) \\w*\\("
     ],
-    "unique": ["cout", "cin", "endl", "friend", "boost", "::", "delete"],
+    "unique": [
+        "cout", "cin", "endl", "friend", "boost", "delete", "unique_ptr", "::~"
+    ],
     "comments": ["//", "/*"]
 }
