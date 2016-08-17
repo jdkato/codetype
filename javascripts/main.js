@@ -14,8 +14,8 @@ function clearText() {
 
 var identify = function() {
     $.ajax({
-        type: 'GET',
-        url: 'http://localhost:5000/cypher',
+        type: 'POST',
+        url: 'https://cypher-api.herokuapp.com/cypher',
         datatype: 'json',
         data: { text: $('#text').val() },
         success: function(data) {
@@ -33,8 +33,8 @@ var identify = function() {
                 $('#inline').html(data.inlineCount);
                 $('#block').html(data.blockCount);
                 $('#string').html(data.stringCount);
-                console.log(JSON.stringify(data));
             }
+            console.log(JSON.stringify(data));
         },
         error: function(error) {
             console.log(error);
