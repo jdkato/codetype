@@ -2,7 +2,7 @@ import os
 import sys
 import unittest
 
-from cypher.util import (
+from cypher import (
     identify,
     remove_inline_comment
 )

@@ -2,7 +2,7 @@ import argparse
 import sys
 import unittest
 
-from cypher.util import (
+from cypher import (
     identify,
     write_signature as sig_writer
 )

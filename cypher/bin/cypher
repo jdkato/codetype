@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 cypher.
 
@@ -5,7 +6,7 @@ Licensed under MIT.
 Copyright (c) 2016 Joseph Kato.
 """
 import argparse
-from .util import identify
+from .. import identify
 
 parser = argparse.ArgumentParser(
     prog="cypher",
@@ -22,13 +23,10 @@ parser.add_argument(
     action="store_true",
     help="Return all scores."
 )
+
 args = vars(parser.parse_args())
-
-
-def main():
-    result = identify(args["src"][0], verbose=args["verbose"])
-    if result < 0:
-        print("Language not recognized.")
-    else:
-        print(result)
-    return result if result < 0 else 0
+result = identify(args["src"][0], verbose=args["verbose"])
+if result < 0:
+    print("Language not recognized.")
+else:
+    print(result)
