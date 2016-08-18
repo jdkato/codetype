@@ -273,7 +273,7 @@ def compute_signature(lang_data):
     signature["first_line"] = lang_data.get("first_line")
     signature["unique"] = lang_data.get("unique", [])
     signature["comments"] = lang_data.get("comments")
-    signature["flags"] = lang_data.get("flags")
+    signature["flags"] = lang_data.get("flags", [])
     return signature
 
 
