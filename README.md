@@ -3,9 +3,16 @@
 [![Build Status](https://travis-ci.org/jdkato/cypher.svg?branch=master)](https://travis-ci.org/jdkato/cypher) [![Coverage Status](https://coveralls.io/repos/github/jdkato/cypher/badge.svg?branch=master)](https://coveralls.io/github/jdkato/cypher?branch=master) [![Code Health](https://landscape.io/github/jdkato/cypher/master/landscape.svg?style=flat)](https://landscape.io/github/jdkato/cypher/master)
 
 
-[`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a command-line tool that can quickly identify the source code language of either a string or a file. [You can test it out here](http://jdkato.github.io/cypher/).
+[`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a Python library that can identify the language of source code snippets and files. [You can test it out here](http://jdkato.github.io/cypher/).
 
 ## Usage
+
+```python
+>>> import cypher
+>>> cypher.identify('fibs = 0 : 1 : zipWith (+) fibs (tail fibs)')
+'Haskell'
+>>>
+```
 
 ## Strategy
 
