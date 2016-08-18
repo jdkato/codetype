@@ -5,7 +5,7 @@
         "return"
     ],
     "symbols": ["#", "@"],
-    "first_line": ["^(from .*)?import [^\"]*$", "['|\"]{3}", "^#!.*python$"],
+    "first_line": ["^(from .*)?import [^\"\\{]*$", "['|\"]{3}", "^#!.*python$"],
     "unique": ["@classmethod", "@staticmethod", ":\n"],
     "comments": ["#", "'''", "\"\"\""]
 }
