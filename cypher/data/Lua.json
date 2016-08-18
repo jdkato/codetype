@@ -9,5 +9,6 @@
         "^return {$", "^require ('|\").*('|\")$", "^function .*\\(.*\\)"
     ],
     "unique": ["local", "end", "~="],
+    "flags": [],
     "comments": ["--", "--[["]
 }

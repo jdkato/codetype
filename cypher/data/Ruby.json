@@ -15,5 +15,6 @@
     "unique": [
         "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "=>"
     ],
+    "flags": [],
     "comments": ["#", "="]
 }

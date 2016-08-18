@@ -11,5 +11,6 @@
         "^<\\?(php)?$", "^function .*\\(.*\\)", "^(namespace|use) [^\"']*;$"
     ],
     "unique": ["$_"],
+    "flags": [],
     "comments": ["//", "/*"]
 }
