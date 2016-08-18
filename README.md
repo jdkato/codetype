@@ -56,8 +56,8 @@ $ cypher path/to/file
 |     PHP       | :white_check_mark:    |        10         | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
 |    Python     | :white_check_mark:    |        12         | [Django](https://github.com/django/django) (0.985)            |
 |      R        | :white_check_mark:    |        11         | [Shiny](https://github.com/rstudio/shiny) (0.975)             |
-|     Ruby      | :white_check_mark:    |        11         | [Ruby on Rails](https://github.com/rails/rails) (0.977)          |
+|     Ruby      | :white_check_mark:    |        11         | [Ruby on Rails](https://github.com/rails/rails) (0.976)          |
 |     Rust      | :white_check_mark:    |        10         | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
-|    Scala      |         :x:           |        0          |                               |
+|    Scala      | :white_check_mark:    |        10         | [squbs](https://github.com/paypal/squbs.git) (0.997)                       |
 |    Swift      |         :x:           |        0          |                               |
 |     XML       |         :x:           |        0          |                               |
