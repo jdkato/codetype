@@ -1,0 +1,14 @@
+--condition = true
+
+while condition do
+  --statements
+end
+
+repeat
+  --statements
+until condition
+
+for i = first,last,delta do     --delta may be negative, allowing the for loop to count down or up
+  --statements
+  --example: print(i)
+end

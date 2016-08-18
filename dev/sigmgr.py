@@ -55,6 +55,10 @@ LANG_INFO = {
     "Objective-C": {
         "repo": "https://github.com/adium/adium.git",
         "ext": [".m"]
+    },
+    "Lua": {
+        "repo": "https://github.com/Mashape/kong.git",
+        "ext": [".lua"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "dev", "results.json")

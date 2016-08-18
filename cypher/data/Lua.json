@@ -1,0 +1,13 @@
+{
+    "keywords": [
+        "not", "then", "function", "and", "elseif", "nil", "repeat",
+        "do", "until", "self", "true", "false"
+    ],
+    "symbols": ["#", "{", "}", "()"],
+    "first_line": [
+        "^local .* = require(\\(|\\s)?\".*\"(\\))?$", "^#!.*lua(jit)?$",
+        "^return {$", "^require ('|\").*('|\")$", "^function .*\\(.*\\)"
+    ],
+    "unique": ["local", "end", "~="],
+    "comments": ["--", "--[["]
+}
