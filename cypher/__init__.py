@@ -93,9 +93,7 @@ def identify(src, verbose=False):
     first_results = {}
     comment_results = {}
     summary = get_text_summary(src, is_file=os.path.isfile(src))
-    sig = compute_signature(
-        summary["tokens"], summary["codeLines"], summary["firstLine"]
-    )
+    sig = compute_signature(summary)
     if not sig:
         return -1
 
@@ -105,7 +103,7 @@ def identify(src, verbose=False):
         if not lang:
             continue
         ksig = read_signature(lang)
-        results[lang] = compare_signatures(sig, ksig, summary["codeLines"])
+        results[lang] = compare_signatures(sig, ksig, summary["lines"])
         if all(r in ksig.get("comments") for r in summary["comments"]):
             comment_results[lang] = results[lang]
         for regex in ksig.get("first_line", []):
@@ -225,7 +223,7 @@ def get_text_summary(src, is_file=False, filtered=None):
     text.close()
 
     return {
-        "tokens": tokens, "codeLines": lines, "firstLine": first_line,
+        "tokens": tokens, "lines": lines, "first_line": first_line,
         "counts": counts, "comments": comments
     }
 
@@ -241,12 +239,15 @@ def compare_signatures(unknown, known, lines):
     total = 1.0
     found = 0.0
     mult = 2 if lines < 15 else 1
+
     for k, v in known.items():
         if k in ["first_line", "comments"]:
             continue
         elif k == "unique":
             inc = 4 * mult
-            found += sum([inc if keyword in unknown else 0 for keyword in v])
+            found += sum([inc if token in unknown else 0 for token in v])
+        elif k == "flags":
+            found -= sum([mult if token in unknown else 0 for token in v])
         else:
             test_value = unknown.get(k)
             if test_value:
@@ -255,20 +256,24 @@ def compare_signatures(unknown, known, lines):
             elif v > 0.10:
                 total += 1
                 found -= 1
+
     return round(found / total, 3)
 
 
-def compute_signature(tokens, lines, first_line, unique=None, comments=None):
+def compute_signature(lang_data):
     """
     """
+    tokens = lang_data.get("tokens")
+    lines = lang_data.get("lines")
     if not tokens:
         return {}
     signature = Counter(tokens)
     for key in signature:
         signature[key] /= lines
-    signature["first_line"] = first_line
-    signature["unique"] = unique
-    signature["comments"] = comments
+    signature["first_line"] = lang_data.get("first_line")
+    signature["unique"] = lang_data.get("unique", [])
+    signature["comments"] = lang_data.get("comments")
+    signature["flags"] = lang_data.get("flags")
     return signature
 
 
@@ -301,7 +306,7 @@ def get_lang_data(lang):
             tokens.extend(v)
     tokens = set(tokens)
 
-    return tokens, d.get("first_line"), d.get("unique", []), d.get("comments")
+    return tokens, d
 
 
 def write_signature(src, lang, ext, is_file=True):
@@ -312,7 +317,7 @@ def write_signature(src, lang, ext, is_file=True):
         ext (list): A list of file extensions associated with lang.
         is_file (bool): True if src is a file.
     """
-    known, first_line, unique, comments = get_lang_data(lang)
+    known, lang_data = get_lang_data(lang)
     tokens = []
     lines = 0.0
 
@@ -326,8 +331,10 @@ def write_signature(src, lang, ext, is_file=True):
                 filtered=known
             )
             tokens.extend(summary["tokens"])
-            lines += summary["codeLines"]
+            lines += summary["lines"]
 
-    data = compute_signature(tokens, lines, first_line, unique, comments)
+    lang_data["tokens"] = tokens
+    lang_data["lines"] = lines
+    data = compute_signature(lang_data)
     with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
         json.dump(data, sig, indent=4, sort_keys=True)
