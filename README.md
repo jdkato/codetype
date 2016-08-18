@@ -10,9 +10,11 @@
 ## Usage
 
 ```python
->>> import cypher
->>> cypher.identify('fibs = 0 : 1 : zipWith (+) fibs (tail fibs)')
+>>> from cypher import identify
+>>> identify('fibs = 0 : 1 : zipWith (+) fibs (tail fibs)')
 'Haskell'
+>>> identify('from math import fabs')
+'Python'
 >>>
 ```
 
