@@ -28,7 +28,7 @@
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       | :white_check_mark:    |        10         | [Nancy](https://github.com/NancyFx/Nancy.git) (0.995)                             |
 |     C++       | :white_check_mark:    |        11         | [Electron](https://github.com/apple/swift) (0.974)          |
-|      C        | :white_check_mark:    |        10         | [Git](https://github.com/git/git) (0.966)            |
+|      C        | :white_check_mark:    |        10         | [Git](https://github.com/git/git) (0.969)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        |         :x:           |        0          |                               |
