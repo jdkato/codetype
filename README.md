@@ -49,7 +49,6 @@ $ cypher path/to/file
 |    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
 |     Lua       | :white_check_mark:    |        10         | [Kong](https://github.com/Mashape/kong) (1.00)                              |
-|   Markdown    |         :x:           |        0          |                               |
 |    Matlab     |         :x:           |        0          |                               |
 |    OCaml      |         :x:           |        0          |                               |
 | Objective-C   | :white_check_mark:    |        10         | [Adium](https://github.com/adium/adium.git) (0.993)                             |
