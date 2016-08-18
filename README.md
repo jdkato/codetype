@@ -5,6 +5,8 @@
 
 [`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a Python library that can identify the language of source code snippets and files. [You can test it out here](http://jdkato.github.io/cypher/).
 
+## Installation
+
 ## Usage
 
 ```python
