@@ -6,7 +6,7 @@ Licensed under MIT.
 Copyright (c) 2016 Joseph Kato.
 """
 import argparse
-from .. import identify
+from cypher import identify
 
 parser = argparse.ArgumentParser(
     prog="cypher",
