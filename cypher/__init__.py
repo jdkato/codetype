@@ -255,7 +255,7 @@ def compare_signatures(unknown, known, lines):
             elif v > 0.10:
                 total += 1
                 found -= 1
-    return found / total
+    return round(found / total, 3)
 
 
 def compute_signature(tokens, lines, first_line, unique=None, comments=None):
