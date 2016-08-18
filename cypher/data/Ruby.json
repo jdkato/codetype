@@ -11,7 +11,7 @@
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
         "^#!.*ruby$"
     ],
-    "flags": ["function"],
+    "flags": ["function", "val", "import"],
     "unique": [
         "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "=>"
     ],
