@@ -1,0 +1,7 @@
+case class Pet(name: String, age: Int)
+object Pet {  
+    implicit val petReads: Reads[Pet] = (
+    (JsPath \ "name").read[String](minLength[String](2)) and
+    (JsPath \ "age").read[Int](min(0))
+    )(Pet.apply _)
+)

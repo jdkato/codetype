@@ -1,0 +1,12 @@
+{
+    "keywords": [
+        "def", "Try", "with", "class", "extends", "val", "case", "implicit",
+        "Null", "abstract", "override", "private", "Map(", "List(", "String",
+        "object", "None"
+    ],
+    "symbols": ["{", "}", ":", "=>", "@", "`", "~", "->", "++"],
+    "first_line": ["^package\\s.{1,}$", "^import .*$"],
+    "unique": ["forSome", "Var", "match", "lazy", "trait", "Nil", ":::"],
+    "flags": [],
+    "comments": ["//", "/*"]
+}

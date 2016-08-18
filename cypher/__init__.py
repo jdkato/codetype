@@ -30,6 +30,8 @@ __all__ = ["identify"]
 
 EXTRACT_RE = r"""
     [@|#]?[\w]+\(?|
+    \+\+| # Scala
+    :::| # Scala
     ::~| # C++
     ::| # C++, Haskell, Ruby, R, PHP
     =>| # C#, Rust, PHP

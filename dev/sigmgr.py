@@ -59,6 +59,10 @@ LANG_INFO = {
     "Lua": {
         "repo": "https://github.com/Mashape/kong.git",
         "ext": [".lua"]
+    },
+    "Scala": {
+        "repo": "https://github.com/paypal/squbs.git",
+        "ext": [".scala"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "dev", "results.json")
