@@ -9,7 +9,7 @@
 
 ## Usage
 
-#### Python
+###### Python
 
 ```python
 >>> from cypher import identify
@@ -20,7 +20,7 @@
 >>>
 ```
 
-#### Command line
+###### Command line
 
 ```
 $ cypher path/to/file
