@@ -247,7 +247,7 @@ def compare_signatures(unknown, known, lines):
             inc = 4 * mult
             found += sum([inc if token in unknown else 0 for token in v])
         elif k == "flags":
-            found -= sum([mult if token in unknown else 0 for token in v])
+            found -= sum([4 if token in unknown else 0 for token in v])
         else:
             test_value = unknown.get(k)
             if test_value:
