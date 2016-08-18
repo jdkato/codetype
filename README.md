@@ -9,6 +9,8 @@
 
 ## Usage
 
+#### Python
+
 ```python
 >>> from cypher import identify
 >>> identify('fibs = 0 : 1 : zipWith (+) fibs (tail fibs)')
@@ -16,6 +18,12 @@
 >>> identify('from math import fabs')
 'Python'
 >>>
+```
+
+#### Command line
+
+```
+$ cypher path/to/file
 ```
 
 ## Strategy
