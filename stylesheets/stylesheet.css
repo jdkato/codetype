@@ -250,7 +250,7 @@ textarea#text {
     width: 100%;
     overflow: scroll;
     resize: none;
-    height: 400px;
+    height: 420px;
     font-family: monospace;
     white-space: pre;
     word-wrap: normal;

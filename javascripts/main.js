@@ -12,7 +12,7 @@ function clearText() {
     clearResults();
 }
 
-var identify = function() {
+function identify() {
     $.ajax({
         type: 'POST',
         url: 'https://cypher-api.herokuapp.com/cypher',
@@ -41,11 +41,3 @@ var identify = function() {
         }
     });
 };
-
-$(document).ready(function() {
-    var textarea = $('#text');
-    textarea.bind(
-        'input propertychange',
-        _.debounce(identify, 500, { maxWait: 500 })
-    );
-});
