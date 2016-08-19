@@ -56,7 +56,7 @@ $ cypher path/to/file
 |   Clojure     |         :x:           |        0          |                               |
 |      D        | :white_check_mark:    |        10         | [Phobos](https://github.com/dlang/phobos.git) (1.00)               |
 |    Erlang     |         :x:           |        0          |                               |
-|      Go       | :white_check_mark:    |        11         | [Lantern](https://github.com/getlantern/lantern.git) (0.999)                              |
+|      Go       | :white_check_mark:    |        11         | [Lantern](https://github.com/getlantern/lantern.git) (1.00)                              |
 |     HTML      |         :x:           |        0          |                               |
 |   Haskell     | :white_check_mark:    |        10         | [Cabal](https://github.com/haskell/cabal) (0.993)          |
 |     Java      | :white_check_mark:    |        11         | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
@@ -70,7 +70,7 @@ $ cypher path/to/file
 |     PHP       | :white_check_mark:    |        10         | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
 |    Python     | :white_check_mark:    |        13         | [Django](https://github.com/django/django) (0.989)            |
 |      R        | :white_check_mark:    |        11         | [Shiny](https://github.com/rstudio/shiny) (0.975)             |
-|     Ruby      | :white_check_mark:    |        11         | [Ruby on Rails](https://github.com/rails/rails) (0.985)          |
+|     Ruby      | :white_check_mark:    |        11         | [Ruby on Rails](https://github.com/rails/rails) (0.984)          |
 |     Rust      | :white_check_mark:    |        10         | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
 |    Scala      | :white_check_mark:    |        10         | [squbs](https://github.com/paypal/squbs.git) (0.997)                       |
 |    Swift      |         :x:           |        0          |                               |
