@@ -9,6 +9,6 @@
         "mut", "fn", "pub", "!(", "#[", "i32", "f64", "let", "match", "impl",
         "loop"
     ],
-    "flags": [],
+    "flags": ["writefln(", "template"],
     "comments": ["//", "/*"]
 }
