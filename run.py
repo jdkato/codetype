@@ -40,8 +40,7 @@ if script == "sigmgr":
 elif script == "test":
     unittest.TextTestRunner().run(unittest.TestLoader().discover("."))
 elif script == "cypher":
-    r = identify(args["lang"], verbose=args["verbose"])
-    print(r)
+    print(identify(args["lang"], verbose=args["verbose"]))
 else:
     print("{0} not recognized!".format(script))
 sys.exit(0)
