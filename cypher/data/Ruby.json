@@ -6,14 +6,14 @@
         "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
         "Method", "NilClass", "TrueClass", "has_key", "def"
     ],
-    "symbols": ["?", "!", "$", "|", "::", "@"],
+    "symbols": ["!", "$", "|", "::", "@", "=>"],
     "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
         "^#!.*ruby$", "^class .*; end$", "^class .* < .*::.*$"
     ],
     "flags": ["function", "val", "import"],
     "unique": [
-        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "=>", "%w"
+        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "%w", "?"
     ],
     "comments": ["#", "="]
 }
