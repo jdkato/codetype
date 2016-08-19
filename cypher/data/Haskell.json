@@ -8,7 +8,7 @@
     "first_line": [
         "^(import|module) [^;]*$", "^{-.*$", "^#(ifdef|define|undef) .*$"
     ],
-    "unique": ["Haskell", "GHC", "LANGUAGE", "Monoid", "!!", "maybe", "::"],
-    "flags": [],
+    "unique": ["Haskell", "GHC", "LANGUAGE", "Monoid", "!!", "maybe"],
+    "flags": ["require"],
     "comments": ["{-", "--"]
 }
