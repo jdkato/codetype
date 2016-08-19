@@ -9,11 +9,11 @@
     "symbols": ["?", "!", "$", "|", "::", "@"],
     "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
-        "^#!.*ruby$"
+        "^#!.*ruby$", "^class .*; end$", "^class .* < .*::.*$"
     ],
     "flags": ["function", "val", "import"],
     "unique": [
-        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "=>"
+        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "=>", "%w"
     ],
     "comments": ["#", "="]
 }
