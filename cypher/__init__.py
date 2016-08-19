@@ -1,10 +1,4 @@
 # encoding=utf8
-"""
-cypher.
-
-Licensed under MIT.
-Copyright (c) 2016 Joseph Kato.
-"""
 import codecs
 import io
 import json
