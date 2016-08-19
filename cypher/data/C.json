@@ -10,6 +10,6 @@
         "^#(if|ifdef|define|undef) .*$", "(int|void) \\w*\\("
     ],
     "unique": ["static", "printf(", "fprintf(", "putchar"],
-    "flags": [],
+    "flags": ["namespace", "template", "class"],
     "comments": ["//", "/*"]
 }
