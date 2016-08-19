@@ -110,7 +110,7 @@ def identify(src, verbose=False):
                 filtered[1][lang] = results[lang]
 
     if any(f for f in filtered):
-        results = min(f for f in filtered if f)
+        results = min((f for f in filtered if f), key=len)
     if verbose:
         return {
             "results": results, "block_count": summary["counts"][3],
