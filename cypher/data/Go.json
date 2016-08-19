@@ -6,6 +6,6 @@
     "symbols": ["{", "}"],
     "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
     "unique": ["func", ":=", "Printf"],
-    "flags": ["def"],
+    "flags": ["def", "String"],
     "comments": ["//", "/*"]
 }
