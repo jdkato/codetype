@@ -16,7 +16,9 @@
     ], 
     "flags": [
         "def", 
-        "String"
+        "String", 
+        "typedef", 
+        "NULL"
     ], 
     "fmt": 0.006421707598865993, 
     "func": 0.03878080354864304, 

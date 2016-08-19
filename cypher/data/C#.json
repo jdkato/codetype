@@ -7,7 +7,7 @@
     "symbols": ["{", "}", ";", "=>", "<", ">"],
     "first_line": ["namespace .*", "using .*;", "^#define .*"],
     "unique": ["decimal", "readonly"],
-    "flags": [],
+    "flags": ["typedef", "NULL"],
     "comments": ["//", "/*"]
 }
 
