@@ -61,7 +61,6 @@ $ cypher path/to/file
 |   Haskell     | :white_check_mark:    |        10         | [Cabal](https://github.com/haskell/cabal) (0.998)          |
 |     Java      | :white_check_mark:    |        11         | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
 |  JavaScript   |         :x:           |        0          |                               |
-|    LaTeX      |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
 |     Lua       | :white_check_mark:    |        10         | [Kong](https://github.com/Mashape/kong) (1.00)                              |
 |    Matlab     |         :x:           |        0          |                               |
