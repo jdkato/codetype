@@ -50,15 +50,15 @@ $ cypher path/to/file
 |     ASP       |         :x:           |        0          |                               |
 | AppleScript   |         :x:           |        0          |                               |
 |      C#       | :white_check_mark:    |        10         | [Nancy](https://github.com/NancyFx/Nancy.git) (0.995)                             |
-|     C++       | :white_check_mark:    |        12         | [Electron](https://github.com/apple/swift) (0.974)          |
-|      C        | :white_check_mark:    |        12         | [Git](https://github.com/git/git) (0.966)            |
+|     C++       | :white_check_mark:    |        12         | [Electron](https://github.com/apple/swift) (0.991)          |
+|      C        | :white_check_mark:    |        12         | [Git](https://github.com/git/git) (0.963)            |
 |     CSS       |         :x:           |        0          |                               |
 |   Clojure     |         :x:           |        0          |                               |
 |      D        | :white_check_mark:    |        10         | [Phobos](https://github.com/dlang/phobos.git) (1.00)               |
 |    Erlang     |         :x:           |        0          |                               |
 |      Go       | :white_check_mark:    |        11         | [Lantern](https://github.com/getlantern/lantern.git) (0.999)                              |
 |     HTML      |         :x:           |        0          |                               |
-|   Haskell     | :white_check_mark:    |        10         | [Cabal](https://github.com/haskell/cabal) (0.998)          |
+|   Haskell     | :white_check_mark:    |        10         | [Cabal](https://github.com/haskell/cabal) (0.993)          |
 |     Java      | :white_check_mark:    |        11         | [Spring](https://github.com/spring-projects/spring-framework.git) (1.00)                              |
 |  JavaScript   |         :x:           |        0          |                               |
 |     Lisp      |         :x:           |        0          |                               |
@@ -66,11 +66,11 @@ $ cypher path/to/file
 |    Matlab     |         :x:           |        0          |                               |
 |    OCaml      |         :x:           |        0          |                               |
 | Objective-C   | :white_check_mark:    |        10         | [Adium](https://github.com/adium/adium.git) (0.993)                             |
-|     Perl      | :white_check_mark:    |        10         | [Mojolicious](https://github.com/kraih/mojo) (0.985)                          |
+|     Perl      | :white_check_mark:    |        10         | [Mojolicious](https://github.com/kraih/mojo) (1.00)                          |
 |     PHP       | :white_check_mark:    |        10         | [WordPress](https://github.com/WordPress/WordPress) (1.00) |
-|    Python     | :white_check_mark:    |        12         | [Django](https://github.com/django/django) (0.986)            |
+|    Python     | :white_check_mark:    |        13         | [Django](https://github.com/django/django) (0.989)            |
 |      R        | :white_check_mark:    |        11         | [Shiny](https://github.com/rstudio/shiny) (0.975)             |
-|     Ruby      | :white_check_mark:    |        11         | [Ruby on Rails](https://github.com/rails/rails) (0.984)          |
+|     Ruby      | :white_check_mark:    |        11         | [Ruby on Rails](https://github.com/rails/rails) (0.985)          |
 |     Rust      | :white_check_mark:    |        10         | [Cargo](https://github.com/rust-lang/cargo.git) (1.00)    |
 |    Scala      | :white_check_mark:    |        10         | [squbs](https://github.com/paypal/squbs.git) (0.997)                       |
 |    Swift      |         :x:           |        0          |                               |
