@@ -1,0 +1,11 @@
+import std.stdio;
+import std.file;
+
+void main()
+{
+   File file = File("test.txt", "w");
+
+   file.writeln("hello");
+
+   file.close();
+}

@@ -39,6 +39,7 @@ EXTRACT_RE = r"""
     {-| # Haskell
     :=| # Go
     <%| # Ruby
+    %w| # Ruby
     ===| # PHP
     !==| # PHP
     \s\.\s| # PHP, Perl
@@ -57,6 +58,7 @@ EXTRACT_RE = r"""
 STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
     "/*": [r"^\/\*.*$", r"^.*\*\/$"],
+    "/+": [r"^\/\+.*$", r"^.*\+\/$"],
     "'''": [r"^[\']{3}.*$", r"^.*[\']{3}$"],
     '"""': [r"^[\"]{3}.*$", r"^.*[\"]{3}$"],
     "{-": [r"^{-.*$", r"^.*-}$"],
@@ -68,6 +70,7 @@ INLINE_COMMENTS = {
     "//": r"\/\/.*",
     "--": r"(?<!\w)--.*",
     "/*": r"/\*.*\*/",
+    "/+": r"/\+.*\+/",
     "{-": r"{-.*-}"
 }
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -86,8 +89,7 @@ def identify(src, verbose=False):
             and their computed scores as values.
     """
     results = {}
-    first_results = {}
-    comment_results = {}
+    filtered = [{}, {}]
     summary = get_text_summary(src, is_file=os.path.isfile(src))
     sig = compute_signature(summary)
     if not sig:
@@ -101,22 +103,19 @@ def identify(src, verbose=False):
         ksig = read_signature(lang)
         results[lang] = compare_signatures(sig, ksig, summary["lines"])
         if all(r in ksig.get("comments") for r in summary["comments"]):
-            comment_results[lang] = results[lang]
+            filtered[0][lang] = results[lang]
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
             if re.search(decoded, first_line):
-                first_results[lang] = results[lang]
+                filtered[1][lang] = results[lang]
 
-    if first_results:
-        results = first_results
-    elif comment_results:
-        results = comment_results
-
+    if any(f for f in filtered):
+        results = min(f for f in filtered if f)
     if verbose:
         return {
-            "results": results, "blockCount": summary["counts"][3],
-            "inlineCount": summary["counts"][1],
-            "stringCount": summary["counts"][2]
+            "results": results, "block_count": summary["counts"][3],
+            "inline_count": summary["counts"][1],
+            "string_count": summary["counts"][2]
         }
     else:
         return max(results, key=results.get)

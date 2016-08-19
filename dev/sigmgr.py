@@ -63,6 +63,10 @@ LANG_INFO = {
     "Scala": {
         "repo": "https://github.com/paypal/squbs.git",
         "ext": [".scala"]
+    },
+    "D": {
+        "repo": "https://github.com/dlang/phobos.git",
+        "ext": [".d"]
     }
 }
 RESULTS = os.path.join(os.getcwd(), "dev", "results.json")

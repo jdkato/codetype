@@ -1,0 +1,17 @@
+{
+    "keywords": [
+        "is", "alias", "class", "private", "template", "auto", "static",
+        "foreach", "this"
+    ],
+    "symbols": ["{", "}", ";", "@", "~", "!", "=>"],
+    "first_line": [
+        "^module .*;$", "^deprecated(.*)$", "^Ddoc$", "^(public )?import .*;$",
+        "^#!.*(-run|rdmd)$"
+    ],
+    "unique": [
+        "inout", "immutable", "safe", "pure", "unittest", "nogc", "Typedef",
+        "writefln("
+    ],
+    "flags": [],
+    "comments": ["//", "/*", "/+"]
+}

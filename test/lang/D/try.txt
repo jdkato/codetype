@@ -1,0 +1,13 @@
+import std.file;
+ 
+void main(string[] args)
+{
+    try
+    {
+        write("test.txt", [0x68, 0x65, 0x6c, 0x6c, 0x6f]);
+    }
+    catch (FileException ex)
+    {
+        // Handle errors
+    }
+}

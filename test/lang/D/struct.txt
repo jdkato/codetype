@@ -1,0 +1,19 @@
+struct File
+{
+    Handle h;
+
+    ~this()
+    {
+        h.release();
+    }
+}
+
+void test()
+{
+    if (...)
+    {
+        auto f = File();
+        ...
+    } // f.~this() gets run at closing brace, even if
+      // scope was exited via a thrown exception
+}
