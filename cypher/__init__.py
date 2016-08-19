@@ -71,7 +71,9 @@ INLINE_COMMENTS = {
     "--": r"(?<!\w)--.*",
     "/*": r"/\*.*\*/",
     "/+": r"/\+.*\+/",
-    "{-": r"{-.*-}"
+    "{-": r"{-.*-}",
+    "'''": r"^'{3}.*'{3}$",
+    '"""': r'^"{3}.*"{3}$'
 }
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
