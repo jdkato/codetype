@@ -30,9 +30,9 @@ function identify() {
                     else
                         $('#lang-' + i).html('N/A');
                 }
-                $('#inline').html(data.inlineCount);
-                $('#block').html(data.blockCount);
-                $('#string').html(data.stringCount);
+                $('#inline').html(data["inline_count"]);
+                $('#block').html(data["block_count"]);
+                $('#string').html(data["string_count"]);
             }
             console.log(JSON.stringify(data));
         },
