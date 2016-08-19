@@ -109,8 +109,7 @@ def identify(src, verbose=False):
             if re.search(decoded, first_line):
                 filtered[1][lang] = results[lang]
 
-    if any(f for f in filtered):
-        results = min((f for f in filtered if f), key=len)
+    results = parse_filtered(filtered, results)
     if verbose:
         return {
             "results": results, "block_count": summary["counts"][3],
@@ -119,6 +118,18 @@ def identify(src, verbose=False):
         }
     else:
         return max(results, key=results.get)
+
+
+def parse_filtered(filtered, results):
+    """
+    """
+    if all(f for f in filtered):
+        d = {}
+        for lang in [x for x in filtered[0] if x in filtered[1]]:
+            d[lang] = filtered[0][lang]
+    else:
+        d = filtered[0] or filtered[1]
+    return d or results
 
 
 def remove_inline_comment(line):
