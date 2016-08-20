@@ -134,7 +134,7 @@ def test_sig(src_dir, lang, ext):
     c = round(identified / file_count if file_count else 1, 3)
     store_result(lang, c)
     print("{}: Correct = {} ({} / {})".format(lang, c, identified, file_count))
-    return sum(times) / len(times)
+    return sum(times) / len(times), file_count, c
 
 
 def clone_and_clean(repo, src_dir, ext):
@@ -208,13 +208,10 @@ def write_signature(src, lang, ext, is_file=True):
 
 
 def run(lang, is_test):
-    """
-    """
-    test_all = False
     times = []
-    if not lang:
-        test_all = True
-    else:
+    files = 0
+    correct = []
+    if lang:
         info = LANG_INFO.get(lang)
         src_dir = os.path.join(
             TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
@@ -223,15 +220,17 @@ def run(lang, is_test):
             clone_and_clean(info["repo"], src_dir, info["ext"])
 
     if is_test:
-        if test_all:
-            for lang, info in LANG_INFO.items():
-                src_dir = os.path.join(
-                    TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
-                )
-                times.append(test_sig(src_dir, lang, info["ext"]))
-        else:
-            times.append(test_sig(src_dir, lang, info["ext"]))
-        print("Avg. time per file: {}".format(sum(times) / len(times)))
+        for lang, info in LANG_INFO.items():
+            src_dir = os.path.join(
+                TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
+            )
+            timed, count, percentage = test_sig(src_dir, lang, info["ext"])
+            times.append(timed)
+            files += count
+            correct.append(percentage)
+        print("# of files: {}".format(files))
+        print("Time per file: {}s".format(round(sum(times) / len(times), 3)))
+        print("Accuracy: {}".format(round(sum(correct) / len(LANG_INFO), 3)))
     else:
         write_signature(src_dir, lang=lang, ext=info["ext"], is_file=1)
     return 0
