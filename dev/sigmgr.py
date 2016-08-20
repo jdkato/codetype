@@ -147,9 +147,10 @@ def clone_and_clean(repo, src_dir, ext):
 
     for subdir, _, files in os.walk(src_dir):
         for f in files:
-            if any(f.endswith(e) for e in ext):
+            path = os.path.join(subdir, f)
+            if any(f.endswith(e) for e in ext) and os.path.exists(path):
                 continue
-            os.remove(os.path.join(subdir, f))
+            os.remove(path)
 
 
 def get_lang_data(lang):
@@ -203,7 +204,7 @@ def write_signature(src, lang, ext, is_file=True):
     lang_data["lines"] = lines
     data = compute_signature(lang_data)
     with open(os.path.join(SIG_PATH, lang + ".bin"), "wb") as sig:
-        msgpack.dump(data, sig)
+        msgpack.dump(data, sig, use_bin_type=True)
 
 
 def run(lang, is_test):

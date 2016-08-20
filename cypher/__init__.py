@@ -1,4 +1,3 @@
-# encoding=utf8
 import codecs
 import io
 import math
@@ -9,18 +8,11 @@ import sys
 import msgpack
 
 from collections import Counter
-
-try:
-    reload(sys)
-    sys.setdefaultencoding("utf8")
-except NameError:
-    pass
-
-try:
+PY2 = sys.version_info <= (3,)
+if PY2:
     from cStringIO import StringIO
-except ImportError:
+else:
     from io import StringIO
-
 
 EXTRACT_RE = r"""
     [@|#]?[\w]+\(?|
@@ -160,12 +152,7 @@ def extract_content(src, is_file):
     skip = regex = None
     counts = [0] * 4
 
-    try:
-        text = io.open(src, errors="ignore") if is_file else StringIO(src)
-    except IOError:
-        print("IOError: {}".format(src))
-        return content, comments, counts
-
+    text = io.open(src, errors="ignore") if is_file else StringIO(src)
     for line in text:
         skip = True
         for c, r in BLOCK_COMMENTS.items():
@@ -217,8 +204,11 @@ def get_text_summary(src, is_file=False, filtered=None):
     tokens = []
     first_line = None
     content, comments, counts = extract_content(src, is_file)
+    if PY2:
+        text = StringIO(content.encode("utf-8"))
+    else:
+        text = StringIO(content)
 
-    text = StringIO(content)
     for line in text:
         if not line.strip():
             continue
@@ -246,7 +236,6 @@ def compare_signatures(unknown, known, lines):
     total = 1.0
     found = 0.0
     mult = 2 if lines < 15 else 1
-
     for k, v in known.items():
         if k in ["first_line", "comments"]:
             continue
@@ -289,5 +278,5 @@ def read_signature(lang):
     Args:
         lang (str): The name of the existing signature.
     """
-    with open(os.path.join(SIG_PATH, lang + ".bin")) as sig:
-        return msgpack.load(sig)
+    with open(os.path.join(SIG_PATH, lang + ".bin"), "rb") as sig:
+        return msgpack.load(sig, encoding="utf-8")
