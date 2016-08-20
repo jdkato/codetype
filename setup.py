@@ -6,6 +6,9 @@ setup(
     scripts=["bin/cypher"],
     version="0.0.1",
     description="A source code identification tool.",
+    install_requires=[
+        "msgpack-python"
+    ],
     include_package_data=True,
     author="Joseph Kato"
 )

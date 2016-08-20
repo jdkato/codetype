@@ -1,7 +1,19 @@
 import subprocess
 import time
 import json
+import sys
 import os
+
+import msgpack
+
+sys.path.append(os.path.abspath("../cypher"))
+
+from cypher import (
+    identify,
+    compute_signature,
+    get_text_summary,
+    SIG_PATH
+)
 
 LANG_INFO = {
     "Python": {
@@ -69,9 +81,11 @@ LANG_INFO = {
         "ext": [".d"]
     }
 }
-RESULTS = os.path.join(os.getcwd(), "dev", "results.json")
-TEMP_DIR = os.path.join(os.getcwd(), "dev", "repos")
-LOG_DIR = os.path.join(os.getcwd(), "dev", "logs")
+DIR_PATH = os.path.join(os.getcwd(), "dev")
+RESULTS = os.path.join(DIR_PATH, "results.json")
+TEMP_DIR = os.path.join(DIR_PATH, "repos")
+LOG_DIR = os.path.join(DIR_PATH, "logs")
+DATA_PATH = os.path.join(DIR_PATH, "data")
 if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 if not os.path.exists(LOG_DIR):
@@ -90,7 +104,7 @@ def store_result(lang, new):
         json.dump(d, results, indent=4, sort_keys=True)
 
 
-def test_sig(src_dir, lang, ext, indentifier):
+def test_sig(src_dir, lang, ext):
     log = open(os.path.join(LOG_DIR, lang + ".txt"), "w+")
     file_count = 0.0
     identified = 0.0
@@ -107,7 +121,7 @@ def test_sig(src_dir, lang, ext, indentifier):
                 continue
             file_count += 1
             start_time = time.time()
-            computed = indentifier(src=p)
+            computed = identify(src=p)
             times.append(time.time() - start_time)
             if computed == lang:
                 identified += 1
@@ -138,7 +152,61 @@ def clone_and_clean(repo, src_dir, ext):
             os.remove(os.path.join(subdir, f))
 
 
-def run(lang, is_test, identifier=None, writer=None):
+def get_lang_data(lang):
+    """Load existing data on lang.
+    Args:
+        lang (str): The name of the language.
+    Returns:
+        list: A list of all keywords associated with lang.
+    """
+    d = {}
+    tokens = []
+    if lang is None:
+        return d, None, None, None
+
+    with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
+        d = json.load(jdata)
+
+    for k, v in d.items():
+        if k not in ["comments", "first_line"]:
+            tokens.extend(v)
+    tokens = set(tokens)
+
+    return tokens, d
+
+
+def write_signature(src, lang, ext, is_file=True):
+    """Write a signature for src.
+    Args:
+        src (str): A path to a directory.
+        lang (str): The name of the language.
+        ext (list): A list of file extensions associated with lang.
+        is_file (bool): True if src is a file.
+    """
+    known, lang_data = get_lang_data(lang)
+    tokens = []
+    lines = 0.0
+
+    for subdir, _, files in os.walk(src):
+        for f in files:
+            if ext and not any(f.endswith(e) for e in ext):
+                continue
+            summary = get_text_summary(
+                os.path.join(subdir, f),
+                is_file=is_file,
+                filtered=known
+            )
+            tokens.extend(summary["tokens"])
+            lines += summary["lines"]
+
+    lang_data["tokens"] = tokens
+    lang_data["lines"] = lines
+    data = compute_signature(lang_data)
+    with open(os.path.join(SIG_PATH, lang + ".bin"), "wb") as sig:
+        msgpack.dump(data, sig)
+
+
+def run(lang, is_test):
     """
     """
     test_all = False
@@ -153,22 +221,16 @@ def run(lang, is_test, identifier=None, writer=None):
         if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
             clone_and_clean(info["repo"], src_dir, info["ext"])
 
-    if is_test and identifier:
+    if is_test:
         if test_all:
             for lang, info in LANG_INFO.items():
                 src_dir = os.path.join(
                     TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
                 )
-                times.append(test_sig(src_dir, lang, info["ext"], identifier))
+                times.append(test_sig(src_dir, lang, info["ext"]))
         else:
-            times.append(test_sig(src_dir, lang, info["ext"], identifier))
+            times.append(test_sig(src_dir, lang, info["ext"]))
         print("Avg. time per file: {}".format(sum(times) / len(times)))
-    elif is_test:
-        print("Please specify an identifier.")
-        return -1
-    elif writer:
-        writer(src_dir, lang=lang, ext=info["ext"], is_file=1)
     else:
-        print("Please specify a writer.")
-        return -1
+        write_signature(src_dir, lang=lang, ext=info["ext"], is_file=1)
     return 0

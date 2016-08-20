@@ -1,11 +1,12 @@
 # encoding=utf8
 import codecs
 import io
-import json
 import math
 import os
 import re
 import sys
+
+import msgpack
 
 from collections import Counter
 
@@ -20,7 +21,6 @@ try:
 except ImportError:
     from io import StringIO
 
-__all__ = ["identify"]
 
 EXTRACT_RE = r"""
     [@|#]?[\w]+\(?|
@@ -77,7 +77,6 @@ INLINE_COMMENTS = {
 }
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
-DATA_PATH = os.path.join(FILE_PATH, "data")
 
 
 def identify(src, verbose=False):
@@ -290,59 +289,5 @@ def read_signature(lang):
     Args:
         lang (str): The name of the existing signature.
     """
-    with open(os.path.join(SIG_PATH, lang + ".json")) as sig:
-        return json.load(sig)
-
-
-def get_lang_data(lang):
-    """Load existing data on lang.
-    Args:
-        lang (str): The name of the language.
-    Returns:
-        list: A list of all keywords associated with lang.
-    """
-    d = {}
-    tokens = []
-    if lang is None:
-        return d, None, None, None
-
-    with open(os.path.join(DATA_PATH, lang + ".json")) as jdata:
-        d = json.load(jdata)
-
-    for k, v in d.items():
-        if k not in ["comments", "first_line"]:
-            tokens.extend(v)
-    tokens = set(tokens)
-
-    return tokens, d
-
-
-def write_signature(src, lang, ext, is_file=True):
-    """Write a signature for src.
-    Args:
-        src (str): A path to a directory.
-        lang (str): The name of the language.
-        ext (list): A list of file extensions associated with lang.
-        is_file (bool): True if src is a file.
-    """
-    known, lang_data = get_lang_data(lang)
-    tokens = []
-    lines = 0.0
-
-    for subdir, _, files in os.walk(src):
-        for f in files:
-            if ext and not any(f.endswith(e) for e in ext):
-                continue
-            summary = get_text_summary(
-                os.path.join(subdir, f),
-                is_file=is_file,
-                filtered=known
-            )
-            tokens.extend(summary["tokens"])
-            lines += summary["lines"]
-
-    lang_data["tokens"] = tokens
-    lang_data["lines"] = lines
-    data = compute_signature(lang_data)
-    with open(os.path.join(SIG_PATH, lang + ".json"), "w+") as sig:
-        json.dump(data, sig, indent=4, sort_keys=True)
+    with open(os.path.join(SIG_PATH, lang + ".bin")) as sig:
+        return msgpack.load(sig)

@@ -2,10 +2,7 @@ import argparse
 import sys
 import unittest
 
-from cypher import (
-    identify,
-    write_signature as sig_writer
-)
+from cypher import identify
 from dev.sigmgr import run
 
 parser = argparse.ArgumentParser()
@@ -34,9 +31,9 @@ args = vars(parser.parse_args())
 script = args["script"][0]
 if script == "sigmgr":
     if args["test"]:
-        run(lang=args["lang"], is_test=1, identifier=identify)
+        run(lang=args["lang"], is_test=1)
     elif args["lang"]:
-        run(lang=args["lang"], is_test=0, writer=sig_writer)
+        run(lang=args["lang"], is_test=0)
 elif script == "test":
     unittest.TextTestRunner().run(unittest.TestLoader().discover("."))
 elif script == "cypher":
