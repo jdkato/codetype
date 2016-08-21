@@ -14,6 +14,6 @@
     "unique": [
         "cout", "cin", "endl", "friend", "boost", "delete", "unique_ptr", "::~"
     ],
-    "flags": [],
+    "flags": ["malloc("],
     "comments": ["//", "/*"]
 }
