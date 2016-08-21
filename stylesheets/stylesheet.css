@@ -246,6 +246,11 @@ a {
   zoom:1;
 }
 
+#editor {
+  width: 98%;
+  height: 420px;
+}
+/*
 textarea#text {
     width: 100%;
     overflow: scroll;
@@ -260,4 +265,4 @@ textarea#text {
 
 #text {
     padding-bottom: 15px;
-}
+}*/
