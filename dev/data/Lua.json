@@ -5,10 +5,10 @@
     ],
     "symbols": ["#", "{", "}", "()"],
     "first_line": [
-        "^local .* = require(\\(|\\s)?\".*\"(\\))?$", "^#!.*lua(jit)?$",
-        "^return {$", "^require ('|\").*('|\")$", "^function .*\\(.*\\)"
+        "^#!.*lua(jit)?$", "^return {$", "^require ('|\").*('|\")$",
+        "^function .*\\(.*\\)", "^local .* = .*$", "^return \\[\\[$"
     ],
     "unique": ["local", "end", "~="],
-    "flags": [],
+    "flags": ["=~"],
     "comments": ["--", "--[["]
 }
