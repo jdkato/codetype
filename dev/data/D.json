@@ -12,6 +12,6 @@
         "inout", "immutable", "safe", "pure", "unittest", "nogc", "Typedef",
         "writefln("
     ],
-    "flags": ["NULL"],
+    "flags": ["NULL", " . ", "malloc("],
     "comments": ["//", "/*", "/+"]
 }
