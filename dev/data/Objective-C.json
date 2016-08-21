@@ -1,8 +1,8 @@
 {
-    "keywords": [
-        "id", "self", "nil", "void", "alloc", "init"
+    "tokens": [
+        "id", "self", "nil", "void", "alloc", "init", "{", "}", ";", "-", "@",
+        "[", "]", "+"
     ],
-    "symbols": ["{", "}", ";", "-", "@", "[", "]", "+"],
     "first_line": [
         "^#import (\".*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"

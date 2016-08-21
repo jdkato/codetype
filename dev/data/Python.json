@@ -1,10 +1,9 @@
 {
-    "keywords": [
+    "tokens": [
         "and", "as", "def", "del", "elif", "from", "in", "is", "not", "or",
         "pass", "with", "True", "False", "None", "self", "print", "print(",
-        "return"
+        "return", "#", "@"
     ],
-    "symbols": ["#", "@"],
     "first_line": ["^(from .*)?import [^\"\\{]*$", "['|\"]{3}", "^#!.*python$"],
     "unique": ["@classmethod", "@staticmethod", ":\n"],
     "flags": [],

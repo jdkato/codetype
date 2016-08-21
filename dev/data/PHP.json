@@ -1,11 +1,9 @@
 {
-    "keywords": [
+    "tokens": [
         "global", "use", "namespace", "class", "extends", "public",
         "function", "exit", "require(", "define(", "require_once(", "unset(",
-        "empty(", "strpos(", "header(", "exit"
-    ],
-    "symbols": [
-        "{", "}", ";", "$", "@", "===", "->", "::", "=>", "!==", " . ", "$_"
+        "empty(", "strpos(", "header(", "exit", "{", "}", ";", "$", "@", "===",
+        "->", "::", "=>", "!==", " . ", "$_"
     ],
     "first_line": [
         "^<\\?(php)?.*$", "^function .*\\(.*\\)", "^namespace [^\"'::]*;$",

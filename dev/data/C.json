@@ -1,10 +1,10 @@
 {
-    "keywords": [
+    "tokens": [
         "ifdef", "calloc", "free", "malloc", "realloc", "getchar",
         "va_start", "va_end", "typedef", "stdio", "ctype", "stdlib", "stdarg",
-        "stddef", "setjmp", "scanf", "stddef", "memcpy(", "#if", "NULL"
+        "stddef", "setjmp", "scanf", "stddef", "memcpy(", "#if", "NULL", "{",
+        "}", ";", "&", "->", "*"
     ],
-    "symbols": ["{", "}", ";", "&", "->", "*"],
     "first_line": [
         "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
         "^#(if|ifdef|define|undef) .*$", "(int|void) \\w*\\("

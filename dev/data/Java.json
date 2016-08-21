@@ -1,10 +1,9 @@
 {
-    "keywords": [
+    "tokens": [
         "java", "super", "public", "private", "extends", "interface", "final",
         "System", "boolean", "Object", "String", "import", "class", "out",
-        "lang", "util", "void"
+        "lang", "util", "void", "{", "}", ";", "@", "<", ">", "[]"
     ],
-    "symbols": ["{", "}", ";", "@", "<", ">", "[]"],
     "first_line": ["^(import|package) [^::]*;$"],
     "unique": ["java", "println("],
     "flags": [],

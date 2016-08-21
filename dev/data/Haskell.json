@@ -1,10 +1,10 @@
 {
-    "keywords": [
+    "tokens": [
         "let", "module", "where", "qualified", "Char", "Bool", "then", "map",
         "elem", "head", "tail", "take", "foldr", "mapM", "of", "import", "Data",
-        "Aeson", "Control", "Monad", "#if"
+        "Aeson", "Control", "Monad", "#if", "<-", "->", "::", "$", "`", ":",
+        "()", ".."
     ],
-    "symbols": ["<-", "->", "::", "$", "`", ":", "()", ".."],
     "first_line": [
         "^(import|module) [^;]*$", "^{-.*$", "^#(ifdef|define|undef) .*$"
     ],

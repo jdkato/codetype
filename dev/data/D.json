@@ -1,9 +1,8 @@
 {
-    "keywords": [
+    "tokens": [
         "is", "alias", "class", "private", "template", "auto", "static",
-        "foreach", "this"
+        "foreach", "this", "{", "}", ";", "@", "~", "!", "=>"
     ],
-    "symbols": ["{", "}", ";", "@", "~", "!", "=>"],
     "first_line": [
         "^module .*;$", "^deprecated(.*)$", "^Ddoc$", "^(public )?import .*;$",
         "^#!.*(-run|rdmd)$"

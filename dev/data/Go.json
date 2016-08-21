@@ -1,9 +1,8 @@
 {
-    "keywords": [
+    "tokens": [
         "type", "var", "defer", "nil", "uint64", "const", "struct", "true",
-        "false", "fmt"
+        "false", "fmt", "{", "}"
     ],
-    "symbols": ["{", "}"],
     "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
     "unique": ["func", ":=", "Printf"],
     "flags": ["def", "String", "typedef", "NULL", " . "],

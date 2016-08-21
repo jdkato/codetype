@@ -1,10 +1,9 @@
 {
-    "keywords": [
+    "tokens": [
         "System", "override", "this", "using", "as", "get", "set", "delegate",
         "var", "async", "interface", "const", "struct", "Console", "public",
-        "class", "using", "#if", "private"
+        "class", "using", "#if", "private", "{", "}", ";", "=>", "<", ">"
     ],
-    "symbols": ["{", "}", ";", "=>", "<", ">"],
     "first_line": ["namespace .*", "using .*;", "^#define .*"],
     "unique": ["decimal", "readonly"],
     "flags": ["typedef", "NULL", " . "],

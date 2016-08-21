@@ -1,9 +1,8 @@
 {
-    "keywords": [
+    "tokens": [
         "not", "then", "function", "and", "elseif", "nil", "repeat",
-        "do", "until", "self", "true", "false"
+        "do", "until", "self", "true", "false", "#", "{", "}", "()"
     ],
-    "symbols": ["#", "{", "}", "()"],
     "first_line": [
         "^#!.*lua(jit)?$", "^return {$", "^require ('|\").*('|\")$",
         "^function .*\\(.*\\)", "^local .* = .*$", "^return \\[\\[$"

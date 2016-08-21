@@ -1,12 +1,12 @@
 {
-    "keywords": [
+    "tokens": [
         "alias", "begin", "defined", "ensure", "false", "nil",
         "redo", "not", "retry", "then", "true", "undef", "unless", "when",
         "each", "require", "module", "gets", "require_dependency",
         "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
-        "Method", "NilClass", "TrueClass", "has_key", "def"
+        "Method", "NilClass", "TrueClass", "has_key", "def", "!", "$", "|",
+        "::", "@", "=>"
     ],
-    "symbols": ["!", "$", "|", "::", "@", "=>"],
     "first_line": [
         "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
         "^#!.*ruby$", "^class .*; end$", "^class .* < .*::.*$"

@@ -1,12 +1,12 @@
 {
-    "keywords": [
+    "tokens": [
         "static_cast", "bool", "inline", "dynamic_cast", "const_cast",
         "reinterpret_cast", "namespace", "template", "typename", "virtual",
         "auto", "extern", "new", "true", "false", "bool", "ifdef",
         "std", "push_back", "pop_back", "forward_list", "unordered_map",
-        "unordered_set", "vector", "iostream", "NULL", "#if", "override"
+        "unordered_set", "vector", "iostream", "NULL", "#if", "override", "{",
+        "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]"
     ],
-    "symbols": ["{", "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]"],
     "first_line": [
         "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
         "(int|void|bool) \\w*\\("
