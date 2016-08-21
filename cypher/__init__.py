@@ -59,7 +59,7 @@ BLOCK_COMMENTS = {
     "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$"]
 }
 INLINE_COMMENTS = {
-    "#": r"(?<!{-)#(?!-}|include|!|define|if|el|endif|import).*",
+    "#": r"(?<!{-)#(?!-}|incl|!|defi|undef|if|el|endif|import|pragma|\[|stdout).*",
     "//": r"\/\/.*",
     "--": r"(?<!\w)--.*",
     "/*": r"/\*.*\*/",
