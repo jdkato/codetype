@@ -2,15 +2,16 @@
     "keywords": [
         "global", "use", "namespace", "class", "extends", "public",
         "function", "exit", "require(", "define(", "require_once(", "unset(",
-        "empty(", "strpos(", "header("
+        "empty(", "strpos(", "header(", "exit"
     ],
     "symbols": [
-        "{", "}", ";", "$", "@", "===", "->", "::", "=>", "!==", " . "
+        "{", "}", ";", "$", "@", "===", "->", "::", "=>", "!==", " . ", "$_"
     ],
     "first_line": [
-        "^<\\?(php)?$", "^function .*\\(.*\\)", "^(namespace|use) [^\"']*;$"
+        "^<\\?(php)?.*$", "^function .*\\(.*\\)", "^namespace [^\"'::]*;$",
+        "^use .*\\{1,}.*$"
     ],
-    "unique": ["$_"],
-    "flags": [],
-    "comments": ["//", "/*"]
+    "unique": [],
+    "flags": ["my", "=~", "print", "fn"],
+    "comments": ["//", "/*", "#"]
 }
