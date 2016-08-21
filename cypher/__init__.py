@@ -259,17 +259,19 @@ def compare_signatures(unknown, known, lines):
 def compute_signature(lang_data):
     """
     """
-    tokens = lang_data.pop("tokens")
-    if tokens is None:
+    tokens = lang_data.get("tokens")
+    if not tokens:
         return {}
 
     lines = lang_data.get("lines", 1)
-    counts = Counter(tokens)
-    for key in counts:
-        counts[key] /= lines
+    signature = Counter(tokens)
+    for key in signature:
+        signature[key] /= lines
 
-    signature = dict(counts)
-    signature.update(lang_data)
+    signature["first_line"] = lang_data.get("first_line")
+    signature["unique"] = lang_data.get("unique", [])
+    signature["comments"] = lang_data.get("comments")
+    signature["flags"] = lang_data.get("flags", [])
     return signature
 
 
