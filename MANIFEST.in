@@ -1,7 +1,6 @@
 include README.md
 include LICENSE.txt
-recursive-include cypher/signatures *.json
-recursive-include cypher/data *.json
+recursive-include cypher/signatures *.bin
 global-exclude __pycache__
 global-exclude *.py[co]
 prune dev
