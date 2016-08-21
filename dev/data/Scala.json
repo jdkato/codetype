@@ -5,7 +5,7 @@
         "object", "None", "{", "}", ":", "=>", "@", "`", "~", "->", "++"
     ],
     "first_line": ["^package\\s.{1,}$", "^import .*$"],
-    "unique": ["forSome", "Var", "match", "lazy", "trait", "Nil", ":::"],
+    "unique": ["forSome", "Var", "match", "lazy", "trait", "Nil", ":::", "???"],
     "flags": [],
     "comments": ["//", "/*"]
 }
