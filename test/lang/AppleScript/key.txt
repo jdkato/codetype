@@ -1,0 +1,23 @@
+ tell application "Google Chrome" to activate
+
+ tell application "System Events"
+
+     delay 3
+
+       repeat
+
+           key down (key code 123)
+
+           delay 2
+
+           key up (key code 123)  
+
+           key down (key code 124)
+
+           delay 2
+
+           key up (key code 124)
+
+      end repeat
+
+ end tell

@@ -1,0 +1,11 @@
+set aList to {"1", "2", "3", "4", "5"}
+
+repeat with anItem in aList -- # actual loop
+    repeat 1 times -- # fake loop
+        set value to item 1 of anItem
+
+        if value = "3" then exit repeat -- # simulated `continue`
+
+        display dialog value
+    end repeat
+end repeat

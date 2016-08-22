@@ -27,12 +27,12 @@ usage: cypher [-h] [-v] [-m MAX] file
 A source code identification tool.
 
 positional arguments:
-  file               Path to unknown source code.
+  file               path to unknown source code.
 
 optional arguments:
   -h, --help         show this help message and exit
-  -v, --verbose      Return verbose output.
-  -m MAX, --max MAX  Max number of languages to return.
+  -v, --verbose      return verbose output.
+  -m MAX, --max MAX  max number of languages to return.
 ```
 
 
@@ -41,15 +41,15 @@ optional arguments:
 
 ## Performance
 
-| # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Score |
-|:-----------------:|:-------------------:|:----------------:|:------------:|
-|       16698       |        0.013        |       0.994      |  0.963 (C)   |
+| # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Accuracy |
+|:-----------------:|:-------------------:|:----------------:|:---------------:|
+|       16736       |        0.017        |       0.994      |     0.966 (C)   |
 
 ## Support
 
 |   Language    |       Status          |
 |:-----------:  |:------------------:   |
-| AppleScript   |         :x:           |
+| AppleScript   | :white_check_mark:    |
 |      C#       | :white_check_mark:    |
 |     C++       | :white_check_mark:    |
 |      C        | :white_check_mark:    |

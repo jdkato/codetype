@@ -1,0 +1,14 @@
+{
+    "tokens": [
+        "end", "on", "repeat", "set", "from", "with", "to", "begins", "&",
+        "property", "application", "activate", "of", "then", "run", "key",
+        "code"
+    ],
+    "first_line": [
+        "^on run$", "^set .* to .*$", "^property .*\\s?:\\s?.*$",
+        "^tell .*$", "^#!.*osascript$"
+    ],
+    "unique": ["tell", "choose", "display", "dialog", "delay"],
+    "flags": ["local", "function(", "require", "nil"],
+    "comments": ["--", "(*", "#"]
+}

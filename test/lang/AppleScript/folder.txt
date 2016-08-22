@@ -1,0 +1,12 @@
+on adding folder items to thefolder after receiving theAddedItems
+    repeat with eachfile in theAddedItems
+        tell application "Finder"
+            make new alias file to eachfile at folder "Main_Volume_Name:Users:user_name:Desktop:Inspirational:"
+        end tell
+    end repeat
+    repeat with eachfile in theAddedItems
+        tell application "Finder"
+            move eachfile to folder "Main_Volume_Name:Users:user_name:Downloads:"
+        end tell
+    end repeat
+end adding folder items to

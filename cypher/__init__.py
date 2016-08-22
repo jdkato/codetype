@@ -53,6 +53,7 @@ STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
     "/*": [r"^\/\*.*$", r"^.*\*\/$"],
     "/+": [r"^\/\+.*$", r"^.*\+\/$"],
+    "(*": [r"^\(\*.*$", r"^.*\*\)$"],
     "'''": [r"^[\']{3}.*$", r"^.*[\']{3}$"],
     '"""': [r"^[\"]{3}.*$", r"^.*[\"]{3}$"],
     "{-": [r"^{-.*$", r"^.*-}$"],
@@ -71,7 +72,9 @@ INLINE_COMMENTS = {
 }
 INLINE_EXCEPTIONS = {
     "#": [
-        r"#(include|!|define|undef|if|else|endif|import|pragma|\[|stdout)"
+        r"#(include|!|define|undef|if|else|endif|import|pragma|\[|stdout)",
+        # Lua `#` operator:
+        r"#([^\s]{1,}|[^\s]{1,}\sdo|.*,.*\))$"
     ]
 }
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -141,6 +144,8 @@ def remove_inline_comment(line):
 
     for c, r in INLINE_COMMENTS.items():
         if re.search(r, line) and re.search(r, without_string):
+            if line.count(c) > 1:
+                line = line.rsplit(c, 1)[0]
             exceptions = INLINE_EXCEPTIONS.get(c, [])
             if not any(re.search(p, line) for p in exceptions):
                 comments[c] = line.find(c)

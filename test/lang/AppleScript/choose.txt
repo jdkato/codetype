@@ -1,0 +1,9 @@
+set listOfNames to {}
+tell application "Finder"
+  set filelist to every file of the desktop
+  repeat with currentFile in filelist
+    set currentFileName to (the name of currentFile)
+    copy currentFileName to the end of listOfNames
+  end repeat
+end tell
+choose from list listOfNames
