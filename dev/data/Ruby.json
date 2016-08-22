@@ -12,7 +12,7 @@
         "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
         "^class .* < .*::.*$"
     ],
-    "flags": ["function", "val", "import"],
+    "flags": ["function", "val", "import", "tell"],
     "unique": [
         "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "%w", "?"
     ],
