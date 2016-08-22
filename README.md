@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jdkato/cypher.svg?branch=master)](https://travis-ci.org/jdkato/cypher) [![Coverage Status](https://coveralls.io/repos/github/jdkato/cypher/badge.svg?branch=master)](https://coveralls.io/github/jdkato/cypher?branch=master) [![Code Health](https://landscape.io/github/jdkato/cypher/master/landscape.svg?style=flat)](https://landscape.io/github/jdkato/cypher/master) [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg?maxAge=2592000)](https://github.com/jdkato/cypher/blob/master/LICENSE.txt) ![Python Support](https://img.shields.io/badge/python-2.7,3.4,3.5-blue.svg)
 
-[`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a Python library and CLI tool for identifying the language of source code snippets and files. It's fast, simple and accurate.
-
-[You can test it out here](http://jdkato.github.io/cypher/).
+[`cypher`](https://en.wikipedia.org/wiki/Cypher_(Marvel_Comics)) is a Python library and CLI tool for identifying the language of source code snippets and files. It's fast, simple and accurate. [You can test it out here](http://jdkato.github.io/cypher/).
 
 ## Installation
 
@@ -47,31 +45,31 @@ $ cypher path/to/file
 
 | # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Score |
 |:-----------------:|:-------------------:|:----------------:|:------------:|
-|       16681       |        0.013        |       0.992      |  0.963 (C)   |
+|       16698       |        0.013        |       0.994      |  0.963 (C)   |
 
 ## Support
 
 |   Language    |       Status          |
 |:-----------:  |:------------------:   |
-|     ASP       |         :x:           |
 | AppleScript   |         :x:           |
 |      C#       | :white_check_mark:    |
 |     C++       | :white_check_mark:    |
 |      C        | :white_check_mark:    |
-|     CSS       |         :x:           |
 |   Clojure     |         :x:           |
 |      D        | :white_check_mark:    |
 |    Erlang     |         :x:           |
 |      Go       | :white_check_mark:    |
-|     HTML      |         :x:           |
+|   Groovy      | :white_check_mark:    |
 |   Haskell     | :white_check_mark:    |
 |     Java      | :white_check_mark:    |
 |  JavaScript   |         :x:           |
+|    Julia      |         :x:           |
 |     Lisp      |         :x:           |
 |     Lua       | :white_check_mark:    |
 |    Matlab     |         :x:           |
 |    OCaml      |         :x:           |
 | Objective-C   | :white_check_mark:    |
+|    Pascal     |         :x:           |
 |     Perl      | :white_check_mark:    |
 |     PHP       | :white_check_mark:    |
 |    Python     | :white_check_mark:    |
@@ -80,3 +78,4 @@ $ cypher path/to/file
 |     Rust      | :white_check_mark:    |
 |    Scala      | :white_check_mark:    |
 |    Swift      |         :x:           |
+| Visual Basic  |         :x:           |
