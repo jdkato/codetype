@@ -12,6 +12,6 @@
         "my", "eq", "ref", "shift", "FILEOUT", "=~", "1;", "FILE", "`",
         "foreach"
     ],
-    "flags": [],
-    "comments": ["#", "="]
+    "flags": ["fn", "pub", "impl"],
+    "comments": ["#", "=", "//"]
 }
