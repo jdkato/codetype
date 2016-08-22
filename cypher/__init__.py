@@ -49,7 +49,6 @@ EXTRACT_RE = r"""
     \?\?\?| # Scala
     [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(-,+]
 """
-STRING_RE = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 BLOCK_COMMENTS = {
     "/*": [r"^\/\*.*$", r"^.*\*\/$"],
     "/+": [r"^\/\+.*$", r"^.*\+\/$"],
@@ -60,6 +59,7 @@ BLOCK_COMMENTS = {
     "=": [r"^=.*$", r"^=.*$"],
     "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$"]
 }
+INLINE_STRING = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 INLINE_COMMENTS = {
     "#": r"(?<!{-)#(?!-}).*",
     "//": r"\/\/.*",
@@ -74,7 +74,7 @@ INLINE_EXCEPTIONS = {
     "#": [
         r"#(include|!|define|undef|if|else|endif|import|pragma|\[|stdout)",
         # Lua `#` operator:
-        r"#([^\s]{1,}|[^\s]{1,}\sdo|.*,.*\))$"
+        r"#([^\s-]{1,}|[^\s]{1,}\sdo|.*,.*\))$"
     ]
 }
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -139,7 +139,7 @@ def remove_inline_comment(line):
     """
     """
     comments = {}
-    without_string = re.sub(STRING_RE, "", line)
+    without_string = re.sub(INLINE_STRING, "", line)
     char = False
 
     for c, r in INLINE_COMMENTS.items():
@@ -153,9 +153,8 @@ def remove_inline_comment(line):
     if comments:
         char = min(comments, key=comments.get)
         line = line[:line.find(char)].strip() + "\n"
-        without_string = re.sub(STRING_RE, "", line)
 
-    return line, char, line != without_string
+    return line, char, len(re.findall(INLINE_STRING, line))
 
 
 def extract_content(src, is_file):
@@ -164,7 +163,7 @@ def extract_content(src, is_file):
     content = ""
     comments = set()
     skip = regex = None
-    counts = [0] * 4
+    counts = [0] * 4  # [lines, inline, string, block]
 
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
     for line in text:
@@ -188,14 +187,14 @@ def extract_content(src, is_file):
             # We're either in a multi-line comment or the line is blank.
             continue
 
-        line, char, string_found = remove_inline_comment(line)
+        line, char, string_count = remove_inline_comment(line)
         if char:
             comments.add(char)
         counts[1] += int(bool(char))
-        counts[2] += int(bool(string_found))
+        counts[2] += string_count
 
         if counts[0] > 0:
-            line = re.sub(STRING_RE, "", line)
+            line = re.sub(INLINE_STRING, "", line)
         if line.strip():
             counts[0] += 1
             content += line

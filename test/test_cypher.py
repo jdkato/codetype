@@ -40,16 +40,18 @@ class CypherTestCase(unittest.TestCase):
             "baz {- block-style inline -}": ["baz", "{-", False],
             "baz {- block-style 'inline' -}": ["baz", "{-", False],
             'baz {- "block-style" inline -}': ["baz", "{-", False],
-            '"baz" {- "block-style" inline -}': ['"baz"', "{-", True],
-            "'baz' // {- block-style inline -}": ["'baz'", "//", True],
+            '"baz" {- "block-style" inline -}': ['"baz"', "{-", 1],
+            "'baz' // {- block-style inline -}": ["'baz'", "//", 1],
             '# the queue." (http://en)': ['', "#", False],
-            '# see http://docs.python.org/l#st': ['', '#', False]
+            '# see http://docs.python.org/l#st': ['', '#', False],
+            '#--': ['', '#', False],
+            "print('foo', 'bar') # print!": ["print('foo', 'bar')", "#", 2]
         }
         for case, output in cases.items():
-            removed, char, string_found = remove_inline_comment(case)
+            removed, char, string_count = remove_inline_comment(case)
             self.assertEqual(removed.strip(), output[0])
             self.assertEqual(char, output[1])
-            self.assertEqual(string_found, output[2])
+            self.assertEqual(string_count, output[2])
 
 
 if __name__ == "__main__":
