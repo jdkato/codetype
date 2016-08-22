@@ -156,7 +156,6 @@ def remove_inline_ignore(line):
                 line = line.rsplit(c, 1)[0]
             exceptions = INLINE_EXCEPTIONS.get(c, [])
             if not any(re.search(p, line) for p in exceptions):
-                #print(line.replace('\n', ''), c)
                 comments[c] = line.find(c)
                 idx = tup[1]
 
