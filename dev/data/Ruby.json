@@ -8,8 +8,9 @@
         "::", "@", "=>"
     ],
     "first_line": [
-        "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$", "^module .*$",
-        "^#!.*ruby$", "^class .*; end$", "^class .* < .*::.*$"
+        "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$",
+        "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
+        "^class .* < .*::.*$"
     ],
     "flags": ["function", "val", "import"],
     "unique": [
