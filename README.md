@@ -59,7 +59,7 @@ $ cypher path/to/file
 |      D        | :white_check_mark:    |
 |    Erlang     |         :x:           |
 |      Go       | :white_check_mark:    |
-|   Groovy      | :white_check_mark:    |
+|   Groovy      | :x:                   |
 |   Haskell     | :white_check_mark:    |
 |     Java      | :white_check_mark:    |
 |  JavaScript   |         :x:           |
