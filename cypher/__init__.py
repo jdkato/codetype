@@ -60,7 +60,7 @@ BLOCK_COMMENTS = {
     "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$"]
 }
 INLINE_COMMENTS = {
-    "#": r"(?<!{-)#(?!-}|incl|!|defi|undef|if|el|endif|import|pragma|\[|stdout).*",  # noqa
+    "#": r"(?<!{-)#(?!-}).*",
     "//": r"\/\/.*",
     "--": r"(?<!\w)--.*",
     "/*": r"/\*.*\*/",
@@ -68,6 +68,11 @@ INLINE_COMMENTS = {
     "{-": r"{-.*-}",
     "'''": r"^'{3}.*'{3}$",
     '"""': r'^"{3}.*"{3}$'
+}
+INLINE_EXCEPTIONS = {
+    "#": [
+        r"#(include|!|define|undef|if|else|endif|import|pragma|\[|stdout)"
+    ]
 }
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
@@ -118,8 +123,8 @@ def identify(src, verbose=False):
 def parse_filtered(filtered, results):
     """
     """
+    d = {}
     if all(f for f in filtered):
-        d = {}
         for lang in [x for x in filtered[0] if x in filtered[1]]:
             d[lang] = filtered[0][lang]
     else:
@@ -136,7 +141,9 @@ def remove_inline_comment(line):
 
     for c, r in INLINE_COMMENTS.items():
         if re.search(r, line) and re.search(r, without_string):
-            comments[c] = line.find(c)
+            exceptions = INLINE_EXCEPTIONS.get(c, [])
+            if not any(re.search(p, line) for p in exceptions):
+                comments[c] = line.find(c)
 
     if comments:
         char = min(comments, key=comments.get)
