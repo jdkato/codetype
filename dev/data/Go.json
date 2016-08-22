@@ -5,6 +5,6 @@
     ],
     "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
     "unique": ["func", ":=", "Printf"],
-    "flags": ["def", "String", "typedef", "NULL", " . ", "object"],
+    "flags": ["def", "String", "typedef", "NULL", " . ", "object", "dialog"],
     "comments": ["//", "/*"]
 }
