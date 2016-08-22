@@ -214,7 +214,7 @@ def run(lang, is_test):
     if lang:
         info = LANG_INFO.get(lang)
         src_dir = os.path.join(
-            TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
+            TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
         )
         if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
             clone_and_clean(info["repo"], src_dir, info["ext"])
@@ -222,7 +222,7 @@ def run(lang, is_test):
     if is_test:
         for lang, info in LANG_INFO.items():
             src_dir = os.path.join(
-                TEMP_DIR, info["repo"].split("/")[-1].split(".")[0]
+                TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
             )
             timed, count, percentage = test_sig(src_dir, lang, info["ext"])
             times.append(timed)
