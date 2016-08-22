@@ -76,4 +76,5 @@ optional arguments:
 |     Rust      | :white_check_mark:    |
 |    Scala      | :white_check_mark:    |
 |    Swift      |         :x:           |
+| TypeScript    |         :x:           |
 | Visual Basic  |         :x:           |
