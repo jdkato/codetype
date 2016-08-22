@@ -42,7 +42,8 @@ class CypherTestCase(unittest.TestCase):
             'baz {- "block-style" inline -}': ["baz", "{-", False],
             '"baz" {- "block-style" inline -}': ['"baz"', "{-", True],
             "'baz' // {- block-style inline -}": ["'baz'", "//", True],
-            '# the queue." (http://en)': ['', "#", False]
+            '# the queue." (http://en)': ['', "#", False],
+            '# see http://docs.python.org/l#st': ['', '#', False]
         }
         for case, output in cases.items():
             removed, char, string_found = remove_inline_comment(case)
