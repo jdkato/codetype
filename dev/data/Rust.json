@@ -10,5 +10,5 @@
         "loop"
     ],
     "flags": ["writefln(", "template"],
-    "comments": ["//", "/*"]
+    "comments": ["//", "/*", "r#"]
 }
