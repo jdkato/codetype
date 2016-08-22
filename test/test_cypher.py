@@ -4,10 +4,12 @@ import unittest
 
 from cypher import (
     identify,
-    remove_inline_comment
+    remove_inline_ignore,
+    extract_content
 )
 
 sys.path.insert(0, os.path.abspath("."))
+CONTENT_DIR = os.path.join("test", "content")
 LANG_DIR = os.path.join("test", "lang")
 
 
@@ -30,7 +32,7 @@ class CypherTestCase(unittest.TestCase):
                     )
             print("Tested {} {} files.".format(count, known))
 
-    def test_remove_inline_comment(self):
+    def test_remove_inline_ignore(self):
         cases = {
             "var += 1 # This is a comments": ["var += 1", "#", False],
             "foo # This is a nested -- comment": ["foo", "#", False],
@@ -45,13 +47,25 @@ class CypherTestCase(unittest.TestCase):
             '# the queue." (http://en)': ['', "#", False],
             '# see http://docs.python.org/l#st': ['', '#', False],
             '#--': ['', '#', False],
-            "print('foo', 'bar') # print!": ["print('foo', 'bar')", "#", 2]
+            "print('foo', 'bar') # print!": ["print('foo', 'bar')", "#", 2],
+            "'''foo'''": ['', "'''", False]
         }
         for case, output in cases.items():
-            removed, char, string_count = remove_inline_comment(case)
+            removed, char, idx, string_count = remove_inline_ignore(case)
             self.assertEqual(removed.strip(), output[0])
             self.assertEqual(char, output[1])
             self.assertEqual(string_count, output[2])
+
+    def test_extract_content(self):
+        cases = {
+            'case1.txt': [{'r#"'}, [7, 0, 2, 0]],
+            'case2.txt': [{"'''"}, [1, 0, 4, 0]]
+        }
+        for case, output in cases.items():
+            path = os.path.join(CONTENT_DIR, case)
+            content, comments, counts = extract_content(path, True)
+            self.assertEqual(comments, output[0])
+            self.assertEqual(counts, output[1])
 
 
 if __name__ == "__main__":
