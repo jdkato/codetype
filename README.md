@@ -27,12 +27,12 @@ usage: cypher [-h] [-v] [-m MAX] file
 A source code identification tool.
 
 positional arguments:
-  file               path to unknown source code.
+  file               path to unknown source code
 
 optional arguments:
   -h, --help         show this help message and exit
-  -v, --verbose      return verbose output.
-  -m MAX, --max MAX  max number of languages to return.
+  -v, --verbose      return verbose output
+  -m MAX, --max MAX  max number of languages to return
 ```
 
 
