@@ -49,15 +49,15 @@ EXTRACT_RE = r"""
     \?\?\?| # Scala
     [~.@!?;:&\{\}\[\]\\#\/\|%\$`\*\)\(-,+]
 """
-BLOCK_COMMENTS = {
-    "/*": [r"^\/\*.*$", r"^.*\*\/$"],
-    "/+": [r"^\/\+.*$", r"^.*\+\/$"],
-    "(*": [r"^\(\*.*$", r"^.*\*\)$"],
-    "'''": [r"^[\']{3}.*$", r"^.*[\']{3}$"],
-    '"""': [r"^[\"]{3}.*$", r"^.*[\"]{3}$"],
-    "{-": [r"^{-.*$", r"^.*-}$"],
-    "=": [r"^=.*$", r"^=.*$"],
-    "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$"]
+BLOCK_IGNORES = {
+    "/*": [r"^\/\*.*$", r"^.*\*\/$", 3],
+    "/+": [r"^\/\+.*$", r"^.*\+\/$", 3],
+    "(*": [r"^\(\*.*$", r"^.*\*\)$", 3],
+    "'''": [r"^[\']{3}.*$", r"^.*[\']{3}$", 2],
+    '"""': [r"^[\"]{3}.*$", r"^.*[\"]{3}$", 2],
+    "{-": [r"^{-.*$", r"^.*-}$", 3],
+    "=": [r"^=.*$", r"^=.*$", 3],
+    "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$", 3]
 }
 INLINE_STRING = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
 INLINE_COMMENTS = {
@@ -162,28 +162,30 @@ def extract_content(src, is_file):
     """
     content = ""
     comments = set()
-    skip = regex = None
+    skip = regex = idx = None
     counts = [0] * 4  # [lines, inline, string, block]
 
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
     for line in text:
+        stripped = line.strip()
         skip = True
-        for c, r in BLOCK_COMMENTS.items():
-            if not regex and re.match(r[0], line.strip()):
-                if not re.match(INLINE_COMMENTS.get(c, r"^$"), line.strip()):
+        for c, r in BLOCK_IGNORES.items():
+            if not regex and re.match(r[0], stripped):
+                if not re.match(INLINE_COMMENTS.get(c, r"^$"), stripped):
                     # We've found the start of a multi-line comment.
                     regex = r[1]
+                    idx = r[2]
                     comments.add(c)
                     break
-            elif regex and re.match(regex, line.strip()):
+            elif regex and re.match(regex, stripped):
                 # We've found the end of a multi-line comment.
-                counts[3] += 1
+                counts[idx] += 1
                 regex = None
                 break
         else:
             skip = regex
 
-        if skip or not line.strip():
+        if skip or not stripped:
             # We're either in a multi-line comment or the line is blank.
             continue
 
