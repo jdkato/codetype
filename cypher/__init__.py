@@ -57,26 +57,30 @@ BLOCK_IGNORES = {
     '"""': [r"^[\"]{3}.*$", r"^.*[\"]{3}$", 2],
     "{-": [r"^{-.*$", r"^.*-}$", 3],
     "=": [r"^=.*$", r"^=.*$", 3],
-    "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$", 3]
+    "--[[": [r"^-{2,}\[{1,3}(.*)?$", r"^-{2,}\]{1,3}(.*)?$", 3],
+    'r#"': [r'.*r#".*', r'\s*"#.*', 2]
 }
-INLINE_STRING = r"([\"\'])(?:(?=(\\?))\2.)*?\1"
-INLINE_COMMENTS = {
-    "#": r"(?<!{-)#(?!-}).*",
-    "//": r"\/\/.*",
-    "--": r"(?<!\w)--.*",
-    "/*": r"/\*.*\*/",
-    "/+": r"/\+.*\+/",
-    "{-": r"{-.*-}",
-    "'''": r"^'{3}.*'{3}$",
-    '"""': r'^"{3}.*"{3}$'
+INLINE_STRING = r"(?<!'|\")('|\")[^'\"]*\1(?!'|\")"
+INLINE_IGNORES = {
+    "#": [r"(?<!{-)(?<!r)#(?!-}).{1,}", 1],
+    "//": [r"\/\/.*", 1],
+    "--": [r"(?<!\w)--.*", 1],
+    "/*": [r"/\*.*\*/", 1],
+    "/+": [r"/\+.*\+/", 1],
+    "{-": [r"{-.*-}", 1],
+    "'''": [r"^'{3}.*'{3}$", 2],
+    '"""': [r'^"{3}.*"{3}$', 2]
 }
 INLINE_EXCEPTIONS = {
     "#": [
         r"#(include|!|define|undef|if|else|endif|import|pragma|\[|stdout)",
         # Lua `#` operator:
-        r"#([^\s-]{1,}|[^\s]{1,}\sdo|.*,.*\))$"
+        r"(?<!r)#([^\s-]{1,}|[^\s]{1,}\sdo|.*,.*\))$"
     ]
 }
+FILE_TERMINATORS = [
+    r"^1;$"
+]
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
 
@@ -130,31 +134,37 @@ def parse_filtered(filtered, results):
     if all(f for f in filtered):
         for lang in [x for x in filtered[0] if x in filtered[1]]:
             d[lang] = filtered[0][lang]
+        if not d:
+            filtered[0].update(filtered[1])
+            d = filtered[0]
     else:
         d = filtered[0] or filtered[1]
     return d or results
 
 
-def remove_inline_comment(line):
+def remove_inline_ignore(line):
     """
     """
     comments = {}
     without_string = re.sub(INLINE_STRING, "", line)
-    char = False
+    char = idx = None
 
-    for c, r in INLINE_COMMENTS.items():
+    for c, tup in INLINE_IGNORES.items():
+        r = tup[0]
         if re.search(r, line) and re.search(r, without_string):
             if line.count(c) > 1:
                 line = line.rsplit(c, 1)[0]
             exceptions = INLINE_EXCEPTIONS.get(c, [])
             if not any(re.search(p, line) for p in exceptions):
+                #print(line.replace('\n', ''), c)
                 comments[c] = line.find(c)
+                idx = tup[1]
 
     if comments:
         char = min(comments, key=comments.get)
         line = line[:line.find(char)].strip() + "\n"
 
-    return line, char, len(re.findall(INLINE_STRING, line))
+    return line, char, idx, len(re.findall(INLINE_STRING, line))
 
 
 def extract_content(src, is_file):
@@ -168,10 +178,12 @@ def extract_content(src, is_file):
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
     for line in text:
         stripped = line.strip()
+        if any(re.search(r, stripped) for r in FILE_TERMINATORS):
+            break
         skip = True
         for c, r in BLOCK_IGNORES.items():
             if not regex and re.match(r[0], stripped):
-                if not re.match(INLINE_COMMENTS.get(c, r"^$"), stripped):
+                if not re.match(INLINE_IGNORES.get(c, r"$^")[0], stripped):
                     # We've found the start of a multi-line comment.
                     regex = r[1]
                     idx = r[2]
@@ -189,10 +201,10 @@ def extract_content(src, is_file):
             # We're either in a multi-line comment or the line is blank.
             continue
 
-        line, char, string_count = remove_inline_comment(line)
+        line, char, idx, string_count = remove_inline_ignore(line)
         if char:
             comments.add(char)
-        counts[1] += int(bool(char))
+            counts[idx] += 1
         counts[2] += string_count
 
         if counts[0] > 0:
