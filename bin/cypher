@@ -9,19 +9,19 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "file",
     nargs=1,
-    help="Path to unknown source code."
+    help="path to unknown source code."
 )
 parser.add_argument(
     "-v",
     "--verbose",
     action="store_true",
-    help="Return verbose output."
+    help="use verbose output."
 )
 parser.add_argument(
     "-m",
     "--max",
     type=int,
-    help="Max number of languages to return."
+    help="max number of languages to return."
 )
 
 verbose_output = """
