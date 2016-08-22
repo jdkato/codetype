@@ -3,13 +3,13 @@ import sys
 import unittest
 
 from cypher import identify
-from dev.sigmgr import run
+from dev import run
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "script",
     nargs=1,
-    help="sigmgr|test"
+    help="dev|test"
 )
 parser.add_argument(
     "-t",
@@ -29,7 +29,7 @@ parser.add_argument(
 
 args = vars(parser.parse_args())
 script = args["script"][0]
-if script == "sigmgr":
+if script == "dev":
     if args["test"]:
         run(lang=args["lang"], is_test=1)
     elif args["lang"]:
