@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(
     description="A source code identification tool."
 )
 parser.add_argument(
-    "src",
+    "file",
     nargs=1,
     help="Path to unknown source code."
 )
@@ -15,12 +15,39 @@ parser.add_argument(
     "-v",
     "--verbose",
     action="store_true",
-    help="Return all scores."
+    help="Return verbose output."
+)
+parser.add_argument(
+    "-m",
+    "--max",
+    type=int,
+    help="Max number of languages to return."
 )
 
+verbose_output = """
+---------- Result ------------
+             Strings: {0}
+     Inline comments: {1}
+      Block comments: {2}
+Top language matches: {3}
+------------------------------
+"""
+
 args = vars(parser.parse_args())
-result = identify(args["src"][0], verbose=args["verbose"])
+result = identify(args["file"][0], verbose=args["verbose"])
 if result < 0:
     print("Language not recognized.")
 else:
-    print(result)
+    if args["verbose"]:
+        d = result["results"]
+        langs = sorted(d, key=d.get, reverse=True)
+        if args["max"]:
+            langs = langs[:args["max"]]
+        print(verbose_output.format(
+            result['string_count'],
+            result['inline_count'],
+            result['block_count'],
+            ", ".join(langs)
+        ))
+    else:
+        print(result)
