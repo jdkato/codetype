@@ -52,8 +52,8 @@ class CypherTestCase(unittest.TestCase):
         }
         for case, output in cases.items():
             removed, char, idx, string_count = remove_inline_ignore(case)
-            self.assertEqual(removed.strip(), output[0])
             self.assertEqual(char, output[1])
+            self.assertEqual(removed.strip(), output[0])
             self.assertEqual(string_count, output[2])
 
     def test_extract_content(self):
