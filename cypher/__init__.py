@@ -75,11 +75,12 @@ INLINE_EXCEPTIONS = {
     "#": [
         r"#(include|!|define|undef|if|else|endif|import|pragma|\[|stdout)",
         # Lua `#` operator
-        r"(?<!r)#([^\s-]{1,}$|[^\s]{1,}\sdo|.*,.*\)|[^\s]{1,}\s==)"
+        r"(?<!r)#([^\s-]{1,}$|.{1,}do\n?$|[^\s]*,.*\)|[^\s]{1,}\s==)",
+        r"\(#.*\)"
     ],
     "--": [
         # Perl `... --;`
-        r".*\s--;$"
+        r".*\s--((@|\$|%).*)?;"
     ]
 }
 FILE_TERMINATORS = [
