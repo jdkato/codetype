@@ -1,0 +1,7 @@
+using Plots
+using Distributions
+
+function plot_histogram(distribution, n)
+    epsilon_values = rand(distribution, n)  # n draws from distribution
+    histogram(epsilon_values)
+end

@@ -1,0 +1,19 @@
+{
+    "tokens": [
+        "function", "end", "include(", "export", "type", "@inline", "macro",
+        "$", "!", "@goto", "true", "false", "::", "@eval", "@label", "elseif",
+        "begin", "immutable", "@", "println(", "=>", "print("
+    ],
+    "first_line": [
+        "^module\\s.*$", "^__precompile__\\(\\)$", "^const\\s.+\\s+=.+$",
+        "^%%{$", "^abstract(?!\\sclass)\\s.+$", "^bitstype\\s.+$",
+        "^immutable\\s.+end$", "^import [^\"\\{]*$", "^load\\(\".+\"\\)$",
+        "^function .*\\(.*\\)", "^using\\s[^;]+,?[^;]+$"
+    ],
+    "unique": [
+        "quote", "endof", "@compat", "@testset", "@test", "using", "bitstype",
+        "const", "@assert", "precompile(", "Dict(", "printsum(", "@printf"
+    ],
+    "flags": ["def", "do", "require", ":\n", "nil", "puts", "class"],
+    "comments": ["#", "\"\"\""]
+}

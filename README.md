@@ -41,7 +41,7 @@ optional arguments:
 
 | # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Accuracy |
 |:-----------------:|:-------------------:|:----------------:|:---------------:|
-|       16762       |        0.015        |       0.994      |     0.971 (C)   |
+|       16857       |        0.014        |       0.994      |     0.971 (C)   |
 
 ## Support
 
@@ -59,7 +59,7 @@ optional arguments:
 |   Haskell     | :white_check_mark:    |
 |     Java      | :white_check_mark:    |
 |  JavaScript   |         :x:           |
-|    Julia      |         :x:           |
+|    Julia      | :white_check_mark:    |
 |     Lisp      |         :x:           |
 |     Lua       | :white_check_mark:    |
 |    Matlab     |         :x:           |

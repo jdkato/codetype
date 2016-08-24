@@ -1,0 +1,3 @@
+# dicts can be initialised directly:
+a1 = Dict(1=>"one", 2=>"two")
+printsum(a1) #> Dict{Any,Any}: {2=>"two",1=>"one"}

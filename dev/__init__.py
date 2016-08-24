@@ -83,6 +83,10 @@ LANG_INFO = {
     "AppleScript": {
         "repo": "https://github.com/Zettt/LaunchBar-Scripts.git",
         "ext": [".applescript"]
+    },
+    "Julia": {
+        "repo": "https://github.com/BioJulia/Bio.jl.git",
+        "ext": [".jl"]
     }
 }
 DIR_PATH = os.path.join(os.getcwd(), "dev")
