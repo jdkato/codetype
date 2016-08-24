@@ -60,11 +60,7 @@ def identify(src, verbose=False):
 
     results = parse_filtered(filtered, results)
     if verbose:
-        return {
-            "results": results, "block_count": summary["counts"][3],
-            "inline_count": summary["counts"][1],
-            "string_count": summary["counts"][2]
-        }
+        return results
     else:
         return max(results, key=results.get)
 
