@@ -1,13 +1,13 @@
 {
     "tokens": [
         "not", "then", "function", "and", "elseif", "nil", "repeat",
-        "do", "until", "self", "true", "false", "#", "{", "}", "()"
+        "do", "until", "self", "true", "false", "#", "{", "}", "()", "end"
     ],
     "first_line": [
-        "^#!.*lua(jit)?$", "^return {$", "^require ('|\").*('|\")$",
+        "^#!.*lua(jit)?$", "^return {$", "^require ('|\")[^/]+('|\")$",
         "^function .*\\(.*\\)", "^local .{1,}$", "^return \\[\\[$"
     ],
-    "unique": ["local", "end", "~="],
-    "flags": ["=~"],
+    "unique": ["local", "~="],
+    "flags": ["=~", "begin", "class"],
     "comments": ["--", "--[["]
 }
