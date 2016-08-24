@@ -39,9 +39,6 @@ function identify() {
             else
                 $('#lang-' + i).html('N/A');
         }
-        $('#inline').html(data["inline_count"]);
-        $('#block').html(data["block_count"]);
-        $('#string').html(data["string_count"]);
         if (langs[0] in name2Mode) {
           mode = name2Mode[langs[0]];
         } else {
