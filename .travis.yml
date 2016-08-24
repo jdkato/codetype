@@ -8,10 +8,6 @@ python:
 install:
   - python setup.py install
   - pip install coveralls
-  - pip install flake8
-
-before_script:
-  - flake8 cypher
 
 script:
  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then coverage run -m --source cypher unittest discover; fi
