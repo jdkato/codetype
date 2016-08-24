@@ -215,19 +215,14 @@ def run(lang, is_test):
     times = []
     files = 0
     correct = []
-    if lang:
-        info = LANG_INFO.get(lang)
-        src_dir = os.path.join(
-            TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
-        )
-        if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
-            clone_and_clean(info["repo"], src_dir, info["ext"])
-
     if is_test:
         for lang, info in LANG_INFO.items():
+            print("Testing", lang)
             src_dir = os.path.join(
                 TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
             )
+            if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
+                clone_and_clean(info["repo"], src_dir, info["ext"])
             timed, count, percentage = test_sig(src_dir, lang, info["ext"])
             times.append(timed)
             files += count
@@ -236,5 +231,11 @@ def run(lang, is_test):
         print("Time per file: {}s".format(round(sum(times) / len(times), 3)))
         print("Accuracy: {}".format(round(sum(correct) / len(LANG_INFO), 3)))
     else:
+        info = LANG_INFO.get(lang)
+        src_dir = os.path.join(
+            TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
+        )
+        if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
+            clone_and_clean(info["repo"], src_dir, info["ext"])
         write_signature(src_dir, lang=lang, ext=info["ext"], is_file=1)
     return 0
