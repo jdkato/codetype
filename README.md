@@ -35,15 +35,13 @@ optional arguments:
   -m MAX, --max MAX  max number of languages to return
 ```
 
-
-
 ## Strategy
 
 ## Performance
 
 | # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Accuracy |
 |:-----------------:|:-------------------:|:----------------:|:---------------:|
-|       16736       |        0.017        |       0.994      |     0.966 (C)   |
+|       16762       |        0.015        |       0.994      |     0.971 (C)   |
 
 ## Support
 
