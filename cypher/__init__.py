@@ -1,3 +1,4 @@
+# coding: utf-8
 import codecs
 import io
 import math
@@ -14,7 +15,7 @@ else:
 
 import msgpack
 
-from cypher.re_globals import (
+from .re_globals import (
     BLOCK_IGNORES,
     INLINE_IGNORES,
     INLINE_STRING,
