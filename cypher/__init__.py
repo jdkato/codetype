@@ -5,8 +5,6 @@ import os
 import re
 import sys
 
-import msgpack
-
 from collections import Counter
 PY2 = sys.version_info <= (3,)
 if PY2:
@@ -14,7 +12,9 @@ if PY2:
 else:
     from io import StringIO
 
-from .re_globals import (
+import msgpack
+
+from cypher.re_globals import (
     BLOCK_IGNORES,
     INLINE_IGNORES,
     INLINE_STRING,
