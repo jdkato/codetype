@@ -9,6 +9,6 @@
         "^(import|module) [^;]*$", "^{-.*$", "^#(ifdef|define|undef) .*$"
     ],
     "unique": ["Haskell", "GHC", "LANGUAGE", "Monoid", "!!", "maybe"],
-    "flags": ["require", "from"],
+    "flags": ["require", "from", "include(", "end"],
     "comments": ["{-", "--"]
 }
