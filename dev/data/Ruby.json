@@ -3,18 +3,21 @@
         "alias", "begin", "defined", "ensure", "false", "nil",
         "redo", "not", "retry", "then", "true", "undef", "unless", "when",
         "each", "require", "module", "gets", "require_dependency",
-        "Array", "Bignum", "Binding", "Class", "File", "Fixnum", "Hash",
+        "Array", "Bignum", "Binding", "class", "File", "Fixnum", "Hash",
         "Method", "NilClass", "TrueClass", "has_key", "def", "!", "$", "|",
-        "::", "@", "=>"
+        "::", "@", "=>", "end", "do"
     ],
     "first_line": [
-        "^require(_relative)? ('|\").*('|\")$", "^<%.*%>$",
+        "^require(_relative|_dependency)? ('|\")[^\\.]+('|\")$", "^<%.*%>$",
         "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
-        "^class .* < .*::.*$"
+        "^class .* < .*::.*$", "^.+::.+\\s=\\s.+$"
     ],
-    "flags": ["function", "val", "import", "tell"],
+    "flags": [
+        "function", "val", "import", "tell", "include(", "const", "printsum(",
+        "@printf"
+    ],
     "unique": [
-        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "end", "%w", "?"
+        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "%w", "?"
     ],
     "comments": ["#", "="]
 }
