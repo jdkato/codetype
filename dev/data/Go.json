@@ -1,13 +1,13 @@
 {
     "tokens": [
         "type", "var", "defer", "nil", "uint64", "const", "struct", "true",
-        "false", "fmt", "{", "}"
+        "false", "fmt", "{", "}", "Printf"
     ],
     "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
-    "unique": ["func", ":=", "Printf"],
+    "unique": ["func", ":="],
     "flags": [
         "def", "String", "typedef", "NULL", " . ", "object", "dialog",
-        "function", "end"
+        "function", "end", ";;"
     ],
     "comments": ["//", "/*"]
 }
