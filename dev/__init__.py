@@ -87,6 +87,10 @@ LANG_INFO = {
     "Julia": {
         "repo": "https://github.com/BioJulia/Bio.jl.git",
         "ext": [".jl"]
+    },
+    "OCaml": {
+        "repo": "https://github.com/coq/coq.git",
+        "ext": [".ml", ".mli"]
     }
 }
 DIR_PATH = os.path.join(os.getcwd(), "dev")

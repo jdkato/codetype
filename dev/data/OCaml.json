@@ -1,0 +1,17 @@
+{
+    "tokens": [
+        "type", "val", "->", "ref", "let", ":=", "!", "struct", "with", "true",
+        "false", "|", "in", "end", "module", "level", "open", "match", "()",
+        ";;", "class", "~", "`", "printf"
+    ],
+    "first_line": [
+        "^(module\\s)?(type|let)\\s.+\\s=\\s.*$", "^open\\s.+$",
+        "^val\\s.+\\s:\\s.+\\s->\\s.+$"
+    ],
+    "unique": [
+        "frame", "exn", "rec", "Obj", "done", "sig", "print_int",
+        "print_string"
+    ],
+    "flags": ["def"],
+    "comments": ["(*", "#"]
+}

@@ -39,7 +39,7 @@ optional arguments:
 
 | # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Accuracy |
 |:-----------------:|:-------------------:|:----------------:|:---------------:|
-|       16857       |        0.014        |       0.994      |     0.971 (C)   |
+|       17684       |        0.017        |       0.993      |     0.963 (C)   |
 
 ## Support
 
@@ -62,7 +62,7 @@ optional arguments:
 |     Lisp      |         :x:           |
 |     Lua       | :white_check_mark:    |
 |    Matlab     |         :x:           |
-|    OCaml      |         :x:           |
+|    OCaml      | :white_check_mark:    |
 | Objective-C   | :white_check_mark:    |
 |    Pascal     |         :x:           |
 |     Perl      | :white_check_mark:    |
