@@ -35,8 +35,6 @@ optional arguments:
   -m MAX, --max MAX  max number of languages to return
 ```
 
-## Strategy
-
 ## Performance
 
 | # of Files Tested | Time Per File (sec) | Average Accuracy | Lowest Accuracy |
@@ -51,7 +49,8 @@ optional arguments:
 |      C#       | :white_check_mark:    |
 |     C++       | :white_check_mark:    |
 |      C        | :white_check_mark:    |
-|   Clojure     |         :x:           |
+| Clojure       | :x:                   |
+|CoffeeScript   |         :x:           |
 |      D        | :white_check_mark:    |
 |    Erlang     |         :x:           |
 |      Go       | :white_check_mark:    |
