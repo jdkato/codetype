@@ -1,0 +1,27 @@
+def parse_popupCss(css):
+        words = css.split()
+        i = 0
+        bg = None
+        fg = None
+        while words[i] != "html":
+            i += 1
+        while words[i] != "}":
+            if words[i] == "background-color:":
+                bg = words[i+1]
+            if words[i] == "color:":
+                fg = words[i+1]
+            i += 1
+    
+        # Defaults if not found
+        if bg == None:
+            bg = "#FFFFFF"
+        if fg == None:
+            fg = "#000000"
+    
+        # Remove leading # and trailing ;
+        bg = bg[1:7]
+        fg = fg[1:7]
+    
+        return bg, fg
+    scheme_path = view.settings().get("color_scheme")
+    scheme_content = sublime.load_binary_resource(scheme_path)
