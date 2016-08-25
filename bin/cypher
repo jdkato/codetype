@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 import argparse
-from cypher import identify
+from cypher import identify, __version__
 
 parser = argparse.ArgumentParser(
     prog="cypher",
     description="A source code identification tool."
+)
+parser.add_argument(
+    "--version",
+    action="version",
+    version="cypher version {0}".format(__version__)
 )
 parser.add_argument(
     "file",
@@ -24,30 +29,13 @@ parser.add_argument(
     help="max number of languages to return"
 )
 
-verbose_output = """
----------- Result ------------
-             Strings: {0}
-     Inline comments: {1}
-      Block comments: {2}
-Top language matches: {3}
-------------------------------
-"""
-
 args = vars(parser.parse_args())
 result = identify(args["file"][0], verbose=args["verbose"])
-if result < 0:
+if result == -1:
     print("Language not recognized.")
 else:
     if args["verbose"]:
-        d = result["results"]
-        langs = sorted(d, key=d.get, reverse=True)
+        result = sorted(result, key=result.get, reverse=True)
         if args["max"]:
-            langs = langs[:args["max"]]
-        print(verbose_output.format(
-            result['string_count'],
-            result['inline_count'],
-            result['block_count'],
-            ", ".join(langs)
-        ))
-    else:
-        print(result)
+            result = result[:args["max"]]
+    print(", ".join(result) if args["verbose"] else result)
