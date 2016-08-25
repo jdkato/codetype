@@ -115,19 +115,18 @@ def extract_content(src, is_file):
 
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
     for line in text:
-        stripped = line.strip()
-        if any(re.search(r, stripped) for r in FILE_TERMINATORS):
+        if any(re.search(r, line) for r in FILE_TERMINATORS):
             break
         skip = True
         for c, r in BLOCK_IGNORES.items():
-            if not regex and re.match(r[0], stripped):
-                if not re.match(INLINE_IGNORES.get(c, r"$^")[0], stripped):
+            if not regex and re.match(r[0], line):
+                if not re.match(INLINE_IGNORES.get(c, r"$^")[0], line):
                     # We've found the start of a multi-line comment.
                     regex = r[1]
                     idx = r[2]
                     comments.add(c)
                     break
-            elif regex and re.match(regex, stripped):
+            elif regex and re.match(regex, line):
                 # We've found the end of a multi-line comment.
                 counts[idx] += 1
                 regex = None
@@ -135,7 +134,7 @@ def extract_content(src, is_file):
         else:
             skip = regex
 
-        if skip or not stripped:
+        if skip or not line.strip():
             # We're either in a multi-line comment or the line is blank.
             continue
 
