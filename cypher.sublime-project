@@ -20,9 +20,8 @@
         },
         {
             "working_dir": "${project_path}",
-            "cmd": ["python3 run.py dev -t"],
+            "cmd": ["python3", "run.py", "dev", "-t"],
             "name": "Cypher: Test Signatures",
-            "shell": true,
             "variants": [
                 {
                     "cmd": ["python2", "run.py", "dev", "-t"],
