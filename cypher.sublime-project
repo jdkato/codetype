@@ -4,12 +4,31 @@
         {
             "cmd": ["python3", "run.py", "dev", "$file_base_name"],
             "working_dir": "${project_path}",
-            "name": "Cypher: Generate Signature"
+            "name": "Cypher: Generate Signature",
+            "selector": "source.json",
         },
         {
-            "cmd": ["python3", "run.py", "test"],
             "working_dir": "${project_path}",
-            "name": "Cypher: Run Unit Tests"
+            "name": "Cypher: Run Unit Tests",
+            "cmd": ["python3", "run.py", "test"],
+            "variants": [
+                {
+                    "cmd": ["python2", "run.py", "test"],
+                    "name": "Python 2",
+                }
+            ]
+        },
+        {
+            "working_dir": "${project_path}",
+            "cmd": ["python3 run.py dev -t"],
+            "name": "Cypher: Test Signatures",
+            "shell": true,
+            "variants": [
+                {
+                    "cmd": ["python2", "run.py", "dev", "-t"],
+                    "name": "Python 2",
+                }
+            ]
         }
 	],
 	"folders":
