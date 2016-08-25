@@ -22,7 +22,7 @@
 ###### CLI
 
 ```
-usage: cypher [-h] [-v] [-m MAX] file
+usage: cypher [-h] [--version] [-v] [-m MAX] file
 
 A source code identification tool.
 
@@ -31,7 +31,8 @@ positional arguments:
 
 optional arguments:
   -h, --help         show this help message and exit
-  -v, --verbose      return verbose output
+  --version          show program's version number and exit
+  -v, --verbose      use verbose output
   -m MAX, --max MAX  max number of languages to return
 ```
 
