@@ -51,6 +51,7 @@ optional arguments:
 |      C#       | :white_check_mark:    |
 |     C++       | :white_check_mark:    |
 |      C        | :white_check_mark:    |
+| CoffeeScript  | :x:                   |
 |   Clojure     |         :x:           |
 |      D        | :white_check_mark:    |
 |    Erlang     |         :x:           |
