@@ -44,7 +44,6 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-*.sublime-project
 *.sublime-workspace
 
 # sftp configuration file

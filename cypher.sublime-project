@@ -1,0 +1,21 @@
+{
+	"build_systems":
+	[
+        {
+            "cmd": ["python3", "run.py", "dev", "$file_base_name"],
+            "working_dir": "${project_path}",
+            "name": "Cypher: Generate Signature"
+        },
+        {
+            "cmd": ["python3", "run.py", "test"],
+            "working_dir": "${project_path}",
+            "name": "Cypher: Run Unit Tests"
+        }
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
