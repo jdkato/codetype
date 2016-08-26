@@ -10,6 +10,8 @@
         "^.{1,} <- .*\\(.{1,}$", "^NULL$"
     ],
     "unique": ["<<-", "ifelse", "...", "function(", "c(", "seq("],
-    "flags": ["@", "=>", "malloc(", "tell", "end", "foreach", "@printf"],
+    "flags": [
+        "@", "=>", "malloc(", "tell", "end", "foreach", "@printf", "println("
+    ],
     "comments": ["#"]
 }
