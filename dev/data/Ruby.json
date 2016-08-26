@@ -14,7 +14,7 @@
     ],
     "flags": [
         "function", "val", "import", "tell", "include(", "const", "printsum(",
-        "@printf"
+        "@printf", "println("
     ],
     "unique": [
         "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "%w", "?"
