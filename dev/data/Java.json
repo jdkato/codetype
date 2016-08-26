@@ -6,6 +6,6 @@
     ],
     "first_line": ["^(import|package) [^::]*;$"],
     "unique": ["java", "println("],
-    "flags": ["Console"],
+    "flags": ["Console", "trait", "def", "printf("],
     "comments": ["//", "/*"]
 }
