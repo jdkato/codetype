@@ -1,7 +1,7 @@
 {
     "tokens": [
         "is", "alias", "class", "private", "template", "auto", "static",
-        "foreach", "this", "{", "}", ";", "@", "~", "!", "=>"
+        "foreach", "this", "{", "}", ";", "@", "~", "!", "=>", "std", "File("
     ],
     "first_line": [
         "^module .*;$", "^deprecated(.*)$", "^Ddoc$", "^(public )?import .*;$",
