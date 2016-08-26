@@ -7,5 +7,5 @@
     "first_line": ["^(import|package) [^::]*;$"],
     "unique": ["java", "println("],
     "flags": ["Console", "trait", "def", "printf("],
-    "comments": ["//", "/*"]
+    "ignores": ["//", "/*"]
 }

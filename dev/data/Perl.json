@@ -13,5 +13,5 @@
         "foreach"
     ],
     "flags": ["fn", "pub", "impl"],
-    "comments": ["#", "=", "//"]
+    "ignores": ["#", "=", "//"]
 }

@@ -9,5 +9,5 @@
     ],
     "unique": ["local", "~="],
     "flags": ["=~", "begin", "class"],
-    "comments": ["--", "--[["]
+    "ignores": ["--", "--[["]
 }

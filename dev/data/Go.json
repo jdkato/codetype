@@ -9,5 +9,5 @@
         "def", "String", "typedef", "NULL", " . ", "object", "dialog",
         "function", "end", ";;"
     ],
-    "comments": ["//", "/*"]
+    "ignores": ["//", "/*"]
 }

@@ -10,5 +10,5 @@
     ],
     "unique": ["tell", "choose", "display", "dialog", "delay"],
     "flags": ["local", "function(", "require", "nil", "val"],
-    "comments": ["--", "(*", "#"]
+    "ignores": ["--", "(*", "#"]
 }

@@ -13,5 +13,5 @@
     "flags": [
         "@", "=>", "malloc(", "tell", "end", "foreach", "@printf", "println("
     ],
-    "comments": ["#"]
+    "ignores": ["#"]
 }

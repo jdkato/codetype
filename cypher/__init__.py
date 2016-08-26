@@ -53,7 +53,7 @@ def identify(src, verbose=False):
             continue
         ksig = read_signature(lang)
         results[lang] = compare_signatures(sig, ksig, summary["lines"])
-        if all(r in ksig.get("comments") for r in summary["comments"]):
+        if all(r in ksig.get("ignores") for r in summary["ignores"]):
             filtered[0][lang] = results[lang]
         for regex in ksig.get("first_line", []):
             decoded = codecs.getdecoder("unicode_escape")(regex)[0]
@@ -110,7 +110,7 @@ def extract_content(src, is_file):
     """Return all non-comment and non-string content in src.
     """
     content = ""
-    comments = set()
+    ignores = set()
     skip = regex = idx = None
     counts = [0] * 4  # [lines, inline, string, block]
 
@@ -125,7 +125,7 @@ def extract_content(src, is_file):
                     # We've found the start of a multi-line comment.
                     regex = r[1]
                     idx = r[2]
-                    comments.add(c)
+                    ignores.add(c)
                     break
             elif regex and re.match(regex, line):
                 # We've found the end of a multi-line comment.
@@ -141,7 +141,7 @@ def extract_content(src, is_file):
 
         line, char, idx, string_count = remove_inline_ignore(line)
         if char:
-            comments.add(char)
+            ignores.add(char)
             counts[idx] += 1
         counts[2] += string_count
 
@@ -152,7 +152,7 @@ def extract_content(src, is_file):
             content += line
 
     text.close()
-    return content, comments, counts
+    return content, ignores, counts
 
 
 def get_text_summary(src, is_file=False, filtered=None):
@@ -168,7 +168,7 @@ def get_text_summary(src, is_file=False, filtered=None):
     lines = 0.0
     tokens = []
     first_line = None
-    content, comments, counts = extract_content(src, is_file)
+    content, ignores, counts = extract_content(src, is_file)
     if PY2:
         text = StringIO(content.encode("utf-8"))
     else:
@@ -186,7 +186,7 @@ def get_text_summary(src, is_file=False, filtered=None):
 
     return {
         "tokens": tokens, "lines": lines, "first_line": first_line,
-        "counts": counts, "comments": comments
+        "counts": counts, "ignores": ignores
     }
 
 
@@ -202,7 +202,7 @@ def compare_signatures(unknown, known, lines):
     found = 0.0
     mult = 2 if lines < 15 else 1
     for k, v in known.items():
-        if k in ["first_line", "comments"]:
+        if k in ["first_line", "ignores"]:
             continue
         elif k == "unique":
             inc = 4 * mult
@@ -234,7 +234,7 @@ def compute_signature(lang_data):
 
     signature["first_line"] = lang_data.get("first_line")
     signature["unique"] = lang_data.get("unique", [])
-    signature["comments"] = lang_data.get("comments")
+    signature["ignores"] = lang_data.get("ignores")
     signature["flags"] = lang_data.get("flags", [])
     return signature
 

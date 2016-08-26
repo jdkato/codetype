@@ -13,5 +13,5 @@
         "print_string"
     ],
     "flags": ["def"],
-    "comments": ["(*", "#"]
+    "ignores": ["(*", "#"]
 }

@@ -181,7 +181,7 @@ def get_lang_data(lang):
         d = json.load(jdata)
 
     for k, v in d.items():
-        if k not in ["comments", "first_line"]:
+        if k not in ["ignores", "first_line"]:
             tokens.extend(v)
     tokens = set(tokens)
 

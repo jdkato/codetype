@@ -12,5 +12,5 @@
         "writefln("
     ],
     "flags": ["NULL", " . ", "malloc("],
-    "comments": ["//", "/*", "/+"]
+    "ignores": ["//", "/*", "/+"]
 }

@@ -15,5 +15,5 @@
         "removeObjectAtIndex", "@selector", "respondsToSelector", "IBAction"
     ],
     "flags": ["free(", "strlen(", "argc", "argv"],
-    "comments": ["//", "/*"]
+    "ignores": ["//", "/*"]
 }

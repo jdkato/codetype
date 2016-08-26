@@ -7,6 +7,6 @@
     "first_line": ["namespace .*", "using .*;", "^#define .*"],
     "unique": ["decimal", "readonly", "Console"],
     "flags": ["typedef", "NULL", " . "],
-    "comments": ["//", "/*"]
+    "ignores": ["//", "/*"]
 }
 
