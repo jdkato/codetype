@@ -1,11 +1,11 @@
 {
     "tokens": [
-        "java", "super", "public", "private", "extends", "interface", "final",
+        "super", "public", "private", "extends", "interface", "final",
         "System", "boolean", "Object", "String", "import", "class", "out",
-        "lang", "util", "void", "{", "}", ";", "@", "<", ">", "[]"
+        "lang", "util", "void", "{", "}", ";", "@", "<", ">", "[]", "println("
     ],
     "first_line": ["^(import|package) [^::]*;$"],
-    "unique": ["java", "println("],
-    "flags": ["Console", "trait", "def", "printf("],
+    "unique": ["java"],
+    "flags": ["Console", "trait", "def", "printf(", "end"],
     "ignores": ["//", "/*"]
 }
