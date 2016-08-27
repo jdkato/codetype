@@ -16,11 +16,11 @@ else:
 import msgpack
 
 from .re_globals import (
-    BLOCK_IGNORES,
-    INLINE_IGNORES,
-    INLINE_STRING,
-    INLINE_EXCEPTIONS,
     EXTRACT_RE,
+    BLOCK_IGNORES,
+    INLINE_COMMENTS,
+    INLINE_STRINGS,
+    INLINE_EXCEPTIONS,
     FILE_TERMINATORS
 )
 
@@ -82,85 +82,95 @@ def parse_filtered(filtered, results):
     return d or results
 
 
+def remove_strings(line):
+    """
+    """
+    chars = []
+    for c, regex in INLINE_STRINGS.items():
+        expt = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
+        if not expt and re.search(regex, line):
+            line = re.sub(regex, "", line)
+            chars.append(c)
+    return line, chars
+
+
+def remove_comment(line):
+    """
+    """
+    char = None
+    wos_line = line
+    for r in INLINE_STRINGS.values():
+        if re.search(r, line):
+            wos_line = re.sub(r, "", line)
+
+    for c, regex in INLINE_COMMENTS.items():
+        if line.count(c) > 1:
+            line = line[:line.rfind(c)].strip()
+        expt = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
+        if not expt and re.search(regex, line) and re.search(regex, wos_line):
+            char = c
+            line = line[:line.find(char)].strip()
+
+    return line, char
+
+
 def remove_inline_ignore(line):
     """
     """
-    comments = {}
-    without_string = re.sub(INLINE_STRING, "", line)
-    char = idx = None
-
-    for c, tup in INLINE_IGNORES.items():
-        r = tup[0]
-        if re.search(r, line) and re.search(r, without_string):
-            if line.count(c) > 1:
-                line = line.rsplit(c, 1)[0]
-            exceptions = INLINE_EXCEPTIONS.get(c, [])
-            if not any(re.search(p, line) for p in exceptions):
-                comments[c] = line.find(c)
-                idx = tup[1]
-
-    if comments:
-        char = min(comments, key=comments.get)
-        line = line[:line.find(char)].strip() + "\n"
-
-    return line, char, idx, len(re.findall(INLINE_STRING, line))
+    line, comment_char = remove_comment(line)
+    line, strings = remove_strings(line)
+    if comment_char:
+        strings.append(comment_char)
+    return line.strip(), strings
 
 
 def summarize_text(src, is_file=False, filtered=None):
     """Return all non-comment and non-string content in src.
     """
     lines = 0.0
-    toks = []
-    ignores = set()
-    skip, regex, idx, first = None, None, None, None
-    counts = [0] * 4  # [lines, inline, string, block]
-
+    toks, ignores = [], []
+    skip, regex, first = None, None, None
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
+
     for line in text:
         if any(re.search(r, line) for r in FILE_TERMINATORS):
             break
+
         skip = True
         for c, r in BLOCK_IGNORES.items():
-            if not regex and re.match(r[0], line):
-                if not re.match(INLINE_IGNORES.get(c, r"$^")[0], line):
-                    # We've found the start of a multi-line comment.
+            if not regex and re.search(r[0], line):
+                is_comment = re.search(INLINE_COMMENTS.get(c, r"$^"), line)
+                is_string = re.search(INLINE_STRINGS.get(c, r"$^"), line)
+                if not is_comment and not is_string:
+                    # We've found the start of a block ignore.
                     regex = r[1]
-                    idx = r[2]
-                    ignores.add(c)
+                    ignores.append(c)
                     break
-            elif regex and re.match(regex, line):
-                # We've found the end of a multi-line comment.
-                counts[idx] += 1
+            elif regex and re.search(regex, line):
+                # We've found the end of a block ignore.
                 regex = None
                 break
         else:
             skip = regex
 
         if skip or not line.strip():
-            # We're either in a multi-line comment or the line is blank.
+            # We're either in a block ignore or the line is blank.
             continue
 
-        line, char, idx, string_count = remove_inline_ignore(line)
-        if char:
-            ignores.add(char)
-            counts[idx] += 1
-        counts[2] += string_count
-
-        if counts[0] > 0:
-            line = re.sub(INLINE_STRING, "", line)
-        if line.strip():
-            counts[0] += 1
+        line, chars = remove_inline_ignore(line)
+        ignores.extend(chars)
+        if line:
             lines += 1
             if lines == 1:
-                first = line.strip()
+                first = line
             extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
             toks.extend([s for s in extr if not filtered or s in filtered])
 
     text.close()
     return {
-        "tokens": toks, "lines": lines, "first_line": first, "ignores": ignores
+        "tokens": toks, "lines": lines, "first_line": first,
+        "ignores": set(ignores)
     }
-
 
 
 def compare_signatures(unknown, known, lines):

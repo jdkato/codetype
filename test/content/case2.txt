@@ -1,2 +1,0 @@
-'''foo'''
-print('foo', 'bar', 'baz')

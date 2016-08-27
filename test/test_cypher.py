@@ -33,27 +33,37 @@ class CypherTestCase(unittest.TestCase):
 
     def test_remove_inline_ignore(self):
         cases = {
-            "var += 1 # This is a comments": ["var += 1", "#", False],
-            "foo # This is a nested -- comment": ["foo", "#", False],
-            "bar // another nested # comment": ["bar", "//", False],
-            "baz /* block-style inline */": ["baz", "/*", False],
-            "main() -- comment": ["main()", "--", False],
-            "baz {- block-style inline -}": ["baz", "{-", False],
-            "baz {- block-style 'inline' -}": ["baz", "{-", False],
-            'baz {- "block-style" inline -}': ["baz", "{-", False],
-            '"baz" {- "block-style" inline -}': ['"baz"', "{-", 1],
-            "'baz' // {- block-style inline -}": ["'baz'", "//", 1],
-            '# the queue." (http://en)': ['', "#", False],
-            '# see http://docs.python.org/l#st': ['', '#', False],
-            '#--': ['', '#', False],
-            "print('foo', 'bar') # print!": ["print('foo', 'bar')", "#", 2],
-            "'''foo'''": ['', "'''", False]
+            "var += 1 # This is a comments": ["var += 1", ["#"]],
+            "foo # This is a nested -- comment": ["foo", ["#"]],
+            "bar // another nested # comment": ["bar", ["//"]],
+            "baz /* block-style inline */": ["baz", ["/*"]],
+            "main() -- comment": ["main()", ["--"]],
+            "baz {- block-style inline -}": ["baz", ["{-"]],
+            'baz {- "block-style" inline -}': ["baz", ["{-"]],
+            '"baz" {- "block-style" inline -}': ["", ["{-", '"']],
+            "'baz' // {- block-style inline -}": ["", ["//", "'"]],
+            '# the queue." (http://en)': ["", ["#"]],
+            "# see http://docs.python.org/l#st": ["", ["#"]],
+            "#--": ["", ["#"]],
+            "print('foo', 'bar') # print!": ["print(, )", ["#", "'"]],
+            "'''foo'''": ["", ["'''"]],
+            'print("baz", \'foo\', "fo") // foo {- "block-style" # in -}': [
+                "print(, , )", ["//", '"', "'"]
+            ],
+            "# FIRST LEARN ABOUT LISTS --": ["", ["#"]],
+            '"git [ -- version]\n"': ["", ['"']],
+            "## programmatically": ["", ["#"]],
+            "% Project homepage: https://github.com/": ["", ["%"]],
+            "% — foo": ["", ["%"]],
+            'printf("%s text", foo)': ["printf(, foo)", ['"']],
+            'set the_phone_number to "424-354-3548"': [
+                "set the_phone_number to", ['"']
+            ]
         }
         for case, output in cases.items():
-            removed, char, idx, string_count = remove_inline_ignore(case)
-            self.assertEqual(char, output[1])
-            self.assertEqual(removed.strip(), output[0])
-            self.assertEqual(string_count, output[2])
+            line, chars = remove_inline_ignore(case)
+            self.assertCountEqual(chars, output[1])
+            self.assertEqual(line.strip(), output[0])
 
 if __name__ == "__main__":
     unittest.main()
