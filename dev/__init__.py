@@ -11,7 +11,7 @@ sys.path.append(os.path.abspath("../cypher"))
 from cypher import (
     identify,
     compute_signature,
-    get_text_summary,
+    summarize_text,
     SIG_PATH
 )
 
@@ -204,7 +204,7 @@ def write_signature(src, lang, ext, is_file=True):
         for f in files:
             if ext and not any(f.endswith(e) for e in ext):
                 continue
-            summary = get_text_summary(
+            summary = summarize_text(
                 os.path.join(subdir, f),
                 is_file=is_file,
                 filtered=known

@@ -41,7 +41,7 @@ def identify(src, verbose=False):
     """
     results = {}
     filtered = [{}, {}]
-    summary = get_text_summary(src, is_file=os.path.isfile(src))
+    summary = summarize_text(src, is_file=os.path.isfile(src))
     sig = compute_signature(summary)
     if not sig:
         return -1
@@ -106,12 +106,13 @@ def remove_inline_ignore(line):
     return line, char, idx, len(re.findall(INLINE_STRING, line))
 
 
-def extract_content(src, is_file):
+def summarize_text(src, is_file=False, filtered=None):
     """Return all non-comment and non-string content in src.
     """
-    content = ""
+    lines = 0.0
+    toks = []
     ignores = set()
-    skip = regex = idx = None
+    skip, regex, idx, first = None, None, None, None
     counts = [0] * 4  # [lines, inline, string, block]
 
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
@@ -149,45 +150,17 @@ def extract_content(src, is_file):
             line = re.sub(INLINE_STRING, "", line)
         if line.strip():
             counts[0] += 1
-            content += line
+            lines += 1
+            if lines == 1:
+                first = line.strip()
+            extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
+            toks.extend([s for s in extr if not filtered or s in filtered])
 
     text.close()
-    return content, ignores, counts
-
-
-def get_text_summary(src, is_file=False, filtered=None):
-    """Extract all tokens from src.
-    Args:
-        src (str): Either a string or a file path.
-        is_file (bool): True if src is a file.
-        filtered (list): A list of strings indicating tokens to look for in
-            src. If provided, any tokens not in filtered will be ignored.
-    Returns:
-        (tuple): (tokens, lines, first_line).
-    """
-    lines = 0.0
-    tokens = []
-    first_line = None
-    content, ignores, counts = extract_content(src, is_file)
-    if PY2:
-        text = StringIO(content.encode("utf-8"))
-    else:
-        text = StringIO(content)
-
-    for line in text:
-        if not line.strip():
-            continue
-        lines += 1
-        if lines == 1:
-            first_line = line.strip()
-        extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
-        tokens.extend([s for s in extr if not filtered or s in filtered])
-    text.close()
-
     return {
-        "tokens": tokens, "lines": lines, "first_line": first_line,
-        "counts": counts, "ignores": ignores
+        "tokens": toks, "lines": lines, "first_line": first, "ignores": ignores
     }
+
 
 
 def compare_signatures(unknown, known, lines):

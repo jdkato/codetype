@@ -4,8 +4,7 @@ import unittest
 
 from cypher import (
     identify,
-    remove_inline_ignore,
-    extract_content
+    remove_inline_ignore
 )
 
 sys.path.insert(0, os.path.abspath("."))
@@ -55,18 +54,6 @@ class CypherTestCase(unittest.TestCase):
             self.assertEqual(char, output[1])
             self.assertEqual(removed.strip(), output[0])
             self.assertEqual(string_count, output[2])
-
-    def test_extract_content(self):
-        cases = {
-            'case1.txt': [{'r#"'}, [7, 0, 2, 0]],
-            'case2.txt': [{"'''"}, [1, 0, 4, 0]]
-        }
-        for case, output in cases.items():
-            path = os.path.join(CONTENT_DIR, case)
-            content, comments, counts = extract_content(path, True)
-            self.assertEqual(comments, output[0])
-            self.assertEqual(counts, output[1])
-
 
 if __name__ == "__main__":
     unittest.main()
