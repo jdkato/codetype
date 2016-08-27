@@ -9,7 +9,7 @@
     ],
     "unique": [
         "inout", "immutable", "safe", "pure", "unittest", "nogc", "Typedef",
-        "writefln("
+        "writefln(", "Typedef!"
     ],
     "flags": ["NULL", " . ", "malloc("],
     "ignores": ["//", "/*", "/+"]
