@@ -7,7 +7,7 @@
     "first_line": [
         "^module\\s.*$", "^__precompile__\\(\\)$", "^const\\s.+\\s+=.+$",
         "^%%{$", "^abstract(?!\\sclass)\\s.+$", "^bitstype\\s.+$",
-        "^immutable\\s.+end$", "^import [^\"\\{]*$", "^load\\(\".+\"\\)$",
+        "^immutable\\s.+end$", "^import [^\"\\{]*$", "^load\\(.*\\)$",
         "^function .*\\(.*\\)", "^using\\s[^;]+,?[^;]+$"
     ],
     "unique": [
