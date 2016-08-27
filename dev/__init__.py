@@ -49,7 +49,7 @@ LANG_INFO = {
         "ext": [".java"]
     },
     "Go": {
-        "repo": "https://github.com/getlantern/lantern.git",
+        "repo": "https://github.com/docker/docker.git",
         "ext": [".go"]
     },
     "Rust": {
