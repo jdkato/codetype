@@ -97,6 +97,7 @@ def remove_strings(line):
 def remove_comment(line):
     """
     """
+    char_to_pos = {}
     char = None
     wos_line = line
     for r in INLINE_STRINGS.values():
@@ -108,9 +109,11 @@ def remove_comment(line):
             line = line[:line.rfind(c)].strip()
         expt = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
         if not expt and re.search(regex, line) and re.search(regex, wos_line):
-            char = c
-            line = line[:line.find(char)].strip()
+            char_to_pos[c] = line.find(c)
 
+    if char_to_pos:
+        char = min(char_to_pos, key=char_to_pos.get)
+        line = line[:line.find(char)].strip()
     return line, char
 
 
@@ -131,11 +134,9 @@ def summarize_text(src, is_file=False, filtered=None):
     toks, ignores = [], []
     skip, regex, first = None, None, None
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
-
     for line in text:
         if any(re.search(r, line) for r in FILE_TERMINATORS):
             break
-
         skip = True
         for c, r in BLOCK_IGNORES.items():
             if not regex and re.search(r[0], line):
