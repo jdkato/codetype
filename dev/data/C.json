@@ -11,5 +11,5 @@
     ],
     "unique": ["static", "printf(", "fprintf(", "putchar"],
     "flags": ["namespace", "template", "class", "::", "cout", "<<"],
-    "ignores": ["//", "/*"]
+    "ignores": ["//", "/*", "\"", "'"]
 }

@@ -10,5 +10,5 @@
     ],
     "unique": ["Haskell", "GHC", "LANGUAGE", "Monoid", "!!", "maybe"],
     "flags": ["require", "from", "include(", "end"],
-    "ignores": ["{-", "--"]
+    "ignores": ["{-", "--", "'", "\"", "`"]
 }

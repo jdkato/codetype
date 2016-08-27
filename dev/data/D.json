@@ -12,5 +12,5 @@
         "writefln(", "Typedef!"
     ],
     "flags": ["NULL", " . ", "malloc("],
-    "ignores": ["//", "/*", "/+"]
+    "ignores": ["//", "/*", "/+", "\"", "'"]
 }

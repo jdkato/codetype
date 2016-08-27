@@ -16,5 +16,5 @@
         "push!"
     ],
     "flags": ["def", "do", "require", ":\n", "nil", "puts", "class"],
-    "ignores": ["#", "\"\"\""]
+    "ignores": ["#", "\"\"\"", "'", "\""]
 }

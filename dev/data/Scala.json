@@ -7,5 +7,5 @@
     "first_line": ["^package\\s.{1,}$", "^import .*$"],
     "unique": ["forSome", "Var", "match", "lazy", "trait", "Nil", ":::", "???"],
     "flags": [":\n"],
-    "ignores": ["//", "/*"]
+    "ignores": ["//", "/*", "'", "\""]
 }

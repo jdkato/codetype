@@ -10,5 +10,5 @@
         "loop"
     ],
     "flags": ["writefln(", "template"],
-    "ignores": ["//", "/*", "r#"]
+    "ignores": ["//", "/*", "r#", "'", "\"", "`"]
 }
