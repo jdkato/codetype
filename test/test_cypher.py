@@ -53,16 +53,18 @@ class CypherTestCase(unittest.TestCase):
             "# FIRST LEARN ABOUT LISTS --": ["", ["#"]],
             '"git [ -- version]\n"': ["", ['"']],
             "## programmatically": ["", ["#"]],
-            "% Project homepage: https://github.com/": ["", ["%"]],
-            "% — foo": ["", ["%"]],
             'printf("%s text", foo)': ["printf(, foo)", ['"']],
             'set the_phone_number to "424-354-3548"': [
                 "set the_phone_number to", ['"']
-            ]
+            ],
+            "(*    //   *  This *)": ["", ["(*"]]
         }
         for case, output in cases.items():
             line, chars = remove_inline_ignore(case)
-            self.assertCountEqual(chars, output[1])
+            try:
+                self.assertCountEqual(chars, output[1])
+            except AttributeError:
+                self.assertItemsEqual(chars, output[1])
             self.assertEqual(line.strip(), output[0])
 
 if __name__ == "__main__":
