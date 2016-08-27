@@ -56,7 +56,6 @@ optional arguments:
 |    Julia      | :white_check_mark:    |
 |     Lisp      |         :x:           |
 |     Lua       | :white_check_mark:    |
-|    Matlab     |         :x:           |
 |    OCaml      | :white_check_mark:    |
 | Objective-C   | :white_check_mark:    |
 |    Pascal     |         :x:           |
