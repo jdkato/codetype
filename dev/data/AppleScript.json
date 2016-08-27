@@ -5,7 +5,7 @@
         "code"
     ],
     "first_line": [
-        "^on run$", "^set .* to .*$", "^property .*\\s?:\\s?.*$",
+        "^on run$", "^set.*to.*$", "^property .*\\s?:\\s?.*$",
         "^tell .*$", "^#!.*osascript$"
     ],
     "unique": ["tell", "choose", "display", "dialog", "delay"],
