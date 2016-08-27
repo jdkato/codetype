@@ -12,7 +12,8 @@
     ],
     "unique": [
         "quote", "endof", "@compat", "@testset", "@test", "using", "bitstype",
-        "const", "@assert", "precompile(", "Dict(", "printsum(", "@printf"
+        "const", "@assert", "precompile(", "Dict(", "printsum(", "@printf",
+        "push!"
     ],
     "flags": ["def", "do", "require", ":\n", "nil", "puts", "class"],
     "ignores": ["#", "\"\"\""]
