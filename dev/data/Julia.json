@@ -5,7 +5,7 @@
         "begin", "immutable", "@", "println(", "=>", "print("
     ],
     "first_line": [
-        "^module\\s.*$", "^__precompile__\\(\\)$", "^const\\s.+\\s+=.+$",
+        "^module\\s[^;]+$", "^__precompile__\\(\\)$", "^const\\s.+\\s+=.+$",
         "^%%{$", "^abstract(?!\\sclass)\\s.+$", "^bitstype\\s.+$",
         "^immutable\\s.+end$", "^import [^\"\\{]*$", "^load\\(.*\\)$",
         "^function .*\\(.*\\)", "^using\\s[^;]+,?[^;]+$"
