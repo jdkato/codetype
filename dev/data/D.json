@@ -12,6 +12,9 @@
         "inout", "safe", "pure", "unittest", "nogc", "Typedef", "writefln(",
         "Typedef!"
     ],
-    "flags": ["NULL", " . ", "malloc(", "end", "function", "function("],
+    "flags": [
+        "NULL", " . ", "malloc(", "end", "function", "function(", "boolean",
+        "System", "Console"
+    ],
     "ignores": ["//", "/*", "/+", "\"", "'"]
 }
