@@ -2,11 +2,12 @@
     "tokens": [
         "System", "override", "this", "using", "as", "get", "set", "delegate",
         "var", "async", "interface", "const", "struct", "public", "WriteLine(",
-        "class", "using", "#if", "private", "{", "}", ";", "=>", "<", ">"
+        "class", "using", "#if", "private", "{", "}", ";", "=>", "<", ">",
+        "Console"
     ],
     "first_line": ["namespace .*", "using .*;", "^#define .*"],
-    "unique": ["decimal", "readonly", "Console"],
-    "flags": ["typedef", "NULL", " . "],
+    "unique": ["decimal", "readonly"],
+    "flags": ["typedef", "NULL", " . ", "function", "function("],
     "ignores": ["//", "/*", "\"", "'"]
 }
 
