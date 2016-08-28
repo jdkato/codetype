@@ -116,7 +116,7 @@ def store_result(lang, new):
     with open(RESULTS) as jdata:
         d = json.load(jdata)
     old = d.get(lang, 0)
-    print("{0}: diff = {1}".format(lang, round(new - old, 3)))
+    print("{0}: diff (from last run) = {1}".format(lang, round(new - old, 3)))
     d[lang] = new
     with open(RESULTS, "w+") as results:
         json.dump(d, results, indent=4, sort_keys=True)
@@ -218,7 +218,7 @@ def run(lang, is_test):
     correct = []
     if is_test:
         for lang, info in LANG_INFO.items():
-            print("Testing", lang)
+            print("Testing {}...".format(lang))
             src_dir = os.path.join(
                 TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
             )
