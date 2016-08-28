@@ -5,8 +5,8 @@
         "module", "function(", "print(", "length"
     ],
     "first_line": [
-        "^(import|export)\\s.+$", "^.+=\\s+require\\(.*\\);?$",
-        "^function .*\\(.*\\)"
+        "^(import|export)\\s.+$", "^.+=\\s+require\\(.*\\).*;?$",
+        "^function\\s.*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$"
     ],
     "unique": [
         "prototype", "typeof", "document", "window", "$(", "jQuery"
