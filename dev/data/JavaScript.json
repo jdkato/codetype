@@ -1,7 +1,7 @@
 {
     "tokens": [
         "let", "true", "false", "export", "this", "null", "===", "function",
-        "()", "console", "log", "$", "var", "!==", "{", "}", ";", "const",
+        "()", "console", "log(", "$", "var", "!==", "{", "}", ";", "const",
         "module", "function(", "print(", "length"
     ],
     "first_line": [
