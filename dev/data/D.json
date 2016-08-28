@@ -5,7 +5,7 @@
         "immutable"
     ],
     "first_line": [
-        "^module .*;$", "^deprecated(.*)$", "^Ddoc$", "^(public )?import .*;$",
+        "^module\\s.+;$", "^deprecated(.*)$", "^Ddoc$", "^(public )?import .*;$",
         "^#!.*(-run|rdmd)$"
     ],
     "unique": [
@@ -13,8 +13,8 @@
         "Typedef!"
     ],
     "flags": [
-        "NULL", " . ", "malloc(", "end", "function", "function(", "boolean",
-        "System", "Console"
+        "NULL", " . ", "malloc(", "end", "boolean", "System", "Console",
+        "var", "console"
     ],
     "ignores": ["//", "/*", "/+", "\"", "'"]
 }
