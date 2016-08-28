@@ -5,8 +5,8 @@
         "%", " . "
     ],
     "first_line": [
-        "^package [^\"\\']*;$", "^use .*;$", "^#!.*perl$", "^sub \\w* {$",
-        "^my .*$"
+        "^package\\s[^\"\\']*;$", "^use\\s[^\\{]*;$", "^#!.*perl$", "^my\\s.*$",
+        "^sub\\s\\w*\\s{$"
     ],
     "unique": [
         "my", "eq", "ref", "shift", "FILEOUT", "=~", "1;", "FILE", "`",
