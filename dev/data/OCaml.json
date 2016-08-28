@@ -2,7 +2,7 @@
     "tokens": [
         "type", "val", "->", "ref", "let", ":=", "!", "struct", "with", "true",
         "false", "|", "in", "end", "module", "level", "open", "match", "()",
-        ";;", "class", "~", "`", "printf"
+        ";;", "class", "~", "`", "printf", "of"
     ],
     "first_line": [
         "^(module\\s)?(type|let)\\s.+\\s=\\s.*$", "^open\\s.+$",
