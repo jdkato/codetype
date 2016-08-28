@@ -11,7 +11,7 @@
     "unique": ["java"],
     "flags": [
         "Console", "trait", "def", "printf(", "end", "function", "function(",
-        "var", "decimal", "struct"
+        "var", "decimal", "struct", "object"
     ],
     "ignores": ["//", "/*", "'", "\""]
 }
