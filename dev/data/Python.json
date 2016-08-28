@@ -8,6 +8,6 @@
         "^(from .*)?import [^\"\\{@']*(?<!from)$", "['|\"]{3}", "^#!.*python$"
     ],
     "unique": ["@classmethod", "@staticmethod", ":\n"],
-    "flags": ["end", "function", "@printf", "var", "val"],
+    "flags": ["end", "function", "@printf", "var", "val", "Int", "->"],
     "ignores": ["#", "'''", "\"\"\"", "//", "'", "\""]
 }
