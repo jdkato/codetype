@@ -7,6 +7,9 @@
     ],
     "first_line": ["^import\\s\\w+$"],
     "unique": ["typealias", "func", "guard", "extension", "@objc", "NS"],
-    "flags": [";", "def", "end", "function", "function(", ":=", "fmt"],
+    "flags": [
+        ";", "def", "end", "function", "function(", ":=", "fmt", "extends",
+        "object"
+    ],
     "ignores": ["//", "/*", "\"", "'"]
 }
