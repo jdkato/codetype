@@ -1,13 +1,13 @@
 {
     "tokens": [
         "type", "var", "defer", "nil", "uint64", "const", "struct", "true",
-        "false", "fmt", "{", "}", "Printf"
+        "false", "fmt", "{", "}", "Printf", "interface", "...", "import"
     ],
-    "first_line": ["^package \\w*$", "^import (\\(|\".*\")$"],
-    "unique": ["func", ":="],
+    "first_line": ["^package\\s\\w+$", "^import\\s(\\(|\".*\")$"],
+    "unique": ["func", ":=", "iota"],
     "flags": [
         "def", "String", "typedef", "NULL", " . ", "object", "dialog",
-        "function", "end", ";;"
+        "function", "end", ";;", "String", "let"
     ],
     "ignores": ["//", "/*", "\"", "'", "`"]
 }
