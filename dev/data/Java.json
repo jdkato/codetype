@@ -4,10 +4,13 @@
         "System", "boolean", "Object", "String", "import", "class", "out",
         "lang", "util", "void", "{", "}", ";", "@", "<", ">", "[]", "println("
     ],
-    "first_line": ["^(import|package) [^::]*;$"],
+    "first_line": [
+        "^(import|package) [^::]*;$", "^public\\sfinal\\sclass\\s.+$"
+    ],
     "unique": ["java"],
     "flags": [
-        "Console", "trait", "def", "printf(", "end", "function", "function("
+        "Console", "trait", "def", "printf(", "end", "function", "function(",
+        "var"
     ],
     "ignores": ["//", "/*", "'", "\""]
 }
