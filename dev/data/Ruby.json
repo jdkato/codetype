@@ -5,7 +5,7 @@
         "each", "require", "module", "gets", "require_dependency",
         "Array", "Bignum", "Binding", "class", "File", "Fixnum", "Hash",
         "Method", "NilClass", "TrueClass", "has_key", "def", "!", "$", "|",
-        "::", "@", "=>", "end", "do"
+        "::", "@", "=>", "end", "do", "..."
     ],
     "first_line": [
         "^require(_relative|_dependency)? ('|\")[^\\.]+('|\")$", "^<%.*%>$",
@@ -17,7 +17,8 @@
         "@printf", "println("
     ],
     "unique": [
-        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "%w", "?"
+        "elsif", "chomp", "to_i", "to_f", "rescue", "puts", "%w", "?",
+        "attr_reader"
     ],
     "ignores": ["#", "=", "'", "\"", "`", "%w["]
 }
