@@ -1,14 +1,17 @@
 {
     "tokens": [
-        "end", "on", "repeat", "set", "from", "with", "to", "begins", "&",
-        "property", "application", "activate", "of", "then", "run", "key",
-        "code"
+        "end", "set", "from", "with", "to", "begins", "&", "property",
+        "application", "activate", "of", "then", "run", "key", "code", "then",
+        "is", "true", "false", "shell", "do", "script", "of"
     ],
     "first_line": [
-        "^on run$", "^set.*to.*$", "^property .*\\s?:\\s?.*$",
-        "^tell .*$", "^#!.*osascript$"
+        "^on run$", "^set.*to.*$", "^property .*\\s?:\\s?.*$", "^osascript.+$",
+        "^tell .*$", "^#!.*osascript$", "^(on|to)\\s.+\\(?.+$"
     ],
-    "unique": ["tell", "choose", "display", "dialog", "delay"],
-    "flags": ["local", "function(", "require", "nil", "val"],
+    "unique": [
+        "tell", "choose", "display", "dialog", "delay", "without", "on",
+        "repeat"
+    ],
+    "flags": ["local", "function(", "require", "nil", "val", "var", "->"],
     "ignores": ["--", "(*", "#", "\"", "'"]
 }
