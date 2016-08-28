@@ -85,10 +85,16 @@ def parse_filtered(filtered, results):
 def remove_strings(line):
     """
     """
+    char_to_pos = {}
     chars = []
     for c, regex in INLINE_STRINGS.items():
         expt = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
         if not expt and re.search(regex, line):
+            char_to_pos[c] = line.find(c)
+
+    for c in sorted(char_to_pos, key=char_to_pos.get):
+        regex = INLINE_STRINGS.get(c)
+        if re.search(regex, line):
             line = re.sub(regex, "", line)
             chars.append(c)
     return line, chars

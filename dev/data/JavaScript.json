@@ -1,0 +1,14 @@
+{
+    "tokens": [
+        "let", "true", "false", "export", "this", "null", "===", "function",
+        "()", "console", "log", "$", "var", "!==", "{", "}", ";", "const",
+        "length", "module", "function("
+    ],
+    "first_line": [
+        "^(import|export)\\s.+$", "^.+=\\s+require\\(.*\\);?$",
+        "^function .*\\(.*\\)"
+    ],
+    "unique": ["prototype", "typeof", "document", "window", "$(", "jQuery"],
+    "flags": ["end", "def"],
+    "ignores": ["//", "/*", "\"", "'"]
+}

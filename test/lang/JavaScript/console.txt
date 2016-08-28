@@ -1,0 +1,6 @@
+// TypeError: undefined is not a function
+  functionOne();
+
+  var functionOne = function() {
+    console.log("Hello!");
+  };

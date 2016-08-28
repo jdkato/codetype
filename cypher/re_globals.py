@@ -1,5 +1,6 @@
 EXTRACT_RE = r"""
     [@|#]?[\w]+[\(|!]?|
+    \$\(| # JavaScript
     \+\+| # Scala
     :::| # Scala
     ::~| # C++
@@ -16,8 +17,8 @@ EXTRACT_RE = r"""
     :=| # Go, OCaml
     <%| # Ruby
     %w| # Ruby
-    ===| # PHP
-    !==| # PHP
+    ===| # PHP, JavaScript
+    !==| # PHP, JavaScript
     \s\.\s| # PHP, Perl
     &&| # PHP
     =~| # Perl
@@ -26,7 +27,7 @@ EXTRACT_RE = r"""
     \[\]| # Java
     \.\.\.| # R
     \.\.| # Haskell
-    \(\)| # Haskell, OCaml
+    \(\)| # Haskell, OCaml, JavaScript
     \$_| # PHP
     \#\[| # Rust
     1;| # Perl

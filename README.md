@@ -52,7 +52,7 @@ optional arguments:
 |   Groovy      | :x:                   |
 |   Haskell     | :white_check_mark:    |
 |     Java      | :white_check_mark:    |
-|  JavaScript   |         :x:           |
+|  JavaScript   | :white_check_mark:    |
 |    Julia      | :white_check_mark:    |
 |     Lisp      |         :x:           |
 |     Lua       | :white_check_mark:    |

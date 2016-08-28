@@ -91,6 +91,10 @@ LANG_INFO = {
     "OCaml": {
         "repo": "https://github.com/coq/coq.git",
         "ext": [".ml", ".mli"]
+    },
+    "JavaScript": {
+        "repo": "https://github.com/vuejs/vue.git",
+        "ext": [".js"]
     }
 }
 DIR_PATH = os.path.join(os.getcwd(), "dev")
