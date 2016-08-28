@@ -95,6 +95,10 @@ LANG_INFO = {
     "JavaScript": {
         "repo": "https://github.com/vuejs/vue.git",
         "ext": [".js"]
+    },
+    "Swift": {
+        "repo": "https://github.com/eBay/NMessenger",
+        "ext": [".swift"]
     }
 }
 DIR_PATH = os.path.join(os.getcwd(), "dev")

@@ -6,6 +6,16 @@
 
 ## Installation
 
+###### From PyPI
+
+###### From source
+
+```
+$ git clone https://github.com/jdkato/cypher.git
+$ cd cypher
+$ python setup.py install
+```
+
 ## Usage
 
 ###### Python
@@ -38,34 +48,19 @@ optional arguments:
 
 ## Support
 
-|   Language    |       Status          |
-|:-----------:  |:------------------:   |
-| AppleScript   | :white_check_mark:    |
-|      C#       | :white_check_mark:    |
-|     C++       | :white_check_mark:    |
-|      C        | :white_check_mark:    |
-| Clojure       | :x:                   |
-|CoffeeScript   |         :x:           |
-|      D        | :white_check_mark:    |
-|    Erlang     |         :x:           |
-|      Go       | :white_check_mark:    |
-|   Groovy      | :x:                   |
-|   Haskell     | :white_check_mark:    |
-|     Java      | :white_check_mark:    |
-|  JavaScript   | :white_check_mark:    |
-|    Julia      | :white_check_mark:    |
-|     Lisp      |         :x:           |
-|     Lua       | :white_check_mark:    |
-|    OCaml      | :white_check_mark:    |
-| Objective-C   | :white_check_mark:    |
-|    Pascal     |         :x:           |
-|     Perl      | :white_check_mark:    |
-|     PHP       | :white_check_mark:    |
-|    Python     | :white_check_mark:    |
-|      R        | :white_check_mark:    |
-|     Ruby      | :white_check_mark:    |
-|     Rust      | :white_check_mark:    |
-|    Scala      | :white_check_mark:    |
-|    Swift      |         :x:           |
-| TypeScript    |         :x:           |
-| Visual Basic  |         :x:           |
+AppleScript, C#, C++, C, D, Go, Haskell, Java, JavaScript, Julia, Lua, OCaml, Objective-C, Perl, 
+PHP, Python, R, Ruby, Rust, Scala & Swift
+
+## Tests
+
+###### Snippets
+
+```
+$ python run.py test
+```
+
+###### Repos
+
+```
+$ python run.py dev -t
+```

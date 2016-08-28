@@ -1,5 +1,7 @@
 EXTRACT_RE = r"""
+    NS| # Objective-C, Swift
     [@|#]?[\w]+[\(|!]?|
+    \}\)| # Swift
     \$\(| # JavaScript
     \+\+| # Scala
     :::| # Scala
@@ -10,7 +12,7 @@ EXTRACT_RE = r"""
     >>| # C++
     :$| # Python
     <-| # Haskell, R
-    ->| # Haskell, Rust, PHP, OCaml
+    ->| # Haskell, Rust, PHP, OCaml, Swift
     !!| # Haskell
     <<-| # R
     {-| # Haskell
@@ -25,7 +27,7 @@ EXTRACT_RE = r"""
     ~=| # Lua
     !\(| # Rust
     \[\]| # Java
-    \.\.\.| # R
+    \.\.\.| # R, Swift
     \.\.| # Haskell
     \(\)| # Haskell, OCaml, JavaScript
     \$_| # PHP

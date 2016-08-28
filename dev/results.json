@@ -14,9 +14,10 @@
     "Objective-C": 0.993,
     "PHP": 1.0,
     "Perl": 1.0,
-    "Python": 0.986,
+    "Python": 0.988,
     "R": 0.984,
-    "Ruby": 0.988,
+    "Ruby": 0.987,
     "Rust": 1.0,
-    "Scala": 1.0
+    "Scala": 1.0,
+    "Swift": 1.0
 }
