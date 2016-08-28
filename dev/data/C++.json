@@ -1,7 +1,7 @@
 {
     "tokens": [
         "static_cast", "bool", "inline", "dynamic_cast", "const_cast",
-        "reinterpret_cast", "namespace", "template", "typename", "virtual",
+        "reinterpret_cast", "namespace", "template", "virtual",
         "auto", "extern", "new", "true", "false", "bool", "ifdef",
         "std", "push_back", "pop_back", "forward_list", "unordered_map",
         "unordered_set", "vector", "iostream", "NULL", "#if", "override", "{",
@@ -12,7 +12,8 @@
         "(int|void|bool) \\w*\\("
     ],
     "unique": [
-        "cout", "cin", "endl", "friend", "boost", "delete", "unique_ptr", "::~"
+        "cout", "cin", "endl", "friend", "boost", "delete", "unique_ptr", "::~",
+        "typename"
     ],
     "flags": ["malloc("],
     "ignores": ["//", "/*", "\"", "'"]
