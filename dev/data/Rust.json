@@ -2,13 +2,13 @@
     "tokens": [
         "struct", "extern", "self", "with_stdout(", "unwrap(", "with_status(",
         "println", "use", "mod", "{", "}", "|", "&", "->", ".", "=>", ":", "!",
-        ";", "::"
+        ";", "::", "let"
     ],
     "first_line": ["^(extern|use|pub) .*;$", "^#!?\\[.*\\]$"],
     "unique": [
-        "mut", "fn", "pub", "!(", "#[", "i32", "f64", "let", "match", "impl",
+        "mut", "fn", "pub", "!(", "#[", "i32", "f64", "match", "impl",
         "loop", "println!"
     ],
-    "flags": ["writefln(", "template", "object", "var"],
+    "flags": ["writefln(", "template", "object", "var", "with"],
     "ignores": ["//", "/*", "r#", "'", "\"", "`"]
 }
