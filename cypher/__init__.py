@@ -31,9 +31,11 @@ SIG_PATH = os.path.join(FILE_PATH, "signatures")
 
 def identify(src, verbose=False):
     """Attempt to identify the language which src is written in.
+
     Args:
         src (str): Either a string or a file path.
         verbose (bool): True if verbose output is to be used.
+
     Returns:
         (str|dict): A string specifying the computed language if verbose is
             False. Otherwise a dictionary with all tested languages as keys
@@ -68,7 +70,23 @@ def identify(src, verbose=False):
 
 
 def parse_filtered(filtered, results):
-    """
+    """Return the most refined version of results as possible.
+
+    Args:
+        filtered (list): A list of two dictionaries with results filtered by
+            ignore and first line matches, respectively.
+        results (dict): A dictionary with language names as keys and their
+            scores as values.
+
+    Returns:
+        dict: Either `results` or one of the filtered dictionaries.
+
+    Examples:
+        >>> filtered = [{'Python': 4, 'Ruby': 4}, {'Python': 4, 'Perl': 3}]
+        >>> results = {'Python': 4, 'Ruby': 4, 'Perl': 3}
+        >>> parse_filtered(filtered, results)
+        {'Python': 4}
+        >>>
     """
     d = {}
     if all(f for f in filtered):
@@ -83,7 +101,20 @@ def parse_filtered(filtered, results):
 
 
 def remove_strings(line):
-    """
+    """Remove strings from line.
+
+    Args:
+        lines (str): A line of text.
+
+    Returns:
+        (str, list): `line` with its strings removed, if any were present, and
+            a list containing the characters removed.
+
+    Examples:
+        >>> remove_strings('print("Hello, world!")')
+        ('print()', ['"'])
+        >>> remove_strings('print("Hello", \'world\')')
+        ('print(, )', ['"', "'"])
     """
     char_to_pos = {}
     chars = []
@@ -101,7 +132,20 @@ def remove_strings(line):
 
 
 def remove_comment(line):
-    """
+    """Remove comments from line.
+
+    Args:
+        lines (str): A line of text.
+
+    Returns:
+        (str, str): `line` with its comments removed, if any were present, and
+            the character removed.
+
+    Examples:
+        >>> remove_comment('print("Hello") # this is a comment')
+        ('print("Hello")', '#')
+        >>> remove_comment('printf("Hello") // # another')
+        ('printf("Hello")', '//')
     """
     char_to_pos = {}
     char = None
@@ -124,7 +168,7 @@ def remove_comment(line):
 
 
 def remove_inline_ignore(line):
-    """
+    """Return line without comments and strings.
     """
     line, comment_char = remove_comment(line)
     line, strings = remove_strings(line)
@@ -182,9 +226,11 @@ def summarize_text(src, is_file=False, filtered=None):
 
 def compare_signatures(unknown, known, lines):
     """Compare two signatures using only the keys in known.
+
     Args:
         unknown (dict): A signature for an unknown language.
         known (dict): A signature for a known language.
+
     Returns:
         float: A score indicating how closely unknown resembled known.
     """
@@ -211,7 +257,15 @@ def compare_signatures(unknown, known, lines):
 
 
 def compute_signature(lang_data):
-    """
+    """Compute a 'signature' using `lang_data`.
+
+    Args:
+        lang_data (dict): A dictionary containing the extracted tokens, the
+            text's first line, a list of ignored characters and, if provided,
+            the language's flags and unique tokens.
+
+    Returns:
+        dict: The computed signature.
     """
     tokens = lang_data.get("tokens")
     if not tokens:
@@ -231,6 +285,7 @@ def compute_signature(lang_data):
 
 def read_signature(lang):
     """Load an existing signature.
+
     Args:
         lang (str): The name of the existing signature.
     """

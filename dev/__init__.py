@@ -113,8 +113,6 @@ if not os.path.exists(LOG_DIR):
 
 
 def store_result(lang, new):
-    """
-    """
     with open(RESULTS) as jdata:
         d = json.load(jdata)
     old = d.get(lang, 0)
@@ -174,12 +172,6 @@ def clone_and_clean(repo, src_dir, ext):
 
 
 def get_lang_data(lang):
-    """Load existing data on lang.
-    Args:
-        lang (str): The name of the language.
-    Returns:
-        list: A list of all keywords associated with lang.
-    """
     d = {}
     tokens = []
     if lang is None:
@@ -197,13 +189,6 @@ def get_lang_data(lang):
 
 
 def write_signature(src, lang, ext, is_file=True):
-    """Write a signature for src.
-    Args:
-        src (str): A path to a directory.
-        lang (str): The name of the language.
-        ext (list): A list of file extensions associated with lang.
-        is_file (bool): True if src is a file.
-    """
     known, lang_data = get_lang_data(lang)
     tokens = []
     lines = 0.0
