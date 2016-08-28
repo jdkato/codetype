@@ -7,7 +7,7 @@
     ],
     "first_line": ["namespace .*", "using .*;", "^#define .*"],
     "unique": ["decimal", "readonly"],
-    "flags": ["typedef", "NULL", " . ", "function", "function("],
+    "flags": ["typedef", "NULL", " . ", "function", "function(", "print("],
     "ignores": ["//", "/*", "\"", "'"]
 }
 
