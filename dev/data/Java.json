@@ -2,15 +2,16 @@
     "tokens": [
         "super", "public", "private", "extends", "interface", "final",
         "System", "boolean", "Object", "String", "import", "class", "out",
-        "lang", "util", "void", "{", "}", ";", "@", "<", ">", "[]", "println("
+        "lang", "util", "void", "{", "}", ";", "@", "<", ">", "[]", "println(",
+        "StdOut"
     ],
     "first_line": [
-        "^(import|package) [^::]*;$", "^public\\sfinal\\sclass\\s.+$"
+        "^(import|package) [^::]*;$", "^public\\s(final\\s)?class\\s.+\\{?$"
     ],
     "unique": ["java"],
     "flags": [
         "Console", "trait", "def", "printf(", "end", "function", "function(",
-        "var"
+        "var", "decimal", "struct"
     ],
     "ignores": ["//", "/*", "'", "\""]
 }
