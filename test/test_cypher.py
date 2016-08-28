@@ -57,7 +57,8 @@ class CypherTestCase(unittest.TestCase):
             'set the_phone_number to "424-354-3548"': [
                 "set the_phone_number to", ['"']
             ],
-            "(*    //   *  This *)": ["", ["(*"]]
+            "(*    //   *  This *)": ["", ["(*"]],
+            "'the `blank=True`'": ["", ["'"]]
         }
         for case, output in cases.items():
             line, chars = remove_inline_ignore(case)
