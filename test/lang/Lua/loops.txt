@@ -1,3 +1,4 @@
+#!/usr/bin/lua
 --condition = true
 
 while condition do
