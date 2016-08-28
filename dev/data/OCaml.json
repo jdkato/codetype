@@ -12,6 +12,6 @@
         "frame", "exn", "rec", "Obj", "done", "sig", "print_int",
         "print_string"
     ],
-    "flags": ["def"],
+    "flags": ["def", "Int"],
     "ignores": ["(*", "#", "'", "\"", "`"]
 }
