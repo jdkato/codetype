@@ -4,7 +4,9 @@
         "pass", "with", "True", "False", "None", "self", "print", "print(",
         "return", "#", "@", "object", ":"
     ],
-    "first_line": ["^(from .*)?import [^\"\\{@]*$", "['|\"]{3}", "^#!.*python$"],
+    "first_line": [
+        "^(from .*)?import [^\"\\{@']*(?<!from)$", "['|\"]{3}", "^#!.*python$"
+    ],
     "unique": ["@classmethod", "@staticmethod", ":\n"],
     "flags": ["end", "function", "@printf"],
     "ignores": ["#", "'''", "\"\"\"", "//", "'", "\""]
