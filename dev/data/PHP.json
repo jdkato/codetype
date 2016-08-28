@@ -10,6 +10,6 @@
         "^use .*\\{1,}.*$"
     ],
     "unique": [],
-    "flags": ["my", "=~", "print", "fn"],
+    "flags": ["my", "=~", "print", "fn", "typeof"],
     "ignores": ["//", "/*", "#", "'", "\""]
 }
