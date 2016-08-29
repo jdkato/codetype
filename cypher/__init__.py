@@ -25,7 +25,7 @@ from .re_globals import (
     FILE_TERMINATORS
 )
 
-__version__ = "0.0.0"
+__version__ = "1.0.0"
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
 
