@@ -3,13 +3,13 @@
         "TRUE", "FALSE", "frame", "Inf", "NaN", "NA_integer_", "NA_real_",
         "NA_complex_", "NA_character_", "NULL", "NA", "return(", "library(",
         "source(", "cbind(", "pdf(", "png(", "jpeg(", "rnorm(", "runif(",
-        "list(", "<-", "{", "}", "$", ";", ":", "::"
+        "list(", "<-", "{", "}", "$", ";", ":", "::", "..."
     ],
     "first_line": [
         "^(library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$",
         "^.{1,} <- .*\\(.{1,}$", "^NULL$"
     ],
-    "unique": ["<<-", "ifelse", "...", "function(", "c(", "seq("],
+    "unique": ["<<-", "ifelse", "function(", "c(", "seq("],
     "flags": [
         "@", "=>", "malloc(", "tell", "end", "foreach", "@printf", "println("
     ],
