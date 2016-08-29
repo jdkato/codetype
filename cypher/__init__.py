@@ -17,6 +17,7 @@ import msgpack
 
 from .re_globals import (
     EXTRACT_RE,
+    STRING_RE,
     BLOCK_IGNORES,
     INLINE_COMMENTS,
     INLINE_STRINGS,
@@ -191,8 +192,9 @@ def summarize_text(src, is_file=False, filtered=None):
         for c, r in BLOCK_IGNORES.items():
             if not regex and re.search(r[0], line):
                 is_comment = re.search(INLINE_COMMENTS.get(c, r"$^"), line)
-                is_string = re.search(INLINE_STRINGS.get(c, r"$^"), line)
-                if not is_comment and not is_string:
+                is_string = re.search(STRING_RE, line)
+                is_inline = re.search(INLINE_STRINGS.get(c, r"$^"), line)
+                if not is_comment and not is_string and not is_inline:
                     # We've found the start of a block ignore.
                     regex = r[1]
                     ignores.append(c)
