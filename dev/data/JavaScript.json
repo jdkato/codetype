@@ -7,7 +7,7 @@
     "first_line": [
         "^(import|export)\\s.+$", "^.+=\\s+require\\(.*\\).*;?$",
         "^function\\s.*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$",
-        "^define\\(.*$"
+        "^define\\(.*$", "^#!.*(jsc|node|rhino)$"
     ],
     "unique": [
         "prototype", "typeof", "document", "window", "$(", "jQuery"

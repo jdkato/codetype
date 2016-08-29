@@ -7,7 +7,7 @@
     ],
     "first_line": [
         "^<\\?(php)?.*$", "^function .*\\(.*\\)", "^namespace [^\"'::]*;$",
-        "^use .*\\{1,}.*$"
+        "^use .*\\{1,}.*$", "^#!.*php$"
     ],
     "unique": [],
     "flags": ["my", "=~", "print", "fn", "typeof"],
