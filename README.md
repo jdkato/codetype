@@ -6,10 +6,6 @@
 
 ## Installation
 
-###### From PyPI
-
-###### From source
-
 ```
 $ git clone https://github.com/jdkato/cypher.git
 $ cd cypher
@@ -46,12 +42,12 @@ optional arguments:
   -m MAX, --max MAX  max number of languages to return
 ```
 
-## Support
+## Language Support
 
 AppleScript, C#, C++, C, D, Go, Haskell, Java, JavaScript, Julia, Lua, OCaml, Objective-C, Perl, 
 PHP, Python, R, Ruby, Rust, Scala & Swift
 
-## Tests
+## Testing
 
 ###### Snippets
 
