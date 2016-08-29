@@ -5,12 +5,12 @@
         "each", "require", "module", "gets", "require_dependency",
         "Array", "Bignum", "Binding", "class", "File", "Fixnum", "Hash",
         "Method", "NilClass", "TrueClass", "has_key", "def", "!", "$", "|",
-        "::", "@", "=>", "end", "do", "..."
+        "::", "@", "=>", "end", "do", "...", "new"
     ],
     "first_line": [
         "^require(_relative|_dependency)? ('|\")[^\\.]+('|\")$", "^<%.*%>$",
         "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
-        "^class .* < .*::.*$", "^.+::.+\\s=\\s.+$"
+        "^class .* < .*::.*$", "^.+::.+\\s=\\s.+$", "^(?!for).+\\s.+\\sdo$"
     ],
     "flags": [
         "function", "val", "import", "tell", "include(", "const", "printsum(",
