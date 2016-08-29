@@ -2,7 +2,7 @@
     "tokens": [
         "struct", "extern", "self", "with_stdout(", "unwrap(", "with_status(",
         "println", "use", "mod", "{", "}", "|", "&", "->", ".", "=>", ":", "!",
-        ";", "::", "let"
+        ";", "::", "let", "function("
     ],
     "first_line": ["^(extern|use|pub) .*;$", "^#!?\\[.*\\]$"],
     "unique": [
