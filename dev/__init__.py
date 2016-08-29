@@ -216,7 +216,15 @@ def run(lang, is_test):
     times = []
     files = 0
     correct = []
-    if is_test:
+    if lang and is_test:
+        info = LANG_INFO.get(lang)
+        src_dir = os.path.join(
+            TEMP_DIR, info["repo"].split("/")[-1].split(".git")[0]
+        )
+        if not os.path.exists(os.path.join(TEMP_DIR, src_dir)):
+            clone_and_clean(info["repo"], src_dir, info["ext"])
+        test_sig(src_dir, lang, info["ext"])
+    elif is_test:
         for lang, info in LANG_INFO.items():
             print("Testing {}...".format(lang))
             src_dir = os.path.join(
