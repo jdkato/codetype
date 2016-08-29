@@ -14,7 +14,7 @@
     ],
     "flags": [
         "NULL", " . ", "malloc(", "end", "boolean", "System", "Console",
-        "var", "console"
+        "var", "console", "val"
     ],
     "ignores": ["//", "/*", "/+", "\"", "'"]
 }
