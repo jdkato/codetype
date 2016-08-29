@@ -65,13 +65,14 @@ INLINE_STRINGS = {
     "`": r"(?<!`)(`)[^']+\1(?!`)",
     r"%w[": r"%w\[[^\]]+\]"
 }
-STRING_RE = r"(?<!'|\")('|\")[^'\"]*\1(?!'|\")"
 INLINE_EXCEPTIONS = {
     "#": [
         # C/C++
         r"#(include|define|undef|if|else|endif|error)",
         # Objective-C
         r"#(import|pragma)",
+        # C#
+        r"#(region|endregion)",
         # Rust
         r"#(!|\[)",
         # Lua
