@@ -6,7 +6,7 @@
     ],
     "first_line": [
         "^(from .*)?import [^\"\\{@']*(?<!from)$", "['|\"]{3}",
-        "^#!.*python(\\d)?(\\.\\d)$$"
+        "^#!.*python(\\d)?(\\.\\d)$"
     ],
     "unique": ["@classmethod", "@staticmethod", ":\n"],
     "flags": [
