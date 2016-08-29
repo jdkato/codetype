@@ -5,7 +5,7 @@
         "Void", "protocol", "!", "object", "print(", "in", "...", "?", "as",
         "with", "Int"
     ],
-    "first_line": ["^import\\s\\w+$"],
+    "first_line": ["^import\\s\\w+$", "^#(if|ifdef|define|undef) .*$"],
     "unique": ["typealias", "func", "guard", "extension", "@objc", "NS"],
     "flags": [
         ";", "def", "end", "function", "function(", ":=", "fmt", "extends",
