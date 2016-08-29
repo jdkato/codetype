@@ -1,10 +1,11 @@
 from setuptools import setup
+from cypher import __version__
 
 setup(
     name="cypher",
     packages=["cypher"],
     scripts=["bin/cypher"],
-    version="0.0.1",
+    version=__version__,
     description="A source code identification tool.",
     install_requires=[
         "msgpack-python"
