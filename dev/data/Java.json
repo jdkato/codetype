@@ -10,7 +10,7 @@
     "unique": ["java", "boolean"],
     "flags": [
         "Console", "trait", "def", "printf(", "end", "function", "function(",
-        "var", "decimal", "struct", "object"
+        "var", "decimal", "struct", "object", "val"
     ],
     "ignores": ["//", "/*", "'", "\""]
 }
