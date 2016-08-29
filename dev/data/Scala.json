@@ -2,10 +2,10 @@
     "tokens": [
         "def", "Try", "with", "class", "extends", "val", "case", "implicit",
         "Null", "abstract", "override", "private", "Map(", "List(", "String",
-        "object", "None", "{", "}", ":", "=>", "@", "`", "~", "->", "++"
+        "object", "None", "{", "}", ":", "=>", "@", "`", "~", "->", "++", "<-"
     ],
     "first_line": ["^package\\s.{1,}$", "^import\\s[^'\"]*(?<!from)$"],
     "unique": ["forSome", "Var", "match", "lazy", "trait", "Nil", ":::", "???"],
-    "flags": [":\n", "window", "document", "function"],
+    "flags": [":\n", "window", "document", "function", "type", "switch"],
     "ignores": ["//", "/*", "'", "\"", "`", "\"\"\""]
 }
