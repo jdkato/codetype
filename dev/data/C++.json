@@ -15,6 +15,6 @@
         "cout", "cin", "endl", "friend", "boost", "delete", "unique_ptr", "::~",
         "typename"
     ],
-    "flags": ["malloc("],
+    "flags": ["malloc(", "free(", "end", "print(", "var"],
     "ignores": ["//", "/*", "\"", "'"]
 }
