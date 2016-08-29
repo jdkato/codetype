@@ -7,7 +7,7 @@
     "unique": ["func", ":=", "iota"],
     "flags": [
         "def", "String", "typedef", "NULL", " . ", "object", "dialog",
-        "function", "end", ";;", "String", "let"
+        "function", "end", ";;", "String", "let", "Int", "->"
     ],
     "ignores": ["//", "/*", "\"", "'", "`"]
 }
