@@ -6,11 +6,12 @@
     ],
     "first_line": [
         "^(import|export)\\s.+$", "^.+=\\s+require\\(.*\\).*;?$",
-        "^function\\s.*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$"
+        "^function\\s.*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$",
+        "^define\\(.*$"
     ],
     "unique": [
         "prototype", "typeof", "document", "window", "$(", "jQuery"
     ],
-    "flags": ["end", "def"],
+    "flags": ["end", "def", " . ", "echo", "$_", "mod"],
     "ignores": ["//", "/*", "\"", "'"]
 }
