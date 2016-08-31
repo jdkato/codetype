@@ -1,7 +1,8 @@
 {
     "tokens": [
         "not", "then", "function", "and", "elseif", "nil", "repeat",
-        "do", "until", "self", "true", "false", "#", "{", "}", "()", "end"
+        "do", "until", "self", "true", "false", "#", "{", "}", "()", "end",
+        "print("
     ],
     "first_line": [
         "^#!.*lua(jit)?$", "^return {$", "^require ('|\")[^/]+('|\")$",
