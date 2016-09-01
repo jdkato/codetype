@@ -139,15 +139,22 @@ def test_sig(src_dir, lang, ext):
                 continue
             file_count += 1
             start_time = time.time()
-            computed = identify(src=p)
-            times.append(time.time() - start_time)
-            if computed == lang:
-                identified += 1
-            elif computed == -1:
+            results = identify(src=p, verbose=True)
+            if results == -1:
                 file_count -= 1
                 log.write("Insufficient information {}!\n".format(sp))
+                continue
+            results = sorted(results, key=results.get, reverse=True)
+            times.append(time.time() - start_time)
+            if results[0] == lang:
+                identified += 1
             else:
-                log.write("Incorrect: ({}) {}!\n".format(computed, sp))
+                pos = results.index(lang) + 1 if lang in results else -1
+                log.write(
+                    "Incorrect: ({}; correct position = {}) {}!\n".format(
+                        results[0], pos, sp
+                    )
+                )
     log.close()
     c = round(identified / file_count if file_count else 1, 3)
     store_result(lang, c)
