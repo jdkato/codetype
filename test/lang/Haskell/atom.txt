@@ -1,9 +1,0 @@
-import Numeric.LinearAlgebra -- from the "hmatrix" package
-
-type Point = Vector Double
-
-data Atom = Atom {
-    chainID :: Char  ,
-    resSeq  :: Int   ,
-    coord   :: Point }
-    deriving (Show)

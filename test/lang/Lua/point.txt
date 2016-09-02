@@ -1,9 +1,0 @@
-Point = {}
-
-Point.new = function(x, y)
-  return {x = x, y = y}  --  return {["x"] = x, ["y"] = y}
-end
-
-Point.set_x = function(point, x)
-  point.x = x  --  point["x"] = x;
-end

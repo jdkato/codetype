@@ -1,6 +1,0 @@
-let data = snap.value as! [String : AnyObject] //Getting a snapshot from Firebase
-
-let dataurl = data["url"] as! String //Prefix is url, this gives just the URL
-let dataurlstring = NSURL(string: dataurl!)
-
-let activityVC = UIActivityViewController(activityItems: dataurlstring, applicationActivities: nil)

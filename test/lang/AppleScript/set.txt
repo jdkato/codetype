@@ -1,2 +1,0 @@
-set the_phone_number to "424-354-3548"
-set the_last_three to characters -3 thru -1 of the_phone_number as string

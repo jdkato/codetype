@@ -1,7 +1,0 @@
-#function which will bootstrap the standard error of the median
-b.median <- function(data, num) {
-    resamples <- lapply(1:num, function(i) sample(data, replace=T))
-    r.median <- sapply(resamples, median)
-    std.err <- sqrt(var(r.median))
-    list(std.err=std.err, resamples=resamples, medians=r.median)
-}

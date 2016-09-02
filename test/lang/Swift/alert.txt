@@ -1,3 +1,0 @@
-if let snapValues = snap.value as? [String : AnyObject] {
-    showAlert(with: snapValues)
-}

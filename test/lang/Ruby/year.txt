@@ -1,6 +1,0 @@
-print "How old are you? "
-age = gets.chomp #if I don't add chomps the number gets /n and it's not recognized.
-print "And what year are we in? "
-year = gets.chomp 
-birthyear = year - age
-print "That means you were born in #{birthyear}"

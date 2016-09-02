@@ -1,1 +1,0 @@
-display dialog "Your text here" with icon note buttons {"OK", "Cancel"} default button {"Cancel"} giving up after 30

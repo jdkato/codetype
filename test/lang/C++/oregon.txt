@@ -1,9 +1,0 @@
-int oregon_activity::display(void) {
-    if (!name || !description || !location || !difficulty || !requirements)
-        return 0;
-
-    cout << "\nName: " << name << endl << "Description: " << description << endl
-         << "Location: " << location << endl << "Difficulty: " << difficulty
-         << endl << "Requirements: " << requirements << endl;
-    return 1;
-}

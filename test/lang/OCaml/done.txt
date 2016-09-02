@@ -1,9 +1,0 @@
-let grid = Array.make_matrix (grid_width + 2) (grid_height + 2) None
-let _ =
-  grid.(grid_width).(grid_height) <- Some unit_big_int;
-  for x = 0 to grid_width + 1 do
-    grid.(x).(succ grid_height) <- Some zero_big_int
-  done;
-  for y = 0 to grid_height do
-    grid.(succ grid_width).(y) <- Some zero_big_int
-  done

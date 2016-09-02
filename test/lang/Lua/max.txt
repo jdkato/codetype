@@ -1,2 +1,0 @@
-for i=1,10 do print(i) end
-max = i      -- probably wrong! `i' here is global

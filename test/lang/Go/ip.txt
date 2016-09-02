@@ -1,7 +1,0 @@
-addrs, err := net.InterfaceAddrs()
-if err != nil {
-    panic(err)
-}   
-for i, addr := range addrs {
-    fmt.Printf("%d %v\n", i, addr)
-}   

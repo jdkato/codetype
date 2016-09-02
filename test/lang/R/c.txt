@@ -1,4 +1,0 @@
-par(mfrow=c(2,1), mar=c(3,2,1,0)+.5, mgp=c(1.6,.6,0))
-ts.plot(fmri1[,2:5], lty=c(1,2,4,5), ylab="BOLD", xlab="", main="Cortex")
-ts.plot(fmri1[,6:9], lty=c(1,2,4,5), ylab="BOLD", xlab="", main="Thalamus & Cerebellum")
-mtext("Time (1 pt = 2 sec)", side=1, line=2)

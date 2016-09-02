@@ -1,8 +1,0 @@
-alias Handle = Typedef!(void*, cast(void*)-1);
-void bar(Handle);
-
-Handle h;
-bar(h);
-h = func();
-if (h != Handle.init)
-    ...

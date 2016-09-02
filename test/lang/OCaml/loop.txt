@@ -1,5 +1,0 @@
-let rec loop fib_a fib_b accum =
-  let new_fib = fib_a + fib_b in
-  if new_fib > 4000000 then accum
-  else if (new_fib mod 2) = 0 then loop fib_b new_fib (accum + new_fib)
-  else loop fib_b new_fib accum

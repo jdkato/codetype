@@ -1,4 +1,0 @@
-def mod(a, b)
-  puts "The remainder of #{a} divded by #{b} is c."
-  return a % b
-end

@@ -1,7 +1,0 @@
-1 :: 2 :: Nil // a list
-list1 ::: list2  // concatenation of two lists
-
-list match {
-  case head :: tail => "non-empty"
-  case Nil          => "empty"
-}

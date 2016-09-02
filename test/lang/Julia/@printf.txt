@@ -1,4 +1,0 @@
-# available number format characters are f, e, g, c, s, p, d:
-# (pi is a predefined constant; however, since its type is 
-# "MathConst" it has to be converted to a float to be formatted)
-@printf "fix trailing precision: %0.3f\n" float(pi)

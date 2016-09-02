@@ -1,7 +1,0 @@
-store_open = None
-store_hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-time = 8
-if time not in store_hours:
-    store_open = True 
-elif time in store_hours:
-    Store_open = False 

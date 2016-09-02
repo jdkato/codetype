@@ -1,7 +1,0 @@
-//Example of bad code. Nothing will prevent you from writing imperative code in Scala.
-val filteredList = ListBuffer[String]()
-for (stringToFilter <- stringsToFilterList) {
-    if(stringToFilter.nonEmpty && stringToFilter.startsWith("somePredicate")) {
-        filteredList += stringToFilter
-    }
-}

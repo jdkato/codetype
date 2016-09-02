@@ -1,3 +1,0 @@
-class Name
- # some code describing the class behavior
-end

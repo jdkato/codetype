@@ -1,4 +1,0 @@
-def to_html(s):
-    s = s.replace('&', '&amp;')
-    s = s.replace('<', '&lt;')
-    return s

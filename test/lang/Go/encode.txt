@@ -1,8 +1,0 @@
-import (
-    "golang.org/x/text/encoding/japanese"
-    "golang.org/x/text/transform"
-)
-
-func main() {
-    var r io.Reader
-    r = transform.NewReader(os.Stdin, japanese.ShiftJIS.NewDecoder())

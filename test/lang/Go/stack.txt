@@ -1,7 +1,0 @@
-res, err := http.Get(url)
-
-if err != nil {
-    log.Printf("Error: %s\n", err)
-}
-
-defer res.Body.Close()

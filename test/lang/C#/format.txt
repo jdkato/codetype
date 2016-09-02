@@ -1,8 +1,0 @@
-int value = int.Parse(Console.ReadLine());
-
-if(value < 0 || value > 20)
-{
-  throw new System.Exception();
-}
-
-Console.WriteLine(string.Format("You entered {0}",value));

@@ -1,5 +1,0 @@
-Printf.printf "%B" (3 < 4);;            (* prints true *)
-
-Printf.printf "%B" (true && false);;    (* prints false *)
-
-Printf.printf "%B" (true || (3 < 4));;    (* prints true *)

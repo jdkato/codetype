@@ -1,4 +1,0 @@
-hash = { "name" => "Bread", "quantity" => 1, "calories" => 100 }
-if hash.has_key?("calories")
-  hash.store("food", true)
-end

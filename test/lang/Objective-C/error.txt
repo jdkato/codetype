@@ -1,3 +1,0 @@
-NSError *myError = nil;
-NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:kNilOptions error:&myError];
-NSLog([res objectForKey:@"Date"]);
