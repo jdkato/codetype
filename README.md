@@ -49,14 +49,6 @@ PHP, Python, R, Ruby, Rust, Scala & Swift
 
 ## Testing
 
-###### Snippets
-
-```
-$ python run.py test
-```
-
-###### Repos
-
 ```
 $ python run.py dev -t
 ```
