@@ -1,0 +1,10 @@
+set someFolder to path to desktop
+log someFolder
+
+tell application "Finder"
+    set someItem to first item of someFolder
+    log someItem
+
+    set itemProps to properties of someItem
+    log itemProps
+end tell

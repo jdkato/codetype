@@ -1,0 +1,9 @@
+bool again(void) {
+    char response = 'n';
+
+    cout << "\nWould you like to repeat this program? (enter 'y' or 'n'): ";
+    cin >> response;
+    cin.ignore(100, '\n');
+
+    return (toupper(response) == 'Y');
+}

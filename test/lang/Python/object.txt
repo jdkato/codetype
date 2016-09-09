@@ -1,0 +1,33 @@
+class Style(object):
+
+    def __init__(self, view):
+        self.view = view
+        self.parse_color_scheme_file(self.view.settings().get('color_scheme'))
+
+    def at_point(self, point):
+        return self.get_styles_for_scope(self.view.scope_name(point).strip())
+
+    def parse_color_scheme_file(self, color_scheme_file):
+        color_scheme_content = sublime.load_resource(color_scheme_file)
+        color_scheme_dict = plistlib.readPlistFromBytes(bytes(color_scheme_content, 'UTF-8'))
+        self.selectors_in_scheme = color_scheme_dict['settings']
+
+    def get_styles_for_scope(self, scope):
+        styles = dict()
+
+        for scheme_selector in self.selectors_in_scheme:
+            if 'scope' not in scheme_selector:
+                styles.update(scheme_selector['settings'])
+
+        matched_style = {'settings': {}, 'score': 0}
+        for scheme_selector in self.selectors_in_scheme:
+            if 'scope' in scheme_selector:
+                score = sublime.score_selector(scope, scheme_selector['scope'])
+                if score:
+                    if score >= matched_style['score']:
+                        matched_style['score'] = score
+                        matched_style['settings'].update(scheme_selector['settings'])
+
+        styles.update(matched_style['settings'])
+
+    return styles

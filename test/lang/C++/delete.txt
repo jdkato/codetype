@@ -1,0 +1,12 @@
+oregon_activity::~oregon_activity(void) {
+    delete[] name;
+    name = NULL;
+    delete[] description;
+    description = NULL;
+    delete[] location;
+    location = NULL;
+    delete[] difficulty;
+    difficulty = NULL;
+    delete[] requirements;
+    requirements = NULL;
+}

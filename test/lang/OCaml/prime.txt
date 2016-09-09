@@ -1,0 +1,8 @@
+let sum = ref 0 in
+for i = 2 to 2_000_000 do (* detail: OCaml parses `2_000_000` as `2000000`, which is more readable. *)
+  if is_prime i then (* no need for parentheses around the if clause *)
+    begin
+      sum:= !sum + i;
+      Printf.printf "%d is prime, it is prime number %d\n" i !sum;
+    end
+done;;

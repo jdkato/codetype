@@ -1,0 +1,19 @@
+graph::~graph(void) {
+    node* current = NULL;
+    node* temp = NULL;
+
+    for (int i = 0; i < list_size; ++i) {
+        delete[] adjacency_list[i].intersect;
+        current = adjacency_list[i].head;
+        if (current)
+            delete[] current->roads;
+        while (current) {
+            temp = current->next;
+            delete current;
+            current = temp;
+        }
+        adjacency_list[i].intersect = NULL;
+        adjacency_list[i].head = NULL;
+    }
+    delete[] adjacency_list;
+}

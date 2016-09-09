@@ -1,0 +1,15 @@
+# Test argumentTest() 
+my $argumentTestCall1 = HelloPerlBuildWorld::argumentTest();
+is($argumentTestCall1, "null", "argumentTest() IS null test");
+
+# Test argumentTest("true") 
+my $argumentTestCall2 = HelloPerlBuildWorld::argumentTest("true");
+is($argumentTestCall2, "true", "argumentTest() IS true test");
+
+# Test argumentTest("false") 
+my $argumentTestCall3 = HelloPerlBuildWorld::argumentTest("false");
+is($argumentTestCall3, "false", "argumentTest() IS false test");
+
+# Test argumentTest(123) 
+my $argumentTestCall4 = HelloPerlBuildWorld::argumentTest(123);
+is($argumentTestCall4, "unknown", "argumentTest() IS unknown test");

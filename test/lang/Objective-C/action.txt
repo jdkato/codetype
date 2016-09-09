@@ -1,0 +1,6 @@
+-(IBAction)clearMethod:(id)sender{
+
+     LinearInterpView *theInstance = [[LinearInterpView alloc] init];
+    [theInstance clearPath];
+
+}

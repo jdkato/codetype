@@ -1,0 +1,8 @@
+val tyrion = Map("location" -> "King's Landing", "name" -> "Cersei Lannister")
+val cersei = Map("father" -> "Tywin Lannister?", "name" -> "Cersei Lannister")
+val jaime = Map("father" -> "Tywin Lannister", "location" -> "Tower of the Hand")
+val characters = List(tyrion, cersei, jaime)
+
+case class Character(name: String, location: Option[String])
+
+characters.map(x => Character(x.getOrElse("name", "A CHARACTER HAS NO NAME"), x.get("location")))

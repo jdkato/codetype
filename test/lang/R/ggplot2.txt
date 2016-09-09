@@ -1,0 +1,5 @@
+p <- ggplot() +
+    geom_polygon(data = plotData, aes(x = long, y = lat, group = group,
+        fill = percent), color = "black", size = 0.25)
+
+ggsave(p, file = "map1.png", width = 6, height = 4.5, type = "cairo-png")

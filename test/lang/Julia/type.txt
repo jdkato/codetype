@@ -1,0 +1,8 @@
+# Type Definitions are probably most similar to tyepdefs in c?
+# a simple type with no special constructor functions might look like this
+type Person
+    name::AbstractString
+    male::Bool
+    age::Float64
+    children::Int
+end

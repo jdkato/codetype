@@ -1,0 +1,3 @@
+set myList to {"Problem", "There was a problem", "Bummer"}
+set theChoice to item 2 of myList
+say theChoice

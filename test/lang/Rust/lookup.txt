@@ -1,0 +1,6 @@
+fn lookup(next_char: &mut char, f: &File) {
+    //if or match
+    if next_char == '(' {
+        //do something
+    }
+}

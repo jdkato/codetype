@@ -1,0 +1,10 @@
+type Car struct {
+    price int
+    Mover
+    speed int
+}
+
+func main() {
+    var c Car
+    fmt.Printf("%v\n", c)
+}       

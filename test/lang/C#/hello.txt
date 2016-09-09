@@ -1,0 +1,21 @@
+using System;
+
+namespace HelloWorldUsingClasses
+{
+    class ExampleClass
+    {
+        string exampleString = "Hello World!";
+        public ExampleClass()
+        {
+            Console.WriteLine(exampleString);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ExampleClass objHelloWorld = new ExampleClass();
+        }
+    }
+}

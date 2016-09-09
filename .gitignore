@@ -25,7 +25,6 @@ var/
 *.egg
 dev/repos/
 dev/logs/
-test/
 
 # Installer logs
 pip-log.txt

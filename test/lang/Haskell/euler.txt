@@ -1,0 +1,69 @@
+import Graphics.EasyPlot
+
+{- Forward Euler.
+
+Example usage:
+    $ ghci
+    GHCi, version 7.10.2: http://www.haskell.org/ghc/  :? for help
+    Prelude> :l euler.hs
+    [1 of 1] Compiling Main             ( euler.hs, interpreted )
+    Ok, modules loaded: Main.
+    *Main> let rhs t y = -3 * y
+    *Main> forward_euler (0,2) 0.5 0.5 rhs
+    [0.5,-0.25,0.125,-6.25e-2,3.125e-2]
+    *Main>
+-}
+forward_euler :: (Float, Float) -> Float -> Float -> (Float -> Float -> Float)
+              -> [Float]
+forward_euler (a, b) y_0 h rhs
+    | a < b     = y_0 : forward_euler (t, b) w h rhs
+    | otherwise = y_0 : []
+    where
+        t = a + h
+        w = y_0 + h * (rhs a y_0)
+
+{- Modified Euler.
+
+Example usage:
+    *Main> let rhs t y = -2 * y + t * (exp 1)**(3 * t)
+    *Main> modified_euler (0, 1) 0 0.5 rhs
+    [0.0,0.5602111,5.3014894]
+    *Main>
+-}
+modified_euler :: (Float, Float) -> Float -> Float -> (Float -> Float -> Float)
+               -> [Float]
+modified_euler (a, b) y_0 h rhs
+    | a < b     = y_0 : modified_euler (t, b) w h rhs
+    | otherwise = y_0 : []
+    where
+        t  = a + h
+        k1 = h * (rhs a y_0)
+        k2 = h * (rhs t (y_0 + k1))
+        w  = y_0 + (1 / 2) * (k1 + k2)
+{-
+Example usage:
+    *Main> let rhs t p = 3*p*(1 - (p/10))
+    *Main> let p t = (30 * (exp 1)**(3*t)) / (3 * (exp 1)**(3*t) + 47)
+    *Main> make_plot (0, 4) 0.6 0.1 rhs p "h = 0.1" "Exact"
+    True
+    *Main>
+-}
+make_plot :: (Float, Float) -> Float -> Float -> (Float -> Float -> Float)
+          -> (Float -> Float) -> String -> String -> IO Bool
+make_plot (a, b) y_0 h rhs y t1 t2 =
+    let xd = [h * x | x <- [a..(b / h)]]
+        yd = forward_euler (a, b) y_0 h rhs
+        ex = [(h * 0.1) * x | x <- [a..(b / (h * 0.1))]]
+    in plot (PNG "euler.png") [Data2D [Title t1] [] (zip xd yd),
+                               Function2D [Title t2] [For ex] y]
+
+
+make_plot2 :: IO Bool
+make_plot2 =
+    let rhs t y = 1 + (t - y)**2
+        y t = t + (1 / (1 - t))
+        yd  = modified_euler (2, 3) 1 0.1 rhs
+        xd  = [2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0]
+        ex  = [0.01 * x | x <- [2..(3 / 0.01)]]
+    in plot (PNG "euler.png") [Data2D [Title "h = 0.1"] [] (zip xd yd),
+                               Function2D [Title "Exact"] [For ex] y]

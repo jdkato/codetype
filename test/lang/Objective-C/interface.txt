@@ -1,0 +1,7 @@
+@interface CustomClass<__covariant T:id<MyProtocol>> : NSObject
+
+@property(nonatomic) T result;
+
+-(void) update;
+
+@end

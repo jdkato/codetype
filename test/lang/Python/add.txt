@@ -1,0 +1,7 @@
+def add(arg1, arg2):
+    try:
+        test = float(arg1) + float(arg2)
+    except ValueError:
+        return(none)
+    else:
+        return(float(arg1) + float(arg2))

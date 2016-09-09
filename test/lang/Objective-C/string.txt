@@ -1,0 +1,6 @@
+NSString * soundSelected = cell.textlabel.text;
+    NSString *path = [NSString stringWithFormat:@"%@/%@.mp3", [[NSBundle mainBundle] resourcePath],soundSelected];
+        NSURL *soundUrl = [NSURL fileURLWithPath:path];
+
+        AVAudioPlayer* cellTapSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+        [cellTapSound play];

@@ -1,0 +1,12 @@
+void display_all(node*& head) {
+    if (!head)
+        return;
+    else {
+        cout << head->data;
+        if (head->next)
+            cout << " -> ";
+        else
+            cout << '\n';
+    }
+    display_all(head->next);
+}
