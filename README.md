@@ -6,6 +6,14 @@
 
 ## Installation
 
+###### Using pip
+
+```
+pip install codetype
+```
+
+###### From source
+
 ```
 $ git clone https://github.com/jdkato/codetype.git
 $ cd codetype
