@@ -1,11 +1,18 @@
 from setuptools import setup
 
+try:
+    import pypandoc
+    long_description = pypandoc.convert("README.md", "rst")
+except ImportError:
+    long_description = None
+
 setup(
     name="codetype",
     packages=["codetype"],
     scripts=["bin/codetype"],
     version="1.0.0",
     description="A source code identification tool.",
+    long_description=long_description,
     keywords=["classifying", "identification", "code"],
     install_requires=[
         "msgpack-python"
