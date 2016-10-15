@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name="cypher",
-    packages=["cypher"],
-    scripts=["bin/cypher"],
+    name="codetype",
+    packages=["codetype"],
+    scripts=["bin/codetype"],
     version="1.0.0",
     description="A source code identification tool.",
     install_requires=[

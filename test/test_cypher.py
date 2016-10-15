@@ -12,8 +12,8 @@ CONTENT_DIR = os.path.join("test", "content")
 LANG_DIR = os.path.join("test", "lang")
 
 
-class CypherTestCase(unittest.TestCase):
-    """Tests for cypher's utility functions.
+class CodeTypeTestCase(unittest.TestCase):
+    """Tests for codetype's utility functions.
     """
     def test_identify(self):
         for subdir, dirs, files in os.walk(LANG_DIR):

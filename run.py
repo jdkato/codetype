@@ -36,7 +36,7 @@ if script == "dev":
         run(lang=args["lang"], is_test=0)
 elif script == "test":
     unittest.TextTestRunner().run(unittest.TestLoader().discover("."))
-elif script == "cypher":
+elif script == "codetype":
     print(identify(args["lang"], verbose=args["verbose"]))
 else:
     print("{0} not recognized!".format(script))
