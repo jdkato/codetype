@@ -12,6 +12,7 @@ setup(
     ],
     include_package_data=True,
     author="Joseph Kato",
+    author_email="joseph@jdkato.io",
     url="https://github.com/jdkato/codetype",
     download_url="https://github.com/jdkato/codetype/releases",
 )
