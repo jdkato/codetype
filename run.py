@@ -2,7 +2,7 @@ import argparse
 import sys
 import unittest
 
-from cypher import identify
+from codetype import identify
 from dev import run
 
 parser = argparse.ArgumentParser()
