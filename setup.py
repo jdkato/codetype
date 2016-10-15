@@ -15,4 +15,5 @@ setup(
     author_email="joseph@jdkato.io",
     url="https://github.com/jdkato/codetype",
     download_url="https://github.com/jdkato/codetype/releases",
+    license='MIT'
 )
