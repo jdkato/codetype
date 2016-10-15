@@ -6,9 +6,9 @@ import os
 
 import msgpack
 
-sys.path.append(os.path.abspath("../cypher"))
+sys.path.append(os.path.abspath("../codetype"))
 
-from cypher import (
+from codetype import (
     identify,
     compute_signature,
     summarize_text,

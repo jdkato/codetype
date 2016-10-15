@@ -2,7 +2,7 @@ import os
 import sys
 import unittest
 
-from cypher import (
+from codetype import (
     identify,
     remove_inline_ignore
 )

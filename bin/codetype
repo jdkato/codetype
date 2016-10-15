@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 import argparse
-from cypher import identify, __version__
+from codetype import identify, __version__
 
 parser = argparse.ArgumentParser(
-    prog="cypher",
+    prog="codetype",
     description="A source code identification tool."
 )
 parser.add_argument(
     "--version",
     action="version",
-    version="cypher version {0}".format(__version__)
+    version="codetype version {0}".format(__version__)
 )
 parser.add_argument(
     "file",
