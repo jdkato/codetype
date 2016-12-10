@@ -1,17 +1,17 @@
-# coding: utf-8
-import codecs
 import io
-import math
 import os
 import re
-import sys
 
+from codecs import getdecoder
 from collections import Counter
-PY2 = sys.version_info <= (3,)
+from math import fabs
+from sys import version_info
+
+PY2 = version_info <= (3,)
 if PY2:
     from cStringIO import StringIO
 else:
-    from io import StringIO
+    StringIO = io.StringIO
 
 import msgpack
 
@@ -25,12 +25,12 @@ from .re_globals import (
     FILE_TERMINATORS
 )
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 SIG_PATH = os.path.join(FILE_PATH, "signatures")
 
 
-def identify(src, verbose=False):
+def identify(src, verbose=False, only=[]):
     """Attempt to identify the language which src is written in.
 
     Args:
@@ -44,6 +44,7 @@ def identify(src, verbose=False):
     """
     results = {}
     filtered = [{}, {}]
+    unicode_escape = getdecoder("unicode_escape")
     summary = summarize_text(src, is_file=os.path.isfile(src))
     sig = compute_signature(summary)
     if not sig:
@@ -52,15 +53,14 @@ def identify(src, verbose=False):
     first_line = sig.get("first_line", [])
     for f in os.listdir(SIG_PATH):
         lang = f.split(".")[0]
-        if not lang:
+        if not lang or (only and lang not in only):
             continue
         ksig = read_signature(lang)
         results[lang] = compare_signatures(sig, ksig, summary["lines"])
         if all(r in ksig.get("ignores") for r in summary["ignores"]):
             filtered[0][lang] = results[lang]
         for regex in ksig.get("first_line", []):
-            decoded = codecs.getdecoder("unicode_escape")(regex)[0]
-            if re.search(decoded, first_line):
+            if re.search(unicode_escape(regex)[0], first_line):
                 filtered[1][lang] = results[lang]
 
     results = parse_filtered(filtered, results)
@@ -90,6 +90,7 @@ def parse_filtered(filtered, results):
         >>>
     """
     d = {}
+
     if all(f for f in filtered):
         for lang in [x for x in filtered[0] if x in filtered[1]]:
             d[lang] = filtered[0][lang]
@@ -98,7 +99,13 @@ def parse_filtered(filtered, results):
             d = filtered[0]
     else:
         d = filtered[0] or filtered[1]
-    return d or results
+
+    if d != {}:
+        highest = results[max(results, key=results.get)]
+        diff = highest - d[max(d, key=d.get)]
+        return results if (highest > 10 and diff > 5) else d
+
+    return results
 
 
 def remove_strings(line):
@@ -120,9 +127,10 @@ def remove_strings(line):
     char_to_pos = {}
     chars = []
     for c, regex in INLINE_STRINGS.items():
-        expt = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
-        if not expt and re.search(regex, line):
-            char_to_pos[c] = line.find(c)
+        if re.search(regex, line):
+            exc = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
+            if not exc:
+                char_to_pos[c] = line.find(c)
 
     for c in sorted(char_to_pos, key=char_to_pos.get):
         regex = INLINE_STRINGS.get(c)
@@ -158,9 +166,10 @@ def remove_comment(line):
     for c, regex in INLINE_COMMENTS.items():
         if line.count(c) > 1:
             line = line[:line.rfind(c)].strip()
-        expt = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
-        if not expt and re.search(regex, line) and re.search(regex, wos_line):
-            char_to_pos[c] = line.find(c)
+        if re.search(regex, line) and re.search(regex, wos_line):
+            exc = any(re.search(r, line) for r in INLINE_EXCEPTIONS.get(c, []))
+            if not exc:
+                char_to_pos[c] = line.find(c)
 
     if char_to_pos:
         char = min(char_to_pos, key=char_to_pos.get)
@@ -175,7 +184,8 @@ def remove_inline_ignore(line):
     line, strings = remove_strings(line)
     if comment_char:
         strings.append(comment_char)
-    return line.strip(), strings
+    # FIXME: handle `:\n` better
+    return line.strip() if not line.endswith(":\n") else line, strings
 
 
 def summarize_text(src, is_file=False, filtered=None):
@@ -186,7 +196,7 @@ def summarize_text(src, is_file=False, filtered=None):
     skip, regex, first = None, None, None
     text = io.open(src, errors="ignore") if is_file else StringIO(src)
     for line in text:
-        if any(re.search(r, line) for r in FILE_TERMINATORS):
+        if lines > 10 and any(re.search(r, line) for r in FILE_TERMINATORS):
             break
         skip = True
         for c, r in BLOCK_IGNORES.items():
@@ -210,13 +220,13 @@ def summarize_text(src, is_file=False, filtered=None):
             # We're either in a block ignore or the line is blank.
             continue
 
-        line, chars = remove_inline_ignore(line)
+        cleaned, chars = remove_inline_ignore(line)
         ignores.extend(chars)
-        if line:
+        if cleaned:
             lines += 1
             if lines == 1:
-                first = line
-            extr = re.findall(EXTRACT_RE, line, re.VERBOSE)
+                first = cleaned
+            extr = re.findall(EXTRACT_RE, cleaned, re.VERBOSE)
             toks.extend([s for s in extr if not filtered or s in filtered])
 
     text.close()
@@ -250,7 +260,7 @@ def compare_signatures(unknown, known, lines):
         else:
             test_value = unknown.get(k)
             if test_value:
-                total += math.fabs(v - test_value)
+                total += fabs(v - test_value)
                 found += 1
             elif v > 0.10:
                 total += 1
