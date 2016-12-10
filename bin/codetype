@@ -28,9 +28,15 @@ parser.add_argument(
     type=int,
     help="max number of languages to return"
 )
+parser.add_argument(
+    "-o",
+    "--only",
+    nargs="+",
+    help="test only the specified formats"
+)
 
 args = vars(parser.parse_args())
-result = identify(args["file"][0], verbose=args["verbose"])
+result = identify(args["file"][0], verbose=args["verbose"], only=args["only"])
 if result == -1:
     print("Language not recognized.")
 else:
