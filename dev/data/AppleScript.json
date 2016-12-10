@@ -5,8 +5,8 @@
         "is", "true", "false", "shell", "do", "script", "of"
     ],
     "first_line": [
-        "^on run$", "^set.*to.*$", "^property .*\\s?:\\s?.*$", "^osascript.+$",
-        "^tell .*$", "^#!.*osascript$", "^(on|to)\\s.+\\(?.+$"
+        "^on run$", "^set.+to.+$", "^property .* ?: ?.*$", "^osascript.+$",
+        "^tell .+$", "^#!.*osascript$", "^(?:on|to) .+\\(?.+$"
     ],
     "unique": [
         "tell", "choose", "display", "dialog", "delay", "without", "on",

@@ -5,7 +5,7 @@
         "void", "{", "}", ";", "@", "<", ">", "[]", "println(", "StdOut"
     ],
     "first_line": [
-        "^(import|package) [^::]*;$", "^public\\s(final\\s)?class\\s.+\\{?$"
+        "^(?:import|package) [^::]*;$", "^public (?:final )?class .+\\{?$"
     ],
     "unique": ["java", "boolean"],
     "flags": [

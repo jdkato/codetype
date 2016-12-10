@@ -1,6 +1,7 @@
 EXTRACT_RE = r"""
     NS| # Objective-C, Swift
     [@|#]?[\w]+[\(|!]?|
+    __[\w]+__[\(]?|
     \}\)| # Swift
     \$\(| # JavaScript
     \+\+| # Scala
@@ -10,7 +11,7 @@ EXTRACT_RE = r"""
     =>| # C#, Rust, PHP
     <<(?!-)| # C++
     >>| # C++
-    :$| # Python
+    :\n| # Python
     <-| # Haskell, R
     ->| # Haskell, Rust, PHP, OCaml, Swift
     !!| # Haskell
@@ -69,13 +70,13 @@ INLINE_STRINGS = {
 INLINE_EXCEPTIONS = {
     "#": [
         # C/C++
-        r"^\s*#(include|define|undef|if|elif|else|endif|error|line)",
+        r"^\s*#(?:include|define|undef|if|elif|else|endif|error|line)",
         # Objective-C
-        r"^\s*#(import|pragma)",
+        r"^\s*#(?:import|pragma)",
         # C#
-        r"^\s*#(region|endregion|warning)",
+        r"^\s*#(?:region|endregion|warning)",
         # Rust
-        r"^\s*#(!|\[)",
+        r"^\s*#(?:!|\[)",
         # Lua
         r"#stdout",
         # Swift
@@ -86,7 +87,7 @@ INLINE_EXCEPTIONS = {
     ],
     "--": [
         # Perl `... --;`
-        r".*\s--((@|\$|%).*)?;"
+        r".*\s--(?:(?:@|\$|%).*)?;"
     ]
 }
 FILE_TERMINATORS = [

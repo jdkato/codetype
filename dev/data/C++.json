@@ -8,8 +8,8 @@
         "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]"
     ],
     "first_line": [
-        "^#include (\"((?!\\.c\").)*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
-        "(int|void|bool) \\w*\\("
+        "^#include (?:\"(?:(?!\\.c\").)*\"|<.*>)$", "(?:int|void|bool) \\w*\\(",
+        "^#(?:if|ifdef|define|undef) .*$"
     ],
     "unique": [
         "cout", "cin", "endl", "friend", "boost", "delete", "unique_ptr", "::~",

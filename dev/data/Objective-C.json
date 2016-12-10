@@ -4,8 +4,8 @@
         "[", "]", "+"
     ],
     "first_line": [
-        "^#import (\".*\"|<.*>)$", "^#(if|ifdef|define|undef) .*$",
-        "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"
+        "^#import (?:\".*\"|<.*>)$", "^#(?:if|ifdef|define|undef) .*$",
+        "^#include (?:\"(?:(?!\\.cpp\"|\\.cc\").)*\"|<.*>)$"
     ],
     "unique": [
         "BOOL", "NO", "YES", "@implementation", "@end", "@protocol",

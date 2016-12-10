@@ -6,7 +6,8 @@
         "with", "Int"
     ],
     "first_line": [
-        "^import\\s\\w+$", "^#(if|ifdef|define|undef) .*$", "^#!.*swift$"
+        "^import \\w+$", "^#(?:if|ifdef|define|undef) .*$", "^#!.*swift$",
+        "^let.+=.+$"
     ],
     "unique": ["typealias", "func", "guard", "extension", "@objc", "NS"],
     "flags": [

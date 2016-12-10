@@ -3,7 +3,7 @@
         "type", "var", "defer", "nil", "uint64", "const", "struct", "true",
         "false", "fmt", "{", "}", "Printf", "interface", "...", "import"
     ],
-    "first_line": ["^package\\s\\w+$", "^import\\s(\\(|\".*\")$"],
+    "first_line": ["^package \\w+$", "^import (?:\\(|\".*\")$"],
     "unique": ["func", ":=", "iota"],
     "flags": [
         "def", "String", "typedef", "NULL", " . ", "object", "dialog",

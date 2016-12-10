@@ -5,7 +5,7 @@
         "print("
     ],
     "first_line": [
-        "^#!.*lua(jit)?$", "^return {$", "^require ('|\")[^/]+('|\")$",
+        "^#!.*lua(?:jit)?$", "^return {$", "^require (?:'|\")[^/]+(?:'|\")$",
         "^function .*\\(.*\\)", "^local .{1,}$", "^return \\[\\[$"
     ],
     "unique": ["local", "~="],

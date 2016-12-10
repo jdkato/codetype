@@ -5,8 +5,8 @@
         "immutable"
     ],
     "first_line": [
-        "^module\\s.+;$", "^deprecated(.*)$", "^Ddoc$", "^(public )?import .*;$",
-        "^#!.*(-run|rdmd)$"
+        "^module .+;$", "^deprecated\\(.*\\)$", "^Ddoc$", "^#!.*(?:-run|rdmd)$",
+        "^(?:public )?import .*;$"
     ],
     "unique": [
         "inout", "safe", "pure", "unittest", "nogc", "Typedef", "writefln(",

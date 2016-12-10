@@ -5,16 +5,17 @@
         "begin", "immutable", "@", "println(", "=>", "print("
     ],
     "first_line": [
-        "^module\\s[^;]+$", "^__precompile__\\(\\)$", "^const\\s.+\\s+=.+$",
-        "^%%{$", "^abstract(?!\\sclass)\\s.+$", "^bitstype\\s.+$",
-        "^immutable\\s.+end$", "^import [^\"\\{]*$", "^load\\(.*\\)$",
-        "^function .*\\(.*\\)", "^using\\s[^;]+,?[^;]+$"
+        "^module [^;]+(?<!where)$", "^__precompile__\\(\\)$", "^@deprecate.+$",
+        "^%%{$", "^abstract(?! class) .+$", "^bitstype .+$",
+        "^immutable .+end$", "^import [^\"\\{']*(?<!from)$", "^load\\(.*\\)$",
+        "^function .*\\(.*\\)", "^using [^;]+,?[^;]+$",
+        "^const .+ += (?!require)[^/]+$"
     ],
     "unique": [
         "quote", "endof", "@compat", "@testset", "@test", "using", "bitstype",
         "const", "@assert", "precompile(", "Dict(", "printsum(", "@printf",
         "push!"
     ],
-    "flags": ["def", "do", "require", ":\n", "nil", "puts", "class"],
+    "flags": ["def", "do", "require", ":\n", "nil", "puts", "class", "from"],
     "ignores": ["#", "\"\"\"", "'", "\"", "`"]
 }

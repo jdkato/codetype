@@ -5,13 +5,13 @@
         "module", "function(", "print(", "length"
     ],
     "first_line": [
-        "^(import|export)\\s.+$", "^.+=\\s+require\\(.*\\).*;?$",
-        "^function\\s.*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$",
-        "^define\\(.*$", "^#!.*(jsc|node|rhino)$"
+        "^(?:import|export) .+$", "^.+= +require\\(.*\\).*;?$", "^let.+=.+$",
+        "^function .*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$",
+        "^define\\(.*$", "^#!.*(?:jsc|node|rhino)$", "^const .+ = /.+/;?$"
     ],
     "unique": [
         "prototype", "typeof", "document", "window", "$(", "jQuery"
     ],
-    "flags": ["end", "def", " . ", "echo", "$_", "mod"],
-    "ignores": ["//", "/*", "\"", "'"]
+    "flags": ["end", "def", " . ", "echo", "$_", "mod", "System", "fn"],
+    "ignores": ["//", "/*", "\"", "'", "`"]
 }

@@ -4,7 +4,7 @@
         "println", "use", "mod", "{", "}", "|", "&", "->", ".", "=>", ":", "!",
         ";", "::", "let", "function("
     ],
-    "first_line": ["^(extern|use|pub) .*;$", "^#!?\\[.*\\]$"],
+    "first_line": ["^(?:extern|use|pub) .*;$", "^#!?\\[.*\\]$"],
     "unique": [
         "mut", "fn", "pub", "!(", "#[", "i32", "f64", "match", "impl",
         "loop", "println!"

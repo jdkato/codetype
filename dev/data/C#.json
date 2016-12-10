@@ -6,13 +6,13 @@
         "Console", "string", "System"
     ],
     "first_line": [
-        "namespace .*", "using .*;", "^#define .*", "^public\\sclass\\s.+\\{?$",
-        "^#(if|ifdef|define|undef) .*$"
+        "namespace .+", "using .+;", "^#define .+", "^public class .+\\{?$",
+        "^#(?:if|ifdef|define|undef) .+$"
     ],
     "unique": ["decimal", "readonly"],
     "flags": [
         "typedef", "NULL", " . ", "function", "function(", "print(", "boolean",
-        "StdOut", "String"
+        "StdOut", "String", "println!"
     ],
     "ignores": ["//", "/*", "\"", "'"]
 }

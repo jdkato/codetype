@@ -5,9 +5,12 @@
         "object", "None", "{", "}", ":", "=>", "@", "`", "~", "->", "++", "<-"
     ],
     "first_line": [
-        "^package\\s.{1,}$", "^import\\s[^'\"]*(?<!from)$", "^#!.*scala$"
+        "^package .{1,}$", "^import [^'\"]*(?<!from)$", "^#!.*scala$"
     ],
     "unique": ["forSome", "Var", "match", "lazy", "trait", "Nil", ":::", "???"],
-    "flags": [":\n", "window", "document", "function", "type", "switch"],
+    "flags": [
+        ":\n", "window", "document", "function", "type", "switch", "func", ":=",
+        "const"
+    ],
     "ignores": ["//", "/*", "'", "\"", "`", "\"\"\""]
 }

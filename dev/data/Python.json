@@ -2,16 +2,18 @@
     "tokens": [
         "and", "as", "def", "del", "elif", "from", "in", "is", "not", "or",
         "pass", "with", "True", "False", "None", "self", "print", "print(",
-        "return", "#", "@", "object", ":"
+        "return", "#", "@", "object", "raise"
     ],
     "first_line": [
-        "^(from .*)?import [^\"\\{@']*(?<!from)$", "['|\"]{3}",
-        "^#!.*python(\\d)?(\\.\\d)$"
+        "^(?:from .*)?import [^\"\\{@':]*(?<!from)$", "['|\"]{3}",
+        "^#!.*python(?:\\d)?(?:\\.\\d)$"
     ],
-    "unique": ["@classmethod", "@staticmethod", ":\n"],
+    "unique": [
+        "@classmethod", "@staticmethod", ":\n", "__init__(", "__file__"
+    ],
     "flags": [
         "end", "function", "@printf", "var", "val", "Int", "->", "override",
-        "let"
+        "let", "case"
     ],
     "ignores": ["#", "'''", "\"\"\"", "//", "'", "\""]
 }

@@ -6,7 +6,7 @@
         "list(", "<-", "{", "}", "$", ";", ":", "::", "..."
     ],
     "first_line": [
-        "^(library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$",
+        "^(?:library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$",
         "^.{1,} <- .*\\(.{1,}$", "^NULL$"
     ],
     "unique": ["<<-", "ifelse", "function(", "c(", "seq("],

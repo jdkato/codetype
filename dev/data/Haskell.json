@@ -6,7 +6,8 @@
         "()", ".."
     ],
     "first_line": [
-        "^(import|module) [^;',\"]*$", "^{-.*$", "^#(ifdef|define|undef) .*$"
+        "^(?:import|module) [^;'\"]*$", "^{-.*$", "^#!.*runhaskell$",
+        "^#(?:ifdef|define|undef) .*$"
     ],
     "unique": ["Haskell", "GHC", "LANGUAGE", "Monoid", "!!", "maybe"],
     "flags": [

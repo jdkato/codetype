@@ -8,9 +8,9 @@
         "::", "@", "=>", "end", "do", "...", "new"
     ],
     "first_line": [
-        "^require(_relative|_dependency)? ('|\")[^\\.]+('|\")$", "^<%.*%>$",
-        "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
-        "^class .* < .*::.*$", "^.+::.+\\s=\\s.+$", "^(?!for).+\\s.+\\sdo$"
+        "^require(?:_relative|_dependency)? (?:'|\")[^\\.]+(?:'|\")$",
+        "^<%.*%>$", "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
+        "^class .* < .*::.*$", "^.+::.+ = .+$", "^(?!for).+ .+ do$"
     ],
     "flags": [
         "function", "val", "import", "tell", "include(", "const", "printsum(",

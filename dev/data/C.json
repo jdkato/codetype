@@ -6,8 +6,8 @@
         "}", ";", "&", "->", "*"
     ],
     "first_line": [
-        "^#include (\"((?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
-        "^#(if|ifdef|define|undef) .*$", "(int|void) \\w*\\("
+        "^#include (?:\"(?:(?!\\.cpp\"|\\.cc\").)*\"|<.*>)$",
+        "^#(?:if|ifdef|define|undef) .*$", "(?:int|void) \\w*\\("
     ],
     "unique": ["static", "printf(", "fprintf(", "putchar", "putchar("],
     "flags": [
