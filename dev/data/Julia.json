@@ -16,6 +16,8 @@
         "const", "@assert", "precompile(", "Dict(", "printsum(", "@printf",
         "push!"
     ],
-    "flags": ["def", "do", "require", ":\n", "nil", "puts", "class", "from"],
+    "flags": [
+        "def", "do", "require", ":\n", "nil", "puts", "class", "from", "let"
+    ],
     "ignores": ["#", "\"\"\"", "'", "\"", "`"]
 }
