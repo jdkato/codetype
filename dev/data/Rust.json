@@ -9,6 +9,6 @@
         "mut", "fn", "pub", "!(", "#[", "i32", "f64", "match", "impl",
         "loop", "println!"
     ],
-    "flags": ["writefln(", "template", "object", "var", "with"],
+    "flags": ["writefln(", "template", "object", "var", "with", "print"],
     "ignores": ["//", "/*", "r#", "'", "\"", "`"]
 }
