@@ -2,7 +2,7 @@
     "tokens": [
         "let", "true", "false", "export", "this", "null", "===", "function",
         "()", "console", "log(", "$", "var", "!==", "{", "}", ";", "const",
-        "module", "function(", "print(", "length"
+        "module", "function(", "print(", "length", "exports"
     ],
     "first_line": [
         "^(?:import|export) .+$", "^.+= +require\\(.*\\).*;?$", "^let.+=.+$",
