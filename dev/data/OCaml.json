@@ -10,7 +10,7 @@
     ],
     "unique": [
         "frame", "exn", "rec", "Obj", "done", "sig", "print_int",
-        "print_string"
+        "print_string", "print_endline", "print_newline"
     ],
     "flags": ["def", "Int"],
     "ignores": ["(*", "#", "'", "\"", "`"]
