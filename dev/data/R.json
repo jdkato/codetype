@@ -9,7 +9,7 @@
         "^(?:library|context|source|isolate)\\(.*(\\))?$", "^#!.*Rscript$",
         "^.{1,} <- .*\\(.{1,}$", "^NULL$"
     ],
-    "unique": ["<<-", "ifelse", "function(", "c(", "seq("],
+    "unique": ["<<-", "ifelse", "function(", "c(", "seq(", "cat("],
     "flags": [
         "@", "=>", "malloc(", "tell", "end", "foreach", "@printf", "println("
     ],
