@@ -2,7 +2,7 @@
     "tokens": [
         "function", "end", "include(", "export", "type", "@inline", "macro",
         "$", "!", "@goto", "true", "false", "::", "@eval", "@label", "elseif",
-        "begin", "immutable", "@", "println(", "=>", "print("
+        "begin", "immutable", "@", "println(", "=>", "print(", "return"
     ],
     "first_line": [
         "^module [^;]+(?<!where)$", "^__precompile__\\(\\)$", "^@deprecate.+$",
@@ -14,7 +14,7 @@
     "unique": [
         "quote", "endof", "@compat", "@testset", "@test", "using", "bitstype",
         "const", "@assert", "precompile(", "Dict(", "printsum(", "@printf",
-        "push!"
+        "push!", "@inline"
     ],
     "flags": [
         "def", "do", "require", ":\n", "nil", "puts", "class", "from", "let"
