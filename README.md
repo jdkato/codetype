@@ -30,24 +30,33 @@ $ python setup.py install
 'Haskell'
 >>> identify('from math import fabs')
 'Python'
->>>
+>>> src = """
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}"""
+>>> identify(src)
+'Java' 
 ```
 
 ###### CLI
 
 ```
-usage: codetype [-h] [--version] [-v] [-m MAX] file
+usage: codetype [-h] [--version] [-v] [-m MAX] [-o ONLY [ONLY ...]] file
 
 A source code identification tool.
 
 positional arguments:
-  file               path to unknown source code
+  file                  path to unknown source code
 
 optional arguments:
-  -h, --help         show this help message and exit
-  --version          show program's version number and exit
-  -v, --verbose      use verbose output
-  -m MAX, --max MAX  max number of languages to return
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v, --verbose         use verbose output
+  -m MAX, --max MAX     max number of languages to return
+  -o ONLY [ONLY ...], --only ONLY [ONLY ...]
+                        test only the specified formats
 ```
 
 ## Language Support
