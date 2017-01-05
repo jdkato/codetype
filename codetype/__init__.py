@@ -249,22 +249,22 @@ def compare_signatures(unknown, known, lines):
     total = 1.0
     found = 0.0
     mult = 2 if lines < 15 else 1
-    for k, v in known.items():
-        if k in ["first_line", "ignores"]:
-            continue
-        elif k == "unique":
-            inc = 4 * mult
-            found += sum([inc if token in unknown else 0 for token in v])
-        elif k == "flags":
-            found -= sum([4 if token in unknown else 0 for token in v])
-        else:
-            test_value = unknown.get(k)
-            if test_value:
-                total += fabs(v - test_value)
-                found += 1
-            elif v > 0.10:
-                total += 1
-                found -= 1
+    unknown = unknown["tokens"]
+
+    unique = known.get("unique", [])
+    found += sum([4 * mult if token in unknown else 0 for token in unique])
+    flags = known.get("flags", [])
+    found -= sum([4 if token in unknown else 0 for token in flags])
+
+    for k, v in known["tokens"].items():
+        test_value = unknown.get(k)
+        if test_value:
+            total += fabs(v - test_value)
+            found += 1
+        elif v > 0.10:
+            total += 1
+            found -= 1
+
     return round(found / total, 3)
 
 
@@ -284,9 +284,10 @@ def compute_signature(lang_data):
         return {}
 
     lines = lang_data.get("lines", 1)
-    signature = Counter(tokens)
-    for key in signature:
-        signature[key] /= lines
+    signature = {}
+    signature["tokens"] = Counter(tokens)
+    for key in signature["tokens"]:
+        signature["tokens"][key] /= lines
 
     signature["first_line"] = lang_data.get("first_line")
     signature["unique"] = lang_data.get("unique", [])
