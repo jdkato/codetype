@@ -5,7 +5,7 @@
         "auto", "extern", "new", "true", "false", "bool", "ifdef",
         "std", "push_back", "pop_back", "forward_list", "unordered_map",
         "unordered_set", "vector", "iostream", "NULL", "#if", "override", "{",
-        "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]"
+        "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]", "typedef"
     ],
     "first_line": [
         "^#include (?:\"(?:(?!\\.c\").)*\"|<.*>)$", "(?:int|void|bool) \\w*\\(",
