@@ -1,6 +1,7 @@
 # codetype
 
-[![Build Status](https://travis-ci.org/jdkato/codetype.svg?branch=master)](https://travis-ci.org/jdkato/codetype) [![Code Health](https://landscape.io/github/jdkato/codetype/master/landscape.svg?style=flat)](https://landscape.io/github/jdkato/codetype/master) ![Python Support](https://img.shields.io/badge/python-2.7,3.4,3.5-blue.svg)
+[![Build Status](https://travis-ci.org/jdkato/codetype-py.svg?branch=master)](https://travis-ci.org/jdkato/codetype-py) [![Code Health](https://landscape.io/github/jdkato/codetype-py/master/landscape.svg?style=flat)](https://landscape.io/github/jdkato/codetype-py/master)
+ ![Python Support](https://img.shields.io/badge/python-2.7,3.4,3.5-blue.svg)
 
 `codetype` is a Python library and command-line tool for identifying the language of source code snippets and files. It's fast, simple and accurate. [You can test it out here](http://jdkato.github.io/codetype/).
 
