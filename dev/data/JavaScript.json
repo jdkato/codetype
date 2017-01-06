@@ -6,8 +6,8 @@
     ],
     "first_line": [
         "^(?:import|export) .+$", "^.+= +require\\(.*\\).*;?$", "^let.+=.+$",
-        "^function .*\\(.*\\)", "^(?!int)(?!void).+\\..+\\(.+\\{$",
-        "^define\\(.*$", "^#!.*(?:jsc|node|rhino)$", "^const .+ = /.+/;?$"
+        "^function .*\\(.*\\)", "^define\\(.*$", "^#!.*(?:jsc|node|rhino)$",
+        "^const .+ = /.+/;?$"
     ],
     "unique": [
         "prototype", "typeof", "document", "window", "$(", "jQuery"

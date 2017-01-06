@@ -5,8 +5,7 @@
         "return", "#", "@", "object", "raise"
     ],
     "first_line": [
-        "^(?:from .*)?import [^\"\\{@':]*(?<!from)$",
-        "^#!.*python(?:\\d)?(?:\\.\\d)$"
+        "^(?:from .*)?import [^\"\\{@':]*$", "^#!.*python(?:\\d)?(?:\\.\\d)?$"
     ],
     "unique": [
         "@classmethod", "@staticmethod", ":\n", "__init__(", "__file__"

@@ -9,7 +9,7 @@
     ],
     "first_line": [
         "^require(?:_relative|_dependency)? (?:'|\")[^\\.]+(?:'|\")$",
-        "^<%.*%>$", "^module ((?!where).)*$", "^#!.*ruby$", "^class .*; end$",
+        "^<%.*%>$", "^module [^;\\s]+$", "^#!.*ruby$", "^class .*; end$",
         "^class .* < .*::.*$", "^.+::.+ = .+$", "^(?!for).+ .+ do$"
     ],
     "flags": [

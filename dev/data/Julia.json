@@ -5,11 +5,10 @@
         "begin", "immutable", "@", "println(", "=>", "print(", "return", "::"
     ],
     "first_line": [
-        "^module [^;]+(?<!where)$", "^__precompile__\\(\\)$", "^@deprecate.+$",
-        "^%%{$", "^abstract(?! class) .+$", "^bitstype .+$",
-        "^immutable .+end$", "^import [^\"\\{']*(?<!from)$", "^load\\(.*\\)$",
-        "^function .*\\(.*\\)", "^using [^;]+,?[^;]+$",
-        "^const .+ += (?!require)[^/]+$"
+        "^module [^;\\s]+$", "^__precompile__\\(\\)$", "^@deprecate.+$",
+        "^%%{$", "^abstract [^\\s]+$", "^bitstype .+$", "^immutable .+end$",
+        "^import(all)? [^\"\\{']*$", "^load\\(.*\\)$", "^using [^;]+,?[^;]+$",
+        "^function .*\\(.*\\)", "^const .+ += [^\/\\('\"]+$"
     ],
     "unique": [
         "quote", "endof", "@compat", "@testset", "@test", "using", "bitstype",

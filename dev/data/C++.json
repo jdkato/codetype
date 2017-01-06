@@ -8,7 +8,7 @@
         "}", ";", "&", "->", "*", "~", ">>", "<<", "::", "[]", "typedef"
     ],
     "first_line": [
-        "^#include (?:\"(?:(?!\\.c\").)*\"|<.*>)$", "(?:int|void|bool) \\w*\\(",
+        "^\\s*#\\s*include (?:\".*\"|<.*>)$", "(?:int|void|bool) \\w*\\(",
         "^#(?:if|ifdef|define|undef) .*$"
     ],
     "unique": [
