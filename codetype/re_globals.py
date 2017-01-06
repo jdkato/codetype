@@ -26,6 +26,7 @@ EXTRACT_RE = r"""
     &&| # PHP
     =~| # Perl
     ~=| # Lua
+    \.==| # Julia
     !\(| # Rust
     \[\]| # Java
     \.\.\.| # R, Swift
