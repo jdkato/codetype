@@ -5,7 +5,7 @@
         "return", "#", "@", "object", "raise"
     ],
     "first_line": [
-        "^(?:from .*)?import [^\"\\{@':]*(?<!from)$", "['|\"]{3}",
+        "^(?:from .*)?import [^\"\\{@':]*(?<!from)$",
         "^#!.*python(?:\\d)?(?:\\.\\d)$"
     ],
     "unique": [
