@@ -8,17 +8,16 @@ from codetype import (
 )
 
 sys.path.insert(0, os.path.abspath("."))
-CONTENT_DIR = os.path.join("test", "content")
-LANG_DIR = os.path.join("test", "lang")
+SNIPPETS_DIR = os.path.join("test", "lang", "snippets")
 
 
 class CodeTypeTestCase(unittest.TestCase):
     """Tests for codetype's utility functions.
     """
     def test_identify(self):
-        for subdir, dirs, files in os.walk(LANG_DIR):
+        for subdir, dirs, files in os.walk(SNIPPETS_DIR):
             known = os.path.basename(subdir)
-            if known == "lang":
+            if known == "snippets":
                 continue
             count = 0
             for f in files:
