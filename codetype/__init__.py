@@ -225,7 +225,7 @@ def summarize_text(src, is_file=False, filtered=None):
         if cleaned:
             lines += 1
             if lines == 1:
-                first = cleaned
+                first = line.strip()
             extr = re.findall(EXTRACT_RE, cleaned, re.VERBOSE)
             toks.extend([s for s in extr if not filtered or s in filtered])
 
