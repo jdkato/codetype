@@ -1,0 +1,21 @@
+{
+   "^(?:from .*)?import [^\"\\{@':]*$": {
+    "accepted": [
+        "from math import fabs", "import foo", "import foo as bar",
+        "from os import path, chdir # comment", "from .sub import *",
+        "from a import b as c, d as e", "from a import (b as c)",
+        "from collections.abc import Iterable", "import os.path"
+    ],
+    "unaccepted": [
+        "import \"module-name\";", "import { member } from \"module-name\";",
+        "import attrs from './attrs'", "import java.util.{Date, Locale}"
+    ]
+   },
+   "^#!.*python(?:\\d)?(?:\\.\\d)?$": {
+    "accepted": [
+        "#!/usr/bin/env python", "#!/usr/local/bin/python",
+        "#!/usr/bin/env python3", "#!/usr/bin/python2.7"
+    ],
+    "unaccepted": []
+   }
+}

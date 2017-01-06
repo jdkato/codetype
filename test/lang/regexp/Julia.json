@@ -1,0 +1,28 @@
+{
+    "^module [^;\\s]+$": {
+        "accepted": ["module MyModule"],
+        "unaccepted": ["module Main (main) where"]
+    },
+    "^abstract [^\\s]+$": {
+        "accepted": ["abstract AbstractAlignment"],
+        "unaccepted": ["abstract class Element"]
+    },
+    "^import(all)? [^\"\\{']*$": {
+        "accepted": [
+            "import MyModule", "import MyModule.x, MyModule.p",
+            "import MyModule: x, p", "importall MyModule"
+        ],
+        "unaccepted": [
+            "import \"module-name\";", "import attrs from './attrs'",
+            "import { member } from \"module-name\";"
+        ]
+    },
+    "^const .+ += [^\/\\('\"]+$": {
+        "accepted": [
+            "const BIGBED_MAGIC = 0x8789F2EB"
+        ],
+        "unaccepted": [
+            "const util = require('util');"
+        ]
+    }
+}
