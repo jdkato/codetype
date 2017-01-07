@@ -38,7 +38,9 @@ class HelloWorldApp {
     }
 }"""
 >>> identify(src)
-'Java' 
+'Java'
+>>> identify('/path/to/ruby/file.txt')
+'Ruby'
 ```
 
 ###### CLI
