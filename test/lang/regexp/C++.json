@@ -4,6 +4,6 @@
         "#include \"atom/browser/browser.h\"", "#include <io.h>",
         "#include \"hello.cc\"", " #include <stdio.h>"
     ],
-    "unaccepted": []
+    "rejected": []
    }
 }

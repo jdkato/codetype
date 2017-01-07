@@ -3,7 +3,7 @@
         "accepted": [
             "package command"
         ],
-        "unaccepted": [
+        "rejected": [
             "package foo.bar.baz;",
             "package Foo::Bar;",
             "package foo.bar.baz"

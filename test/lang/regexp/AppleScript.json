@@ -1,10 +1,10 @@
 {
    "^on run$": {
     "accepted": ["on run"],
-    "unaccepted": []
+    "rejected": []
    },
    "^set.+to.+$": {
     "accepted": [],
-    "unaccepted": []
+    "rejected": []
    }
 }

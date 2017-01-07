@@ -4,7 +4,7 @@
             "import java.util.{Date, Locale}", "import java.text.DateFormat",
             "import math.{Pi => _, _}"
         ],
-        "unaccepted": [
+        "rejected": [
         "import \"module-name\";", "import { member } from \"module-name\";",
         "import attrs from './attrs'"
     ]

@@ -1,6 +1,6 @@
 {
    "^module [^;\\s]+$": {
         "accepted": ["module MyModule"],
-        "unaccepted": ["module Main (main) where"]
+        "rejected": ["module Main (main) where"]
     }
 }

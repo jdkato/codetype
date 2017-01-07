@@ -22,13 +22,13 @@ class FirstLinesTestCase(unittest.TestCase):
                 for key in data:
                     regexp = unicode_escape(key)[0]
                     accepted = data[key]["accepted"]
-                    unaccepted = data[key]["unaccepted"]
+                    rejected = data[key]["rejected"]
                     for s in accepted:
                         self.assertTrue(
                             re.search(regexp, s),
                             msg="'{0}' does not match '{1}'".format(regexp, s)
                         )
-                    for s in unaccepted:
+                    for s in rejected:
                         self.assertFalse(
                             re.search(regexp, s),
                             msg="'{0}' matches '{1}'".format(regexp, s)
