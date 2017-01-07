@@ -190,6 +190,8 @@ def remove_inline_ignore(line):
 
 def summarize_text(src, is_file=False, filtered=None):
     """Return all non-comment and non-string content in src.
+
+    # TODO: remove filtered?
     """
     lines = 0.0
     toks, ignores = [], []
@@ -225,7 +227,7 @@ def summarize_text(src, is_file=False, filtered=None):
         if cleaned:
             lines += 1
             if lines == 1:
-                first = line.strip()
+                first, _ = remove_comment(line.strip())
             extr = re.findall(EXTRACT_RE, cleaned, re.VERBOSE)
             toks.extend([s for s in extr if not filtered or s in filtered])
 
