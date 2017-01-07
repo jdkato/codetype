@@ -1,0 +1,12 @@
+{
+   "^package [^;:.]+$": {
+        "accepted": [
+            "package command"
+        ],
+        "unaccepted": [
+            "package foo.bar.baz;",
+            "package Foo::Bar;",
+            "package foo.bar.baz"
+        ]
+    }
+}
