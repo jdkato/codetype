@@ -6,7 +6,9 @@
     ],
     "first_line": [
         "^#!.*lua(?:jit)?$", "^return {$", "^require (?:'|\")[^/]+(?:'|\")$",
-        "^function .*\\(.*\\)", "^local .{1,}$", "^return \\[\\[$"
+        "^function .*\\(.*\\)", "^local .{1,}$", "^return \\[\\[$",
+        "^#!.*lua(?:jit)?$", "^return {$", "^local .{1,}$", "^return \\[\\[$",
+        "^require\\s?(?:\\(\".*\"\\)|\".*\")", "^function .*\\(.*\\)"
     ],
     "unique": ["local", "~="],
     "flags": ["=~", "begin", "class"],

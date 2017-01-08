@@ -1,0 +1,8 @@
+{
+   "^require\\s?(?:\\(\".*\"\\)|\".*\")": {
+    "accepted": [
+        "require \"lua_pack\"", "require(\"foo.bar.baz\")({cli = true})"
+    ],
+    "rejected": []
+   }
+}
