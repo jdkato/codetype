@@ -16,8 +16,8 @@ pip install codetype
 ###### From source
 
 ```
-$ git clone https://github.com/jdkato/codetype.git
-$ cd codetype
+$ git clone https://github.com/jdkato/codetype-py.git
+$ cd codetype-py
 $ python setup.py install
 ```
 
