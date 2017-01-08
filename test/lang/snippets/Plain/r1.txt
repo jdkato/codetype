@@ -1,0 +1,3 @@
+In the first installment of this series, I gave an overview of the database I’ve created for analyzing various aspects of American Ninja Warrior. Now, it’s time to start exploring this data in more detail—starting with the Qualifying and City Finals rounds.
+
+There were plenty of memorable moments prior to reaching Las Vegas in season 7, including sub-60-second qualifying runs by Kevin Bull and Lorin Ball, witnessing 38 people complete the Kansas City Finals course, and the debut of one of the most challenging qualifying obstacles in ANW history. In this post, we’ll take a closer look at many of these moments as we recap the first 12 episodes of ANW7.

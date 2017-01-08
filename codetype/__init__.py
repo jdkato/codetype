@@ -63,6 +63,7 @@ def identify(src, verbose=False, only=[]):
             if re.search(unicode_escape(regex)[0], first_line):
                 filtered[1][lang] = results[lang]
 
+    print(summary)
     results = parse_filtered(filtered, results)
     if verbose:
         return results

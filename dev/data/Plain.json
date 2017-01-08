@@ -1,0 +1,11 @@
+{
+    "tokens": [
+        "be", "of", "that", "have", "I", "it", "he", "she", "you", "at", "but",
+        "by", "they", "an", "end", "from", "with", "then", "is", "am", "do",
+        "true", "false", "him", "her", "there", "as", "not", "or", "pass"
+    ],
+    "first_line": [],
+    "unique": ["the", "so", "we", "to", "The", "There", ":\n", "a"],
+    "flags": [],
+    "ignores": []
+}

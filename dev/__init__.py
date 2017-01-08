@@ -99,6 +99,10 @@ LANG_INFO = {
     "Swift": {
         "repo": "https://github.com/eBay/NMessenger",
         "ext": [".swift"]
+    },
+    "Plain": {
+        "repo": "https://github.com/c-w/Gutenberg.git",
+        "ext": []
     }
 }
 DIR_PATH = os.path.join(os.getcwd(), "dev")
@@ -173,8 +177,9 @@ def clone_and_clean(repo, src_dir, ext):
     for subdir, _, files in os.walk(src_dir):
         for f in files:
             path = os.path.join(subdir, f)
-            if any(f.endswith(e) for e in ext) and os.path.exists(path):
-                continue
+            if os.path.exists(path):
+                if any(f.endswith(e) for e in ext) or not ext and '.' not in f:
+                    continue
             os.remove(path)
 
 
