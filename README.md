@@ -5,6 +5,8 @@
 
 `codetype` is a Python library and command-line tool for identifying the language of source code snippets and files. It's fast, simple and accurate. [You can test it out here](http://jdkato.github.io/codetype/).
 
+See my [blog post](https://jdkato.github.io/2016/08/30/identifying-the-language-of-source-code.html) for more information.
+
 ## Installation
 
 ###### Using pip
